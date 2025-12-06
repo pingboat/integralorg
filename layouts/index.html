@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Site.Title }} - {{ .Site.Params.tagline }}</title>
+    <meta name="description" content="{{ .Site.Params.description }}">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --forest: {{ .Site.Params.colors.forest_green }};
+            --saffron: {{ .Site.Params.colors.deep_saffron }};
+            --navy: {{ .Site.Params.colors.navy_blue }};
+            --cream: #faf8f3;
+            --white: #ffffff;
+            --charcoal: #2d2d2d;
+            --gray: #6b7280;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: var(--charcoal);
+        }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
+        .center { text-align: center; }
+        
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+        
+        .btn-give {
+            background: var(--saffron);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-give:hover {
+            background: #e68a2e;
+            transform: translateY(-2px);
+        }
+        
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                        linear-gradient(135deg, var(--forest) 0%, #0f3d28 100%);
+            color: white;
+            text-align: center;
+            padding: 100px 20px 80px;
+            position: relative;
+        }
+        
+        .hero h1 {
+            font-size: clamp(1.8rem, 5vw, 3.5rem);
+            line-height: 1.3;
+            max-width: 900px;
+            font-weight: 700;
+        }
+        
+        .scroll-down {
+            position: absolute;
+            bottom: 2rem;
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        /* Sections */
+        .section { padding: 5rem 0; }
+        .section.alt { background: var(--cream); }
+        .section.dark { background: var(--forest); color: white; }
+        
+        h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 2rem;
+            color: var(--forest);
+            font-weight: 700;
+        }
+        
+        .dark h2 { color: white; }
+        
+        .intro { font-size: 1.3rem; max-width: 800px; margin: 0 auto 2rem; }
+        .lead { font-size: 1.4rem; font-weight: 600; color: var(--forest); }
+        
+        /* Story */
+        .story { max-width: 800px; margin: 0 auto; font-size: 1.1rem; }
+        .story p { margin-bottom: 1.5rem; }
+        
+        .img-box {
+            height: 400px;
+            background: linear-gradient(135deg, var(--forest) 0%, var(--saffron) 100%);
+            border-radius: 12px;
+            margin: 2rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+        
+        /* Solution */
+        .solution { max-width: 800px; margin: 2rem auto; font-size: 1.1rem; }
+        
+        .diagram {
+            max-width: 900px;
+            height: 400px;
+            margin: 3rem auto;
+            background: rgba(26,95,63,0.1);
+            border: 3px dashed var(--forest);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            color: var(--forest);
+            font-weight: 600;
+        }
+        
+        /* Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .card:hover { transform: translateY(-5px); }
+        
+        .icon { font-size: 3rem; margin-bottom: 1rem; }
+        .card h3 { color: var(--forest); margin-bottom: 0.5rem; font-size: 1.3rem; }
+        .card p { color: var(--gray); }
+        
+        /* Products */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .product {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        
+        .product:hover { transform: translateY(-5px); }
+        
+        .product-img {
+            height: 250px;
+            background: linear-gradient(135deg, var(--forest), var(--saffron));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .product h3 { margin: 1rem 1.5rem 0.5rem; color: var(--forest); font-size: 1.5rem; }
+        .product p { margin: 0 1.5rem 1rem; color: var(--gray); }
+        
+        .btn-shop {
+            display: inline-block;
+            margin: 0 1.5rem 1.5rem;
+            background: var(--forest);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-shop:hover { background: #0f3d28; }
+        
+        /* Market */
+        .market {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 2rem auto;
+        }
+        
+        .market-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        
+        .market-card h3 { color: var(--forest); margin-bottom: 1rem; }
+        
+        .stat {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--forest);
+            margin-top: 2rem;
+        }
+        
+        /* Donation */
+        .tiers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .tier {
+            background: white;
+            color: var(--charcoal);
+            padding: 2rem;
+            border-radius: 12px;
+            transition: transform 0.3s;
+        }
+        
+        .tier:hover { transform: translateY(-5px); }
+        
+        .price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--forest);
+            margin-bottom: 0.5rem;
+        }
+        
+        .tier h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+        .tier p { color: var(--gray); }
+        
+        .btn-donate {
+            background: var(--saffron);
+            color: white;
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 2rem;
+            transition: all 0.3s;
+        }
+        
+        .btn-donate:hover {
+            background: #e68a2e;
+            transform: translateY(-3px);
+        }
+        
+        /* Partners */
+        .partners {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .partner { text-align: center; }
+        
+        .partner-logo {
+            width: 150px;
+            height: 150px;
+            background: var(--cream);
+            border-radius: 12px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--forest);
+        }
+        
+        .partner h3 { color: var(--forest); margin-bottom: 0.5rem; }
+        .partner p { color: var(--gray); }
+        
+        /* Footer */
+        .footer {
+            background: var(--charcoal);
+            color: white;
+            padding: 3rem 0;
+        }
+        
+        .footer p { margin: 0.5rem 0; }
+        
+        /* Mobile */
+        @media (max-width: 768px) {
+            .section { padding: 3rem 0; }
+            .grid, .products, .tiers { grid-template-columns: 1fr; }
+            .hero { min-height: 80vh; }
+            .img-box { height: 300px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="nav">
+                <div class="logo">{{ .Site.Title }}</div>
+                <a href="#donate" class="btn-give">GIVE</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Can silk be a solution to poverty, unemployment and climate change in North East India?</h1>
+        <div class="scroll-down">↓</div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="story">
+                <p class="lead">For 47-year-old Bina Devi, silk is not just fabric. It's her ancestors' heritage and her children's future.</p>
+                
+                <div class="img-box">Bina Devi Photo</div>
+
+                <p>You see, for many millennia, people in North East India have been engaged with sericulture. Everything was going well and smooth, until climate change knocked at its doors.</p>
+
+                <p>Increasing pollution, pesticides used in tea gardens & beyond, combined with the impacts of climate change brought great dangers to the rearing of silk in the region. It is getting more and more difficult to rear the silk now. And with this, it poses a threat to the livelihoods of thousands of people from indigenous communities.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section alt">
+        <div class="container center">
+            <h2>Our Solution: Integral Farming</h2>
+            <div class="solution">
+                <p>It is the fusion of Sri Aurobindo's Integral Yoga and the concept of Vinyasa.</p>
+                <p>As the name suggests, Integral Yoga takes up everything in its current state to transform it into a catalyst for forward movement. Whereas, the Sanskrit term "Vinyasa" means the deliberate sequencing of activities to create a harmonious practice. Integral Farming is our approach to turn each activity into an enabler for the next one.</p>
+            </div>
+            <div class="diagram">
+                <p>Pictorial / Animated Description of Integral Farming</p>
+                <p><em>Professional diagram to be designed</em></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section dark">
+        <div class="container">
+            <h2 class="center">What We Do</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="icon">🌱</div>
+                    <h3>Create Ecosystems</h3>
+                    <p>Climate-resilient farming systems that regenerate soil and biodiversity</p>
+                </div>
+                <div class="card">
+                    <div class="icon">💼</div>
+                    <h3>Generate Dignified Livelihoods</h3>
+                    <p>Fair income opportunities that preserve heritage and build prosperity</p>
+                </div>
+                <div class="card">
+                    <div class="icon">📈</div>
+                    <h3>Boost Productivity</h3>
+                    <p>Sustainable practices that increase yields while protecting environment</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🤝</div>
+                    <h3>Connect to Markets​​​​​​​​​​​​​​​​
