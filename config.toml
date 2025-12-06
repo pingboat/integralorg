@@ -1,0 +1,18 @@
+baseURL = "https://gointegral.org/"
+languageCode = "en-us"
+title = "Integral Foundation"
+theme = ""
+
+[params]
+  description = "Supporting dignified rural livelihoods in North East India"
+  tagline = "Build Tomorrow, Today"
+  
+[params.colors]
+  forest_green = "#1a5f3f"
+  deep_saffron = "#ff9933"
+  navy_blue = "#1e3a8a"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
