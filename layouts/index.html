@@ -21,10 +21,10 @@
             --navy: {{ .Site.Params.colors.navy_blue }};
             
             /* Button System */
-            --yellow: #FFC700;              /* PRIMARY - GIVE/DONATE only */
+            --yellow: #FFC700;
             --yellow-hover: #E6B300;
-            --saffron-hover: #e68a2e;       /* SECONDARY - Action buttons */
-            --forest-dark: #0f3d28;         /* TERTIARY - Links hover */
+            --saffron-hover: #e68a2e;
+            --forest-dark: #0f3d28;
             
             /* Neutrals */
             --cream: #faf8f3;
@@ -107,7 +107,6 @@
             font-weight: 300;
         }
         
-        /* PRIMARY BUTTON - Yellow (GIVE/DONATE only) */
         .btn-give {
             background: var(--yellow);
             color: var(--charcoal);
@@ -168,7 +167,6 @@
         /* Sections */
         .section { padding: 5rem 0; }
         .section.alt { background: var(--cream); }
-        .section.dark { background: var(--forest); color: white; }
         
         h2 {
             font-size: clamp(2rem, 4vw, 3rem);
@@ -177,8 +175,6 @@
             font-weight: 700;
             letter-spacing: -0.02em;
         }
-        
-        .dark h2 { color: white; }
         
         .intro { 
             font-size: 1.3rem; 
@@ -219,7 +215,6 @@
             font-weight: 600;
         }
         
-        /* TERTIARY - Forest Green Links */
         .text-link {
             display: inline-block;
             color: var(--forest);
@@ -265,36 +260,124 @@
             font-weight: 600;
         }
         
-        /* Grid */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+        /* What We Do - Accordion Section */
+        .what-we-do-section {
+            position: relative;
+            min-height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                        linear-gradient(135deg, var(--forest) 0%, var(--forest-dark) 100%);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 6rem 0;
         }
         
-        .card {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
+        .what-we-do-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+        
+        .what-we-do-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--yellow);
             text-align: center;
-            transition: transform 0.3s;
-        }
-        
-        .card:hover { transform: translateY(-5px); }
-        
-        .icon { font-size: 3rem; margin-bottom: 1rem; }
-        
-        .card h3 { 
-            color: var(--forest); 
-            margin-bottom: 0.5rem; 
-            font-size: 1.3rem;
+            margin-bottom: 4rem;
             font-weight: 600;
+            letter-spacing: -0.02em;
         }
         
-        .card p { 
-            color: var(--gray);
-            font-weight: 400;
+        .accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        
+        .accordion-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .accordion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .accordion-header:hover {
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        .accordion-item.active .accordion-header {
+            background: rgba(0, 0, 0, 0.6);
+        }
+        
+        .accordion-title {
+            font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+            color: white;
+            font-weight: 500;
+            flex: 1;
+        }
+        
+        .accordion-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--saffron);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 2rem;
+        }
+        
+        .accordion-item:nth-child(odd) .accordion-icon {
+            background: var(--yellow);
+        }
+        
+        .accordion-item:nth-child(even) .accordion-icon {
+            background: var(--saffron);
+        }
+        
+        .accordion-item:nth-child(3n) .accordion-icon {
+            background: #4db8ff;
+        }
+        
+        .accordion-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--charcoal);
+            transition: transform 0.3s ease;
+        }
+        
+        .accordion-item.active .accordion-icon svg {
+            transform: rotate(90deg);
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+        }
+        
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+            padding: 2rem 2rem 3rem 2rem;
+        }
+        
+        .accordion-content-inner {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 800px;
         }
         
         /* Products */
@@ -338,7 +421,6 @@
             font-weight: 400;
         }
         
-        /* SECONDARY BUTTON - Saffron (All other action buttons) */
         .btn-shop {
             display: inline-block;
             margin: 0 1.5rem 1.5rem;
@@ -427,7 +509,15 @@
             font-weight: 400;
         }
         
-        /* PRIMARY BUTTON - Yellow (DONATE) */
+        .section-donate {
+            background: var(--forest);
+            color: white;
+        }
+        
+        .section-donate h2 {
+            color: white;
+        }
+        
         .btn-donate {
             background: var(--yellow);
             color: var(--charcoal);
@@ -502,34 +592,25 @@
         /* Mobile */
         @media (max-width: 768px) {
             .section { padding: 3rem 0; }
-            .grid, .products, .tiers { grid-template-columns: 1fr; }
+            .products, .tiers { grid-template-columns: 1fr; }
             .hero { min-height: 80vh; }
             .img-box { height: 300px; }
             
-            .menu-toggle {
-                display: flex;
-            }
+            .menu-toggle { display: flex; }
+            .logo { font-size: 1.2rem; }
+            .separator { display: none; }
+            .btn-give { padding: 0.6rem 1.5rem; font-size: 0.9rem; }
+            .nav { gap: 0.5rem; }
+            .hero h1 { font-size: 1.8rem; }
             
-            .logo {
-                font-size: 1.2rem;
-            }
-            
-            .separator {
-                display: none;
-            }
-            
-            .btn-give {
-                padding: 0.6rem 1.5rem;
-                font-size: 0.9rem;
-            }
-            
-            .nav {
-                gap: 0.5rem;
-            }
-            
-            .hero h1 {
-                font-size: 1.8rem;
-            }
+            .what-we-do-section { padding: 4rem 0; }
+            .what-we-do-title { font-size: 2rem; margin-bottom: 2rem; }
+            .accordion-header { padding: 1.5rem 1rem; }
+            .accordion-title { font-size: 1.2rem; }
+            .accordion-icon { width: 40px; height: 40px; margin-left: 1rem; }
+            .accordion-icon svg { width: 20px; height: 20px; }
+            .accordion-item.active .accordion-content { padding: 1.5rem 1rem 2rem 1rem; }
+            .accordion-content-inner { font-size: 1rem; }
         }
     </style>
 </head>
@@ -587,54 +668,153 @@
         </div>
     </section>
 
-    <section class="section dark">
-        <div class="container">
-            <h2 class="center">What We Do</h2>
-            <div class="grid">
-                <div class="card">
-                    <div class="icon">🌱</div>
-                    <h3>Create Ecosystems</h3>
-                    <p>Climate-resilient farming systems that regenerate soil and biodiversity</p>
+    <section class="what-we-do-section">
+        <div class="what-we-do-container">
+            <h2 class="what-we-do-title">What we do</h2>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3 class="accordion-title">Create ecosystems</h3>
+                        <div class="accordion-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>Climate-resilient farming systems that regenerate soil and biodiversity. We build complete ecosystems where every element supports the next, creating sustainable environments for sericulture and agricultural practices.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="card">
-                    <div class="icon">💼</div>
-                    <h3>Generate Dignified Livelihoods</h3>
-                    <p>Fair income opportunities that preserve heritage and build prosperity</p>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3 class="accordion-title">Generate dignified rural livelihoods</h3>
+                        <div class="accordion-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>Fair income opportunities that preserve heritage and build prosperity. Through Integral Farming, we ensure artisan families earn sustainable incomes while maintaining their traditional crafts and cultural identity.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="card">
-                    <div class="icon">📈</div>
-                    <h3>Boost Productivity</h3>
-                    <p>Sustainable practices that increase yields while protecting environment</p>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3 class="accordion-title">Boost productivity</h3>
+                        <div class="accordion-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>Sustainable practices that increase yields while protecting the environment. Our approach combines traditional knowledge with climate-smart techniques to help farmers produce more silk and agricultural products without depleting natural resources.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="card">
-                    <div class="icon">🤝</div>
-                    <h3>Connect to Markets</h3>
-                    <p>Direct market access through Gaongiri and local partnerships</p>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3 class="accordion-title">Connect farmers to markets</h3>
+                        <div class="accordion-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>Direct market access through Gaongiri and local partnerships. We eliminate exploitative middlemen and ensure 85% of every sale goes directly to artisans, creating transparent and fair trade relationships.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="card">
-                    <div class="icon">👩</div>
-                    <h3>Empower Women</h3>
-                    <p>Women-led cooperatives driving economic independence</p>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3 class="accordion-title">Empower women</h3>
+                        <div class="accordion-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>Women-led cooperatives driving economic independence and community leadership. Our programs specifically target women artisans, providing training, resources, and organizational support to build thriving women-owned enterprises.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="card">
-                    <div class="icon">🏘️</div>
-                    <h3>Build Communities</h3>
-                    <p>Strengthening social fabric through collective ownership</p>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3 class="accordion-title">Build local communities</h3>
+                        <div class="accordion-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>Strengthening social fabric through collective ownership and shared purpose. We create community structures that support long-term collaboration, knowledge sharing, and mutual support among artisan families.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="card">
-                    <div class="icon">💧</div>
-                    <h3>Rainwater Harvesting</h3>
-                    <p>Drought resilience through traditional water conservation</p>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3 class="accordion-title">Rainwater harvesting</h3>
+                        <div class="accordion-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>Drought resilience through traditional water conservation systems. We install rainwater harvesting infrastructure that ensures reliable water supply for silk production even during erratic monsoons and changing weather patterns.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="card">
-                    <div class="icon">🌾</div>
-                    <h3>Enrich Soil Health</h3>
-                    <p>Organic practices that restore fertility and sequester carbon</p>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3 class="accordion-title">Enrich soil health</h3>
+                        <div class="accordion-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>Organic practices that restore fertility and sequester carbon. Through composting, natural fertilizers, and crop rotation, we rebuild depleted soils, creating healthier plants and stronger silkworm populations.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="card">
-                    <div class="icon">🌍</div>
-                    <h3>Act on Climate Change</h3>
-                    <p>Adaptation and mitigation through regenerative agriculture</p>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3 class="accordion-title">Act on climate change</h3>
+                        <div class="accordion-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">
+                            <p>Adaptation and mitigation through regenerative agriculture practices. Our Integral Farming approach helps communities both adapt to climate impacts and contribute to climate solutions through carbon sequestration and ecosystem restoration.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -827,168 +1007,6 @@
                 item.classList.toggle('active');
             });
         });
-    </script>
-</body>
-</html>
-                    <p>Peace silk, cruelty-free</p>
-                    <a href="#" class="btn-shop">Shop Now →</a>
-                </div>
-                <div class="product">
-                    <div class="product-img">Mulberry Silk</div>
-                    <h3>Mulberry Silk</h3>
-                    <p>Classic, lustrous fiber</p>
-                    <a href="#" class="btn-shop">Shop Now →</a>
-                </div>
-                <div class="product">
-                    <div class="product-img">Muga Silk</div>
-                    <h3>Muga Silk</h3>
-                    <p>Golden silk of Assam</p>
-                    <a href="#" class="btn-shop">Shop Now →</a>
-                </div>
-                <div class="product">
-                    <div class="product-img">Castor Oil</div>
-                    <h3>Castor Oil</h3>
-                    <p>Cold-pressed organic</p>
-                    <a href="#" class="btn-shop">Shop Now →</a>
-                </div>
-                <div class="product">
-                    <div class="product-img">Lac</div>
-                    <h3>Lac</h3>
-                    <p>Natural resin for dyes</p>
-                    <a href="#" class="btn-shop">Shop Now →</a>
-                </div>
-                <div class="product">
-                    <div class="product-img">Honey</div>
-                    <h3>Honey</h3>
-                    <p>Wild forest honey</p>
-                    <a href="#" class="btn-shop">Shop Now →</a>
-                </div>
-                <div class="product">
-                    <div class="product-img">Desi Ghee</div>
-                    <h3>Desi Ghee</h3>
-                    <p>Traditional grass-fed</p>
-                    <a href="#" class="btn-shop">Shop Now →</a>
-                </div>
-            </div>
-            
-            <p class="center" style="max-width: 800px; margin: 2rem auto 0; font-size: 1.1rem;">
-                This diversity means families aren't dependent on a single crop or market. When one product faces challenges, others sustain income. This is climate resilience in action.
-            </p>
-        </div>
-    </section>
-
-    <section class="section alt">
-        <div class="container">
-            <h2 class="center">From Farm to World</h2>
-            <div class="market">
-                <div class="market-card">
-                    <h3>Local Markets</h3>
-                    <p>Regional buyers and community procurement provide immediate, reliable income—sustaining traditional supply chains across North East India.</p>
-                </div>
-                <div class="market-card">
-                    <h3>Global Reach via Gaongiri</h3>
-                    <p>Through Gaongiri, our flagship online store, we connect artisans directly with conscious consumers worldwide—eliminating exploitative middlemen.</p>
-                </div>
-            </div>
-            <p class="center stat">85% of every Gaongiri sale goes directly to the artisan</p>
-            <div class="center" style="margin-top: 2rem;">
-                <a href="#" class="text-link">Learn About Fair Pricing</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="donate" class="section dark">
-        <div class="container center">
-            <h2>Build Tomorrow, Today</h2>
-            <p class="intro">Our work to tackle poverty, unemployment, and the impact of climate change needs your support.</p>
-            
-            <div class="tiers">
-                <div class="tier">
-                    <div class="price">₹2,500</div>
-                    <h3>Rainwater Harvesting</h3>
-                    <p>Drought-resilient water setup for one family</p>
-                </div>
-                <div class="tier">
-                    <div class="price">₹5,000</div>
-                    <h3>Women's Training</h3>
-                    <p>One month skills training for one artisan</p>
-                </div>
-                <div class="tier">
-                    <div class="price">₹15,000</div>
-                    <h3>Cooperative Setup</h3>
-                    <p>Market linkages for entire women's cooperative</p>
-                </div>
-                <div class="tier">
-                    <div class="price">₹50,000</div>
-                    <h3>Complete Ecosystem</h3>
-                    <p>Full Integral Farming system for one village</p>
-                </div>
-            </div>
-            
-            <button class="btn-donate">DONATE NOW</button>
-            <p style="margin-top: 1rem; font-size: 0.95rem; opacity: 0.9;">
-                85% of donations go directly to programs • Tax exemption available
-            </p>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <h2 class="center">Working Together for Impact</h2>
-            <div class="partners">
-                <div class="partner">
-                    <div class="partner-logo">AAU</div>
-                    <h3>Assam Agricultural University</h3>
-                    <p>Technical expertise in climate-resilient sericulture and sustainable agriculture practices across North East India</p>
-                </div>
-                <div class="partner">
-                    <div class="partner-logo">Balipara</div>
-                    <h3>Balipara Foundation</h3>
-                    <p>Landscape-level conservation and community development, working with indigenous communities for biodiversity and livelihoods</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container center">
-            <p><strong>{{ .Site.Title }}</strong> • {{ .Site.Params.tagline }}</p>
-            <p style="font-size: 0.9rem; margin-top: 0.5rem; color: #9ca3af;">
-                Supporting dignified rural livelihoods in North East India
-            </p>
-            <p style="font-size: 0.9rem; margin-top: 1rem; color: #9ca3af;">
-                © 2025 Integral Foundation. All rights reserved.
-            </p>
-        </div>
-    </footer>
-
-    <script>
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-        
-        // Hide scroll indicator on scroll
-        window.addEventListener('scroll', () => {
-            const scrollDown = document.querySelector('.scroll-down');
-            if (scrollDown) {
-                scrollDown.style.opacity = window.scrollY > 100 ? '0' : '1';
-            }
-        });
-        
-        // Hamburger menu functionality
-        const menuToggle = document.querySelector('.menu-toggle');
-        if (menuToggle) {
-            menuToggle.addEventListener('click', function() {
-                alert('Navigation menu coming soon! For now, scroll to explore all sections.');
-            });
-        }
     </script>
 </body>
 </html>
