@@ -1,404 +1,494 @@
 <!DOCTYPE html>
-
 <html lang="{{ .Site.LanguageCode }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ .Site.Title }} - {{ .Site.Params.tagline }}</title>
     <meta name="description" content="{{ .Site.Params.description }}">
+    
+    <!-- Google Fonts - Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    :root {
-        --forest: {{ .Site.Params.colors.forest_green }};
-        --saffron: {{ .Site.Params.colors.deep_saffron }};
-        --navy: {{ .Site.Params.colors.navy_blue }};
-        --saffron-dark: #e68a2e;
-        --forest-dark: #0f3d28;
-        --cream: #faf8f3;
-        --white: #ffffff;
-        --charcoal: #2d2d2d;
-        --gray: #6b7280;
-    }
-    
-    body {
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        line-height: 1.7;
-        color: var(--charcoal);
-    }
-    
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
-    .center { text-align: center; }
-    
-    /* Header */
-    .header {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        background: rgba(255,255,255,0.95);
-        backdrop-filter: blur(10px);
-        z-index: 1000;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    }
-    
-    .nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 0;
-        gap: 1rem;
-    }
-    
-    .menu-toggle {
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 0.5rem;
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-        width: 30px;
-        flex-shrink: 0;
-    }
-    
-    .menu-toggle span {
-        display: block;
-        width: 100%;
-        height: 3px;
-        background: var(--charcoal);
-        border-radius: 2px;
-        transition: all 0.3s;
-    }
-    
-    .menu-toggle:hover span {
-        background: var(--forest);
-    }
-    
-    .logo {
-        font-size: 1.4rem;
-        font-weight: 700;
-        color: var(--navy);
-        flex: 1;
-    }
-    
-    .nav-right {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        flex-shrink: 0;
-    }
-    
-    .separator {
-        font-size: 1.5rem;
-        color: var(--gray);
-        font-weight: 300;
-    }
-    
-    .btn-give {
-        background: var(--saffron);
-        color: white;
-        padding: 0.75rem 2rem;
-        border-radius: 8px;
-        text-decoration: none;
-        font-weight: 600;
-        transition: all 0.3s;
-        white-space: nowrap;
-    }
-    
-    .btn-give:hover {
-        background: var(--saffron-dark);
-        transform: translateY(-2px);
-    }
-    
-    /* Hero */
-    .hero {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-                    linear-gradient(135deg, var(--forest) 0%, var(--forest-dark) 100%);
-        color: white;
-        text-align: center;
-        padding: 100px 20px 80px;
-        position: relative;
-    }
-    
-    .hero h1 {
-        font-size: clamp(1.8rem, 5vw, 3.5rem);
-        line-height: 1.3;
-        max-width: 900px;
-        font-weight: 700;
-    }
-    
-    .scroll-down {
-        position: absolute;
-        bottom: 2rem;
-        font-size: 2rem;
-        animation: bounce 2s infinite;
-    }
-    
-    @keyframes bounce {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-10px); }
-    }
-    
-    /* Sections */
-    .section { padding: 5rem 0; }
-    .section.alt { background: var(--cream); }
-    .section.dark { background: var(--forest); color: white; }
-    
-    h2 {
-        font-size: clamp(2rem, 4vw, 3rem);
-        margin-bottom: 2rem;
-        color: var(--forest);
-        font-weight: 700;
-    }
-    
-    .dark h2 { color: white; }
-    
-    .intro { font-size: 1.3rem; max-width: 800px; margin: 0 auto 2rem; }
-    .lead { font-size: 1.4rem; font-weight: 600; color: var(--forest); }
-    
-    /* Story */
-    .story { max-width: 800px; margin: 0 auto; font-size: 1.1rem; }
-    .story p { margin-bottom: 1.5rem; }
-    
-    .img-box {
-        height: 400px;
-        background: linear-gradient(135deg, var(--forest) 0%, var(--saffron) 100%);
-        border-radius: 12px;
-        margin: 2rem 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-weight: 600;
-    }
-    
-    /* Solution */
-    .solution { max-width: 800px; margin: 2rem auto; font-size: 1.1rem; }
-    
-    .diagram {
-        max-width: 900px;
-        height: 400px;
-        margin: 3rem auto;
-        background: rgba(26,95,63,0.1);
-        border: 3px dashed var(--forest);
-        border-radius: 12px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 2rem;
-        color: var(--forest);
-        font-weight: 600;
-    }
-    
-    /* Grid */
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 2rem;
-        margin-top: 3rem;
-    }
-    
-    .card {
-        background: white;
-        padding: 2rem;
-        border-radius: 12px;
-        text-align: center;
-        transition: transform 0.3s;
-    }
-    
-    .card:hover { transform: translateY(-5px); }
-    
-    .icon { font-size: 3rem; margin-bottom: 1rem; }
-    .card h3 { color: var(--forest); margin-bottom: 0.5rem; font-size: 1.3rem; }
-    .card p { color: var(--gray); }
-    
-    /* Products */
-    .products {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-        margin: 3rem 0;
-    }
-    
-    .product {
-        background: white;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-        transition: transform 0.3s;
-    }
-    
-    .product:hover { transform: translateY(-5px); }
-    
-    .product-img {
-        height: 250px;
-        background: linear-gradient(135deg, var(--forest), var(--saffron));
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-weight: 600;
-    }
-    
-    .product h3 { margin: 1rem 1.5rem 0.5rem; color: var(--forest); font-size: 1.5rem; }
-    .product p { margin: 0 1.5rem 1rem; color: var(--gray); }
-    
-    .btn-shop {
-        display: inline-block;
-        margin: 0 1.5rem 1.5rem;
-        background: var(--forest);
-        color: white;
-        padding: 0.75rem 1.5rem;
-        border-radius: 8px;
-        text-decoration: none;
-        font-weight: 600;
-        transition: all 0.3s;
-    }
-    
-    .btn-shop:hover { background: var(--forest-dark); }
-    
-    /* Market */
-    .market {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        max-width: 900px;
-        margin: 2rem auto;
-    }
-    
-    .market-card {
-        background: white;
-        padding: 2rem;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
-    
-    .market-card h3 { color: var(--forest); margin-bottom: 1rem; }
-    
-    .stat {
-        font-size: 1.4rem;
-        font-weight: 600;
-        color: var(--forest);
-        margin-top: 2rem;
-    }
-    
-    /* Donation */
-    .tiers {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 2rem;
-        margin: 3rem 0;
-    }
-    
-    .tier {
-        background: white;
-        color: var(--charcoal);
-        padding: 2rem;
-        border-radius: 12px;
-        transition: transform 0.3s;
-    }
-    
-    .tier:hover { transform: translateY(-5px); }
-    
-    .price {
-        font-size: 2rem;
-        font-weight: 700;
-        color: var(--forest);
-        margin-bottom: 0.5rem;
-    }
-    
-    .tier h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
-    .tier p { color: var(--gray); }
-    
-    .btn-donate {
-        background: var(--saffron);
-        color: white;
-        padding: 1.2rem 3rem;
-        border: none;
-        border-radius: 12px;
-        font-size: 1.3rem;
-        font-weight: 700;
-        cursor: pointer;
-        margin-top: 2rem;
-        transition: all 0.3s;
-    }
-    
-    .btn-donate:hover {
-        background: var(--saffron-dark);
-        transform: translateY(-3px);
-    }
-    
-    /* Partners */
-    .partners {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 3rem;
-        margin-top: 3rem;
-    }
-    
-    .partner { text-align: center; }
-    
-    .partner-logo {
-        width: 150px;
-        height: 150px;
-        background: var(--cream);
-        border-radius: 12px;
-        margin: 0 auto 1.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: var(--forest);
-    }
-    
-    .partner h3 { color: var(--forest); margin-bottom: 0.5rem; }
-    .partner p { color: var(--gray); }
-    
-    /* Footer */
-    .footer {
-        background: var(--charcoal);
-        color: white;
-        padding: 3rem 0;
-    }
-    
-    .footer p { margin: 0.5rem 0; }
-    
-    /* Mobile */
-    @media (max-width: 768px) {
-        .section { padding: 3rem 0; }
-        .grid, .products, .tiers { grid-template-columns: 1fr; }
-        .hero { min-height: 80vh; }
-        .img-box { height: 300px; }
         
-        .menu-toggle {
-            display: flex;
+        :root {
+            --forest: {{ .Site.Params.colors.forest_green }};
+            --saffron: {{ .Site.Params.colors.deep_saffron }};
+            --navy: {{ .Site.Params.colors.navy_blue }};
+            --saffron-dark: #e68a2e;
+            --forest-dark: #0f3d28;
+            --cream: #faf8f3;
+            --white: #ffffff;
+            --charcoal: #2d2d2d;
+            --gray: #6b7280;
         }
         
-        .logo {
-            font-size: 1.2rem;
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: var(--charcoal);
+            font-weight: 400;
         }
         
-        .separator {
-            display: none;
-        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
+        .center { text-align: center; }
         
-        .btn-give {
-            padding: 0.6rem 1.5rem;
-            font-size: 0.9rem;
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
         
         .nav {
-            gap: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            gap: 1rem;
         }
-    }
-</style>
-
+        
+        .menu-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            width: 30px;
+            flex-shrink: 0;
+        }
+        
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: var(--charcoal);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+        
+        .menu-toggle:hover span {
+            background: var(--forest);
+        }
+        
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--navy);
+            flex: 1;
+        }
+        
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .separator {
+            font-size: 1.5rem;
+            color: var(--gray);
+            font-weight: 300;
+        }
+        
+        .btn-give {
+            background: var(--saffron);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        
+        .btn-give:hover {
+            background: var(--saffron-dark);
+            transform: translateY(-2px);
+        }
+        
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                        linear-gradient(135deg, var(--forest) 0%, var(--forest-dark) 100%);
+            color: white;
+            text-align: center;
+            padding: 100px 20px 80px;
+            position: relative;
+        }
+        
+        .hero h1 {
+            font-size: clamp(1.8rem, 5vw, 3.5rem);
+            line-height: 1.3;
+            max-width: 900px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+        
+        .scroll-down {
+            position: absolute;
+            bottom: 2rem;
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        /* Sections */
+        .section { padding: 5rem 0; }
+        .section.alt { background: var(--cream); }
+        .section.dark { background: var(--forest); color: white; }
+        
+        h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 2rem;
+            color: var(--forest);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        
+        .dark h2 { color: white; }
+        
+        .intro { 
+            font-size: 1.3rem; 
+            max-width: 800px; 
+            margin: 0 auto 2rem;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+        
+        .lead { 
+            font-size: 1.4rem; 
+            font-weight: 600; 
+            color: var(--forest);
+            line-height: 1.5;
+        }
+        
+        /* Story */
+        .story { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            font-size: 1.1rem;
+        }
+        
+        .story p { 
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+        
+        .img-box {
+            height: 400px;
+            background: linear-gradient(135deg, var(--forest) 0%, var(--saffron) 100%);
+            border-radius: 12px;
+            margin: 2rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+        
+        /* Solution */
+        .solution { 
+            max-width: 800px; 
+            margin: 2rem auto; 
+            font-size: 1.1rem;
+        }
+        
+        .solution p {
+            font-weight: 400;
+        }
+        
+        .diagram {
+            max-width: 900px;
+            height: 400px;
+            margin: 3rem auto;
+            background: rgba(26,95,63,0.1);
+            border: 3px dashed var(--forest);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            color: var(--forest);
+            font-weight: 600;
+        }
+        
+        /* Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .card:hover { transform: translateY(-5px); }
+        
+        .icon { font-size: 3rem; margin-bottom: 1rem; }
+        
+        .card h3 { 
+            color: var(--forest); 
+            margin-bottom: 0.5rem; 
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        
+        .card p { 
+            color: var(--gray);
+            font-weight: 400;
+        }
+        
+        /* Products */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .product {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        
+        .product:hover { transform: translateY(-5px); }
+        
+        .product-img {
+            height: 250px;
+            background: linear-gradient(135deg, var(--forest), var(--saffron));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .product h3 { 
+            margin: 1rem 1.5rem 0.5rem; 
+            color: var(--forest); 
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .product p { 
+            margin: 0 1.5rem 1rem; 
+            color: var(--gray);
+            font-weight: 400;
+        }
+        
+        .btn-shop {
+            display: inline-block;
+            margin: 0 1.5rem 1.5rem;
+            background: var(--forest);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-shop:hover { background: var(--forest-dark); }
+        
+        /* Market */
+        .market {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 2rem auto;
+        }
+        
+        .market-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        
+        .market-card h3 { 
+            color: var(--forest); 
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .market-card p {
+            font-weight: 400;
+        }
+        
+        .stat {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--forest);
+            margin-top: 2rem;
+        }
+        
+        /* Donation */
+        .tiers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .tier {
+            background: white;
+            color: var(--charcoal);
+            padding: 2rem;
+            border-radius: 12px;
+            transition: transform 0.3s;
+        }
+        
+        .tier:hover { transform: translateY(-5px); }
+        
+        .price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--forest);
+            margin-bottom: 0.5rem;
+        }
+        
+        .tier h3 { 
+            font-size: 1.3rem; 
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .tier p { 
+            color: var(--gray);
+            font-weight: 400;
+        }
+        
+        .btn-donate {
+            background: var(--saffron);
+            color: white;
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 2rem;
+            transition: all 0.3s;
+        }
+        
+        .btn-donate:hover {
+            background: var(--saffron-dark);
+            transform: translateY(-3px);
+        }
+        
+        /* Partners */
+        .partners {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .partner { text-align: center; }
+        
+        .partner-logo {
+            width: 150px;
+            height: 150px;
+            background: var(--cream);
+            border-radius: 12px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--forest);
+        }
+        
+        .partner h3 { 
+            color: var(--forest); 
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .partner p { 
+            color: var(--gray);
+            font-weight: 400;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--charcoal);
+            color: white;
+            padding: 3rem 0;
+        }
+        
+        .footer p { 
+            margin: 0.5rem 0;
+            font-weight: 400;
+        }
+        
+        .footer strong {
+            font-weight: 600;
+        }
+        
+        /* Mobile */
+        @media (max-width: 768px) {
+            .section { padding: 3rem 0; }
+            .grid, .products, .tiers { grid-template-columns: 1fr; }
+            .hero { min-height: 80vh; }
+            .img-box { height: 300px; }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .logo {
+                font-size: 1.2rem;
+            }
+            
+            .separator {
+                display: none;
+            }
+            
+            .btn-give {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            
+            .nav {
+                gap: 0.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <header class="header">
@@ -418,258 +508,257 @@
         </div>
     </header>
 
-<section class="hero">
-    <h1>Can silk be a solution to poverty, unemployment and climate change in North East India?</h1>
-    <div class="scroll-down">↓</div>
-</section>
+    <section class="hero">
+        <h1>Can silk be a solution to poverty, unemployment and climate change in North East India?</h1>
+        <div class="scroll-down">↓</div>
+    </section>
 
-<section class="section">
-    <div class="container">
-        <div class="story">
-            <p class="lead">For 47-year-old Bina Devi, silk is not just fabric. It's her ancestors' heritage and her children's future.</p>
+    <section class="section">
+        <div class="container">
+            <div class="story">
+                <p class="lead">For 47-year-old Bina Devi, silk is not just fabric. It's her ancestors' heritage and her children's future.</p>
+                
+                <div class="img-box">Bina Devi Photo</div>
+
+                <p>You see, for many millennia, people in North East India have been engaged with sericulture. Everything was going well and smooth, until climate change knocked at its doors.</p>
+
+                <p>Increasing pollution, pesticides used in tea gardens & beyond, combined with the impacts of climate change brought great dangers to the rearing of silk in the region. It is getting more and more difficult to rear the silk now. And with this, it poses a threat to the livelihoods of thousands of people from indigenous communities.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section alt">
+        <div class="container center">
+            <h2>Our Solution: Integral Farming</h2>
+            <div class="solution">
+                <p>It is the fusion of Sri Aurobindo's Integral Yoga and the concept of Vinyasa.</p>
+                <p>As the name suggests, Integral Yoga takes up everything in its current state to transform it into a catalyst for forward movement. Whereas, the Sanskrit term "Vinyasa" means the deliberate sequencing of activities to create a harmonious practice. Integral Farming is our approach to turn each activity into an enabler for the next one.</p>
+            </div>
+            <div class="diagram">
+                <p>Pictorial / Animated Description of Integral Farming</p>
+                <p><em>Professional diagram to be designed</em></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section dark">
+        <div class="container">
+            <h2 class="center">What We Do</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="icon">🌱</div>
+                    <h3>Create Ecosystems</h3>
+                    <p>Climate-resilient farming systems that regenerate soil and biodiversity</p>
+                </div>
+                <div class="card">
+                    <div class="icon">💼</div>
+                    <h3>Generate Dignified Livelihoods</h3>
+                    <p>Fair income opportunities that preserve heritage and build prosperity</p>
+                </div>
+                <div class="card">
+                    <div class="icon">📈</div>
+                    <h3>Boost Productivity</h3>
+                    <p>Sustainable practices that increase yields while protecting environment</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🤝</div>
+                    <h3>Connect to Markets</h3>
+                    <p>Direct market access through Gaongiri and local partnerships</p>
+                </div>
+                <div class="card">
+                    <div class="icon">👩</div>
+                    <h3>Empower Women</h3>
+                    <p>Women-led cooperatives driving economic independence</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🏘️</div>
+                    <h3>Build Communities</h3>
+                    <p>Strengthening social fabric through collective ownership</p>
+                </div>
+                <div class="card">
+                    <div class="icon">💧</div>
+                    <h3>Rainwater Harvesting</h3>
+                    <p>Drought resilience through traditional water conservation</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🌾</div>
+                    <h3>Enrich Soil Health</h3>
+                    <p>Organic practices that restore fertility and sequester carbon</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🌍</div>
+                    <h3>Act on Climate Change</h3>
+                    <p>Adaptation and mitigation through regenerative agriculture</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="center">Beyond Silk: A Complete Ecosystem</h2>
+            <p class="center intro">Integral Farming creates diversified, resilient livelihoods. Our artisan families produce multiple products from integrated farming systems—each supporting the others.</p>
             
-            <div class="img-box">Bina Devi Photo</div>
-
-            <p>You see, for many millennia, people in North East India have been engaged with sericulture. Everything was going well and smooth, until climate change knocked at its doors.</p>
-
-            <p>Increasing pollution, pesticides used in tea gardens & beyond, combined with the impacts of climate change brought great dangers to the rearing of silk in the region. It is getting more and more difficult to rear the silk now. And with this, it poses a threat to the livelihoods of thousands of people from indigenous communities.</p>
+            <div class="products">
+                <div class="product">
+                    <div class="product-img">Ahimsa Silk</div>
+                    <h3>Ahimsa Silk</h3>
+                    <p>Peace silk, cruelty-free</p>
+                    <a href="#" class="btn-shop">Shop Now →</a>
+                </div>
+                <div class="product">
+                    <div class="product-img">Mulberry Silk</div>
+                    <h3>Mulberry Silk</h3>
+                    <p>Classic, lustrous fiber</p>
+                    <a href="#" class="btn-shop">Shop Now →</a>
+                </div>
+                <div class="product">
+                    <div class="product-img">Muga Silk</div>
+                    <h3>Muga Silk</h3>
+                    <p>Golden silk of Assam</p>
+                    <a href="#" class="btn-shop">Shop Now →</a>
+                </div>
+                <div class="product">
+                    <div class="product-img">Castor Oil</div>
+                    <h3>Castor Oil</h3>
+                    <p>Cold-pressed organic</p>
+                    <a href="#" class="btn-shop">Shop Now →</a>
+                </div>
+                <div class="product">
+                    <div class="product-img">Lac</div>
+                    <h3>Lac</h3>
+                    <p>Natural resin for dyes</p>
+                    <a href="#" class="btn-shop">Shop Now →</a>
+                </div>
+                <div class="product">
+                    <div class="product-img">Honey</div>
+                    <h3>Honey</h3>
+                    <p>Wild forest honey</p>
+                    <a href="#" class="btn-shop">Shop Now →</a>
+                </div>
+                <div class="product">
+                    <div class="product-img">Desi Ghee</div>
+                    <h3>Desi Ghee</h3>
+                    <p>Traditional grass-fed</p>
+                    <a href="#" class="btn-shop">Shop Now →</a>
+                </div>
+            </div>
+            
+            <p class="center" style="max-width: 800px; margin: 2rem auto 0; font-size: 1.1rem;">
+                This diversity means families aren't dependent on a single crop or market. When one product faces challenges, others sustain income. This is climate resilience in action.
+            </p>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="section alt">
-    <div class="container center">
-        <h2>Our Solution: Integral Farming</h2>
-        <div class="solution">
-            <p>It is the fusion of Sri Aurobindo's Integral Yoga and the concept of Vinyasa.</p>
-            <p>As the name suggests, Integral Yoga takes up everything in its current state to transform it into a catalyst for forward movement. Whereas, the Sanskrit term "Vinyasa" means the deliberate sequencing of activities to create a harmonious practice. Integral Farming is our approach to turn each activity into an enabler for the next one.</p>
+    <section class="section alt">
+        <div class="container">
+            <h2 class="center">From Farm to World</h2>
+            <div class="market">
+                <div class="market-card">
+                    <h3>Local Markets</h3>
+                    <p>Regional buyers and community procurement provide immediate, reliable income—sustaining traditional supply chains across North East India.</p>
+                </div>
+                <div class="market-card">
+                    <h3>Global Reach via Gaongiri</h3>
+                    <p>Through Gaongiri, our flagship online store, we connect artisans directly with conscious consumers worldwide—eliminating exploitative middlemen.</p>
+                </div>
+            </div>
+            <p class="center stat">85% of every Gaongiri sale goes directly to the artisan</p>
         </div>
-        <div class="diagram">
-            <p>Pictorial / Animated Description of Integral Farming</p>
-            <p><em>Professional diagram to be designed</em></p>
-        </div>
-    </div>
-</section>
+    </section>
 
-<section class="section dark">
-    <div class="container">
-        <h2 class="center">What We Do</h2>
-        <div class="grid">
-            <div class="card">
-                <div class="icon">🌱</div>
-                <h3>Create Ecosystems</h3>
-                <p>Climate-resilient farming systems that regenerate soil and biodiversity</p>
+    <section id="donate" class="section dark">
+        <div class="container center">
+            <h2>Build Tomorrow, Today</h2>
+            <p class="intro">Our work to tackle poverty, unemployment, and the impact of climate change needs your support.</p>
+            
+            <div class="tiers">
+                <div class="tier">
+                    <div class="price">₹2,500</div>
+                    <h3>Rainwater Harvesting</h3>
+                    <p>Drought-resilient water setup for one family</p>
+                </div>
+                <div class="tier">
+                    <div class="price">₹5,000</div>
+                    <h3>Women's Training</h3>
+                    <p>One month skills training for one artisan</p>
+                </div>
+                <div class="tier">
+                    <div class="price">₹15,000</div>
+                    <h3>Cooperative Setup</h3>
+                    <p>Market linkages for entire women's cooperative</p>
+                </div>
+                <div class="tier">
+                    <div class="price">₹50,000</div>
+                    <h3>Complete Ecosystem</h3>
+                    <p>Full Integral Farming system for one village</p>
+                </div>
             </div>
-            <div class="card">
-                <div class="icon">💼</div>
-                <h3>Generate Dignified Livelihoods</h3>
-                <p>Fair income opportunities that preserve heritage and build prosperity</p>
-            </div>
-            <div class="card">
-                <div class="icon">📈</div>
-                <h3>Boost Productivity</h3>
-                <p>Sustainable practices that increase yields while protecting environment</p>
-            </div>
-            <div class="card">
-                <div class="icon">🤝</div>
-                <h3>Connect to Markets</h3>
-                <p>Direct market access through Gaongiri and local partnerships</p>
-            </div>
-            <div class="card">
-                <div class="icon">👩</div>
-                <h3>Empower Women</h3>
-                <p>Women-led cooperatives driving economic independence</p>
-            </div>
-            <div class="card">
-                <div class="icon">🏘️</div>
-                <h3>Build Communities</h3>
-                <p>Strengthening social fabric through collective ownership</p>
-            </div>
-            <div class="card">
-                <div class="icon">💧</div>
-                <h3>Rainwater Harvesting</h3>
-                <p>Drought resilience through traditional water conservation</p>
-            </div>
-            <div class="card">
-                <div class="icon">🌾</div>
-                <h3>Enrich Soil Health</h3>
-                <p>Organic practices that restore fertility and sequester carbon</p>
-            </div>
-            <div class="card">
-                <div class="icon">🌍</div>
-                <h3>Act on Climate Change</h3>
-                <p>Adaptation and mitigation through regenerative agriculture</p>
+            
+            <button class="btn-donate">DONATE NOW</button>
+            <p style="margin-top: 1rem; font-size: 0.95rem; opacity: 0.9;">
+                85% of donations go directly to programs • Tax exemption available
+            </p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="center">Working Together for Impact</h2>
+            <div class="partners">
+                <div class="partner">
+                    <div class="partner-logo">AAU</div>
+                    <h3>Assam Agricultural University</h3>
+                    <p>Technical expertise in climate-resilient sericulture and sustainable agriculture practices across North East India</p>
+                </div>
+                <div class="partner">
+                    <div class="partner-logo">Balipara</div>
+                    <h3>Balipara Foundation</h3>
+                    <p>Landscape-level conservation and community development, working with indigenous communities for biodiversity and livelihoods</p>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="section">
-    <div class="container">
-        <h2 class="center">Beyond Silk: A Complete Ecosystem</h2>
-        <p class="center intro">Integral Farming creates diversified, resilient livelihoods. Our artisan families produce multiple products from integrated farming systems—each supporting the others.</p>
+    <footer class="footer">
+        <div class="container center">
+            <p><strong>{{ .Site.Title }}</strong> • {{ .Site.Params.tagline }}</p>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem; color: #9ca3af;">
+                Supporting dignified rural livelihoods in North East India
+            </p>
+            <p style="font-size: 0.9rem; margin-top: 1rem; color: #9ca3af;">
+                © 2025 Integral Foundation. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
         
-        <div class="products">
-            <div class="product">
-                <div class="product-img">Ahimsa Silk</div>
-                <h3>Ahimsa Silk</h3>
-                <p>Peace silk, cruelty-free</p>
-                <a href="#" class="btn-shop">Shop Now →</a>
-            </div>
-            <div class="product">
-                <div class="product-img">Mulberry Silk</div>
-                <h3>Mulberry Silk</h3>
-                <p>Classic, lustrous fiber</p>
-                <a href="#" class="btn-shop">Shop Now →</a>
-            </div>
-            <div class="product">
-                <div class="product-img">Muga Silk</div>
-                <h3>Muga Silk</h3>
-                <p>Golden silk of Assam</p>
-                <a href="#" class="btn-shop">Shop Now →</a>
-            </div>
-            <div class="product">
-                <div class="product-img">Castor Oil</div>
-                <h3>Castor Oil</h3>
-                <p>Cold-pressed organic</p>
-                <a href="#" class="btn-shop">Shop Now →</a>
-            </div>
-            <div class="product">
-                <div class="product-img">Lac</div>
-                <h3>Lac</h3>
-                <p>Natural resin for dyes</p>
-                <a href="#" class="btn-shop">Shop Now →</a>
-            </div>
-            <div class="product">
-                <div class="product-img">Honey</div>
-                <h3>Honey</h3>
-                <p>Wild forest honey</p>
-                <a href="#" class="btn-shop">Shop Now →</a>
-            </div>
-            <div class="product">
-                <div class="product-img">Desi Ghee</div>
-                <h3>Desi Ghee</h3>
-                <p>Traditional grass-fed</p>
-                <a href="#" class="btn-shop">Shop Now →</a>
-            </div>
-        </div>
-        
-        <p class="center" style="max-width: 800px; margin: 2rem auto 0; font-size: 1.1rem;">
-            This diversity means families aren't dependent on a single crop or market. When one product faces challenges, others sustain income. This is climate resilience in action.
-        </p>
-    </div>
-</section>
-
-<section class="section alt">
-    <div class="container">
-        <h2 class="center">From Farm to World</h2>
-        <div class="market">
-            <div class="market-card">
-                <h3>Local Markets</h3>
-                <p>Regional buyers and community procurement provide immediate, reliable income—sustaining traditional supply chains across North East India.</p>
-            </div>
-            <div class="market-card">
-                <h3>Global Reach via Gaongiri</h3>
-                <p>Through Gaongiri, our flagship online store, we connect artisans directly with conscious consumers worldwide—eliminating exploitative middlemen.</p>
-            </div>
-        </div>
-        <p class="center stat">85% of every Gaongiri sale goes directly to the artisan</p>
-    </div>
-</section>
-
-<section id="donate" class="section dark">
-    <div class="container center">
-        <h2>Build Tomorrow, Today</h2>
-        <p class="intro">Our work to tackle poverty, unemployment, and the impact of climate change needs your support.</p>
-        
-        <div class="tiers">
-            <div class="tier">
-                <div class="price">₹2,500</div>
-                <h3>Rainwater Harvesting</h3>
-                <p>Drought-resilient water setup for one family</p>
-            </div>
-            <div class="tier">
-                <div class="price">₹5,000</div>
-                <h3>Women's Training</h3>
-                <p>One month skills training for one artisan</p>
-            </div>
-            <div class="tier">
-                <div class="price">₹15,000</div>
-                <h3>Cooperative Setup</h3>
-                <p>Market linkages for entire women's cooperative</p>
-            </div>
-            <div class="tier">
-                <div class="price">₹50,000</div>
-                <h3>Complete Ecosystem</h3>
-                <p>Full Integral Farming system for one village</p>
-            </div>
-        </div>
-        
-        <button class="btn-donate">DONATE NOW</button>
-        <p style="margin-top: 1rem; font-size: 0.95rem; opacity: 0.9;">
-            85% of donations go directly to programs • Tax exemption available
-        </p>
-    </div>
-</section>
-
-<section class="section">
-    <div class="container">
-        <h2 class="center">Working Together for Impact</h2>
-        <div class="partners">
-            <div class="partner">
-                <div class="partner-logo">AAU</div>
-                <h3>Assam Agricultural University</h3>
-                <p>Technical expertise in climate-resilient sericulture and sustainable agriculture practices across North East India</p>
-            </div>
-            <div class="partner">
-                <div class="partner-logo">Balipara</div>
-                <h3>Balipara Foundation</h3>
-                <p>Landscape-level conservation and community development, working with indigenous communities for biodiversity and livelihoods</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<footer class="footer">
-    <div class="container center">
-        <p><strong>{{ .Site.Title }}</strong> • {{ .Site.Params.tagline }}</p>
-        <p style="font-size: 0.9rem; margin-top: 0.5rem; color: #9ca3af;">
-            Supporting dignified rural livelihoods in North East India
-        </p>
-        <p style="font-size: 0.9rem; margin-top: 1rem; color: #9ca3af;">
-            © 2025 Integral Foundation. All rights reserved.
-        </p>
-    </div>
-</footer>
-
-<script>
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth' });
+        // Hide scroll indicator on scroll
+        window.addEventListener('scroll', () => {
+            const scrollDown = document.querySelector('.scroll-down');
+            if (scrollDown) {
+                scrollDown.style.opacity = window.scrollY > 100 ? '0' : '1';
             }
         });
-    });
-    
-    // Hide scroll indicator on scroll
-    window.addEventListener('scroll', () => {
-        const scrollDown = document.querySelector('.scroll-down');
-        if (scrollDown) {
-            scrollDown.style.opacity = window.scrollY > 100 ? '0' : '1';
+        
+        // Hamburger menu functionality
+        const menuToggle = document.querySelector('.menu-toggle');
+        if (menuToggle) {
+            menuToggle.addEventListener('click', function() {
+                alert('Navigation menu coming soon! For now, scroll to explore all sections.');
+            });
         }
-    });
-    
-    // Hamburger menu functionality
-    const menuToggle = document.querySelector('.menu-toggle');
-    if (menuToggle) {
-        menuToggle.addEventListener('click', function() {
-            alert('Navigation menu coming soon! For now, scroll to explore all sections.');
-        });
-    }
-</script>
-
+    </script>
 </body>
 </html>
