@@ -1,0 +1,549 @@
+{{ define "main" }}
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default "en" }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Title }} - {{ .Site.Title }}</title>
+    <meta name="description" content="{{ .Description | default .Site.Params.description }}">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --forest: #1a5f3f;
+            --saffron: #ff9933;
+            --yellow: #FFC700;
+            --cream: #faf8f3;
+            --white: #ffffff;
+            --charcoal: #2d2d2d;
+            --gray: #6b7280;
+            --light-gray: #e5e7eb;
+        }
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--cream);
+            color: var(--charcoal);
+            line-height: 1.6;
+        }
+        
+        /* Header */
+        .site-header {
+            background: var(--white);
+            border-bottom: 1px solid var(--light-gray);
+            padding: 1.5rem 0;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .site-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--forest);
+            text-decoration: none;
+        }
+        
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .main-nav a {
+            color: var(--charcoal);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .main-nav a:hover {
+            color: var(--forest);
+        }
+        
+        .nav-donate-btn {
+            background: var(--yellow);
+            padding: 0.6rem 1.5rem;
+            border-radius: 6px;
+            color: var(--charcoal);
+            font-weight: 600;
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--charcoal);
+        }
+        
+        /* Thank You Content */
+        .thankyou-page {
+            min-height: calc(100vh - 400px);
+            display: flex;
+            align-items: center;
+            padding: 4rem 0;
+        }
+        
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+        
+        .thankyou-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 3rem 2.5rem;
+            text-align: center;
+        }
+        
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            background: #4CAF50;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            animation: scaleIn 0.5s ease-out;
+        }
+        
+        .success-icon svg {
+            width: 60px;
+            height: 60px;
+            stroke: white;
+            stroke-width: 3;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            animation: checkmark 0.8s ease-out 0.3s forwards;
+            stroke-dasharray: 100;
+            stroke-dashoffset: 100;
+        }
+        
+        @keyframes scaleIn {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes checkmark {
+            to { stroke-dashoffset: 0; }
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            color: var(--forest);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .thankyou-message {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+        }
+        
+        .donation-summary {
+            background: linear-gradient(135deg, #fff5e6 0%, #fffbf0 100%);
+            border: 2px solid var(--saffron);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: left;
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 153, 51, 0.2);
+        }
+        
+        .summary-row:last-child {
+            border-bottom: none;
+        }
+        
+        .summary-label {
+            font-weight: 600;
+            color: var(--charcoal);
+        }
+        
+        .summary-value {
+            color: var(--charcoal);
+        }
+        
+        .amount-highlight {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--forest);
+        }
+        
+        .next-steps {
+            background: var(--cream);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: left;
+        }
+        
+        .next-steps h3 {
+            color: var(--forest);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .next-steps ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .next-steps li {
+            padding: 0.75rem 0 0.75rem 2rem;
+            position: relative;
+            line-height: 1.6;
+        }
+        
+        .next-steps li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+        
+        .social-share {
+            margin: 2rem 0;
+            padding: 2rem;
+            background: white;
+            border: 2px solid var(--light-gray);
+            border-radius: 12px;
+        }
+        
+        .social-share h3 {
+            color: var(--forest);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .social-share p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+        
+        .social-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .social-btn {
+            padding: 0.875rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: transform 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .social-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .btn-facebook { background: #1877f2; }
+        .btn-twitter { background: #1da1f2; }
+        .btn-whatsapp { background: #25d366; }
+        
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            flex: 1;
+            min-width: 200px;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-align: center;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background: var(--yellow);
+            color: var(--charcoal);
+        }
+        
+        .btn-primary:hover {
+            background: #E6B300;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: var(--forest);
+            border: 2px solid var(--forest);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--cream);
+        }
+        
+        /* Footer */
+        .site-footer {
+            background: var(--charcoal);
+            color: var(--white);
+            padding: 3rem 0 1.5rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--yellow);
+            font-size: 1.1rem;
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            line-height: 1.8;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section a:hover {
+            color: var(--yellow);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 1.5rem;
+            text-align: center;
+            color: #888;
+            font-size: 0.875rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .thankyou-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                min-width: 100%;
+            }
+            
+            .social-buttons {
+                flex-direction: column;
+            }
+            
+            .social-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="/" class="site-logo">Integral Foundation</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/work">Our Work</a></li>
+                    <li><a href="/stories">Stories</a></li>
+                    <li><a href="/donate" class="nav-donate-btn">Donate</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" aria-label="Menu">☰</button>
+        </div>
+    </header>
+
+    <!-- Thank You Content -->
+    <main class="thankyou-page">
+        <div class="container">
+            <div class="thankyou-card">
+                <div class="success-icon">
+                    <svg viewBox="0 0 52 52">
+                        <polyline points="14 27 22 35 38 19"/>
+                    </svg>
+                </div>
+
+                <h1>Thank You!</h1>
+                <p class="thankyou-message">
+                    Your generosity is transforming lives in North East India. Together, we're building dignified, sustainable livelihoods for rural families.
+                </p>
+
+                <!-- Donation Summary -->
+                <div class="donation-summary">
+                    <div class="summary-row">
+                        <span class="summary-label">Amount:</span>
+                        <span class="summary-value amount-highlight" id="donationAmount">₹0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Type:</span>
+                        <span class="summary-value" id="donationType">One-time</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Receipt:</span>
+                        <span class="summary-value">Sent to your email</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Tax Benefit:</span>
+                        <span class="summary-value">80G certificate available</span>
+                    </div>
+                </div>
+
+                <!-- Next Steps -->
+                <div class="next-steps">
+                    <h3>What Happens Next?</h3>
+                    <ul>
+                        <li>You'll receive a donation receipt via email within 24 hours</li>
+                        <li>Your 80G tax exemption certificate will be sent within 7 days</li>
+                        <li>We'll keep you updated on how your donation creates impact</li>
+                        <li>You'll receive quarterly stories from the families you're supporting</li>
+                    </ul>
+                </div>
+
+                <!-- Social Share -->
+                <div class="social-share">
+                    <h3>Spread the Word</h3>
+                    <p>Help us reach more people who care about rural livelihoods</p>
+                    <div class="social-buttons">
+                        <a href="#" class="social-btn btn-facebook" id="shareFacebook">
+                            <span>📘</span> Facebook
+                        </a>
+                        <a href="#" class="social-btn btn-twitter" id="shareTwitter">
+                            <span>🐦</span> Twitter
+                        </a>
+                        <a href="#" class="social-btn btn-whatsapp" id="shareWhatsapp">
+                            <span>💬</span> WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <a href="/" class="btn btn-primary">Return to Home</a>
+                    <a href="/stories" class="btn btn-secondary">Read Impact Stories</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Integral Foundation</h3>
+                    <p>Creating dignified rural livelihoods through integral farming in North East India.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="/">Home</a>
+                    <a href="/about">About Us</a>
+                    <a href="/work">Our Work</a>
+                    <a href="/stories">Stories</a>
+                    <a href="/donate">Donate</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Email: contact@integralfoundation.org</p>
+                    <p>Phone: +91 98765 43210</p>
+                    <p>North East India</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms of Service</a>
+                    <p>80G Registration: [YOUR-NUMBER]</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; {{ now.Year }} Integral Foundation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Get donation details from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const amount = urlParams.get('amount') || '0';
+        const frequency = urlParams.get('frequency') || 'one-time';
+
+        // Update display
+        document.getElementById('donationAmount').textContent = '₹' + parseInt(amount).toLocaleString('en-IN');
+        document.getElementById('donationType').textContent = frequency === 'monthly' ? 'Monthly Donation' : 'One-time Donation';
+
+        // Social share functionality
+        const shareMessage = encodeURIComponent('I just supported Integral Foundation\'s mission to create dignified rural livelihoods in North East India. Join me in making a difference!');
+        const shareUrl = encodeURIComponent(window.location.origin);
+
+        document.getElementById('shareFacebook').href = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`;
+        document.getElementById('shareTwitter').href = `https://twitter.com/intent/tweet?text=${shareMessage}&url=${shareUrl}`;
+        document.getElementById('shareWhatsapp').href = `https://wa.me/?text=${shareMessage}%20${shareUrl}`;
+    </script>
+</body>
+</html>
+{{ end }}
