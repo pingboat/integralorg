@@ -15,11 +15,18 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         :root {
+            /* Primary Brand Colors */
             --forest: {{ .Site.Params.colors.forest_green }};
             --saffron: {{ .Site.Params.colors.deep_saffron }};
             --navy: {{ .Site.Params.colors.navy_blue }};
-            --saffron-dark: #e68a2e;
-            --forest-dark: #0f3d28;
+            
+            /* Button System */
+            --yellow: #FFC700;              /* PRIMARY - GIVE/DONATE only */
+            --yellow-hover: #E6B300;
+            --saffron-hover: #e68a2e;       /* SECONDARY - Action buttons */
+            --forest-dark: #0f3d28;         /* TERTIARY - Links hover */
+            
+            /* Neutrals */
             --cream: #faf8f3;
             --white: #ffffff;
             --charcoal: #2d2d2d;
@@ -100,20 +107,23 @@
             font-weight: 300;
         }
         
+        /* PRIMARY BUTTON - Yellow (GIVE/DONATE only) */
         .btn-give {
-            background: var(--saffron);
-            color: white;
+            background: var(--yellow);
+            color: var(--charcoal);
             padding: 0.75rem 2rem;
             border-radius: 8px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             transition: all 0.3s;
             white-space: nowrap;
+            box-shadow: 0 2px 8px rgba(255, 199, 0, 0.3);
         }
         
         .btn-give:hover {
-            background: var(--saffron-dark);
+            background: var(--yellow-hover);
             transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 199, 0, 0.4);
         }
         
         /* Hero */
@@ -137,10 +147,10 @@
             font-weight: 600;
             letter-spacing: -0.02em;
         }
-
+        
         .hero h1 .highlight {
-    color: var(--saffron);
-    font-weight: 700;
+            color: var(--saffron);
+            font-weight: 700;
         }
         
         .scroll-down {
@@ -207,6 +217,25 @@
             justify-content: center;
             color: white;
             font-weight: 600;
+        }
+        
+        /* TERTIARY - Forest Green Links */
+        .text-link {
+            display: inline-block;
+            color: var(--forest);
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .text-link:hover {
+            color: var(--forest-dark);
+            transform: translateX(5px);
+        }
+        
+        .text-link::after {
+            content: " →";
         }
         
         /* Solution */
@@ -309,19 +338,25 @@
             font-weight: 400;
         }
         
+        /* SECONDARY BUTTON - Saffron (All other action buttons) */
         .btn-shop {
             display: inline-block;
             margin: 0 1.5rem 1.5rem;
-            background: var(--forest);
+            background: var(--saffron);
             color: white;
             padding: 0.75rem 1.5rem;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(255, 153, 51, 0.2);
         }
         
-        .btn-shop:hover { background: var(--forest-dark); }
+        .btn-shop:hover { 
+            background: var(--saffron-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 153, 51, 0.3);
+        }
         
         /* Market */
         .market {
@@ -392,9 +427,10 @@
             font-weight: 400;
         }
         
+        /* PRIMARY BUTTON - Yellow (DONATE) */
         .btn-donate {
-            background: var(--saffron);
-            color: white;
+            background: var(--yellow);
+            color: var(--charcoal);
             padding: 1.2rem 3rem;
             border: none;
             border-radius: 12px;
@@ -403,11 +439,13 @@
             cursor: pointer;
             margin-top: 2rem;
             transition: all 0.3s;
+            box-shadow: 0 4px 16px rgba(255, 199, 0, 0.4);
         }
         
         .btn-donate:hover {
-            background: var(--saffron-dark);
+            background: var(--yellow-hover);
             transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 199, 0, 0.5);
         }
         
         /* Partners */
@@ -514,7 +552,7 @@
     </header>
 
     <section class="hero">
-        <h1>Can silk be a <span class="highlight">solution</span> to poverty, unemployment and climate change in North East India?</h1>
+        <h1>Can silk be <span class="highlight">a solution</span> to poverty, unemployment and climate change in North East India?</h1>
         <div class="scroll-down">↓</div>
     </section>
 
@@ -528,6 +566,8 @@
                 <p>You see, for many millennia, people in North East India have been engaged with sericulture. Everything was going well and smooth, until climate change knocked at its doors.</p>
 
                 <p>Increasing pollution, pesticides used in tea gardens & beyond, combined with the impacts of climate change brought great dangers to the rearing of silk in the region. It is getting more and more difficult to rear the silk now. And with this, it poses a threat to the livelihoods of thousands of people from indigenous communities.</p>
+                
+                <a href="#" class="text-link">Read Bina's Full Story</a>
             </div>
         </div>
     </section>
@@ -543,6 +583,7 @@
                 <p>Pictorial / Animated Description of Integral Farming</p>
                 <p><em>Professional diagram to be designed</em></p>
             </div>
+            <a href="#" class="text-link">Learn More About Our Approach</a>
         </div>
     </section>
 
@@ -669,6 +710,9 @@
                 </div>
             </div>
             <p class="center stat">85% of every Gaongiri sale goes directly to the artisan</p>
+            <div class="center" style="margin-top: 2rem;">
+                <a href="#" class="text-link">Learn About Fair Pricing</a>
+            </div>
         </div>
     </section>
 
