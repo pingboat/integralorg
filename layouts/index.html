@@ -127,16 +127,20 @@
         
         /* Hero */
         .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-                        linear-gradient(135deg, var(--forest) 0%, var(--forest-dark) 100%);
-            color: white;
-            text-align: center;
-            padding: 100px 20px 80px;
-            position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(rgba(45, 80, 22, 0.7), rgba(15, 61, 40, 0.85)),
+                url('/images/forest-hero.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+    text-align: center;
+    padding: 100px 20px 80px;
+    position: relative;
+            
         }
         
         .hero h1 {
@@ -264,8 +268,8 @@
         .what-we-do-section {
             position: relative;
             min-height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                        linear-gradient(135deg, var(--forest) 0%, var(--forest-dark) 100%);
+            background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+                        url('/images/artisan-community.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -593,7 +597,10 @@
         @media (max-width: 768px) {
             .section { padding: 3rem 0; }
             .products, .tiers { grid-template-columns: 1fr; }
-            .hero { min-height: 80vh; }
+            .hero { 
+                min-height: 80vh;
+                background-attachment: scroll; /* Better mobile performance */
+            }
             .img-box { height: 300px; }
             
             .menu-toggle { display: flex; }
@@ -603,7 +610,10 @@
             .nav { gap: 0.5rem; }
             .hero h1 { font-size: 1.8rem; }
             
-            .what-we-do-section { padding: 4rem 0; }
+            .what-we-do-section { 
+                padding: 4rem 0;
+                background-attachment: scroll; /* Better mobile performance */
+            }
             .what-we-do-title { font-size: 2rem; margin-bottom: 2rem; }
             .accordion-header { padding: 1.5rem 1rem; }
             .accordion-title { font-size: 1.2rem; }
