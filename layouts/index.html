@@ -127,20 +127,19 @@
         
         /* Hero */
         .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(rgba(45, 80, 22, 0.7), rgba(15, 61, 40, 0.85)),
-                url('/images/forest-hero.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    color: white;
-    text-align: center;
-    padding: 100px 20px 80px;
-    position: relative;
-            
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(45, 80, 22, 0.7), rgba(15, 61, 40, 0.85)),
+                        url('/images/forest-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            /* background-attachment: fixed - removed due to iOS blur bug */
+            color: white;
+            text-align: center;
+            padding: 100px 20px 80px;
+            position: relative;
         }
         
         .hero h1 {
@@ -272,7 +271,7 @@
                         url('/images/artisan-community.jpg');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
+                        /* background-attachment: fixed - removed due to iOS blur bug */
             padding: 6rem 0;
         }
         
