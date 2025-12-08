@@ -3,6 +3,13 @@
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
 <style>
+    /* Reset any existing styles */
+    .donate-page * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
     :root {
         --forest: #2d5016;
         --yellow: #FFC700;
@@ -16,10 +23,12 @@
     }
     
     .donate-page {
+        background: var(--cream) !important;
         padding: 4rem 0;
+        min-height: 60vh;
     }
     
-    .container {
+    .donate-container {
         max-width: 1000px;
         margin: 0 auto;
         padding: 0 5%;
@@ -446,7 +455,7 @@
 </style>
 
 <div class="donate-page">
-    <div class="container">
+    <div class="donate-container">
         <p class="intro-text">
             Our work to end poverty, unemployment and climate change in North East India needs your support. You can help preserve traditional silk crafts, create dignified livelihoods, and build climate resilience — especially for artisan families and indigenous communities.
         </p>
