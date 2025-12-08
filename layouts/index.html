@@ -898,123 +898,129 @@
 
     <section id="donate" class="section" style="background: #faf8f3; padding: 5rem 0;">
     <style>
-        /* Donate Section Specific Styles */
+        /* Donate Section Specific Styles - Compact */
         .donate-container-main {
-            max-width: 1000px;
+            max-width: 700px; /* Reduced from 1000px */
             margin: 0 auto;
             padding: 0 5%;
         }
         
         .donate-intro-text {
             text-align: center;
-            font-size: 1.5rem;
-            line-height: 1.7;
-            margin-bottom: 3rem;
+            font-size: 1.125rem; /* Reduced from 1.5rem */
+            line-height: 1.6;
+            margin-bottom: 2rem; /* Reduced from 3rem */
             color: #2d2d2d;
             font-weight: 400;
         }
         
         .donation-card-main {
             background: white;
-            border-radius: 16px;
+            border-radius: 8px; /* Reduced from 16px */
             overflow: hidden;
             margin-bottom: 2rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
         }
         
         .toggle-buttons-main {
             display: grid;
             grid-template-columns: 1fr 1fr;
+            border-bottom: 1px solid #e5e7eb;
         }
         
         .toggle-btn-main {
-            padding: 1.5rem;
+            padding: 1rem; /* Reduced from 1.5rem */
             border: none;
             background: white;
-            font-size: 1.1rem;
-            font-weight: 600;
+            font-size: 0.875rem; /* Reduced from 1.1rem */
+            font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s;
-            color: #2d2d2d;
+            transition: all 0.2s;
+            color: #374151;
             font-family: 'Plus Jakarta Sans', sans-serif;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            border-radius: 16px 16px 0 0;
+        }
+        
+        .toggle-btn-main:first-child {
+            border-right: 1px solid #e5e7eb;
         }
         
         .toggle-btn-main.active {
             background: #FFC700;
-            color: #2d2d2d;
+            color: #1f2937;
         }
         
         .card-content-main {
-            padding: 3rem 4rem;
+            padding: 2rem 2rem; /* Reduced from 3rem 4rem */
         }
         
         .section-title-main {
-            font-size: 2rem;
+            font-size: 1.25rem; /* Reduced from 2rem */
             font-weight: 400;
-            margin-bottom: 2.5rem;
+            margin-bottom: 1.5rem; /* Reduced from 2.5rem */
             text-align: center;
-            color: #2d2d2d;
+            color: #1f2937;
         }
         
         .amount-grid-main {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
+            grid-template-columns: repeat(3, 1fr); /* Changed to 3 columns */
+            gap: 0.75rem; /* Reduced from 1.5rem */
+            margin-bottom: 0.75rem; /* Reduced */
         }
         
         .amount-btn-main {
-            padding: 2rem 1.5rem;
-            border: 2px solid #e8e4da;
-            background: #faf8f3;
-            border-radius: 16px;
-            font-size: 2rem;
-            font-weight: 600;
+            padding: 1.25rem 0.75rem; /* Reduced from 2rem 1.5rem */
+            border: 1px solid #d1d5db; /* Thinner border */
+            background: #f9fafb;
+            border-radius: 6px; /* Reduced from 16px */
+            font-size: 1.5rem; /* Reduced from 2rem */
+            font-weight: 400;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.2s;
             font-family: 'Plus Jakarta Sans', sans-serif;
-            color: #2d2d2d;
+            color: #374151;
             text-align: center;
         }
         
         .amount-btn-main:hover {
             background: #ffffff;
-            border-color: #6b7280;
+            border-color: #9ca3af;
         }
         
         .amount-btn-main.selected {
             background: #FFC700;
             border-color: #FFC700;
-            color: #2d2d2d;
+            color: #1f2937;
         }
         
         .amount-label-main {
-            font-size: 1rem;
+            font-size: 0.75rem; /* Smaller */
             color: #6b7280;
             font-weight: 400;
             display: block;
-            margin-top: 0.25rem;
+            margin-top: 0.125rem;
+            text-transform: uppercase;
         }
         
         .other-amount-row-main {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
+            grid-template-columns: repeat(2, 1fr); /* 2 columns to match charity:water */
+            gap: 0.75rem;
+            margin-bottom: 1.5rem; /* Reduced from 2rem */
         }
         
         .other-amount-main {
-            padding: 2rem 1.5rem;
-            border: 2px solid #e8e4da;
-            background: #faf8f3;
-            border-radius: 16px;
-            font-size: 1.5rem;
+            padding: 1.25rem 0.75rem; /* Reduced */
+            border: 1px solid #d1d5db;
+            background: #f9fafb;
+            border-radius: 6px;
+            font-size: 1rem; /* Reduced from 1.5rem */
             font-weight: 400;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.2s;
             font-family: 'Plus Jakarta Sans', sans-serif;
             color: #6b7280;
             text-align: center;
@@ -1022,13 +1028,13 @@
         
         .other-amount-main:hover {
             background: #ffffff;
-            border-color: #6b7280;
+            border-color: #9ca3af;
         }
         
         .other-amount-main.selected {
             background: #FFC700;
             border-color: #FFC700;
-            color: #2d2d2d;
+            color: #1f2937;
             font-weight: 600;
         }
         
@@ -1051,28 +1057,28 @@
         
         .modal-content-main {
             background: white;
-            padding: 2.5rem;
-            border-radius: 16px;
-            max-width: 400px;
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 350px; /* Reduced */
             width: 90%;
         }
         
         .modal-title-main {
-            font-size: 1.5rem;
+            font-size: 1.25rem; /* Reduced */
             font-weight: 600;
-            margin-bottom: 1.5rem;
-            color: #2d2d2d;
+            margin-bottom: 1rem;
+            color: #1f2937;
         }
         
         .custom-input-main {
             width: 100%;
-            padding: 1.25rem;
-            border: 2px solid #e8e4da;
-            border-radius: 12px;
-            font-size: 1.75rem;
+            padding: 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 1.5rem;
             font-weight: 600;
             font-family: 'Plus Jakarta Sans', sans-serif;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             text-align: center;
         }
         
@@ -1083,36 +1089,37 @@
         
         .modal-buttons-main {
             display: flex;
-            gap: 1rem;
+            gap: 0.75rem;
         }
         
         .modal-btn-main {
             flex: 1;
-            padding: 1rem;
+            padding: 0.875rem;
             border: none;
-            border-radius: 12px;
-            font-size: 1rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
             font-weight: 600;
             cursor: pointer;
             font-family: 'Plus Jakarta Sans', sans-serif;
-            transition: all 0.3s;
+            transition: all 0.2s;
+            text-transform: uppercase;
         }
         
         .modal-btn-cancel-main {
-            background: #faf8f3;
-            color: #2d2d2d;
+            background: #f3f4f6;
+            color: #374151;
         }
         
         .modal-btn-confirm-main {
             background: #FFC700;
-            color: #2d2d2d;
+            color: #1f2937;
         }
         
         .donor-form-main {
             display: none;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 2px dashed #e8e4da;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px dashed #d1d5db;
         }
         
         .donor-form-main.active {
@@ -1120,25 +1127,25 @@
         }
         
         .form-group-main {
-            margin-bottom: 1.25rem;
+            margin-bottom: 1rem;
         }
         
         .form-label-main {
             display: block;
             font-weight: 600;
             margin-bottom: 0.5rem;
-            color: #2d2d2d;
-            font-size: 0.95rem;
+            color: #374151;
+            font-size: 0.875rem;
         }
         
         .form-input-main {
             width: 100%;
-            padding: 1rem;
-            border: 2px solid #e8e4da;
-            border-radius: 12px;
-            font-size: 1rem;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 0.9375rem;
             font-family: 'Plus Jakarta Sans', sans-serif;
-            transition: all 0.3s;
+            transition: all 0.2s;
         }
         
         .form-input-main:focus {
@@ -1148,18 +1155,18 @@
         
         .submit-btn-main {
             width: 100%;
-            padding: 1.5rem;
+            padding: 1rem; /* Reduced from 1.5rem */
             background: #FFC700;
             border: none;
-            border-radius: 16px;
-            font-size: 1.25rem;
+            border-radius: 6px; /* Reduced */
+            font-size: 1rem; /* Reduced from 1.25rem */
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.2s;
             font-family: 'Plus Jakarta Sans', sans-serif;
-            color: #2d2d2d;
+            color: #1f2937;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
         
         .submit-btn-main:hover {
@@ -1167,23 +1174,23 @@
         }
         
         .submit-btn-main:disabled {
-            background: #e8e4da;
+            background: #e5e7eb;
             cursor: not-allowed;
         }
         
         .impact-text-main {
             text-align: center;
-            padding: 2.5rem 2rem;
-            border-top: 2px dashed #e8e4da;
-            margin-top: 2rem;
-            font-size: 1.25rem;
-            line-height: 1.7;
-            color: #2d2d2d;
+            padding: 1.5rem 1rem; /* Reduced */
+            border-top: 1px dashed #d1d5db;
+            margin-top: 1.5rem;
+            font-size: 0.9375rem; /* Reduced from 1.25rem */
+            line-height: 1.6;
+            color: #374151;
         }
         
         .impact-amount-main {
             font-weight: 700;
-            color: #2d2d2d;
+            color: #1f2937;
         }
         
         .impact-highlight-main {
@@ -1193,17 +1200,17 @@
         
         .security-notice-main {
             text-align: center;
-            font-size: 1rem;
+            font-size: 0.8125rem; /* Smaller */
             color: #6b7280;
-            margin-top: 2rem;
-            line-height: 1.7;
+            margin-top: 1.5rem;
+            line-height: 1.5;
         }
         
         .security-notice-main svg {
-            width: 16px;
-            height: 16px;
+            width: 14px;
+            height: 14px;
             vertical-align: middle;
-            margin-right: 6px;
+            margin-right: 4px;
         }
         
         .security-notice-main a {
@@ -1212,22 +1219,22 @@
         }
         
         .transparency-banner-main {
-            background: #fff5e6;
-            border: 3px solid #ff9933;
-            border-radius: 16px;
-            padding: 3rem;
+            background: #fef3e2;
+            border: 2px solid #f59e0b; /* Thinner border */
+            border-radius: 12px; /* Slightly reduced */
+            padding: 2rem; /* Reduced from 3rem */
             display: flex;
             align-items: center;
-            gap: 3rem;
-            margin-top: 3rem;
+            gap: 2rem; /* Reduced from 3rem */
+            margin-top: 2rem; /* Reduced from 3rem */
         }
         
         .circle-badge-main {
-            width: 140px;
-            height: 140px;
+            width: 100px; /* Reduced from 140px */
+            height: 100px;
             border-radius: 50%;
             background: white;
-            border: 8px solid #2d5016;
+            border: 6px solid #2d5016; /* Reduced from 8px */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -1236,28 +1243,28 @@
         }
         
         .circle-number-main {
-            font-size: 3.5rem;
+            font-size: 2.5rem; /* Reduced from 3.5rem */
             font-weight: 700;
             color: #2d5016;
             line-height: 1;
         }
         
         .circle-percent-main {
-            font-size: 2rem;
+            font-size: 1.5rem; /* Reduced from 2rem */
             color: #2d5016;
             line-height: 1;
         }
         
         .transparency-text-main {
             flex: 1;
-            font-size: 1.25rem;
-            line-height: 1.7;
-            color: #2d2d2d;
+            font-size: 0.9375rem; /* Reduced from 1.25rem */
+            line-height: 1.6;
+            color: #374151;
         }
         
         .transparency-text-main strong {
             font-weight: 700;
-            color: #2d5016;
+            color: #1f2937;
         }
         
         .loading-main {
@@ -1272,11 +1279,11 @@
         }
         
         .spinner-main {
-            border: 3px solid #e8e4da;
+            border: 3px solid #e5e7eb;
             border-top: 3px solid #FFC700;
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
+            width: 32px;
+            height: 32px;
             animation: spin-main 1s linear infinite;
             margin: 0 auto;
         }
@@ -1287,18 +1294,23 @@
         }
         
         @media (max-width: 768px) {
-            .donate-intro-text { font-size: 1.2rem; }
-            .card-content-main { padding: 2rem 1.5rem; }
-            .section-title-main { font-size: 1.5rem; }
-            .amount-grid-main { grid-template-columns: 1fr; }
-            .amount-btn-main { padding: 1.5rem; font-size: 1.75rem; }
+            .donate-container-main { max-width: 100%; }
+            .donate-intro-text { font-size: 1rem; margin-bottom: 1.5rem; }
+            .card-content-main { padding: 1.5rem 1.25rem; }
+            .section-title-main { font-size: 1.125rem; margin-bottom: 1rem; }
+            .amount-grid-main { grid-template-columns: repeat(2, 1fr); }
+            .amount-btn-main { padding: 1rem 0.5rem; font-size: 1.25rem; }
+            .other-amount-row-main { grid-template-columns: 1fr; }
             .transparency-banner-main {
                 flex-direction: column;
                 text-align: center;
-                padding: 2rem;
+                padding: 1.5rem;
+                gap: 1.5rem;
             }
-            .circle-badge-main { width: 120px; height: 120px; }
-            .circle-number-main { font-size: 3rem; }
+            .circle-badge-main { width: 80px; height: 80px; border-width: 5px; }
+            .circle-number-main { font-size: 2rem; }
+            .circle-percent-main { font-size: 1.25rem; }
+            .transparency-text-main { font-size: 0.875rem; }
         }
     </style>
     
@@ -1326,12 +1338,12 @@
                     <button class="amount-btn-main selected" data-amount="2500">
                         ₹2,500 <span class="amount-label-main">INR/mo</span>
                     </button>
-                    <button class="amount-btn-main" data-amount="5000">
-                        ₹5,000 <span class="amount-label-main">INR/mo</span>
-                    </button>
                 </div>
                 
                 <div class="other-amount-row-main">
+                    <button class="amount-btn-main" data-amount="5000">
+                        ₹5,000 <span class="amount-label-main">INR/mo</span>
+                    </button>
                     <div class="other-amount-main" id="otherAmountBtnMain">Other amount</div>
                 </div>
                 
