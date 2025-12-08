@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default "en" }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Title }} - {{ .Site.Title }}</title>
+    <meta name="description" content="{{ .Description | default .Site.Params.description }}">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --forest: #2d5016;
+            --yellow: #FFC700;
+            --cream: #f5f1e8;
+            --white: #ffffff;
+            --charcoal: #2d2d2d;
+            --gray: #8b8b8b;
+            --light-gray: #e8e4da;
+            --border: #d4d0c4;
+        }
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--cream);
+            color: var(--charcoal);
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        /* Header */
+        .site-header {
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .site-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--forest);
+            text-decoration: none;
+        }
+        
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+        }
+        
+        .main-nav a {
+            color: var(--charcoal);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .main-nav a:hover {
+            color: var(--forest);
+        }
+        
+        .nav-donate-btn {
+            background: var(--yellow);
+            padding: 0.6rem 1.5rem;
+            border-radius: 6px;
+            color: var(--charcoal);
+            font-weight: 600;
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--charcoal);
+        }
+        
+        /* Main Content Area */
+        main {
+            min-height: calc(100vh - 400px);
+        }
+        
+        /* Footer */
+        .site-footer {
+            background: var(--charcoal);
+            color: var(--white);
+            padding: 3rem 0 1.5rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: var(--yellow);
+            font-size: 1.1rem;
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            line-height: 1.8;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-section a:hover {
+            color: var(--yellow);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 1.5rem;
+            text-align: center;
+            color: #888;
+            font-size: 0.875rem;
+        }
+        
+        /* Mobile */
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="/" class="site-logo">Integral Foundation</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/work">Our Work</a></li>
+                    <li><a href="/stories">Stories</a></li>
+                    <li><a href="/donate" class="nav-donate-btn">Donate</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" aria-label="Menu">☰</button>
+        </div>
+    </header>
+
+    <!-- Main Content (pages insert here) -->
+    <main>
+        {{ block "main" . }}{{ end }}
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Integral Foundation</h3>
+                    <p>Creating dignified rural livelihoods through integral farming in North East India.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="/">Home</a>
+                    <a href="/about">About Us</a>
+                    <a href="/work">Our Work</a>
+                    <a href="/stories">Stories</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Email: contact@integralfoundation.org</p>
+                    <p>Phone: +91 98765 43210</p>
+                    <p>North East India</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms of Service</a>
+                    <p>80G Registration Available</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; {{ now.Year }} Integral Foundation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
