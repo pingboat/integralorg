@@ -341,16 +341,11 @@
         }
         
         .activity-item:hover {
-            padding-left: 0.75rem;
+            background: rgba(0, 0, 0, 0.1);
         }
-        
+
         .activity-item:hover .activity-title {
             color: var(--yellow);
-        }
-        
-        .activity-item:hover .activity-arrow {
-            transform: translateX(5px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
         
         .activity-title {
@@ -365,28 +360,41 @@
         
         /* Arrow Buttons - White on Forest Green */
         .activity-arrow {
-             width: 36px;
-             height: 36px;
-             border-radius: 50%;
-             display: flex;
-             align-items: center;
-             justify-content: center;
-             flex-shrink: 0;
-             margin-left: 1rem;
-             transition: transform 0.3s ease, box-shadow 0.3s ease;
-             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-             background: var(--forest);
-             color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-left: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            background: var(--forest);
+            color: white;
         }
 
-        .activity-arrow svg {
-             width: 16px;
-             height: 16px;
+         .activity-arrow svg {
+             width: 14px;
+             height: 14px;
              fill: none;
              stroke: currentColor;
              stroke-width: 2.5;
              stroke-linecap: round;
              stroke-linejoin: round;
+             transition: transform 0.3s ease;
+        }
+
+        /* Hover: Arrow grows larger */
+        .activity-item:hover .activity-arrow {
+            width: 40px;
+            height: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        }
+
+        .activity-item:hover .activity-arrow svg {
+            width: 18px;
+            height: 18px;
         }
         
         /* Products */
