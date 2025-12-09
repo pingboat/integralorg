@@ -3,8 +3,8 @@ languageCode = "en-us"
 title = "Integral Foundation"
 
 [params]
-  description = "Supporting dignified rural livelihoods in North East India"
-  tagline = "Build Tomorrow, Today"
+  description = "Supporting dignified rural livelihoods in North East India."
+  tagline = "Build Tomorrow, Today."
   
 [params.colors]
   forest_green = "#1a5f3f"
