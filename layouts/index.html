@@ -324,78 +324,143 @@
              max-width: 800px;
              margin: 0 auto;
         }
-        
+
         .activity-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1.25rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-        
-        .activity-item:first-child {
-            border-top: 1px solid rgba(255, 255, 255, 0.25);
-        }
-        
-        .activity-item:hover {
-            background: rgba(0, 0, 0, 0.1);
-        }
+             display: flex;
+             align-items: center;
+             justify-content: space-between;
+             padding: 1.25rem 1.5rem;
+             border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+             cursor: pointer;
+             transition: all 0.3s ease;
+             text-decoration: none;
+         }
 
-        .activity-item:hover .activity-title {
-            color: var(--yellow);
-        }
-        
-        .activity-title {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-            font-weight: 600;
-            color: #ffffff;
-            margin: 0;
-            transition: color 0.3s ease;
-            text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
-        }
-        
-        /* Arrow Buttons - White on Forest Green */
-        .activity-arrow {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            margin-left: 1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-            background: var(--forest);
-            color: white;
-        }
+         .activity-item:first-child {
+             border-top: 1px solid rgba(255, 255, 255, 0.25);
+         }
 
-         .activity-arrow svg {
-             width: 14px;
-             height: 14px;
-             fill: none;
-             stroke: currentColor;
-             stroke-width: 2.5;
-             stroke-linecap: round;
-             stroke-linejoin: round;
-             transition: transform 0.3s ease;
-        }
+         .activity-title {
+             font-family: 'Plus Jakarta Sans', sans-serif;
+             font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+             font-weight: 600;
+             color: #ffffff;
+             margin: 0;
+             transition: color 0.3s ease;
+             text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+          }
 
-        /* Hover: Arrow grows larger */
-        .activity-item:hover .activity-arrow {
-            width: 40px;
-            height: 40px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-        }
+          /* Arrow Buttons Base */
+          .activity-arrow {
+              width: 32px;
+              height: 32px;
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              flex-shrink: 0;
+              margin-left: 1rem;
+              transition: all 0.3s ease;
+              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+          }
 
-        .activity-item:hover .activity-arrow svg {
-            width: 18px;
-            height: 18px;
-        }
+          .activity-arrow svg {
+               width: 14px;
+               height: 14px;
+               fill: none;
+               stroke: currentColor;
+               stroke-width: 2.5;
+               stroke-linecap: round;
+               stroke-linejoin: round;
+               transition: all 0.3s ease;
+           }
+
+           /* Arrow Color Variations - Default State */
+           .arrow-green {
+               background: var(--forest);
+               color: white;
+           }
+
+           .arrow-saffron {
+               background: var(--saffron);
+               color: white;
+           }
+
+           .arrow-yellow {
+               background: var(--yellow);
+               color: var(--charcoal);
+           }
+
+           .arrow-blue {
+               background: #4ECDC4;
+               color: white;
+           }
+
+           /* Hover States - Row background + inverted arrow */
+
+           /* Green hover */
+           .activity-item.hover-green:hover {
+               background: var(--forest);
+           }
+           .activity-item.hover-green:hover .activity-arrow {
+               background: white;
+               color: var(--forest);
+               width: 40px;
+               height: 40px;
+           }
+           .activity-item.hover-green:hover .activity-arrow svg {
+               width: 18px;
+               height: 18px;
+           }
+
+           /* Saffron hover */
+           .activity-item.hover-saffron:hover {
+               background: var(--saffron);
+           }
+           .activity-item.hover-saffron:hover .activity-arrow {
+               background: white;
+               color: var(--saffron);
+               width: 40px;
+               height: 40px;
+           }
+           .activity-item.hover-saffron:hover .activity-arrow svg {
+               width: 18px;
+               height: 18px;
+           }
+
+           /* Yellow hover */
+           .activity-item.hover-yellow:hover {
+               background: var(--yellow);
+           }
+           .activity-item.hover-yellow:hover .activity-title {
+               color: var(--charcoal);
+               text-shadow: none;
+           }
+           .activity-item.hover-yellow:hover .activity-arrow {
+               background: white;
+               color: var(--charcoal);
+               width: 40px;
+               height: 40px;
+           }
+           .activity-item.hover-yellow:hover .activity-arrow svg {
+               width: 18px;
+               height: 18px;
+           }
+
+           /* Blue hover */
+           .activity-item.hover-blue:hover {
+               background: #4ECDC4;
+           }
+           .activity-item.hover-blue:hover .activity-arrow {
+               background: white;
+               color: #4ECDC4;
+               width: 40px;
+               height: 40px;
+           }
+           .activity-item.hover-blue:hover .activity-arrow svg {
+               width: 18px;
+               height: 18px;
+           }
         
         /* Products */
         .products {
