@@ -462,65 +462,165 @@
                height: 18px;
            }
         
-        /* Products */
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
+        /* ============================================
+           BEYOND SILK - CIRCULAR ECOSYSTEM SECTION
+           ============================================ */
+        
+        .ecosystem-section {
+            padding: 5rem 0;
+            background: var(--cream);
         }
         
-        .product {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            transition: transform 0.3s;
+        .ecosystem-section h2 {
+            text-align: center;
+            color: var(--forest);
+            margin-bottom: 1rem;
         }
         
-        .product:hover { transform: translateY(-5px); }
+        .ecosystem-intro {
+            text-align: center;
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            color: var(--charcoal);
+            line-height: 1.6;
+        }
         
-        .product-img {
-            height: 250px;
-            background: linear-gradient(135deg, var(--forest), var(--saffron));
+        .ecosystem-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.ecosystem-row {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+}
+        
+        .ecosystem-item {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 600;
-        }
-        
-        .product h3 { 
-            margin: 1rem 1.5rem 0.5rem; 
-            color: var(--forest); 
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
-        
-        .product p { 
-            margin: 0 1.5rem 1rem; 
-            color: var(--gray);
-            font-weight: 400;
-        }
-        
-        .btn-shop {
-            display: inline-block;
-            margin: 0 1.5rem 1.5rem;
-            background: var(--saffron);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
             text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            box-shadow: 0 2px 8px rgba(255, 153, 51, 0.2);
         }
         
-        .btn-shop:hover { 
-            background: var(--saffron-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(255, 153, 51, 0.3);
+        .ecosystem-circle {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: #fff8e7;
+    border: 4px solid #d4a853;
+    box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.1),
+        inset 0 2px 10px rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+        
+        .ecosystem-circle:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 8px 25px rgba(0, 0, 0, 0.15),
+                inset 0 2px 10px rgba(255, 255, 255, 0.8);
+            border-color: var(--saffron);
         }
+    
+.ecosystem-label {
+    margin-top: 1rem;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1a5f3f;
+    text-align: center;
+    margin-bottom: 0.25rem;
+}
+            
+.ecosystem-desc {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--gray);
+    text-align: center;
+    margin: 0;
+}
+        
+        /* Gradient placeholders for each product */
+        .ecosystem-circle.silk-ahimsa {
+    background: #fff8e7 url('/images/ahimsa-silk.jpg') center/contain no-repeat;
+}
+
+.ecosystem-circle.silk-mulberry {
+    background: #fff8e7 url('/images/mulberry-silk.jpg') center/contain no-repeat;
+}
+
+.ecosystem-circle.silk-muga {
+    background: #fff8e7 url('/images/muga-silk.jpg') center/contain no-repeat;
+}
+
+.ecosystem-circle.castor-oil {
+    background: #fff8e7 url('/images/castor-oil.jpg') center/contain no-repeat;
+}
+
+.ecosystem-circle.honey {
+    background: #fff8e7 url('/images/honey.jpg') center/contain no-repeat;
+}
+
+.ecosystem-circle.lac-dye {
+    background: #fff8e7 url('/images/lac-dye.jpg') center/contain no-repeat;
+}
+        
+        .ecosystem-label {
+            margin-top: 1rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            text-align: center;
+        }
+        
+        .ecosystem-note {
+            text-align: center;
+            max-width: 700px;
+            margin: 3rem auto 0;
+            font-size: 1.1rem;
+            color: var(--charcoal);
+            line-height: 1.7;
+        }
+        
+        /* Mobile Responsive - Ecosystem */
+        @media (max-width: 480px) {
+    .ecosystem-row {
+        gap: 1.5rem;
+    }
+    
+    @media (max-width: 480px) {
+    .ecosystem-circle {
+        width: 100px;
+        height: 100px;
+        border-width: 3px;
+    }
+}
+    
+    .ecosystem-label {
+        font-size: 0.8rem;
+    }
+    
+    .ecosystem-intro {
+        font-size: 1.1rem;
+        padding: 0 1rem;
+    }
+    
+    .ecosystem-note {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+}
         
         /* Market */
         .market {
@@ -674,7 +774,6 @@
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
             .section { padding: 3rem 0; }
-            .products, .tiers { grid-template-columns: 1fr; }
             .hero { 
                 min-height: 80vh;
             }
@@ -797,7 +896,7 @@
         </div>
     </section>
 
-    <!-- WHAT WE DO - FARM AFRICA HOMEPAGE STYLE -->
+    <!-- WHAT WE DO -->
     <section class="what-we-do-section">
         <div class="what-we-do-content">
             <h2 class="what-we-do-title">What we do</h2>
@@ -896,62 +995,61 @@
         </div>
     </section>
 
-    <section class="section">
-        <div class="container">
-            <h2 class="center">Beyond Silk: A Complete Ecosystem</h2>
-            <p class="center intro">Integral Farming creates diversified, resilient livelihoods. Our artisan families produce multiple products from integrated farming systems—each supporting the others.</p>
-            
-            <div class="products">
-                <div class="product">
-                    <div class="product-img">Ahimsa Silk</div>
-                    <h3>Ahimsa Silk</h3>
-                    <p>Peace silk, cruelty-free</p>
-                    <a href="#" class="btn-shop">Shop Now →</a>
+    <!-- BEYOND SILK - CIRCULAR ECOSYSTEM SECTION -->
+    <section class="ecosystem-section">
+    <div class="container">
+        <h2>Beyond Silk: A Complete Ecosystem</h2>
+        <p class="ecosystem-intro">
+            Integral Farming creates diversified, resilient livelihoods. Our artisan families produce multiple products from integrated farming systems—each supporting the others.
+        </p>
+        
+        <div class="ecosystem-grid">
+            <!-- Row 1 -->
+            <div class="ecosystem-row">
+                <div class="ecosystem-item">
+                    <div class="ecosystem-circle silk-ahimsa"></div>
+                    <h3 class="ecosystem-label">Ahimsa Silk</h3>
+                    <p class="ecosystem-desc">Peace silk, cruelty-free</p>
                 </div>
-                <div class="product">
-                    <div class="product-img">Mulberry Silk</div>
-                    <h3>Mulberry Silk</h3>
-                    <p>Classic, lustrous fiber</p>
-                    <a href="#" class="btn-shop">Shop Now →</a>
+                <div class="ecosystem-item">
+                    <div class="ecosystem-circle silk-mulberry"></div>
+                    <h3 class="ecosystem-label">Mulberry Silk</h3>
+                    <p class="ecosystem-desc">Classic, lustrous fiber</p>
                 </div>
-                <div class="product">
-                    <div class="product-img">Muga Silk</div>
-                    <h3>Muga Silk</h3>
-                    <p>Golden silk of Assam</p>
-                    <a href="#" class="btn-shop">Shop Now →</a>
-                </div>
-                <div class="product">
-                    <div class="product-img">Castor Oil</div>
-                    <h3>Castor Oil</h3>
-                    <p>Cold-pressed organic</p>
-                    <a href="#" class="btn-shop">Shop Now →</a>
-                </div>
-                <div class="product">
-                    <div class="product-img">Lac</div>
-                    <h3>Lac</h3>
-                    <p>Natural resin for dyes</p>
-                    <a href="#" class="btn-shop">Shop Now →</a>
-                </div>
-                <div class="product">
-                    <div class="product-img">Honey</div>
-                    <h3>Honey</h3>
-                    <p>Wild forest honey</p>
-                    <a href="#" class="btn-shop">Shop Now →</a>
-                </div>
-                <div class="product">
-                    <div class="product-img">Desi Ghee</div>
-                    <h3>Desi Ghee</h3>
-                    <p>Traditional grass-fed</p>
-                    <a href="#" class="btn-shop">Shop Now →</a>
+                <div class="ecosystem-item">
+                    <div class="ecosystem-circle silk-muga"></div>
+                    <h3 class="ecosystem-label">Muga Silk</h3>
+                    <p class="ecosystem-desc">Golden silk of Assam</p>
                 </div>
             </div>
             
-            <p class="center" style="max-width: 800px; margin: 2rem auto 0; font-size: 1.1rem;">
-                This diversity means families aren't dependent on a single crop or market. When one product faces challenges, others sustain income. This is climate resilience in action.
-            </p>
+            <!-- Row 2 -->
+            <div class="ecosystem-row">
+                <div class="ecosystem-item">
+                    <div class="ecosystem-circle castor-oil"></div>
+                    <h3 class="ecosystem-label">Castor Oil</h3>
+                    <p class="ecosystem-desc">Cold-pressed organic</p>
+                </div>
+                <div class="ecosystem-item">
+                    <div class="ecosystem-circle honey"></div>
+                    <h3 class="ecosystem-label">Honey</h3>
+                    <p class="ecosystem-desc">Wild forest honey</p>
+                </div>
+                <div class="ecosystem-item">
+                    <div class="ecosystem-circle lac-dye"></div>
+                    <h3 class="ecosystem-label">Lac Powder</h3>
+                    <p class="ecosystem-desc">Natural resin for dyes</p>
+                </div>
+            </div>
         </div>
-    </section>
+        
+        <p class="ecosystem-note">
+            This diversity means families aren't dependent on a single crop or market. When one product faces challenges, others sustain income. This is climate resilience in action.
+        </p>
+    </div>
+</section>
 
+    
     <section class="section alt">
         <div class="container">
             <h2 class="center">From Farm to World</h2>
