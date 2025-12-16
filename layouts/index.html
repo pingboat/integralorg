@@ -97,23 +97,20 @@
         }
         
         .logo {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.125rem;
+            font-size: 1.4rem;
+            color: var(--navy);
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
         }
 
         .logo-title {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--navy);
+            font-weight: 700;
         }
 
         .logo-tagline {
-    font-size: 0.75rem;
-    font-weight: 400;
-    color: var(--gray);
-    letter-spacing: 0.025em;
+            font-weight: 400;
         }
         
         .nav-right {
@@ -799,9 +796,18 @@
             .img-box { height: 300px; }
             
             .menu-toggle { display: flex; }
+            
             .logo { 
                 font-size: 1.2rem; 
-            }
+         }
+
+            .logo-title {
+                font-weight: 700;
+         }
+
+            .logo-tagline {
+                font-weight: 400;
+         }
 
             .logo-title { 
                 font-size: 1.2rem; 
@@ -1115,10 +1121,10 @@ body.drawer-open {
                     <span></span>
                     <span></span>
                 </button>
-         <div class="logo">
-            <span class="logo-title">{{ .Site.Title }}</span>
-            <span class="logo-tagline">Build Tomorrow, Today.</span>
-         </div>
+<div class="logo">
+    <span class="logo-title">{{ .Site.Title }}:</span>
+    <span class="logo-tagline">Build Tomorrow, Today.</span>
+</div>
                 <div class="nav-right">
                     <span class="separator">|</span>
                     <a href="#donate" class="btn-give">GIVE</a>
