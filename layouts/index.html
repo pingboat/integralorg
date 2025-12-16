@@ -1138,25 +1138,64 @@ body.drawer-open {
         <div class="drawer-content">
             
             <!-- TAKE ACTION -->
-            <div class="accordion-section">
-                <button class="accordion-header" aria-expanded="false">
-                    <span class="accordion-title">TAKE ACTION</span>
-                    <span class="accordion-icon">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                            <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="2"/>
-                            <path d="M10 6v8M6 10h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </span>
-                </button>
-                <div class="accordion-body">
-                    <ul class="accordion-links">
-                        <li><a href="/give-monthly">Give Monthly</a></li>
-                        <li><a href="/fundraise">Fundraise for Integral</a></li>
-                        <li><a href="/sponsor">Sponsor a project</a></li>
-                        <li><a href="/partner">Become a brand partner</a></li>
-                    </ul>
-                </div>
-            </div>
+<div class="accordion-section">
+    <button class="accordion-header" aria-expanded="false">
+        <span class="accordion-title">TAKE ACTION</span>
+        <span class="accordion-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="2"/>
+                <path d="M10 6v8M6 10h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </span>
+    </button>
+    <div class="accordion-body">
+        <div class="action-cards">
+            <!-- Card 1: Give Monthly -->
+            <a href="#donate" class="action-card">
+                <h3 class="action-card-title">Give Monthly</h3>
+                <p class="action-card-desc">Join our growing community serving people with dignified livelihoods every month.</p>
+                <span class="action-arrow">
+                    <svg viewBox="0 0 24 24" width="18" height="18">
+                        <path d="M5 12h14M12 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+            </a>
+
+            <!-- Card 2: Fundraise -->
+            <a href="/fundraise" class="action-card">
+                <h3 class="action-card-title">Fundraise for Integral Foundation</h3>
+                <p class="action-card-desc">Support our projects by raising funds for causes that matter.</p>
+                <span class="action-arrow">
+                    <svg viewBox="0 0 24 24" width="18" height="18">
+                        <path d="M5 12h14M12 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+            </a>
+
+            <!-- Card 3: Sponsor -->
+            <a href="/sponsor" class="action-card">
+                <h3 class="action-card-title">Sponsor a project</h3>
+                <p class="action-card-desc">Create a wider impact with ₹10 lakhs or more.</p>
+                <span class="action-arrow">
+                    <svg viewBox="0 0 24 24" width="18" height="18">
+                        <path d="M5 12h14M12 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+            </a>
+
+            <!-- Card 4: Brand Partner -->
+            <a href="/partner" class="action-card">
+                <h3 class="action-card-title">Become a brand partner</h3>
+                <p class="action-card-desc">Work closely with us to develop initiatives with lasting impact.</p>
+                <span class="action-arrow">
+                    <svg viewBox="0 0 24 24" width="18" height="18">
+                        <path d="M5 12h14M12 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+            </a>
+        </div>
+    </div>
+</div>
 
             <!-- ABOUT US -->
             <div class="accordion-section">
