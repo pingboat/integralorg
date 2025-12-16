@@ -846,6 +846,241 @@
                 );
             }
         }
+
+/* ========================================
+   ACCORDION SIDE DRAWER MENU
+   ======================================== */
+
+.side-drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 90%;
+    max-width: 430px;
+    height: 100vh;
+    background: white;
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1002;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.side-drawer.active {
+    transform: translateX(0);
+}
+
+.drawer-content {
+    padding: 80px 0 2rem 0;
+}
+
+/* Accordion Sections */
+.accordion-section {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.accordion-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    background: white;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.2s ease;
+}
+
+.accordion-header:hover {
+    background: #f5f1e8;
+}
+
+.accordion-title {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #333;
+    text-transform: uppercase;
+}
+
+.accordion-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+    color: var(--forest);
+}
+
+.accordion-header[aria-expanded="true"] .accordion-icon {
+    transform: rotate(45deg);
+}
+
+.accordion-header[aria-expanded="true"] .accordion-icon svg path:last-child {
+    opacity: 0;
+}
+
+/* Accordion Body */
+.accordion-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: #fafafa;
+}
+
+.accordion-section.active .accordion-body {
+    max-height: 500px;
+}
+
+.accordion-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.accordion-links li {
+    border-top: 1px solid #e5e5e5;
+}
+
+.accordion-links li:first-child {
+    border-top: none;
+}
+
+.accordion-links a {
+    display: block;
+    padding: 1rem 2rem 1rem 3rem;
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 400;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.accordion-links a::before {
+    content: '';
+    position: absolute;
+    left: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--yellow);
+    transition: width 0.3s ease;
+}
+
+.accordion-links a:hover {
+    background: white;
+    color: var(--forest);
+    padding-left: 3.5rem;
+}
+
+.accordion-links a:hover::before {
+    width: 12px;
+}
+
+/* Overlay */
+.drawer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+.drawer-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+body.drawer-open {
+    overflow: hidden;
+}
+
+/* Hamburger X Animation */
+.menu-toggle.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 480px) {
+    .side-drawer {
+        width: 85%;
+    }
+
+    .drawer-content {
+        padding-top: 70px;
+    }
+
+    .accordion-header {
+        padding: 1.25rem 1.5rem;
+    }
+
+    .accordion-links a {
+        padding: 1rem 1.5rem 1rem 2.5rem;
+    }
+
+    .accordion-links a::before {
+        left: 1.5rem;
+    }
+
+    .accordion-links a:hover {
+        padding-left: 3rem;
+    }
+}
+
+/* Accessibility */
+.menu-toggle:focus {
+    outline: 2px solid var(--forest);
+    outline-offset: 4px;
+}
+
+.accordion-header:focus {
+    outline: 2px solid var(--forest);
+    outline-offset: -2px;
+}
+
+.accordion-links a:focus {
+    outline: 2px solid var(--forest);
+    outline-offset: -2px;
+    background: white;
+}
+
+/* Custom Scrollbar */
+.side-drawer::-webkit-scrollbar {
+    width: 6px;
+}
+
+.side-drawer::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.side-drawer::-webkit-scrollbar-thumb {
+    background: var(--forest);
+    border-radius: 3px;
+}
+
+.side-drawer::-webkit-scrollbar-thumb:hover {
+    background: var(--forest-dark);
+}
+        
     </style>
 </head>
 <body>
@@ -865,6 +1100,79 @@
             </div>
         </div>
     </header>
+
+    <!-- Side Drawer Menu -->
+    <div class="side-drawer">
+        <div class="drawer-content">
+            
+            <!-- TAKE ACTION -->
+            <div class="accordion-section">
+                <button class="accordion-header" aria-expanded="false">
+                    <span class="accordion-title">TAKE ACTION</span>
+                    <span class="accordion-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="2"/>
+                            <path d="M10 6v8M6 10h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+                </button>
+                <div class="accordion-body">
+                    <ul class="accordion-links">
+                        <li><a href="/give-monthly">Give Monthly</a></li>
+                        <li><a href="/fundraise">Fundraise for Integral</a></li>
+                        <li><a href="/sponsor">Sponsor a project</a></li>
+                        <li><a href="/partner">Become a brand partner</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ABOUT US -->
+            <div class="accordion-section">
+                <button class="accordion-header" aria-expanded="false">
+                    <span class="accordion-title">ABOUT US</span>
+                    <span class="accordion-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="2"/>
+                            <path d="M10 6v8M6 10h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+                </button>
+                <div class="accordion-body">
+                    <ul class="accordion-links">
+                        <li><a href="/integral-model">The Integral Model</a></li>
+                        <li><a href="/our-work">Our work</a></li>
+                        <li><a href="/how-we-work">How we work</a></li>
+                        <li><a href="/what-we-do">What we do</a></li>
+                        <li><a href="/partners">Our partners</a></li>
+                        <li><a href="/team">Meet the team</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- CONTACT US -->
+            <div class="accordion-section">
+                <button class="accordion-header" aria-expanded="false">
+                    <span class="accordion-title">CONTACT US</span>
+                    <span class="accordion-icon">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="2"/>
+                            <path d="M10 6v8M6 10h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+                </button>
+                <div class="accordion-body">
+                    <ul class="accordion-links">
+                        <li><a href="/contact">Get in touch</a></li>
+                        <li><a href="/faq">FAQs</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="drawer-overlay"></div>
 
     <section class="hero">
         <h1>Can silk be a <span class="highlight">solution</span> to poverty, unemployment and climate change in North East India?</h1>
@@ -1812,13 +2120,93 @@
             }
         });
         
-        // Hamburger menu functionality
-        const menuToggle = document.querySelector('.menu-toggle');
-        if (menuToggle) {
-            menuToggle.addEventListener('click', function() {
-                alert('Navigation menu coming soon! For now, scroll to explore all sections.');
-            });
+        // Accordion Hamburger Menu
+(function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const drawer = document.querySelector('.side-drawer');
+    const overlay = document.querySelector('.drawer-overlay');
+    const body = document.body;
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+    const drawerLinks = document.querySelectorAll('.accordion-links a');
+
+    if (!menuToggle || !drawer || !overlay) return;
+
+    // Toggle drawer
+    function openDrawer() {
+        drawer.classList.add('active');
+        overlay.classList.add('active');
+        menuToggle.classList.add('active');
+        body.classList.add('drawer-open');
+        menuToggle.setAttribute('aria-expanded', 'true');
+    }
+
+    function closeDrawer() {
+        drawer.classList.remove('active');
+        overlay.classList.remove('active');
+        menuToggle.classList.remove('active');
+        body.classList.remove('drawer-open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+    }
+
+    function toggleDrawer() {
+        if (drawer.classList.contains('active')) {
+            closeDrawer();
+        } else {
+            openDrawer();
         }
+    }
+
+    menuToggle.addEventListener('click', toggleDrawer);
+    overlay.addEventListener('click', closeDrawer);
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && drawer.classList.contains('active')) {
+            closeDrawer();
+        }
+    });
+
+    // Accordion functionality
+    accordionHeaders.forEach(header => {
+        header.addEventListener('click', function() {
+            const section = this.closest('.accordion-section');
+            const isActive = section.classList.contains('active');
+
+            document.querySelectorAll('.accordion-section').forEach(s => {
+                if (s !== section) {
+                    s.classList.remove('active');
+                    s.querySelector('.accordion-header').setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            if (isActive) {
+                section.classList.remove('active');
+                this.setAttribute('aria-expanded', 'false');
+            } else {
+                section.classList.add('active');
+                this.setAttribute('aria-expanded', 'true');
+            }
+        });
+    });
+
+    // Close drawer on link click
+    drawerLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            closeDrawer();
+        });
+    });
+
+    // Close drawer on window resize (desktop)
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+            if (window.innerWidth > 768 && drawer.classList.contains('active')) {
+                closeDrawer();
+            }
+        }, 250);
+    });
+})();
+        
     </script>
 </body>
 </html>
