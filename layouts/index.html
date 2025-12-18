@@ -1027,7 +1027,7 @@
     height: 30px;
     border-radius: 50%;
     background: var(--yellow);
-    border: 1.5px solid #000;
+    border: 1px solid #000;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1051,66 +1051,6 @@
 
 .action-card:hover .action-arrow svg {
     stroke: #fff;
-}
-
-/* Simple Links (ABOUT US, CONTACT US) */
-.accordion-links {
-    list-style: none;
-    padding: 1rem 1.5rem 1.5rem;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.accordion-links li {
-    margin: 0;
-    padding: 0;
-}
-
-.accordion-links a {
-    position: relative;
-    background: #efe8dc;
-    border-radius: 10px;
-    padding: 1.125rem 3.5rem 1.125rem 1.5rem;
-    text-decoration: none;
-    display: block;
-    font-size: 1.0625rem;
-    font-weight: 700;
-    color: #000;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    border: 1px solid rgba(0,0,0,0.05);
-    transition: all 0.3s ease;
-}
-
-.accordion-links a:hover {
-    background: #fff;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.08);
-}
-
-/* Arrow for simple links - 30px with BLUE arrow */
-.accordion-links a::after {
-    content: '';
-    position: absolute;
-    right: 1.5rem;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: var(--yellow);
-    border: 1.5px solid #000;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 12h14M12 5l7 7-7 7' stroke='%23478ac9' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-    background-size: 14px;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-.accordion-links a:hover::after {
-    background-color: var(--forest);
-    border-color: var(--forest);
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 12h14M12 5l7 7-7 7' stroke='%23fff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
 
 /* Overlay */
@@ -1155,26 +1095,20 @@ body.drawer-open {
         width: 88%;
     }
     
-    .action-card,
-    .accordion-links a {
+    .action-card {
         padding: 1.125rem 3.25rem 1.125rem 1.25rem;
     }
     
-    .action-arrow,
-    .accordion-links a::after {
+    .action-arrow {
         width: 28px;
         height: 28px;
         right: 1.25rem;
-        border-width: 1.5px;
+        border-width: 1px;
     }
     
     .action-arrow svg {
         width: 13px;
         height: 13px;
-    }
-    
-    .accordion-links a::after {
-        background-size: 13px;
     }
 }
 
@@ -1232,7 +1166,8 @@ body.drawer-open {
                 <span class="accordion-title">TAKE ACTION</span>
                 <span class="accordion-icon">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M7 1v12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                     </svg>
                 </span>
             </button>
@@ -1287,19 +1222,67 @@ body.drawer-open {
                 <span class="accordion-title">ABOUT US</span>
                 <span class="accordion-icon">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M7 1v12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                     </svg>
                 </span>
             </button>
             <div class="accordion-body">
-                <ul class="accordion-links">
-                    <li><a href="/integral-model">The Integral Model</a></li>
-                    <li><a href="/our-work">Our work</a></li>
-                    <li><a href="/how-we-work">How we work</a></li>
-                    <li><a href="/what-we-do">What we do</a></li>
-                    <li><a href="/partners">Our partners</a></li>
-                    <li><a href="/team">Meet the team</a></li>
-                </ul>
+                <div class="action-cards">
+                    <a href="/integral-model" class="action-card">
+                        <div class="action-card-title">The Integral Model</div>
+                        <div class="action-arrow">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </a>
+                    
+                    <a href="/our-work" class="action-card">
+                        <div class="action-card-title">Our work</div>
+                        <div class="action-arrow">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </a>
+                    
+                    <a href="/how-we-work" class="action-card">
+                        <div class="action-card-title">How we work</div>
+                        <div class="action-arrow">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </a>
+                    
+                    <a href="/what-we-do" class="action-card">
+                        <div class="action-card-title">What we do</div>
+                        <div class="action-arrow">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </a>
+                    
+                    <a href="/partners" class="action-card">
+                        <div class="action-card-title">Our partners</div>
+                        <div class="action-arrow">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </a>
+                    
+                    <a href="/team" class="action-card">
+                        <div class="action-card-title">Meet the team</div>
+                        <div class="action-arrow">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
 
@@ -1309,15 +1292,31 @@ body.drawer-open {
                 <span class="accordion-title">CONTACT US</span>
                 <span class="accordion-icon">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M7 1v12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                     </svg>
                 </span>
             </button>
             <div class="accordion-body">
-                <ul class="accordion-links">
-                    <li><a href="/contact">Get in touch</a></li>
-                    <li><a href="/faq">FAQs</a></li>
-                </ul>
+                <div class="action-cards">
+                    <a href="/contact" class="action-card">
+                        <div class="action-card-title">Get in touch</div>
+                        <div class="action-arrow">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </a>
+                    
+                    <a href="/faq" class="action-card">
+                        <div class="action-card-title">FAQs</div>
+                        <div class="action-arrow">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
 
@@ -2281,7 +2280,7 @@ body.drawer-open {
     const overlay = document.querySelector('.drawer-overlay');
     const body = document.body;
     const accordionHeaders = document.querySelectorAll('.accordion-header');
-    const drawerLinks = document.querySelectorAll('.action-card, .accordion-links a');
+    const drawerLinks = document.querySelectorAll('.action-card');
 
     if (!menuToggle || !drawer || !overlay) return;
 
