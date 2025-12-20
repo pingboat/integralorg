@@ -1,4 +1,15 @@
-{{ define "main" }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Integral Foundation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
 <!-- HEADER -->
 <header class="header">
     <div class="header-container">
@@ -102,7 +113,7 @@
                     </div>
                     <div class="info-content">
                         <div class="info-label">Email</div>
-                        <a href="/cdn-cgi/l/email-protection#1d75787171725d747369787a6f7c717b726873797c6974727333726f7a"><span class="__cf_email__" data-cfemail="d7bfb2bbbbb897beb9a3b2b0a5b6bbb1b8a2b9b3b6a3beb8b9f9b8a5b0">[email&#160;protected]</span></a>
+                        <a href="mailto:hello@integralfoundation.org">hello@integralfoundation.org</a>
                     </div>
                 </div>
 
@@ -191,15 +202,15 @@
                 <ul class="ways-list">
                     <li>
                         <strong>Media inquiries:</strong> 
-                        <a href="/cdn-cgi/l/email-protection#f9949c9d9098b990978d9c9e8b98959f968c979d988d909697d7968b9e"><span class="__cf_email__" data-cfemail="0e636b6a676f4e67607a6b697c6f6268617b606a6f7a67616020617c69">[email&#160;protected]</span></a>
+                        <a href="mailto:media@integralfoundation.org">media@integralfoundation.org</a>
                     </li>
                     <li>
                         <strong>Partnership opportunities:</strong> 
-                        <a href="/cdn-cgi/l/email-protection#9dedfcefe9f3f8efeef5f4edeeddf4f3e9f8faeffcf1fbf2e8f3f9fce9f4f2f3b3f2effa"><span class="__cf_email__" data-cfemail="e1918093958f84939289889192a1888f95848693808d878e948f858095888e8fcf8e9386">[email&#160;protected]</span></a>
+                        <a href="mailto:partnerships@integralfoundation.org">partnerships@integralfoundation.org</a>
                     </li>
                     <li>
                         <strong>Volunteer:</strong> 
-                        <a href="/cdn-cgi/l/email-protection#4b3d24273e253f2e2e390b22253f2e2c392a272d243e252f2a3f2224256524392c"><span class="__cf_email__" data-cfemail="bfc9d0d3cad1cbdadacdffd6d1cbdad8cdded3d9d0cad1dbdecbd6d0d191d0cdd8">[email&#160;protected]</span></a>
+                        <a href="mailto:volunteer@integralfoundation.org">volunteer@integralfoundation.org</a>
                     </li>
                     <li>
                         <strong>Careers:</strong> 
@@ -831,7 +842,7 @@ body {
 </style>
 
 <!-- JAVASCRIPT -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // Form submission
 const contactForm = document.getElementById('contactForm');
 const formSuccess = document.getElementById('formSuccess');
@@ -845,4 +856,31 @@ contactForm.addEventListener('submit', function(e) {
         lastName: document.getElementById('lastName').value,
         email: document.getElementById('email').value,
         phone: document.getElementById('phone').value,
-{{ end }}
+        subject: document.getElementById('subject').value,
+        message: document.getElementById('message').value
+    };
+
+    // Here you would typically send the data to your backend
+    // For now, we'll just show the success message
+    console.log('Form submitted:', formData);
+
+    // Hide form and show success message
+    contactForm.style.display = 'none';
+    formSuccess.style.display = 'block';
+
+    // Optional: Send to backend
+    // fetch('/api/contact', {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify(formData)
+    // }).then(response => {
+    //     if (response.ok) {
+    //         contactForm.style.display = 'none';
+    //         formSuccess.style.display = 'block';
+    //     }
+    // });
+});
+</script>
+
+</body>
+</html>
