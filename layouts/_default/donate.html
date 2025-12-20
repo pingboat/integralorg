@@ -1,712 +1,635 @@
-{{ define "main" }}
-<!-- Razorpay Script -->
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate - Integral Foundation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<style>
-    /* Reset any existing styles */
-    .donate-page * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    
-    :root {
-        --forest: #2d5016;
-        --yellow: #FFC700;
-        --cream: #f5f1e8;
-        --white: #ffffff;
-        --charcoal: #2d2d2d;
-        --gray: #8b8b8b;
-        --light-gray: #e8e4da;
-        --border: #d4d0c4;
-        --orange: #ff9933;
-    }
-    
-    .donate-page {
-        background: var(--cream) !important;
-        padding: 4rem 0;
-        min-height: 60vh;
-    }
-    
-    .donate-container {
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 0 5%;
-    }
-    
-    .intro-text {
-        text-align: center;
-        font-size: 1.5rem;
-        line-height: 1.7;
-        margin-bottom: 3rem;
-        color: var(--charcoal);
-        font-weight: 400;
-    }
-    
-    .donation-card {
-        background: white;
-        border-radius: 16px;
-        overflow: hidden;
-        margin-bottom: 2rem;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    }
-    
-    .toggle-buttons {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
-    
-    .toggle-btn {
-        padding: 1.5rem;
-        border: none;
-        background: white;
-        font-size: 1.1rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s;
-        color: var(--charcoal);
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        border-radius: 16px 16px 0 0;
-    }
-    
-    .toggle-btn.active {
-        background: var(--yellow);
-        color: var(--charcoal);
-    }
-    
-    .card-content {
-        padding: 3rem 4rem;
-    }
-    
-    .section-title {
-        font-size: 2rem;
-        font-weight: 400;
-        margin-bottom: 2.5rem;
-        text-align: center;
-        color: var(--charcoal);
-    }
-    
-    .amount-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-        margin-bottom: 1.5rem;
-    }
-    
-    .amount-btn {
-        padding: 2rem 1.5rem;
-        border: 2px solid var(--light-gray);
-        background: var(--cream);
-        border-radius: 16px;
-        font-size: 2rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s;
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        color: var(--charcoal);
-        text-align: center;
-    }
-    
-    .amount-btn:hover {
-        background: var(--white);
-        border-color: var(--gray);
-    }
-    
-    .amount-btn.selected {
-        background: var(--yellow);
-        border-color: var(--yellow);
-        color: var(--charcoal);
-    }
-    
-    .amount-label {
-        font-size: 1rem;
-        color: var(--gray);
-        font-weight: 400;
-        display: block;
-        margin-top: 0.25rem;
-    }
-    
-    .other-amount-row {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-        margin-bottom: 2rem;
-    }
-    
-    .other-amount {
-        padding: 2rem 1.5rem;
-        border: 2px solid var(--light-gray);
-        background: var(--cream);
-        border-radius: 16px;
-        font-size: 1.5rem;
-        font-weight: 400;
-        cursor: pointer;
-        transition: all 0.3s;
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        color: var(--gray);
-        text-align: center;
-    }
-    
-    .other-amount:hover {
-        background: var(--white);
-        border-color: var(--gray);
-    }
-    
-    .other-amount.selected {
-        background: var(--yellow);
-        border-color: var(--yellow);
-        color: var(--charcoal);
-        font-weight: 600;
-    }
-    
-    .modal-overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 1000;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    .modal-overlay.active {
-        display: flex;
-    }
-    
-    .modal-content {
-        background: white;
-        padding: 2.5rem;
-        border-radius: 16px;
-        max-width: 400px;
-        width: 90%;
-    }
-    
-    .modal-title {
-        font-size: 1.5rem;
-        font-weight: 600;
-        margin-bottom: 1.5rem;
-        color: var(--charcoal);
-    }
-    
-    .custom-input {
-        width: 100%;
-        padding: 1.25rem;
-        border: 2px solid var(--light-gray);
-        border-radius: 12px;
-        font-size: 1.75rem;
-        font-weight: 600;
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        margin-bottom: 1.5rem;
-        text-align: center;
-    }
-    
-    .custom-input:focus {
-        outline: none;
-        border-color: var(--gray);
-    }
-    
-    .modal-buttons {
-        display: flex;
-        gap: 1rem;
-    }
-    
-    .modal-btn {
-        flex: 1;
-        padding: 1rem;
-        border: none;
-        border-radius: 12px;
-        font-size: 1rem;
-        font-weight: 600;
-        cursor: pointer;
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        transition: all 0.3s;
-    }
-    
-    .modal-btn-cancel {
-        background: var(--cream);
-        color: var(--charcoal);
-    }
-    
-    .modal-btn-confirm {
-        background: var(--yellow);
-        color: var(--charcoal);
-    }
-    
-    .donor-form {
-        display: none;
-        margin-top: 2rem;
-        padding-top: 2rem;
-        border-top: 2px dashed var(--light-gray);
-    }
-    
-    .donor-form.active {
-        display: block;
-    }
-    
-    .form-group {
-        margin-bottom: 1.25rem;
-    }
-    
-    .form-label {
-        display: block;
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-        color: var(--charcoal);
-        font-size: 0.95rem;
-    }
-    
-    .form-input {
-        width: 100%;
-        padding: 1rem;
-        border: 2px solid var(--light-gray);
-        border-radius: 12px;
-        font-size: 1rem;
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        transition: all 0.3s;
-    }
-    
-    .form-input:focus {
-        outline: none;
-        border-color: var(--gray);
-    }
-    
-    .submit-btn {
-        width: 100%;
-        padding: 1.5rem;
-        background: var(--yellow);
-        border: none;
-        border-radius: 16px;
-        font-size: 1.25rem;
-        font-weight: 700;
-        cursor: pointer;
-        transition: all 0.3s;
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        color: var(--charcoal);
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-    
-    .submit-btn:hover {
-        background: #E6B300;
-    }
-    
-    .submit-btn:disabled {
-        background: var(--light-gray);
-        cursor: not-allowed;
-    }
-    
-    .impact-text {
-        text-align: center;
-        padding: 2.5rem 2rem;
-        border-top: 2px dashed var(--light-gray);
-        margin-top: 2rem;
-        font-size: 1.25rem;
-        line-height: 1.7;
-        color: var(--charcoal);
-    }
-    
-    .impact-amount {
-        font-weight: 700;
-        color: var(--charcoal);
-    }
-    
-    .impact-highlight {
-        font-weight: 700;
-        color: var(--forest);
-    }
-    
-    .security-notice {
-        text-align: center;
-        font-size: 1rem;
-        color: var(--gray);
-        margin-top: 2rem;
-        line-height: 1.7;
-    }
-    
-    .security-notice svg {
-        width: 16px;
-        height: 16px;
-        vertical-align: middle;
-        margin-right: 6px;
-    }
-    
-    .security-notice a {
-        color: var(--gray);
-        text-decoration: underline;
-    }
-    
-    .transparency-banner {
-        background: #fff5e6;
-        border: 3px solid var(--orange);
-        border-radius: 16px;
-        padding: 3rem;
-        display: flex;
-        align-items: center;
-        gap: 3rem;
-        margin-top: 3rem;
-    }
-    
-    .circle-badge {
-        width: 140px;
-        height: 140px;
-        border-radius: 50%;
-        background: white;
-        border: 8px solid var(--forest);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-    }
-    
-    .circle-number {
-        font-size: 3.5rem;
-        font-weight: 700;
-        color: var(--forest);
-        line-height: 1;
-    }
-    
-    .circle-percent {
-        font-size: 2rem;
-        color: var(--forest);
-        line-height: 1;
-    }
-    
-    .transparency-text {
-        flex: 1;
-        font-size: 1.25rem;
-        line-height: 1.7;
-        color: var(--charcoal);
-    }
-    
-    .transparency-text strong {
-        font-weight: 700;
-        color: var(--forest);
-    }
-    
-    .loading {
-        display: none;
-        text-align: center;
-        padding: 1rem;
-        margin-top: 1rem;
-    }
-    
-    .loading.active {
-        display: block;
-    }
-    
-    .spinner {
-        border: 3px solid var(--light-gray);
-        border-top: 3px solid var(--yellow);
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        animation: spin 1s linear infinite;
-        margin: 0 auto;
-    }
-    
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
-    
-    @media (max-width: 768px) {
-        .intro-text {
-            font-size: 1.2rem;
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #333;
+            line-height: 1.6;
         }
-        
-        .card-content {
-            padding: 2rem 1.5rem;
+
+        /* Header Styles - matching your baseof.html */
+        header {
+            background: white;
+            padding: 1rem 5%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
-        
-        .section-title {
-            font-size: 1.5rem;
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        
-        .amount-grid {
-            grid-template-columns: 1fr;
+
+        .logo-section h1 {
+            font-size: 24px;
+            color: #2d5016;
+            font-weight: 700;
         }
-        
-        .amount-btn {
-            padding: 1.5rem;
-            font-size: 1.75rem;
+
+        .logo-section .tagline {
+            font-size: 24px;
+            color: #2d5016;
+            font-weight: 400;
         }
-        
-        .transparency-banner {
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #2d5016;
+        }
+
+        .donate-btn {
+            background: #FFC700;
+            color: #2d5016;
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .donate-btn:hover {
+            background: #2d5016;
+            color: white;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
             flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #2d5016;
+            transition: 0.3s;
+        }
+
+        /* Main Content - Donate Page */
+        .donate-hero {
+            background: linear-gradient(135deg, #2d5016 0%, #4a7c2c 100%);
+            color: white;
+            padding: 4rem 5%;
             text-align: center;
+        }
+
+        .donate-hero h1 {
+            font-size: 48px;
+            margin-bottom: 1rem;
+        }
+
+        .donate-hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .donate-content {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 5%;
+        }
+
+        .donation-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .donation-card {
+            background: #f5f1e8;
             padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
         }
-        
-        .circle-badge {
-            width: 120px;
-            height: 120px;
-        }
-        
-        .circle-number {
-            font-size: 3rem;
-        }
-    }
-</style>
 
-<div class="donate-page">
-    <div class="donate-container">
-        <p class="intro-text">
-            Our work to end poverty, unemployment and climate change in North East India needs your support. You can help preserve traditional silk crafts, create dignified livelihoods, and build climate resilience — especially for artisan families and indigenous communities.
-        </p>
-        
-        <div class="donation-card">
-            <div class="toggle-buttons">
-                <button class="toggle-btn" id="onceBtn">GIVE ONCE</button>
-                <button class="toggle-btn active" id="monthlyBtn">MONTHLY</button>
-            </div>
-            
-            <div class="card-content">
-                <h2 class="section-title" id="sectionTitle">Choose an amount to give per month</h2>
-                
-                <div class="amount-grid">
-                    <button class="amount-btn" data-amount="500">
-                        ₹500 <span class="amount-label">INR/mo</span>
-                    </button>
-                    <button class="amount-btn" data-amount="1000">
-                        ₹1,000 <span class="amount-label">INR/mo</span>
-                    </button>
-                    <button class="amount-btn selected" data-amount="2500">
-                        ₹2,500 <span class="amount-label">INR/mo</span>
-                    </button>
-                    <button class="amount-btn" data-amount="5000">
-                        ₹5,000 <span class="amount-label">INR/mo</span>
-                    </button>
-                </div>
-                
-                <div class="other-amount-row">
-                    <div class="other-amount" id="otherAmountBtn">Other amount</div>
-                </div>
-                
-                <div class="donor-form" id="donorForm">
-                    <div class="form-group">
-                        <label class="form-label" for="donorName">Full Name *</label>
-                        <input type="text" id="donorName" class="form-input" placeholder="Enter your name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label" for="donorEmail">Email Address *</label>
-                        <input type="email" id="donorEmail" class="form-input" placeholder="your@email.com" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label" for="donorPhone">Phone Number *</label>
-                        <input type="tel" id="donorPhone" class="form-input" placeholder="+91 98765 43210" required>
-                    </div>
-                </div>
-                
-                <button class="submit-btn" id="submitBtn">JOIN TODAY</button>
-                
-                <div class="loading" id="loading">
-                    <div class="spinner"></div>
-                    <p>Processing...</p>
-                </div>
-                
-                <div class="impact-text" id="impactText">
-                    Your <span class="impact-amount">₹2,500</span> monthly donation can support <span class="impact-highlight">one artisan family</span> with rainwater harvesting every month. <span class="impact-highlight">85%</span> of funds go directly to programs.
-                </div>
-            </div>
-        </div>
-        
-        <p class="security-notice">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
-            </svg>
-            Secure Payment · This site is protected by reCAPTCHA and the Google 
-            <a href="#">Privacy Policy</a> and <a href="#">Terms of Service</a> apply.
-        </p>
-        
-        <div class="transparency-banner">
-            <div class="circle-badge">
-                <span class="circle-number">85</span>
-                <span class="circle-percent">%</span>
-            </div>
-            <div class="transparency-text">
-                Thanks to generous private donors who fund our operational expenses, <strong>85% of your donation</strong> directly funds Integral Farming programs, artisan support, and climate resilience projects.
-            </div>
-        </div>
-    </div>
-</div>
+        .donation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(45, 80, 22, 0.15);
+        }
 
-<div class="modal-overlay" id="customModal">
-    <div class="modal-content">
-        <h3 class="modal-title">Enter Custom Amount</h3>
-        <input type="text" id="customInput" class="custom-input" placeholder="₹" pattern="[0-9]*">
-        <div class="modal-buttons">
-            <button class="modal-btn modal-btn-cancel" id="cancelBtn">Cancel</button>
-            <button class="modal-btn modal-btn-confirm" id="confirmBtn">Confirm</button>
-        </div>
-    </div>
-</div>
+        .donation-card.selected {
+            background: #2d5016;
+            color: white;
+        }
 
-<script>
-    const RAZORPAY_KEY = 'rzp_test_YOUR_KEY_HERE';
-    
-    let isMonthly = true;
-    let selectedAmount = 2500;
-    let showingForm = false;
-    
-    const onceBtn = document.getElementById('onceBtn');
-    const monthlyBtn = document.getElementById('monthlyBtn');
-    const sectionTitle = document.getElementById('sectionTitle');
-    const amountBtns = document.querySelectorAll('.amount-btn');
-    const otherAmountBtn = document.getElementById('otherAmountBtn');
-    const customModal = document.getElementById('customModal');
-    const customInput = document.getElementById('customInput');
-    const cancelBtn = document.getElementById('cancelBtn');
-    const confirmBtn = document.getElementById('confirmBtn');
-    const impactText = document.getElementById('impactText');
-    const submitBtn = document.getElementById('submitBtn');
-    const donorForm = document.getElementById('donorForm');
-    const loading = document.getElementById('loading');
-    
-    onceBtn.addEventListener('click', () => {
-        isMonthly = false;
-        onceBtn.classList.add('active');
-        monthlyBtn.classList.remove('active');
-        sectionTitle.textContent = 'Choose an amount to give';
-        updateLabels();
-        updateImpact();
-    });
-    
-    monthlyBtn.addEventListener('click', () => {
-        isMonthly = true;
-        monthlyBtn.classList.add('active');
-        onceBtn.classList.remove('active');
-        sectionTitle.textContent = 'Choose an amount to give per month';
-        updateLabels();
-        updateImpact();
-    });
-    
-    amountBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            amountBtns.forEach(b => b.classList.remove('selected'));
-            otherAmountBtn.classList.remove('selected');
-            btn.classList.add('selected');
-            selectedAmount = parseInt(btn.dataset.amount);
-            updateImpact();
-        });
-    });
-    
-    otherAmountBtn.addEventListener('click', () => {
-        customModal.classList.add('active');
-        customInput.value = '';
-        customInput.focus();
-    });
-    
-    cancelBtn.addEventListener('click', () => {
-        customModal.classList.remove('active');
-    });
-    
-    confirmBtn.addEventListener('click', () => {
-        const value = customInput.value.replace(/\D/g, '');
-        if (value && parseInt(value) >= 100) {
-            selectedAmount = parseInt(value);
-            amountBtns.forEach(b => b.classList.remove('selected'));
-            otherAmountBtn.classList.add('selected');
-            otherAmountBtn.innerHTML = `₹${selectedAmount.toLocaleString('en-IN')}`;
-            customModal.classList.remove('active');
-            updateImpact();
-        } else {
-            alert('Please enter an amount of at least ₹100');
+        .donation-card h3 {
+            font-size: 36px;
+            color: #FFC700;
+            margin-bottom: 0.5rem;
         }
-    });
-    
-    customModal.addEventListener('click', (e) => {
-        if (e.target === customModal) customModal.classList.remove('active');
-    });
-    
-    customInput.addEventListener('input', (e) => {
-        e.target.value = e.target.value.replace(/\D/g, '');
-    });
-    
-    function updateLabels() {
-        document.querySelectorAll('.amount-label').forEach(label => {
-            label.textContent = isMonthly ? 'INR/mo' : 'INR';
-        });
-    }
-    
-    function updateImpact() {
-        const impacts = {
-            500: 'can provide organic farming inputs for <span class="impact-highlight">one family</span>',
-            1000: 'can support <span class="impact-highlight">skills training</span> for artisans',
-            2500: 'can support <span class="impact-highlight">one artisan family</span> with rainwater harvesting',
-            5000: 'can fund <span class="impact-highlight">women\'s training programs</span>'
-        };
-        
-        const impact = impacts[selectedAmount] || 'will directly support our programs in North East India';
-        const frequency = isMonthly ? 'monthly donation' : 'donation';
-        const period = isMonthly ? 'every month' : '';
-        
-        impactText.innerHTML = `Your <span class="impact-amount">₹${selectedAmount.toLocaleString('en-IN')}</span> ${frequency} ${impact} ${period}. <span class="impact-highlight">85%</span> of funds go directly to programs.`;
-    }
-    
-    submitBtn.addEventListener('click', async () => {
-        if (!showingForm) {
-            donorForm.classList.add('active');
-            showingForm = true;
-            submitBtn.textContent = 'COMPLETE DONATION';
-            donorForm.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        } else {
-            await processDonation();
+
+        .donation-card.selected h3 {
+            color: #FFC700;
         }
-    });
-    
-    async function processDonation() {
-        const name = document.getElementById('donorName').value.trim();
-        const email = document.getElementById('donorEmail').value.trim();
-        const phone = document.getElementById('donorPhone').value.trim();
-        
-        if (!name || !email || !phone) {
-            alert('Please fill in all required fields');
-            return;
+
+        .donation-card p {
+            font-size: 16px;
+            color: #666;
         }
-        
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            alert('Please enter a valid email address');
-            return;
+
+        .donation-card.selected p {
+            color: white;
         }
-        
-        submitBtn.disabled = true;
-        loading.classList.add('active');
-        
-        const options = {
-            key: RAZORPAY_KEY,
-            amount: selectedAmount * 100,
-            currency: 'INR',
-            name: 'Integral Foundation',
-            description: `${isMonthly ? 'Monthly' : 'One-time'} Donation`,
-            prefill: { name, email, contact: phone },
-            notes: { frequency: isMonthly ? 'monthly' : 'one-time' },
-            theme: { color: '#FFC700' },
-            handler: function(response) {
-                localStorage.setItem('lastDonation', JSON.stringify({
-                    name, email, phone, amount: selectedAmount,
-                    frequency: isMonthly ? 'monthly' : 'one-time',
-                    paymentId: response.razorpay_payment_id,
-                    timestamp: new Date().toISOString()
-                }));
-                window.location.href = `/thank-you?amount=${selectedAmount}&frequency=${isMonthly ? 'monthly' : 'one-time'}`;
-            },
-            modal: {
-                ondismiss: function() {
-                    submitBtn.disabled = false;
-                    loading.classList.remove('active');
-                }
+
+        .custom-amount {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+
+        .custom-amount h3 {
+            color: #2d5016;
+            margin-bottom: 1rem;
+        }
+
+        .amount-input {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .amount-input input {
+            flex: 1;
+            padding: 1rem;
+            font-size: 18px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .amount-input input:focus {
+            outline: none;
+            border-color: #2d5016;
+        }
+
+        .email-input {
+            margin-bottom: 1.5rem;
+        }
+
+        .email-input label {
+            display: block;
+            color: #2d5016;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .email-input input {
+            width: 100%;
+            padding: 1rem;
+            font-size: 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .email-input input:focus {
+            outline: none;
+            border-color: #2d5016;
+        }
+
+        .payment-btn {
+            background: #FFC700;
+            color: #2d5016;
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            width: 100%;
+        }
+
+        .payment-btn:hover {
+            background: #2d5016;
+            color: white;
+        }
+
+        .impact-section {
+            background: #f5f1e8;
+            padding: 3rem;
+            border-radius: 15px;
+            margin-top: 3rem;
+        }
+
+        .impact-section h2 {
+            color: #2d5016;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .impact-item {
+            text-align: center;
+        }
+
+        .impact-item h3 {
+            color: #FFC700;
+            font-size: 48px;
+            margin-bottom: 0.5rem;
+        }
+
+        .impact-item p {
+            color: #666;
+        }
+
+        /* Explore More Section */
+        .explore-more {
+            background: #2d5016;
+            color: white;
+            padding: 4rem 5%;
+            margin-top: 4rem;
+        }
+
+        .explore-more .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .explore-more h2 {
+            font-size: 36px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .explore-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .explore-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .explore-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .explore-card h3 {
+            color: #FFC700;
+            margin-bottom: 1rem;
+            font-size: 24px;
+        }
+
+        .explore-card p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .explore-card a {
+            color: #FFC700;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .explore-card a:hover {
+            gap: 1rem;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 3rem 5%;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            color: #FFC700;
+            margin-bottom: 1.5rem;
+            font-size: 20px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #FFC700;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #FFC700;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #999;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
             }
-        };
-        
-        new Razorpay(options).open();
-    }
-</script>
-{{ end }}
+
+            .hamburger {
+                display: flex;
+            }
+
+            .donate-hero h1 {
+                font-size: 32px;
+            }
+
+            .donation-options {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo-section">
+                <h1>Integral Foundation <span class="tagline">Build Tomorrow, Today.</span></h1>
+            </div>
+            <nav>
+                <a href="/">Home</a>
+                <a href="/what-we-do">What we do</a>
+                <a href="/integral-model">The Integral Model</a>
+                <a href="/about">About</a>
+                <a href="/contact">Contact</a>
+                <a href="/donate" class="donate-btn">Donate</a>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Donate Hero -->
+    <section class="donate-hero">
+        <h1>Build Tomorrow, Today</h1>
+        <p>Your contribution helps create dignified livelihoods for artisan families in North East India through sustainable silk farming and integral development.</p>
+    </section>
+
+    <!-- Donate Content -->
+    <section class="donate-content">
+        <!-- Suggested Amounts -->
+        <div class="donation-options">
+            <div class="donation-card" onclick="selectAmount(5000)">
+                <h3>₹5,000</h3>
+                <p>Supports one artisan family for a month</p>
+            </div>
+            <div class="donation-card" onclick="selectAmount(10000)">
+                <h3>₹10,000</h3>
+                <p>Provides training for 5 farmers</p>
+            </div>
+            <div class="donation-card" onclick="selectAmount(25000)">
+                <h3>₹25,000</h3>
+                <p>Establishes one community silk garden</p>
+            </div>
+            <div class="donation-card" onclick="selectAmount(50000)">
+                <h3>₹50,000</h3>
+                <p>Transforms an entire village ecosystem</p>
+            </div>
+        </div>
+
+        <!-- Custom Amount -->
+        <div class="custom-amount">
+            <h3>Or enter your amount</h3>
+            <div class="email-input">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" placeholder="your@email.com" required>
+            </div>
+            <div class="amount-input">
+                <span style="font-size: 24px; color: #2d5016; font-weight: 600;">₹</span>
+                <input type="number" id="customAmount" placeholder="Enter amount" min="100">
+            </div>
+            <button class="payment-btn" onclick="processPayment()">Proceed to Payment</button>
+        </div>
+
+        <!-- Impact Section -->
+        <div class="impact-section">
+            <h2>Your Impact in Numbers</h2>
+            <div class="impact-grid">
+                <div class="impact-item">
+                    <h3>500+</h3>
+                    <p>Families Supported</p>
+                </div>
+                <div class="impact-item">
+                    <h3>50+</h3>
+                    <p>Villages Transformed</p>
+                </div>
+                <div class="impact-item">
+                    <h3>10,000+</h3>
+                    <p>Trees Planted</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Explore More Section -->
+    <section class="explore-more">
+        <div class="container">
+            <h2>Explore More</h2>
+            <div class="explore-grid">
+                <div class="explore-card">
+                    <h3>Our Approach</h3>
+                    <p>Discover how we blend Sri Aurobindo's Integral Yoga with sustainable agriculture to create lasting change.</p>
+                    <a href="/integral-model">Learn more →</a>
+                </div>
+                <div class="explore-card">
+                    <h3>What We Do</h3>
+                    <p>Explore our nine integrated programs from silk farming to climate resilience and artisan empowerment.</p>
+                    <a href="/what-we-do">See our work →</a>
+                </div>
+                <div class="explore-card">
+                    <h3>Get Involved</h3>
+                    <p>Join us as a volunteer, partner, or researcher. Multiple ways to contribute to dignified livelihoods.</p>
+                    <a href="/contact">Connect with us →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Take Action</h3>
+                <ul>
+                    <li><a href="/donate">Donate</a></li>
+                    <li><a href="/volunteer">Become a volunteer</a></li>
+                    <li><a href="/brand-partners">Become a brand partner</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Get to Know Us</h3>
+                <ul>
+                    <li><a href="/about">About us</a></li>
+                    <li><a href="/annual-reports">Annual reports</a></li>
+                    <li><a href="/integral-model">The integral model</a></li>
+                    <li><a href="/what-we-do">What we do</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <ul>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/careers">Careers</a></li>
+                    <li><a href="/reality-lab">Reality lab</a></li>
+                </ul>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">f</a>
+                    <a href="#" aria-label="Twitter">t</a>
+                    <a href="#" aria-label="Instagram">i</a>
+                    <a href="#" aria-label="LinkedIn">in</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Integral Foundation. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Razorpay Integration -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        let selectedAmount = 0;
+
+        function selectAmount(amount) {
+            selectedAmount = amount;
+            document.getElementById('customAmount').value = amount;
+            
+            // Visual feedback
+            document.querySelectorAll('.donation-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            event.currentTarget.classList.add('selected');
+        }
+
+        function processPayment() {
+            const amount = document.getElementById('customAmount').value || selectedAmount;
+            const email = document.getElementById('email').value;
+
+            if (!email) {
+                alert('Please enter your email address');
+                return;
+            }
+
+            if (!amount || amount < 100) {
+                alert('Please select or enter an amount (minimum ₹100)');
+                return;
+            }
+
+            // Razorpay options
+            var options = {
+                key: "YOUR_RAZORPAY_KEY_ID", // Replace with your actual Razorpay key
+                amount: amount * 100, // Amount in paise
+                currency: "INR",
+                name: "Integral Foundation",
+                description: "Support Dignified Rural Livelihoods",
+                image: "/logo.png",
+                prefill: {
+                    email: email
+                },
+                theme: {
+                    color: "#2d5016"
+                },
+                handler: function (response) {
+                    // Redirect to thank you page
+                    window.location.href = `/thank-you?payment_id=${response.razorpay_payment_id}&amount=${amount}`;
+                }
+            };
+
+            var rzp = new Razorpay(options);
+            rzp.open();
+        }
+    </script>
+</body>
+</html>
