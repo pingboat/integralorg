@@ -1,1049 +1,697 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Give - Integral Foundation</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
-
-<!-- HEADER -->
-<header class="header">
-    <div class="header-container">
-        <button class="menu-toggle" aria-label="Menu" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <div class="logo">
-            <span class="logo-text"><strong>Integral Foundation:</strong> Build Tomorrow, Today.</span>
-        </div>
-        <a href="#donate-form" class="give-button">GIVE</a>
-    </div>
-</header>
-
-<!-- DONATION SECTION (Your existing template) -->
-<section class="donation-hero" id="donate-form">
-    <div class="donation-content">
-        <p class="donation-description">
-            Our work to end poverty, and address unemployment and the impact of climate change in North East India needs your support. You can help preserve traditional silk crafts, create dignified livelihoods, and build climate resilience — especially for artisan families and indigenous communities.
-        </p>
-
-        <!-- Donation Form Card -->
-        <div class="donation-card">
-            <!-- Donation Type Toggle -->
-            <div class="donation-type-toggle">
-                <button class="type-button" data-type="one-time">GIVE ONCE</button>
-                <button class="type-button active" data-type="monthly">MONTHLY</button>
-            </div>
-
-            <!-- Amount Selection -->
-            <h3 class="amount-heading">Choose an amount to give per month</h3>
-            
-            <div class="amount-grid">
-                <button class="amount-button" data-amount="500">
-                    <span class="amount-value">₹500</span>
-                    <span class="amount-period">INR/MO</span>
-                </button>
-                <button class="amount-button" data-amount="1500">
-                    <span class="amount-value">₹1,500</span>
-                    <span class="amount-period">INR/MO</span>
-                </button>
-                <button class="amount-button selected" data-amount="3000">
-                    <span class="amount-value">₹3,000</span>
-                    <span class="amount-period">INR/MO</span>
-                </button>
-                <button class="amount-button" data-amount="5000">
-                    <span class="amount-value">₹5,000</span>
-                    <span class="amount-period">INR/MO</span>
-                </button>
-                <button class="amount-button custom-btn">
-                    <span class="amount-value">Other amount</span>
-                </button>
-            </div>
-
-            <!-- Custom Amount Input (Hidden by default) -->
-            <div class="custom-amount-wrapper" style="display: none;">
-                <input type="number" id="customAmount" class="custom-amount-input" placeholder="Enter amount" min="100">
-            </div>
-
-            <!-- Join Button -->
-            <button class="join-button" id="donateButton">JOIN TODAY</button>
-
-            <!-- Impact Statement -->
-            <div class="impact-statement">
-                <p>Your <strong>₹3,000</strong> monthly donation can support <strong>one artisan or farmer</strong> with sustainability & climate resilience training every month. <strong>85%</strong> of funds go directly to programs.</p>
-            </div>
-
-            <!-- Security Notice -->
-            <p class="security-notice">
-                🔒 Secure Payment - This site is protected by reCAPTCHA and the Google 
-                <a href="#">Privacy Policy</a> and <a href="#">Terms of Service</a> apply.
-            </p>
-
-            <!-- 85% Badge -->
-            <div class="efficiency-badge">
-                <div class="badge-circle">
-                    <div class="percentage">85<span class="percent-sign">%</span></div>
-                </div>
-                <div class="badge-text">
-                    <p>Thanks to generous private donors who fund our operational expenses, <strong>85% of your donation</strong> directly funds Integral Farming programs, artisan support, and climate resilience projects.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- STORIES FROM THE FIELD -->
-<section class="stories-section">
-    <div class="section-container">
-        <h2 class="section-heading">Stories from the field</h2>
-        
-        <div class="stories-grid">
-            <!-- Story 1 -->
-            <div class="story-card">
-                <div class="story-image">
-                    <div class="placeholder-image">[Image: Artisan at work]</div>
-                </div>
-                <div class="story-content">
-                    <h3>Bina Devi's Climate-Resilient Journey</h3>
-                    <p>A silkworm rearer from Assam, Bina Devi faced declining yields due to climate change. Through our training program, she learned sustainable techniques that increased her production by 40%.</p>
-                    <a href="#" class="read-more">Read her story →</a>
-                </div>
-            </div>
-
-            <!-- Story 2 -->
-            <div class="story-card">
-                <div class="story-image">
-                    <div class="placeholder-image">[Image: Farming community]</div>
-                </div>
-                <div class="story-content">
-                    <h3>Reviving Traditional Muga Silk</h3>
-                    <p>Our partnership with 25 families in Majuli preserved rare Muga silk traditions while creating sustainable income streams that support entire communities.</p>
-                    <a href="#" class="read-more">Learn more →</a>
-                </div>
-            </div>
-
-            <!-- Story 3 -->
-            <div class="story-card">
-                <div class="story-image">
-                    <div class="placeholder-image">[Image: Youth training]</div>
-                </div>
-                <div class="story-content">
-                    <h3>Empowering the Next Generation</h3>
-                    <p>Young artisans are combining ancestral knowledge with modern sustainability practices, ensuring silk heritage thrives for generations to come.</p>
-                    <a href="#" class="read-more">Discover more →</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- THE INTEGRAL MODEL -->
-<section class="integral-model-section">
-    <div class="section-container">
-        <h2 class="section-heading">The integral model</h2>
-        
-        <div class="model-intro">
-            <p class="intro-text">Our approach integrates Sri Aurobindo's Integral Yoga philosophy with practical solutions for sustainable livelihoods, creating holistic transformation in North East India's silk communities.</p>
-        </div>
-
-        <div class="model-pillars">
-            <!-- Pillar 1 -->
-            <div class="pillar-card">
-                <div class="pillar-icon">🌱</div>
-                <h3>Sustainable Agriculture</h3>
-                <p>Climate-resilient sericulture practices that protect biodiversity while increasing farmer income and food security.</p>
-            </div>
-
-            <!-- Pillar 2 -->
-            <div class="pillar-card">
-                <div class="pillar-icon">🧵</div>
-                <h3>Craft Preservation</h3>
-                <p>Reviving traditional silk weaving techniques and connecting artisans to fair-trade markets that value their heritage.</p>
-            </div>
-
-            <!-- Pillar 3 -->
-            <div class="pillar-card">
-                <div class="pillar-icon">🌍</div>
-                <h3>Climate Resilience</h3>
-                <p>Building adaptive capacity through training, technology, and community-led solutions to climate challenges.</p>
-            </div>
-
-            <!-- Pillar 4 -->
-            <div class="pillar-card">
-                <div class="pillar-icon">🤝</div>
-                <h3>Community Development</h3>
-                <p>Empowering indigenous communities with education, resources, and support for dignified, self-sustained livelihoods.</p>
-            </div>
-        </div>
-
-        <div class="model-cta">
-            <a href="/integral-model" class="learn-more-button">Learn more about our model</a>
-        </div>
-    </div>
-</section>
-
-<!-- HOW CAN YOU MAKE CHANGE -->
-<section class="make-change-section">
-    <div class="section-container">
-        <h2 class="section-heading">How can you make change</h2>
-        
-        <div class="change-grid">
-            <!-- Option 1 -->
-            <div class="change-card">
-                <div class="change-number">01</div>
-                <h3>Give Monthly</h3>
-                <p>Join our community of monthly donors providing consistent support that helps us plan long-term programs and create lasting impact.</p>
-                <a href="#donate-form" class="change-link">Start giving →</a>
-            </div>
-
-            <!-- Option 2 -->
-            <div class="change-card">
-                <div class="change-number">02</div>
-                <h3>Fundraise</h3>
-                <p>Start your own campaign and rally your friends, family, and community to support dignified livelihoods in North East India.</p>
-                <a href="/fundraise" class="change-link">Create campaign →</a>
-            </div>
-
-            <!-- Option 3 -->
-            <div class="change-card">
-                <div class="change-number">03</div>
-                <h3>Sponsor a Project</h3>
-                <p>Fund specific initiatives in silk farming communities and see the direct impact of your contribution on families and ecosystems.</p>
-                <a href="/sponsor" class="change-link">View projects →</a>
-            </div>
-
-            <!-- Option 4 -->
-            <div class="change-card">
-                <div class="change-number">04</div>
-                <h3>Partner with Us</h3>
-                <p>Organizations and businesses can create sustainable partnerships that align with corporate social responsibility goals.</p>
-                <a href="/partnerships" class="change-link">Explore partnership →</a>
-            </div>
-
-            <!-- Option 5 -->
-            <div class="change-card">
-                <div class="change-number">05</div>
-                <h3>Shop Our Store</h3>
-                <p>Purchase authentic silk products directly from artisans, ensuring fair wages and supporting traditional craft preservation.</p>
-                <a href="/shop" class="change-link">Visit store →</a>
-            </div>
-
-            <!-- Option 6 -->
-            <div class="change-card">
-                <div class="change-number">06</div>
-                <h3>Spread the Word</h3>
-                <p>Share our mission with your network and help raise awareness about the importance of sustainable silk farming and climate resilience.</p>
-                <div class="social-share">
-                    <a href="#" class="share-icon" aria-label="Share on Facebook">📘</a>
-                    <a href="#" class="share-icon" aria-label="Share on Twitter">🐦</a>
-                    <a href="#" class="share-icon" aria-label="Share on LinkedIn">💼</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="site-footer">
-    <div class="footer-container">
-        <div class="footer-column">
-            <h3 class="footer-heading">Take action</h3>
-            <ul class="footer-links">
-                <li><a href="/donate">Give</a></li>
-                <li><a href="/fundraise">Fundraise</a></li>
-                <li><a href="/sponsor">Sponsor a project</a></li>
-                <li><a href="/partnerships">Become a brand partner</a></li>
-            </ul>
-        </div>
-        <div class="footer-column">
-            <h3 class="footer-heading">Get to know us</h3>
-            <ul class="footer-links">
-                <li><a href="/our-work">Our work</a></li>
-                <li><a href="/integral-model">The integral model</a></li>
-                <li><a href="/founder">Meet the founder</a></li>
-                <li><a href="/team">Meet the team</a></li>
-                <li><a href="/financials">See our financials</a></li>
-            </ul>
-        </div>
-        <div class="footer-column">
-            <h3 class="footer-heading">Connect</h3>
-            <ul class="footer-links">
-                <li><a href="/contact">Contact us</a></li>
-                <li><a href="/help">Help centre</a></li>
-                <li><a href="/shop">Shop our store</a></li>
-                <li><a href="/careers">Careers</a></li>
-                <li><a href="/reality-lab">Reality lab</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <div class="footer-social">
-            <a href="#" aria-label="Facebook">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-                </svg>
-            </a>
-            <a href="#" aria-label="Twitter">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
-                </svg>
-            </a>
-            <a href="#" aria-label="Instagram">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="white"/>
-                    <circle cx="17.5" cy="6.5" r="1.5" fill="white"/>
-                </svg>
-            </a>
-            <a href="#" aria-label="LinkedIn">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
-                    <circle cx="4" cy="4" r="2"/>
-                </svg>
-            </a>
-            <a href="#" aria-label="YouTube">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                </svg>
-            </a>
-        </div>
-        <div class="footer-bottom-text">
-            <p class="footer-tagline"><strong>Build Tomorrow, Today.</strong></p>
-            <p class="footer-copyright">© 2025 Integral Foundation. All rights reserved.</p>
-            <p class="footer-mission">Preserving the nature & heritage of North East India through sustainable livelihoods.</p>
-        </div>
-    </div>
-</footer>
-
-<!-- STYLES -->
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+{{ define "styles" }}
+/* Donate Page Styles - EXACT from homepage */
+.donate-page-section {
+    background: #faf8f3;
+    padding: 120px 0 80px;
 }
 
-body {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    color: #2d5016;
-    background-color: #ffffff;
-    line-height: 1.6;
-}
-
-/* ========================================
-   HEADER
-   ======================================== */
-.header {
-    background-color: #ffffff;
-    padding: 16px 20px;
-    border-bottom: 1px solid #e5e7eb;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-.header-container {
-    max-width: 1200px;
+/* Donate Section - Ultra Compact & Elegant - EXACT from homepage */
+.donate-container-main {
+    max-width: 600px;
     margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding: 0 5%;
 }
 
-.menu-toggle {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 8px;
-}
-
-.menu-toggle span {
-    width: 25px;
-    height: 3px;
-    background-color: #2d5016;
-    transition: 0.3s;
-}
-
-.logo-text {
-    font-size: 18px;
-    color: #1e3a8a;
-}
-
-.logo-text strong {
-    font-weight: 700;
-}
-
-.give-button {
-    background-color: #fbbf24;
-    color: #2d5016;
-    padding: 12px 24px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 14px;
-    transition: transform 0.2s;
-}
-
-.give-button:hover {
-    transform: scale(1.05);
-}
-
-/* ========================================
-   DONATION SECTION (Your Template)
-   ======================================== */
-.donation-hero {
-    background-color: #fef3c7;
-    padding: 60px 20px 80px;
-}
-
-.donation-content {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.donation-description {
+.donate-intro-text {
     text-align: center;
-    font-size: 18px;
-    line-height: 1.7;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.75rem;
     color: #374151;
-    margin-bottom: 48px;
+    font-weight: 400;
 }
 
-.donation-card {
-    background-color: #ffffff;
-    border-radius: 12px;
-    padding: 40px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Donation Type Toggle */
-.donation-type-toggle {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    margin-bottom: 32px;
-    border: 2px solid #e5e7eb;
+.donation-card-main {
+    background: white;
     border-radius: 6px;
     overflow: hidden;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e5e7eb;
 }
 
-.type-button {
-    padding: 14px 24px;
-    background-color: #ffffff;
+.toggle-buttons-main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.toggle-btn-main {
+    padding: 0.875rem;
     border: none;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 15px;
+    background: white;
+    font-size: 0.8125rem;
     font-weight: 700;
-    color: #6b7280;
     cursor: pointer;
     transition: all 0.2s;
+    color: #6b7280;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-.type-button.active {
-    background-color: #fbbf24;
-    color: #2d5016;
+.toggle-btn-main:first-child {
+    border-right: 1px solid #e5e7eb;
 }
 
-/* Amount Selection */
-.amount-heading {
+.toggle-btn-main.active {
+    background: #FFC700;
+    color: #1f2937;
+}
+
+.card-content-main {
+    padding: 1.75rem 1.75rem;
+}
+
+.section-title-main {
+    font-size: 1.125rem;
+    font-weight: 400;
+    margin-bottom: 1.25rem;
     text-align: center;
-    font-size: 20px;
-    font-weight: 600;
-    color: #2d5016;
-    margin-bottom: 24px;
+    color: #1f2937;
 }
 
-.amount-grid {
+.amount-grid-main {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin-bottom: 24px;
+    gap: 0.625rem;
+    margin-bottom: 0.625rem;
 }
 
-.amount-button {
-    padding: 20px 16px;
-    background-color: #ffffff;
-    border: 2px solid #e5e7eb;
-    border-radius: 8px;
+.amount-btn-main {
+    padding: 1rem 0.625rem;
+    border: 1px solid #d1d5db;
+    background: #f9fafb;
+    border-radius: 4px;
+    font-size: 1.375rem;
+    font-weight: 400;
     cursor: pointer;
     transition: all 0.2s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-}
-
-.amount-button:hover {
-    border-color: #fbbf24;
-}
-
-.amount-button.selected {
-    background-color: #fbbf24;
-    border-color: #fbbf24;
-}
-
-.amount-value {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 24px;
-    font-weight: 700;
-    color: #2d5016;
+    color: #374151;
+    text-align: center;
 }
 
-.amount-period {
-    font-size: 12px;
-    color: #6b7280;
+.amount-btn-main:hover {
+    background: #ffffff;
+    border-color: #9ca3af;
 }
 
-.custom-btn .amount-value {
-    font-size: 16px;
+.amount-btn-main.selected {
+    background: #FFC700;
+    border-color: #FFC700;
+    color: #1f2937;
+    font-weight: 500;
+}
+
+.amount-label-main {
+    font-size: 0.6875rem;
+    color: #9ca3af;
+    font-weight: 400;
+    display: block;
+    margin-top: 0.125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+}
+
+.other-amount-row-main {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.625rem;
+    margin-bottom: 1.25rem;
+}
+
+.other-amount-main {
+    padding: 1rem 0.625rem;
+    border: 1px solid #d1d5db;
+    background: #f9fafb;
+    border-radius: 4px;
+    font-size: 0.9375rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: #9ca3af;
+    text-align: center;
+}
+
+.other-amount-main:hover {
+    background: #ffffff;
+    border-color: #9ca3af;
+}
+
+.other-amount-main.selected {
+    background: #FFC700;
+    border-color: #FFC700;
+    color: #1f2937;
+    font-weight: 500;
+}
+
+.donor-form-main {
+    display: none;
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px dashed #d1d5db;
+}
+
+.donor-form-main.active {
+    display: block;
+}
+
+.form-group-main {
+    margin-bottom: 0.875rem;
+}
+
+.form-label-main {
+    display: block;
     font-weight: 600;
-    color: #6b7280;
+    margin-bottom: 0.375rem;
+    color: #374151;
+    font-size: 0.8125rem;
 }
 
-.custom-amount-wrapper {
-    margin-bottom: 24px;
-}
-
-.custom-amount-input {
+.form-input-main {
     width: 100%;
-    padding: 16px;
-    border: 2px solid #e5e7eb;
-    border-radius: 8px;
+    padding: 0.625rem;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    font-size: 0.875rem;
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 16px;
-    color: #2d5016;
+    transition: all 0.2s;
 }
 
-.custom-amount-input:focus {
+.form-input-main:focus {
     outline: none;
-    border-color: #fbbf24;
+    border-color: #6b7280;
 }
 
-/* Join Button */
-.join-button {
+.submit-btn-main {
     width: 100%;
-    padding: 18px;
-    background-color: #fbbf24;
-    color: #2d5016;
+    padding: 0.875rem;
+    background: #FFC700;
     border: none;
-    border-radius: 8px;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 16px;
+    border-radius: 4px;
+    font-size: 0.9375rem;
     font-weight: 700;
     cursor: pointer;
-    transition: transform 0.2s;
-    margin-bottom: 24px;
+    transition: all 0.2s;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: #1f2937;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-.join-button:hover {
-    transform: scale(1.02);
+.submit-btn-main:hover {
+    background: #E6B300;
 }
 
-/* Impact Statement */
-.impact-statement {
+.submit-btn-main:disabled {
+    background: #e5e7eb;
+    cursor: not-allowed;
+}
+
+.impact-text-main {
     text-align: center;
-    padding: 20px;
-    background-color: #fef3c7;
-    border-radius: 8px;
-    margin-bottom: 24px;
-}
-
-.impact-statement p {
-    font-size: 15px;
+    padding: 1.25rem 1rem;
+    border-top: 1px dashed #d1d5db;
+    margin-top: 1.25rem;
+    font-size: 0.875rem;
     line-height: 1.6;
-    color: #374151;
+    color: #4b5563;
 }
 
-/* Security Notice */
-.security-notice {
+.impact-amount-main {
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.impact-highlight-main {
+    font-weight: 700;
+    color: #2d5016;
+}
+
+.security-notice-main {
     text-align: center;
-    font-size: 13px;
-    color: #6b7280;
-    margin-bottom: 32px;
+    font-size: 0.75rem;
+    color: #9ca3af;
+    margin-top: 1.25rem;
+    line-height: 1.5;
 }
 
-.security-notice a {
-    color: #6b7280;
+.security-notice-main svg {
+    width: 12px;
+    height: 12px;
+    vertical-align: middle;
+    margin-right: 4px;
+}
+
+.security-notice-main a {
+    color: #9ca3af;
     text-decoration: underline;
 }
 
-/* 85% Badge */
-.efficiency-badge {
+.transparency-banner-main {
+    background: #fef3e2;
+    border: 2px solid #f59e0b;
+    border-radius: 8px;
+    padding: 1.5rem;
     display: flex;
-    gap: 20px;
-    padding: 24px;
-    background-color: #fef3c7;
-    border: 2px solid #fbbf24;
-    border-radius: 12px;
     align-items: center;
+    gap: 1.5rem;
+    margin-top: 1.75rem;
 }
 
-.badge-circle {
-    flex-shrink: 0;
+.circle-badge-main {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    border: 4px solid #2d5016;
+    background: white;
+    border: 5px solid #2d5016;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.circle-number-main {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2d5016;
+    line-height: 1;
+}
+
+.circle-percent-main {
+    font-size: 1.25rem;
+    color: #2d5016;
+    line-height: 1;
+}
+
+.transparency-text-main {
+    flex: 1;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: #4b5563;
+}
+
+.transparency-text-main strong {
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.loading-main {
+    display: none;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.loading-main.active {
+    display: block;
+}
+
+.spinner-main {
+    border: 3px solid #e5e7eb;
+    border-top: 3px solid #FFC700;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    animation: spin-main 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin-main {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Modal Styles */
+.modal-overlay-main {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
     align-items: center;
     justify-content: center;
 }
 
-.percentage {
-    font-size: 28px;
-    font-weight: 700;
-    color: #2d5016;
-}
-
-.percent-sign {
-    font-size: 18px;
-}
-
-.badge-text p {
-    font-size: 14px;
-    line-height: 1.6;
-    color: #374151;
-}
-
-/* ========================================
-   STORIES FROM THE FIELD
-   ======================================== */
-.stories-section {
-    padding: 80px 20px;
-    background-color: #ffffff;
-}
-
-.section-container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.section-heading {
-    font-size: 36px;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 48px;
-    color: #2d5016;
-}
-
-.stories-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-}
-
-.story-card {
-    background-color: #f9f7f4;
-    border-radius: 12px;
-    overflow: hidden;
-}
-
-.placeholder-image {
-    background-color: #e5e7eb;
-    aspect-ratio: 4/3;
+.modal-overlay-main.active {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #6b7280;
-    font-size: 14px;
 }
 
-.story-content {
-    padding: 24px;
+.modal-content-main {
+    background: white;
+    padding: 1.75rem;
+    border-radius: 6px;
+    max-width: 320px;
+    width: 90%;
 }
 
-.story-content h3 {
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 12px;
-    color: #2d5016;
-}
-
-.story-content p {
-    font-size: 15px;
-    line-height: 1.6;
-    margin-bottom: 16px;
-    color: #374151;
-}
-
-.read-more {
-    color: #fbb040;
+.modal-title-main {
+    font-size: 1.125rem;
     font-weight: 600;
-    text-decoration: none;
+    margin-bottom: 1rem;
+    color: #1f2937;
 }
 
-.read-more:hover {
-    text-decoration: underline;
-}
-
-/* ========================================
-   THE INTEGRAL MODEL
-   ======================================== */
-.integral-model-section {
-    padding: 80px 20px;
-    background-color: #f9f7f4;
-}
-
-.model-intro {
-    max-width: 800px;
-    margin: 0 auto 48px;
-    text-align: center;
-}
-
-.intro-text {
-    font-size: 18px;
-    line-height: 1.7;
-    color: #374151;
-}
-
-.model-pillars {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 32px;
-    margin-bottom: 48px;
-}
-
-.pillar-card {
-    background-color: #ffffff;
-    padding: 32px;
-    border-radius: 12px;
-    text-align: center;
-}
-
-.pillar-icon {
-    font-size: 48px;
-    margin-bottom: 16px;
-}
-
-.pillar-card h3 {
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 12px;
-    color: #2d5016;
-}
-
-.pillar-card p {
-    font-size: 15px;
-    line-height: 1.6;
-    color: #374151;
-}
-
-.model-cta {
-    text-align: center;
-}
-
-.learn-more-button {
-    display: inline-block;
-    padding: 16px 32px;
-    background-color: #2d5016;
-    color: #ffffff;
-    text-decoration: none;
-    border-radius: 8px;
+.custom-input-main {
+    width: 100%;
+    padding: 0.875rem;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    font-size: 1.375rem;
     font-weight: 600;
-    transition: transform 0.2s;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    margin-bottom: 1rem;
+    text-align: center;
 }
 
-.learn-more-button:hover {
-    transform: scale(1.05);
+.custom-input-main:focus {
+    outline: none;
+    border-color: #6b7280;
 }
 
-/* ========================================
-   HOW CAN YOU MAKE CHANGE
-   ======================================== */
-.make-change-section {
-    padding: 80px 20px;
-    background-color: #ffffff;
+.modal-buttons-main {
+    display: flex;
+    gap: 0.625rem;
 }
 
-.change-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
+.modal-btn-main {
+    flex: 1;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
 }
 
-.change-card {
-    background-color: #f9f7f4;
-    padding: 32px;
-    border-radius: 12px;
-}
-
-.change-number {
-    font-size: 14px;
-    font-weight: 700;
-    color: #fbb040;
-    margin-bottom: 12px;
-}
-
-.change-card h3 {
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 12px;
-    color: #2d5016;
-}
-
-.change-card p {
-    font-size: 15px;
-    line-height: 1.6;
-    margin-bottom: 16px;
+.modal-btn-cancel-main {
+    background: #f3f4f6;
     color: #374151;
 }
 
-.change-link {
-    color: #fbb040;
-    font-weight: 600;
-    text-decoration: none;
+.modal-btn-confirm-main {
+    background: #FFC700;
+    color: #1f2937;
 }
 
-.change-link:hover {
-    text-decoration: underline;
-}
-
-.social-share {
-    display: flex;
-    gap: 12px;
-    margin-top: 16px;
-}
-
-.share-icon {
-    font-size: 24px;
-    text-decoration: none;
-}
-
-/* ========================================
-   FOOTER
-   ======================================== */
-.site-footer {
-    background-color: #f9f7f4;
-    color: #2d5016;
-    padding: 80px 20px 40px;
-}
-
-.footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 60px;
-    padding-bottom: 60px;
-    border-bottom: 1px solid rgba(45, 80, 22, 0.15);
-}
-
-.footer-column {
-    display: flex;
-    flex-direction: column;
-}
-
-.footer-heading {
-    font-size: 14px;
-    font-weight: 700;
-    color: #2d5016;
-    margin-bottom: 24px;
-}
-
-.footer-links {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.footer-links li a {
-    font-size: 16px;
-    color: #2d5016;
-    text-decoration: none;
-    transition: color 0.2s;
-}
-
-.footer-links li a:hover {
-    color: #fbb040;
-}
-
-.footer-bottom {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-top: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
-}
-
-.footer-social {
-    display: flex;
-    gap: 20px;
-}
-
-.footer-social a {
-    color: #2d5016;
-    transition: color 0.2s;
-}
-
-.footer-social a:hover {
-    color: #fbb040;
-}
-
-.footer-bottom-text {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.footer-tagline {
-    font-size: 16px;
-    margin: 0;
-}
-
-.footer-copyright {
-    font-size: 14px;
-    color: rgba(45, 80, 22, 0.6);
-    margin: 0;
-}
-
-.footer-mission {
-    font-size: 14px;
-    color: rgba(45, 80, 22, 0.6);
-    margin: 0;
-}
-
-/* ========================================
-   RESPONSIVE DESIGN
-   ======================================== */
 @media (max-width: 768px) {
-    .logo-text {
-        font-size: 14px;
+    .donate-page-section {
+        padding: 100px 0 60px;
     }
-
-    .amount-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .stories-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .model-pillars {
-        grid-template-columns: 1fr;
-    }
-
-    .change-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .footer-container {
-        grid-template-columns: 1fr;
-        gap: 32px;
-    }
-
-    .efficiency-badge {
+    .donate-container-main { max-width: 100%; }
+    .donate-intro-text { font-size: 0.9375rem; margin-bottom: 1.5rem; }
+    .card-content-main { padding: 1.5rem 1.25rem; }
+    .section-title-main { font-size: 1rem; margin-bottom: 1rem; }
+    .amount-grid-main { grid-template-columns: repeat(2, 1fr); }
+    .amount-btn-main { padding: 0.875rem 0.5rem; font-size: 1.25rem; }
+    .other-amount-row-main { grid-template-columns: 1fr; }
+    .transparency-banner-main {
         flex-direction: column;
         text-align: center;
+        padding: 1.25rem;
+        gap: 1.25rem;
     }
+    .circle-badge-main { width: 70px; height: 70px; border-width: 4px; }
+    .circle-number-main { font-size: 1.75rem; }
+    .circle-percent-main { font-size: 1.125rem; }
+    .transparency-text-main { font-size: 0.8125rem; }
 }
-</style>
+{{ end }}
 
-<!-- JAVASCRIPT -->
-<script>
-// Donation type toggle
-const typeButtons = document.querySelectorAll('.type-button');
-typeButtons.forEach(button => {
-    button.addEventListener('click', function() {
-        typeButtons.forEach(btn => btn.classList.remove('active'));
-        this.classList.add('active');
+{{ define "main" }}
+<section class="donate-page-section">
+    <div class="donate-container-main">
+        <p class="donate-intro-text">
+            Our work to end poverty, and address unemployment and the impact of climate change in North East India needs your support. You can help preserve traditional silk crafts, create dignified livelihoods, and build climate resilience — especially for artisan families and indigenous communities.
+        </p>
         
-        // Update heading text
-        const heading = document.querySelector('.amount-heading');
-        if (this.dataset.type === 'monthly') {
-            heading.textContent = 'Choose an amount to give per month';
+        <div class="donation-card-main">
+            <div class="toggle-buttons-main">
+                <button class="toggle-btn-main" id="onceBtnMain">GIVE ONCE</button>
+                <button class="toggle-btn-main active" id="monthlyBtnMain">MONTHLY</button>
+            </div>
+            
+            <div class="card-content-main">
+                <h2 class="section-title-main" id="sectionTitleMain">Choose an amount to give per month</h2>
+                
+                <div class="amount-grid-main">
+                    <button class="amount-btn-main" data-amount="500">
+                        ₹500 <span class="amount-label-main">INR/mo</span>
+                    </button>
+                    <button class="amount-btn-main" data-amount="1500">
+                        ₹1,500 <span class="amount-label-main">INR/mo</span>
+                    </button>
+                    <button class="amount-btn-main selected" data-amount="3000">
+                        ₹3,000 <span class="amount-label-main">INR/mo</span>
+                    </button>
+                </div>
+                
+                <div class="other-amount-row-main">
+                    <button class="amount-btn-main" data-amount="5000">
+                        ₹5,000 <span class="amount-label-main">INR/mo</span>
+                    </button>
+                    <div class="other-amount-main" id="otherAmountBtnMain">Other amount</div>
+                </div>
+                
+                <div class="donor-form-main" id="donorFormMain">
+                    <div class="form-group-main">
+                        <label class="form-label-main" for="donorNameMain">Full Name *</label>
+                        <input type="text" id="donorNameMain" class="form-input-main" placeholder="Enter your name" required>
+                    </div>
+                    
+                    <div class="form-group-main">
+                        <label class="form-label-main" for="donorEmailMain">Email Address *</label>
+                        <input type="email" id="donorEmailMain" class="form-input-main" placeholder="your@email.com" required>
+                    </div>
+                    
+                    <div class="form-group-main">
+                        <label class="form-label-main" for="donorPhoneMain">Phone Number *</label>
+                        <input type="tel" id="donorPhoneMain" class="form-input-main" placeholder="+91 98765 43210" required>
+                    </div>
+                </div>
+                
+                <button class="submit-btn-main" id="submitBtnMain">JOIN TODAY</button>
+                
+                <div class="loading-main" id="loadingMain">
+                    <div class="spinner-main"></div>
+                    <p>Processing...</p>
+                </div>
+                
+                <div class="impact-text-main" id="impactTextMain">
+                    Your <span class="impact-amount-main">₹3,000</span> monthly donation can support <span class="impact-highlight-main">one artisan or farmer</span> with sustainability & climate resilience training every month. <span class="impact-highlight-main">85%</span> of funds go directly to programs.
+                </div>
+            </div>
+        </div>
+        
+        <p class="security-notice-main">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+            </svg>
+            Secure Payment · This site is protected by reCAPTCHA and the Google 
+            <a href="#">Privacy Policy</a> and <a href="#">Terms of Service</a> apply.
+        </p>
+        
+        <div class="transparency-banner-main">
+            <div class="circle-badge-main">
+                <span class="circle-number-main">85</span>
+                <span class="circle-percent-main">%</span>
+            </div>
+            <div class="transparency-text-main">
+                Thanks to generous private donors who fund our operational expenses, <strong>85% of your donation</strong> directly funds Integral Farming programs, artisan support, and climate resilience projects.
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Custom Amount Modal -->
+<div class="modal-overlay-main" id="customModalMain">
+    <div class="modal-content-main">
+        <h3 class="modal-title-main">Enter Custom Amount</h3>
+        <input type="text" id="customInputMain" class="custom-input-main" placeholder="₹" pattern="[0-9]*">
+        <div class="modal-buttons-main">
+            <button class="modal-btn-main modal-btn-cancel-main" id="cancelBtnMain">Cancel</button>
+            <button class="modal-btn-main modal-btn-confirm-main" id="confirmBtnMain">Confirm</button>
+        </div>
+    </div>
+</div>
+
+<script>
+(function() {
+    // Razorpay Configuration
+    const RAZORPAY_KEY_MAIN = 'rzp_test_YOUR_KEY_HERE';
+    
+    // Donation State
+    let isMonthlyMain = true;
+    let selectedAmountMain = 3000;
+    let showingFormMain = false;
+    
+    // DOM Elements
+    const onceBtnMain = document.getElementById('onceBtnMain');
+    const monthlyBtnMain = document.getElementById('monthlyBtnMain');
+    const sectionTitleMain = document.getElementById('sectionTitleMain');
+    const amountBtnsMain = document.querySelectorAll('.amount-btn-main');
+    const otherAmountBtnMain = document.getElementById('otherAmountBtnMain');
+    const customModalMain = document.getElementById('customModalMain');
+    const customInputMain = document.getElementById('customInputMain');
+    const cancelBtnMain = document.getElementById('cancelBtnMain');
+    const confirmBtnMain = document.getElementById('confirmBtnMain');
+    const impactTextMain = document.getElementById('impactTextMain');
+    const submitBtnMain = document.getElementById('submitBtnMain');
+    const donorFormMain = document.getElementById('donorFormMain');
+    const loadingMain = document.getElementById('loadingMain');
+    
+    // Toggle frequency
+    onceBtnMain.addEventListener('click', () => {
+        isMonthlyMain = false;
+        onceBtnMain.classList.add('active');
+        monthlyBtnMain.classList.remove('active');
+        sectionTitleMain.textContent = 'Choose an amount to give';
+        updateLabelsMain();
+        updateImpactMain();
+    });
+    
+    monthlyBtnMain.addEventListener('click', () => {
+        isMonthlyMain = true;
+        monthlyBtnMain.classList.add('active');
+        onceBtnMain.classList.remove('active');
+        sectionTitleMain.textContent = 'Choose an amount to give per month';
+        updateLabelsMain();
+        updateImpactMain();
+    });
+    
+    // Amount selection
+    amountBtnsMain.forEach(btn => {
+        btn.addEventListener('click', () => {
+            amountBtnsMain.forEach(b => b.classList.remove('selected'));
+            otherAmountBtnMain.classList.remove('selected');
+            btn.classList.add('selected');
+            selectedAmountMain = parseInt(btn.dataset.amount);
+            updateImpactMain();
+        });
+    });
+    
+    // Other amount
+    otherAmountBtnMain.addEventListener('click', () => {
+        customModalMain.classList.add('active');
+        customInputMain.value = '';
+        customInputMain.focus();
+    });
+    
+    cancelBtnMain.addEventListener('click', () => {
+        customModalMain.classList.remove('active');
+    });
+    
+    confirmBtnMain.addEventListener('click', () => {
+        const value = customInputMain.value.replace(/\D/g, '');
+        if (value && parseInt(value) >= 100) {
+            selectedAmountMain = parseInt(value);
+            amountBtnsMain.forEach(b => b.classList.remove('selected'));
+            otherAmountBtnMain.classList.add('selected');
+            otherAmountBtnMain.innerHTML = '₹' + selectedAmountMain.toLocaleString('en-IN');
+            customModalMain.classList.remove('active');
+            updateImpactMain();
         } else {
-            heading.textContent = 'Choose an amount to give';
+            alert('Please enter an amount of at least ₹100');
         }
     });
-});
-
-// Amount selection
-let selectedAmount = 3000;
-const amountButtons = document.querySelectorAll('.amount-button:not(.custom-btn)');
-const customBtn = document.querySelector('.custom-btn');
-const customAmountWrapper = document.querySelector('.custom-amount-wrapper');
-const customAmountInput = document.getElementById('customAmount');
-
-amountButtons.forEach(button => {
-    button.addEventListener('click', function() {
-        amountButtons.forEach(btn => btn.classList.remove('selected'));
-        customBtn.classList.remove('selected');
-        this.classList.add('selected');
-        selectedAmount = parseInt(this.dataset.amount);
-        customAmountWrapper.style.display = 'none';
-        customAmountInput.value = '';
-        updateImpactStatement();
+    
+    customModalMain.addEventListener('click', (e) => {
+        if (e.target === customModalMain) customModalMain.classList.remove('active');
     });
-});
-
-customBtn.addEventListener('click', function() {
-    amountButtons.forEach(btn => btn.classList.remove('selected'));
-    this.classList.add('selected');
-    customAmountWrapper.style.display = 'block';
-    customAmountInput.focus();
-});
-
-customAmountInput.addEventListener('input', function() {
-    selectedAmount = parseInt(this.value) || 0;
-    updateImpactStatement();
-});
-
-function updateImpactStatement() {
-    const statement = document.querySelector('.impact-statement p');
-    statement.innerHTML = `Your <strong>₹${selectedAmount.toLocaleString()}</strong> monthly donation can support <strong>one artisan or farmer</strong> with sustainability & climate resilience training every month. <strong>85%</strong> of funds go directly to programs.`;
-}
-
-// Donate button
-const donateButton = document.getElementById('donateButton');
-donateButton.addEventListener('click', function() {
-    if (selectedAmount < 100) {
-        alert('Please select or enter a donation amount of at least ₹100');
-        return;
+    
+    customInputMain.addEventListener('input', (e) => {
+        e.target.value = e.target.value.replace(/\D/g, '');
+    });
+    
+    function updateLabelsMain() {
+        document.querySelectorAll('.amount-label-main').forEach(label => {
+            label.textContent = isMonthlyMain ? 'INR/mo' : 'INR';
+        });
     }
-
-    const donationType = document.querySelector('.type-button.active').dataset.type;
-
-    // Razorpay integration
-    const options = {
-        key: 'YOUR_RAZORPAY_KEY_ID', // Replace with your key
-        amount: selectedAmount * 100,
-        currency: 'INR',
-        name: 'Integral Foundation',
-        description: donationType === 'monthly' ? 'Monthly Donation' : 'One-time Donation',
-        image: '/path-to-logo.png',
-        theme: {
-            color: '#2d5016'
-        },
-        handler: function(response) {
-            window.location.href = '/thank-you?payment_id=' + response.razorpay_payment_id;
+    
+    function updateImpactMain() {
+        const impacts = {
+            500: 'can provide organic farming inputs for <span class="impact-highlight-main">one family</span>',
+            1500: 'can support <span class="impact-highlight-main">skills training</span> for artisans',
+            3000: 'can support <span class="impact-highlight-main">one artisan or farmer</span> with sustainability & climate resilience training',
+            5000: 'can fund <span class="impact-highlight-main">women\'s training programs</span>'
+        };
+        
+        const impact = impacts[selectedAmountMain] || 'will directly support our programs in North East India';
+        const frequency = isMonthlyMain ? 'monthly donation' : 'donation';
+        const period = isMonthlyMain ? 'every month' : '';
+        
+        impactTextMain.innerHTML = 'Your <span class="impact-amount-main">₹' + selectedAmountMain.toLocaleString('en-IN') + '</span> ' + frequency + ' ' + impact + ' ' + period + '. <span class="impact-highlight-main">85%</span> of funds go directly to programs.';
+    }
+    
+    // Submit
+    submitBtnMain.addEventListener('click', async () => {
+        if (!showingFormMain) {
+            donorFormMain.classList.add('active');
+            showingFormMain = true;
+            submitBtnMain.textContent = 'COMPLETE DONATION';
+            donorFormMain.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else {
+            await processDonationMain();
         }
-    };
-
-    const rzp = new Razorpay(options);
-    rzp.open();
-});
-
-// Smooth scroll for Give button
-document.querySelector('.give-button').addEventListener('click', function(e) {
-    e.preventDefault();
-    document.querySelector('#donate-form').scrollIntoView({ behavior: 'smooth' });
-});
+    });
+    
+    async function processDonationMain() {
+        const name = document.getElementById('donorNameMain').value.trim();
+        const email = document.getElementById('donorEmailMain').value.trim();
+        const phone = document.getElementById('donorPhoneMain').value.trim();
+        
+        if (!name || !email || !phone) {
+            alert('Please fill in all required fields');
+            return;
+        }
+        
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            alert('Please enter a valid email address');
+            return;
+        }
+        
+        submitBtnMain.disabled = true;
+        loadingMain.classList.add('active');
+        
+        const options = {
+            key: RAZORPAY_KEY_MAIN,
+            amount: selectedAmountMain * 100,
+            currency: 'INR',
+            name: 'Integral Foundation',
+            description: (isMonthlyMain ? 'Monthly' : 'One-time') + ' Donation',
+            prefill: { name, email, contact: phone },
+            notes: { frequency: isMonthlyMain ? 'monthly' : 'one-time' },
+            theme: { color: '#FFC700' },
+            handler: function(response) {
+                localStorage.setItem('lastDonation', JSON.stringify({
+                    name, email, phone, amount: selectedAmountMain,
+                    frequency: isMonthlyMain ? 'monthly' : 'one-time',
+                    paymentId: response.razorpay_payment_id,
+                    timestamp: new Date().toISOString()
+                }));
+                window.location.href = '/thank-you/?amount=' + selectedAmountMain + '&frequency=' + (isMonthlyMain ? 'monthly' : 'one-time');
+            },
+            modal: {
+                ondismiss: function() {
+                    submitBtnMain.disabled = false;
+                    loadingMain.classList.remove('active');
+                }
+            }
+        };
+        
+        new Razorpay(options).open();
+    }
+})();
 </script>
-
-<!-- Razorpay Checkout -->
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-
-</body>
-</html>
+{{ end }}
