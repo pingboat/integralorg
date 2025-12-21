@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode | default "en" }}">
+<html lang="{{ .Site.LanguageCode }}">
 <head>
     <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ELNLPTG276"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-ELNLPTG276');
-    </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ELNLPTG276"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-ELNLPTG276');
+</script>
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,7 +24,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         :root {
-            /* Primary Brand Colors - EXACT from homepage */
+            /* Primary Brand Colors */
             --forest: {{ .Site.Params.colors.forest_green | default "#2d5016" }};
             --saffron: {{ .Site.Params.colors.deep_saffron | default "#f5a623" }};
             --navy: {{ .Site.Params.colors.navy_blue | default "#1e3a5f" }};
@@ -40,8 +40,9 @@
             --white: #ffffff;
             --charcoal: #2d2d2d;
             --gray: #6b7280;
-            --light-gray: #e8e4da;
-            --border: #d4d0c4;
+            
+            /* Arrow Blue - CONSISTENT ACROSS ALL SECTIONS */
+            --arrow-blue: #478ac9;
         }
         
         body {
@@ -49,15 +50,12 @@
             line-height: 1.7;
             color: var(--charcoal);
             font-weight: 400;
-            background: var(--cream);
         }
         
         .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
         .center { text-align: center; }
         
-        /* ========================================
-           HEADER STYLES - EXACT FROM HOMEPAGE
-           ======================================== */
+        /* Header */
         .header {
             position: fixed;
             top: 0;
@@ -99,18 +97,6 @@
         
         .menu-toggle:hover span {
             background: var(--forest);
-        }
-        
-        .menu-toggle.active span:nth-child(1) {
-            transform: translateY(7px) rotate(45deg);
-        }
-        
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-        
-        .menu-toggle.active span:nth-child(3) {
-            transform: translateY(-7px) rotate(-45deg);
         }
         
         .logo {
@@ -160,9 +146,11 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(255, 199, 0, 0.4);
         }
-        
-        /* Mobile Header */
+
+        /* Mobile Responsiveness */
         @media (max-width: 768px) {
+            .menu-toggle { display: flex; }
+            
             .logo { 
                 font-size: 1.2rem; 
             }
@@ -173,333 +161,478 @@
 
             .logo-tagline {
                 font-weight: 400;
-                font-size: 0.65rem;
             }
-            
+
+            .logo-title { 
+                font-size: 1.2rem; 
+            }
+
+            .logo-tagline { 
+                font-size: 0.65rem; 
+            }
             .separator { display: none; }
             .btn-give { padding: 0.6rem 1.5rem; font-size: 0.9rem; }
             .nav { gap: 0.5rem; }
         }
-        
+
         /* ========================================
-           DRAWER OVERLAY
+           ACCORDION SIDE DRAWER MENU - EXACT FROM INDEX.HTML
            ======================================== */
-        .drawer-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 1001;
-        }
-        
-        .drawer-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        /* ========================================
-           SIDE DRAWER MENU
-           ======================================== */
+
         .side-drawer {
             position: fixed;
             top: 0;
-            right: -100%;
-            width: 100%;
-            max-width: 400px;
+            left: 0;
+            width: 90%;
+            max-width: 430px;
             height: 100vh;
-            background: #f9f7f4;
+            background: #f8f8f8;
+            transform: translateX(-100%);
+            transition: transform 0.4s ease;
             z-index: 1002;
-            transition: right 0.3s ease;
+            box-shadow: 4px 0 20px rgba(0,0,0,0.1);
             overflow-y: auto;
-            padding: 80px 20px 20px;
         }
-        
+
         .side-drawer.active {
-            right: 0;
+            transform: translateX(0);
         }
-        
+
         .drawer-content {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
+            padding: 90px 0 2rem 0;
         }
-        
+
         /* Accordion Section */
         .accordion-section {
-            background: transparent;
+            margin: 0;
         }
-        
+
+        /* Accordion Header */
         .accordion-header {
             width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 20px;
+            padding: 1.5rem 2rem;
             background: transparent;
             border: none;
             cursor: pointer;
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            text-align: left;
         }
-        
+
         .accordion-title {
             font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            color: var(--charcoal);
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #000;
+            text-transform: uppercase;
         }
-        
+
+        /* Plus/Minus Icon - GRAY */
         .accordion-icon {
-            width: 28px;
-            height: 28px;
+            width: 24px;
+            height: 24px;
+            border: 2px solid #6b7280;
             border-radius: 50%;
-            background: #e8e4db;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #888;
-            transition: all 0.3s ease;
+            flex-shrink: 0;
         }
-        
+
         .accordion-icon svg {
-            width: 12px;
-            height: 12px;
+            width: 14px;
+            height: 14px;
+            stroke: #6b7280;
+            stroke-width: 2;
         }
-        
-        .accordion-icon .vertical {
-            transition: transform 0.3s ease, opacity 0.3s ease;
+
+        /* When expanded - show MINUS (keep gray) */
+        .accordion-header[aria-expanded="true"] .accordion-icon {
+            border-color: #6b7280;
         }
-        
-        .accordion-section.active .accordion-icon .vertical {
+
+        .accordion-header[aria-expanded="true"] .accordion-icon svg {
+            stroke: #6b7280;
+        }
+
+        .accordion-header[aria-expanded="true"] .accordion-icon svg path:last-child {
             opacity: 0;
-            transform: rotate(90deg);
         }
-        
+
         /* Accordion Body */
         .accordion-body {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease;
+            transition: max-height 0.4s ease;
         }
-        
+
         .accordion-section.active .accordion-body {
-            max-height: 500px;
+            max-height: 1200px;
         }
-        
-        /* Action Cards */
+
+        /* Card Container */
         .action-cards {
             display: flex;
             flex-direction: column;
-            gap: 8px;
-            padding: 0 8px 8px;
+            gap: 0.5rem;
+            padding: 1rem 1.5rem 1.5rem;
         }
-        
+
+        /* Individual Card - VISIBLE CREAM BACKGROUND */
         .action-card {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 16px;
+            position: relative;
             background: #efe8dc;
-            border-radius: 12px;
+            border-radius: 10px;
+            padding: 1.25rem 3.5rem 1.25rem 1.5rem;
             text-decoration: none;
-            transition: all 0.2s ease;
+            display: block;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
         }
-        
+
         .action-card:hover {
-            background: #e8e0d2;
-            transform: translateX(4px);
+            background: #fff;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.08);
         }
-        
-        .action-card-content {
-            flex: 1;
-        }
-        
+
         .action-card-title {
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--charcoal);
-            margin-bottom: 4px;
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #000;
+            margin: 0 0 0.375rem 0;
+            line-height: 1.3;
         }
-        
+
         .action-card-desc {
-            font-size: 13px;
-            color: #666;
-            line-height: 1.4;
+            font-size: 0.9375rem;
+            font-weight: 400;
+            color: #4a4a4a;
+            margin: 0;
+            line-height: 1.5;
         }
-        
+
+        /* Yellow Arrow with BLUE arrow inside - 30px */
         .action-arrow {
-            width: 32px;
-            height: 32px;
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
             background: var(--yellow);
-            border: 2px solid var(--charcoal);
+            border: 1px solid #000;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--charcoal);
-            flex-shrink: 0;
-            margin-left: 12px;
-            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        
-        .action-card:hover .action-arrow {
-            background: var(--yellow-hover);
-            transform: translateX(2px);
-        }
-        
+
         .action-arrow svg {
             width: 14px;
             height: 14px;
+            stroke: var(--arrow-blue);
+            stroke-width: 2.5;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
         }
-        
+
+        .action-card:hover .action-arrow {
+            background: var(--forest);
+            border-color: var(--forest);
+        }
+
+        .action-card:hover .action-arrow svg {
+            stroke: #fff;
+        }
+
+        /* Overlay */
+        .drawer-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0,0,0,0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 999;
+        }
+
+        .drawer-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        body.drawer-open {
+            overflow: hidden;
+        }
+
+        /* Hamburger Animation */
+        .menu-toggle.active span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        /* Mobile */
+        @media (max-width: 480px) {
+            .side-drawer {
+                width: 88%;
+            }
+            
+            .action-card {
+                padding: 1.125rem 3.25rem 1.125rem 1.25rem;
+            }
+            
+            .action-arrow {
+                width: 28px;
+                height: 28px;
+                right: 1.25rem;
+                border-width: 1px;
+            }
+            
+            .action-arrow svg {
+                width: 13px;
+                height: 13px;
+            }
+        }
+
+        /* Scrollbar */
+        .side-drawer::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .side-drawer::-webkit-scrollbar-thumb {
+            background: var(--forest);
+            border-radius: 3px;
+        }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .side-drawer,
+            .accordion-body,
+            .action-card,
+            .accordion-icon,
+            .action-arrow {
+                transition: none;
+            }
+        }
+
         /* ========================================
            MAIN CONTENT AREA
            ======================================== */
         .main-content {
             padding-top: 80px;
-            min-height: 100vh;
         }
-        
+
         /* ========================================
-           FOOTER - EXACT FROM HOMEPAGE
+           FOOTER STYLES - EXACT FROM INDEX.HTML
            ======================================== */
+
         .site-footer {
-            background: #f9f7f4;
-            padding: 60px 0 30px;
-            border-top: 1px solid #e8e4da;
+            background-color: #f9f7f4;
+            color: #2d5016;
+            padding: 80px 20px 40px;
+            margin-top: 100px;
         }
-        
+
         .footer-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 5%;
-        }
-        
-        .footer-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            margin-bottom: 40px;
+            gap: 60px;
+            padding-bottom: 60px;
+            border-bottom: 1px solid rgba(45, 80, 22, 0.15);
         }
-        
-        .footer-column h4 {
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: #888;
-            margin-bottom: 20px;
+
+        .footer-column {
+            display: flex;
+            flex-direction: column;
         }
-        
-        .footer-column ul {
+
+        .footer-heading {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: none;
+            letter-spacing: 0.5px;
+            color: #2d5016;
+            margin-bottom: 24px;
+        }
+
+        .footer-links {
             list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
-        
-        .footer-column li {
-            margin-bottom: 12px;
-        }
-        
-        .footer-column a {
-            color: var(--charcoal);
+
+        .footer-links li a {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            color: #2d5016;
             text-decoration: none;
-            font-size: 15px;
-            transition: color 0.2s;
+            transition: color 0.2s ease;
+            display: inline-block;
         }
-        
-        .footer-column a:hover {
-            color: var(--forest);
+
+        .footer-links li a:hover {
+            color: #fbb040;
         }
-        
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+        }
+
         .footer-social {
             display: flex;
-            gap: 16px;
-            margin-top: 16px;
+            gap: 20px;
+            justify-content: center;
         }
-        
+
         .footer-social a {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #e8e4da;
+            color: #2d5016;
+            width: 24px;
+            height: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--charcoal);
-            transition: all 0.2s;
+            transition: color 0.2s ease;
         }
-        
+
         .footer-social a:hover {
-            background: var(--yellow);
+            color: #fbb040;
         }
-        
-        .footer-bottom {
-            border-top: 1px solid #e8e4da;
-            padding-top: 30px;
+
+        .footer-bottom-text {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
             text-align: center;
         }
-        
-        .footer-logo {
-            font-size: 1.2rem;
-            color: var(--navy);
-            margin-bottom: 10px;
+
+        .footer-tagline {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 16px;
+            color: #2d5016;
+            margin: 0;
         }
-        
-        .footer-logo span:first-child {
-            font-weight: 700;
-        }
-        
-        .footer-mission {
-            color: #888;
+
+        .footer-copyright {
+            font-family: 'Plus Jakarta Sans', sans-serif;
             font-size: 14px;
-            max-width: 600px;
-            margin: 0 auto;
+            color: rgba(45, 80, 22, 0.6);
+            margin: 0;
         }
-        
+
+        .footer-mission {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 14px;
+            color: rgba(45, 80, 22, 0.6);
+            margin: 0;
+        }
+
         @media (max-width: 768px) {
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
+            .site-footer {
+                padding: 60px 20px 30px;
+            }
+
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+                padding-bottom: 40px;
+            }
+
+            .footer-column:last-child {
+                grid-column: 1 / -1;
             }
         }
-        
+
+        @media (max-width: 480px) {
+            .site-footer {
+                padding: 40px 16px 24px;
+                margin-top: 60px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 32px;
+                padding-bottom: 32px;
+            }
+
+            .footer-heading {
+                font-size: 13px;
+                margin-bottom: 20px;
+            }
+
+            .footer-links {
+                gap: 10px;
+            }
+
+            .footer-links li a {
+                font-size: 15px;
+            }
+
+            .footer-bottom {
+                padding-top: 32px;
+            }
+
+            .footer-copyright {
+                font-size: 13px;
+            }
+
+            .footer-social {
+                gap: 16px;
+            }
+        }
+
         /* ========================================
-           PAGE-SPECIFIC STYLES (from {{ block }})
+           PAGE-SPECIFIC STYLES
            ======================================== */
         {{ block "styles" . }}{{ end }}
     </style>
 </head>
 <body>
-    <!-- ========================================
-         HEADER - EXACT FROM HOMEPAGE
-         ======================================== -->
     <header class="header">
         <div class="container">
-            <nav class="nav">
-                <button class="menu-toggle" aria-label="Toggle menu">
+            <div class="nav">
+                <button class="menu-toggle" aria-label="Menu">
                     <span></span>
                     <span></span>
                     <span></span>
                 </button>
-                
                 <div class="logo">
                     <span class="logo-title">{{ .Site.Title }}:</span>
                     <span class="logo-tagline">Build Tomorrow, Today.</span>
                 </div>
-                
                 <div class="nav-right">
                     <span class="separator">|</span>
                     <a href="/donate/" class="btn-give">GIVE</a>
                 </div>
-            </nav>
+            </div>
         </div>
     </header>
-
-    <!-- Drawer Overlay -->
-    <div class="drawer-overlay"></div>
 
     <!-- Side Drawer Menu -->
     <div class="side-drawer">
@@ -511,29 +644,46 @@
                     <span class="accordion-title">TAKE ACTION</span>
                     <span class="accordion-icon">
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path class="horizontal" d="M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                            <path class="vertical" d="M7 1v12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M7 1v12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                         </svg>
                     </span>
                 </button>
                 <div class="accordion-body">
                     <div class="action-cards">
                         <a href="/donate/" class="action-card">
-                            <div class="action-card-content">
-                                <div class="action-card-title">Give Monthly</div>
-                                <div class="action-card-desc">Join our growing community serving people with dignified livelihoods every month.</div>
-                            </div>
+                            <div class="action-card-title">Give Monthly</div>
+                            <div class="action-card-desc">Join our growing community serving people with dignified livelihoods every month.</div>
                             <div class="action-arrow">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                                     <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </div>
                         </a>
+                        
                         <a href="/fundraise/" class="action-card">
-                            <div class="action-card-content">
-                                <div class="action-card-title">Fundraise</div>
-                                <div class="action-card-desc">Start a campaign to support our mission.</div>
+                            <div class="action-card-title">Fundraise for Integral Foundation</div>
+                            <div class="action-card-desc">Support our projects by raising funds for causes that matter.</div>
+                            <div class="action-arrow">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
                             </div>
+                        </a>
+                        
+                        <a href="/sponsor/" class="action-card">
+                            <div class="action-card-title">Sponsor a project</div>
+                            <div class="action-card-desc">Create a wider impact with ₹10 lakhs or more.</div>
+                            <div class="action-arrow">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </a>
+                        
+                        <a href="/partner/" class="action-card">
+                            <div class="action-card-title">Become a brand partner</div>
+                            <div class="action-card-desc">Work closely with us to develop initiatives with lasting impact.</div>
                             <div class="action-arrow">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                                     <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -543,58 +693,67 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- GET TO KNOW US -->
+
+            <!-- ABOUT US -->
             <div class="accordion-section">
                 <button class="accordion-header" aria-expanded="false">
-                    <span class="accordion-title">GET TO KNOW US</span>
+                    <span class="accordion-title">ABOUT US</span>
                     <span class="accordion-icon">
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path class="horizontal" d="M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                            <path class="vertical" d="M7 1v12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M7 1v12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                         </svg>
                     </span>
                 </button>
                 <div class="accordion-body">
                     <div class="action-cards">
-                        <a href="/about/" class="action-card">
-                            <div class="action-card-content">
-                                <div class="action-card-title">About Us</div>
-                                <div class="action-card-desc">Learn about our mission and vision.</div>
-                            </div>
-                            <div class="action-arrow">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                                    <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                        </a>
-                        <a href="/what-we-do/" class="action-card">
-                            <div class="action-card-content">
-                                <div class="action-card-title">What We Do</div>
-                                <div class="action-card-desc">Discover our programs and impact areas.</div>
-                            </div>
-                            <div class="action-arrow">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                                    <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                        </a>
                         <a href="/integral-model/" class="action-card">
-                            <div class="action-card-content">
-                                <div class="action-card-title">The Integral Model</div>
-                                <div class="action-card-desc">Our unique approach to sustainable development.</div>
-                            </div>
+                            <div class="action-card-title">The Integral Model</div>
                             <div class="action-arrow">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                                     <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </div>
                         </a>
-                        <a href="/annual-reports/" class="action-card">
-                            <div class="action-card-content">
-                                <div class="action-card-title">Annual Reports</div>
-                                <div class="action-card-desc">Transparency in our work and finances.</div>
+                        
+                        <a href="/our-work/" class="action-card">
+                            <div class="action-card-title">Stories from the field</div>
+                            <div class="action-arrow">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
                             </div>
+                        </a>
+                        
+                        <a href="/how-we-work/" class="action-card">
+                            <div class="action-card-title">How we work</div>
+                            <div class="action-arrow">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </a>
+                        
+                        <a href="/what-we-do/" class="action-card">
+                            <div class="action-card-title">What we do</div>
+                            <div class="action-arrow">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </a>
+                        
+                        <a href="/partners/" class="action-card">
+                            <div class="action-card-title">Our partners</div>
+                            <div class="action-arrow">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </a>
+                        
+                        <a href="/team/" class="action-card">
+                            <div class="action-card-title">Meet the founder</div>
                             <div class="action-arrow">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                                     <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -604,36 +763,31 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- CONNECT -->
+
+            <!-- CONTACT US -->
             <div class="accordion-section">
                 <button class="accordion-header" aria-expanded="false">
-                    <span class="accordion-title">CONNECT</span>
+                    <span class="accordion-title">CONTACT US</span>
                     <span class="accordion-icon">
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path class="horizontal" d="M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                            <path class="vertical" d="M7 1v12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M1 7h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M7 1v12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                         </svg>
                     </span>
                 </button>
                 <div class="accordion-body">
                     <div class="action-cards">
                         <a href="/contact/" class="action-card">
-                            <div class="action-card-content">
-                                <div class="action-card-title">Contact</div>
-                                <div class="action-card-desc">Get in touch with our team.</div>
-                            </div>
+                            <div class="action-card-title">Get in touch</div>
                             <div class="action-arrow">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                                     <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </div>
                         </a>
-                        <a href="/careers/" class="action-card">
-                            <div class="action-card-content">
-                                <div class="action-card-title">Careers</div>
-                                <div class="action-card-desc">Join our team and make an impact.</div>
-                            </div>
+                        
+                        <a href="/faq/" class="action-card">
+                            <div class="action-card-title">FAQs</div>
                             <div class="action-arrow">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                                     <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -643,155 +797,199 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </div>
 
+    <!-- Overlay -->
+    <div class="drawer-overlay"></div>
+
     <!-- ========================================
-         MAIN CONTENT
+         MAIN CONTENT - PAGE SPECIFIC
          ======================================== -->
     <main class="main-content">
         {{ block "main" . }}{{ end }}
     </main>
 
-    <!-- ========================================
-         FOOTER - EXACT FROM HOMEPAGE
-         ======================================== -->
+    <!-- FOOTER SECTION -->
     <footer class="site-footer">
         <div class="footer-container">
-            <div class="footer-grid">
-                <div class="footer-column">
-                    <h4>Take Action</h4>
-                    <ul>
-                        <li><a href="/donate/">Donate</a></li>
-                        <li><a href="/volunteer/">Become a Volunteer</a></li>
-                        <li><a href="/partner/">Become a Brand Partner</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Get to Know Us</h4>
-                    <ul>
-                        <li><a href="/about/">About Us</a></li>
-                        <li><a href="/annual-reports/">Annual Reports</a></li>
-                        <li><a href="/integral-model/">The Integral Model</a></li>
-                        <li><a href="/what-we-do/">What We Do</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>Connect</h4>
-                    <ul>
-                        <li><a href="/contact/">Contact</a></li>
-                        <li><a href="/careers/">Careers</a></li>
-                        <li><a href="/reality-lab/">Reality Lab</a></li>
-                    </ul>
-                    <div class="footer-social">
-                        <a href="#" aria-label="Facebook">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-                            </svg>
-                        </a>
-                        <a href="#" aria-label="Twitter">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
-                            </svg>
-                        </a>
-                        <a href="#" aria-label="Instagram">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                            </svg>
-                        </a>
-                        <a href="#" aria-label="LinkedIn">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                                <rect x="2" y="9" width="4" height="12"/>
-                                <circle cx="4" cy="4" r="2"/>
-                            </svg>
-                        </a>
-                        <a href="#" aria-label="YouTube">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
-                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
+            
+            <!-- Column 1: Take Action -->
+            <div class="footer-column">
+                <h3 class="footer-heading">Take action</h3>
+                <ul class="footer-links">
+                    <li><a href="/donate/">Give</a></li>
+                    <li><a href="/fundraise/">Fundraise</a></li>
+                    <li><a href="/sponsor/">Sponsor a project</a></li>
+                    <li><a href="/partnerships/">Become a brand partner</a></li>
+                </ul>
             </div>
-            <div class="footer-bottom">
-                <div class="footer-logo">
-                    <span>{{ .Site.Title }}:</span> <span>Build Tomorrow, Today.</span>
-                </div>
-                <p class="footer-mission">Creating dignified rural livelihoods in North East India through integral farming and silk craft preservation.</p>
+
+            <!-- Column 2: Get to Know Us -->
+            <div class="footer-column">
+                <h3 class="footer-heading">Get to know us</h3>
+                <ul class="footer-links">
+                    <li><a href="/our-work/">Our work</a></li>
+                    <li><a href="/integral-model/">The integral model</a></li>
+                    <li><a href="/founder/">Meet the founder</a></li>
+                    <li><a href="/team/">Meet the team</a></li>
+                    <li><a href="/financials/">See our financials</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Connect -->
+            <div class="footer-column">
+                <h3 class="footer-heading">Connect</h3>
+                <ul class="footer-links">
+                    <li><a href="/contact/">Contact us</a></li>
+                    <li><a href="/help/">Help centre</a></li>
+                    <li><a href="/shop/">Shop our store</a></li>
+                    <li><a href="/careers/">Careers</a></li>
+                    <li><a href="/reality-lab/">Reality lab</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <div class="footer-social">
+                <a href="#" aria-label="Facebook">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                    </svg>
+                </a>
+                <a href="#" aria-label="Twitter">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                    </svg>
+                </a>
+                <a href="#" aria-label="Instagram">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="white"/>
+                        <circle cx="17.5" cy="6.5" r="1.5" fill="white"/>
+                    </svg>
+                </a>
+                <a href="#" aria-label="LinkedIn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
+                        <circle cx="4" cy="4" r="2"/>
+                    </svg>
+                </a>
+                <a href="#" aria-label="YouTube">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="footer-bottom-text">
+                <p class="footer-tagline"><strong>{{ .Site.Params.tagline | default "Build Tomorrow, Today." }}</strong></p>
+                <p class="footer-copyright">© {{ now.Year }} {{ .Site.Title }}. All rights reserved.</p>
+                <p class="footer-mission">Preserving the nature & heritage of North East India through sustainable livelihoods.</p>
             </div>
         </div>
     </footer>
-
-    <!-- ========================================
-         JAVASCRIPT - EXACT FROM HOMEPAGE
-         ======================================== -->
+    
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const menuToggle = document.querySelector('.menu-toggle');
-        const sideDrawer = document.querySelector('.side-drawer');
-        const drawerOverlay = document.querySelector('.drawer-overlay');
-        const accordionHeaders = document.querySelectorAll('.accordion-header');
-        const actionCards = document.querySelectorAll('.action-card');
-
-        // Toggle drawer
-        menuToggle.addEventListener('click', function() {
-            menuToggle.classList.toggle('active');
-            sideDrawer.classList.toggle('active');
-            drawerOverlay.classList.toggle('active');
-            document.body.style.overflow = sideDrawer.classList.contains('active') ? 'hidden' : '';
-        });
-
-        // Close drawer when clicking overlay
-        drawerOverlay.addEventListener('click', function() {
-            menuToggle.classList.remove('active');
-            sideDrawer.classList.remove('active');
-            drawerOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-
-        // Accordion functionality
-        accordionHeaders.forEach(header => {
-            header.addEventListener('click', function() {
-                const section = this.parentElement;
-                const isActive = section.classList.contains('active');
-                
-                // Close all sections
-                document.querySelectorAll('.accordion-section').forEach(s => {
-                    s.classList.remove('active');
-                });
-                
-                // Open clicked section if it wasn't active
-                if (!isActive) {
-                    section.classList.add('active');
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
                 }
             });
         });
+        
+        // Accordion Hamburger Menu
+        (function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const drawer = document.querySelector('.side-drawer');
+            const overlay = document.querySelector('.drawer-overlay');
+            const body = document.body;
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            const drawerLinks = document.querySelectorAll('.action-card');
 
-        // Close drawer when clicking action card
-        actionCards.forEach(card => {
-            card.addEventListener('click', function() {
-                menuToggle.classList.remove('active');
-                sideDrawer.classList.remove('active');
-                drawerOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        });
+            if (!menuToggle || !drawer || !overlay) return;
 
-        // Close on window resize if desktop
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 768) {
-                menuToggle.classList.remove('active');
-                sideDrawer.classList.remove('active');
-                drawerOverlay.classList.remove('active');
-                document.body.style.overflow = '';
+            // Toggle drawer
+            function openDrawer() {
+                drawer.classList.add('active');
+                overlay.classList.add('active');
+                menuToggle.classList.add('active');
+                body.classList.add('drawer-open');
+                menuToggle.setAttribute('aria-expanded', 'true');
             }
-        });
-    });
+
+            function closeDrawer() {
+                drawer.classList.remove('active');
+                overlay.classList.remove('active');
+                menuToggle.classList.remove('active');
+                body.classList.remove('drawer-open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            }
+
+            function toggleDrawer() {
+                if (drawer.classList.contains('active')) {
+                    closeDrawer();
+                } else {
+                    openDrawer();
+                }
+            }
+
+            menuToggle.addEventListener('click', toggleDrawer);
+            overlay.addEventListener('click', closeDrawer);
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && drawer.classList.contains('active')) {
+                    closeDrawer();
+                }
+            });
+
+            // Accordion functionality
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const section = this.closest('.accordion-section');
+                    const isActive = section.classList.contains('active');
+
+                    document.querySelectorAll('.accordion-section').forEach(s => {
+                        if (s !== section) {
+                            s.classList.remove('active');
+                            s.querySelector('.accordion-header').setAttribute('aria-expanded', 'false');
+                        }
+                    });
+
+                    if (isActive) {
+                        section.classList.remove('active');
+                        this.setAttribute('aria-expanded', 'false');
+                    } else {
+                        section.classList.add('active');
+                        this.setAttribute('aria-expanded', 'true');
+                    }
+                });
+            });
+
+            // Close drawer on link click
+            drawerLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    closeDrawer();
+                });
+            });
+
+            // Close drawer on window resize (desktop)
+            let resizeTimer;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(function() {
+                    if (window.innerWidth > 768 && drawer.classList.contains('active')) {
+                        closeDrawer();
+                    }
+                }, 250);
+            });
+        })();
     </script>
 </body>
 </html>
