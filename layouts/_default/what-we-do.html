@@ -1,979 +1,564 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>What We Do - Integral Foundation</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
+<{{ define "styles" }}
+/* What We Do Page Styles */
+.page-hero {
+    padding: 100px 0 60px;
+    text-align: center;
+    background: var(--cream);
+}
 
-<!-- HEADER -->
-<header class="header">
-    <div class="header-container">
-        <button class="menu-toggle" aria-label="Menu" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <div class="logo">
-            <a href="/">
-                <span class="logo-text"><strong>Integral Foundation:</strong> Build Tomorrow, Today.</span>
-            </a>
-        </div>
-        <a href="/donate" class="give-button">GIVE</a>
-    </div>
-</header>
+.page-hero h1 {
+    font-size: 3rem;
+    color: var(--navy);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
 
-<!-- HERO SECTION -->
-<section class="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
+.page-hero .subtitle {
+    font-size: 1.15rem;
+    color: var(--gray);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+.content-section {
+    padding: 80px 0;
+}
+
+.content-section.alt-bg {
+    background: var(--white);
+}
+
+.section-intro {
+    max-width: 800px;
+    margin: 0 auto 60px;
+    text-align: center;
+}
+
+.section-intro h2 {
+    font-size: 2rem;
+    color: var(--navy);
+    margin-bottom: 1rem;
+}
+
+.section-intro p {
+    font-size: 1.1rem;
+    color: var(--charcoal);
+    line-height: 1.8;
+}
+
+/* Program Cards Grid */
+.programs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 24px;
+}
+
+.program-card {
+    background: var(--white);
+    padding: 36px;
+    border-radius: 20px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.program-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+
+.program-card h3 {
+    font-size: 1.3rem;
+    color: var(--navy);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.program-card p {
+    color: var(--gray);
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.program-card ul {
+    list-style: none;
+    margin-bottom: 0;
+}
+
+.program-card ul li {
+    padding: 8px 0;
+    padding-left: 20px;
+    position: relative;
+    color: var(--charcoal);
+    font-size: 0.95rem;
+}
+
+.program-card ul li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--forest);
+}
+
+.program-card .arrow {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    width: 40px;
+    height: 40px;
+    background: var(--yellow);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--charcoal);
+    font-size: 1.2rem;
+    transition: all 0.3s;
+}
+
+.program-card:hover .arrow {
+    transform: translateX(4px);
+}
+
+/* Impact Stats */
+.impact-stats {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+    margin-top: 60px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-item .number {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--forest);
+    line-height: 1;
+}
+
+.stat-item .label {
+    color: var(--gray);
+    font-size: 1rem;
+    margin-top: 8px;
+}
+
+/* Day in Life Section */
+.day-section {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 48px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.day-section h3 {
+    font-size: 1.5rem;
+    color: var(--navy);
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+.day-timeline {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+}
+
+.day-item {
+    text-align: center;
+    padding: 24px;
+    background: var(--cream);
+    border-radius: 16px;
+}
+
+.day-item .icon {
+    font-size: 2rem;
+    margin-bottom: 12px;
+}
+
+.day-item .time {
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 8px;
+}
+
+.day-item p {
+    color: var(--gray);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.day-item em {
+    color: var(--forest);
+    font-style: normal;
+    font-weight: 500;
+}
+
+/* CTA Section */
+.cta-section {
+    background: linear-gradient(135deg, var(--forest) 0%, #1a4010 100%);
+    padding: 80px 0;
+    text-align: center;
+    color: white;
+}
+
+.cta-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.cta-section p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cta-btn {
+    padding: 16px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s;
+}
+
+.cta-btn.primary {
+    background: var(--yellow);
+    color: var(--charcoal);
+}
+
+.cta-btn.secondary {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+.cta-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Where Next Cards */
+.where-next-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+}
+
+.where-next-card {
+    background: var(--white);
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    text-decoration: none;
+    transition: all 0.3s;
+    display: block;
+}
+
+.where-next-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+
+.where-next-card h3 {
+    font-size: 1.2rem;
+    color: var(--navy);
+    margin-bottom: 12px;
+}
+
+.where-next-card p {
+    color: var(--gray);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.where-next-card .link {
+    color: var(--forest);
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .page-hero h1 {
+        font-size: 2rem;
+    }
+    
+    .programs-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .impact-stats {
+        gap: 40px;
+    }
+    
+    .stat-item .number {
+        font-size: 2.5rem;
+    }
+    
+    .day-section {
+        padding: 32px 24px;
+    }
+}
+{{ end }}
+
+{{ define "main" }}
+<!-- Hero Section -->
+<section class="page-hero">
+    <div class="container">
         <h1>What we do</h1>
-        <p class="hero-subtitle">Integral Foundation creates dignified rural livelihoods in North East India by preserving silk heritage, building climate resilience, and empowering indigenous communities — while honoring nature and traditional wisdom.</p>
+        <p class="subtitle">Integral Foundation creates dignified rural livelihoods in North East India by preserving silk heritage, building climate resilience, and empowering indigenous communities — while honoring nature and traditional wisdom.</p>
     </div>
 </section>
 
-<!-- INTRO SECTION -->
-<section class="intro-section">
-    <div class="section-container">
-        <div class="intro-content">
+<!-- Our integrated approach -->
+<section class="content-section">
+    <div class="container">
+        <div class="section-intro">
             <h2>Our integrated approach</h2>
             <p>We don't just address symptoms of poverty — we transform entire systems. By integrating sustainable agriculture, craft preservation, climate adaptation, and community empowerment, we create holistic change that touches every dimension of life in silk-farming communities.</p>
         </div>
     </div>
 </section>
 
-<!-- PROGRAM AREAS -->
-<section class="programs-section">
-    <div class="section-container">
-        
-        <!-- Program 1 -->
-        <div class="program-card">
-            <div class="program-content">
-                <h2>Create ecosystems</h2>
+<!-- Program Areas -->
+<section class="content-section alt-bg">
+    <div class="container">
+        <div class="programs-grid">
+            
+            <div class="program-card">
+                <h3>Create ecosystems</h3>
                 <p>We restore and protect the natural ecosystems that silkworm farming depends on. By regenerating mulberry forests, protecting water sources, and building biodiversity, we ensure sustainable livelihoods while healing the environment.</p>
-                <ul class="program-details">
+                <ul>
                     <li>Native mulberry plantation restoration</li>
                     <li>Biodiversity corridors for indigenous species</li>
                     <li>Watershed management and protection</li>
                     <li>Soil regeneration through organic practices</li>
                 </ul>
+                <div class="arrow">→</div>
             </div>
-            <div class="program-icon green">→</div>
-        </div>
-
-        <!-- Program 2 -->
-        <div class="program-card">
-            <div class="program-content">
-                <h2>Generate dignified rural livelihoods</h2>
+            
+            <div class="program-card">
+                <h3>Generate dignified rural livelihoods</h3>
                 <p>We create economic opportunities that honor tradition and provide stable incomes. Artisan families earn fair wages through sustainable silk production and craft, breaking cycles of poverty while maintaining cultural identity.</p>
-                <ul class="program-details">
+                <ul>
                     <li>Fair-trade silk production training</li>
                     <li>Income diversification strategies</li>
                     <li>Cooperative formation and management</li>
                     <li>Financial literacy and savings programs</li>
                 </ul>
+                <div class="arrow">→</div>
             </div>
-            <div class="program-icon yellow">→</div>
-        </div>
-
-        <!-- Program 3 -->
-        <div class="program-card">
-            <div class="program-content">
-                <h2>Boost productivity</h2>
+            
+            <div class="program-card">
+                <h3>Boost productivity</h3>
                 <p>For silkworm rearers and artisans, increasing productivity means producing more silk on the same land, creating higher-quality textiles, and reducing waste — all while working with nature's rhythms, not against them.</p>
-                <ul class="program-details">
+                <ul>
                     <li>Climate-adapted sericulture techniques</li>
                     <li>Quality improvement in silk production</li>
                     <li>Waste reduction and resource efficiency</li>
                     <li>Traditional knowledge integration</li>
                 </ul>
+                <div class="arrow">→</div>
             </div>
-            <div class="program-icon yellow">→</div>
-        </div>
-
-        <!-- Program 4 -->
-        <div class="program-card">
-            <div class="program-content">
-                <h2>Connect farmers to markets</h2>
+            
+            <div class="program-card">
+                <h3>Connect farmers to markets</h3>
                 <p>We bridge the gap between rural silk producers and premium markets that value their craft. Through fair-trade networks, design partnerships, and direct market access, farmers receive prices that reflect the true value of their work.</p>
-                <ul class="program-details">
+                <ul>
                     <li>Fair-trade market connections</li>
                     <li>Direct-to-consumer sales platforms</li>
                     <li>Design collaboration for modern markets</li>
                     <li>Premium silk brand partnerships</li>
                 </ul>
+                <div class="arrow">→</div>
             </div>
-            <div class="program-icon cyan">→</div>
-        </div>
-
-        <!-- Program 5 -->
-        <div class="program-card">
-            <div class="program-content">
-                <h2>Empower women</h2>
+            
+            <div class="program-card">
+                <h3>Empower women</h3>
                 <p>Women are the backbone of silk production in North East India. We support female farmers and artisans to develop leadership skills, access resources, and create independent income streams that strengthen entire families.</p>
-                <ul class="program-details">
+                <ul>
                     <li>Women's self-help group formation</li>
                     <li>Leadership development training</li>
                     <li>Access to credit and resources</li>
                     <li>Gender-responsive agricultural practices</li>
                 </ul>
+                <div class="arrow">→</div>
             </div>
-            <div class="program-icon green">→</div>
-        </div>
-
-        <!-- Program 6 -->
-        <div class="program-card">
-            <div class="program-content">
-                <h2>Build local communities</h2>
+            
+            <div class="program-card">
+                <h3>Build local communities</h3>
                 <p>Strong communities are the foundation of lasting change. We support indigenous communities to preserve cultural traditions, make collective decisions, and build social infrastructure that serves everyone.</p>
-                <ul class="program-details">
+                <ul>
                     <li>Community-led planning and decision-making</li>
                     <li>Cultural heritage documentation</li>
                     <li>Youth mentorship programs</li>
                     <li>Traditional knowledge systems preservation</li>
                 </ul>
+                <div class="arrow">→</div>
             </div>
-            <div class="program-icon yellow">→</div>
-        </div>
-
-        <!-- Program 7 -->
-        <div class="program-card">
-            <div class="program-content">
-                <h2>Rainwater harvesting</h2>
+            
+            <div class="program-card">
+                <h3>Rainwater harvesting</h3>
                 <p>Water scarcity threatens silk farming during dry seasons. We install community rainwater harvesting systems that capture monsoon rains, ensuring year-round water access for mulberry cultivation and household needs.</p>
-                <ul class="program-details">
+                <ul>
                     <li>Community rainwater collection systems</li>
                     <li>Traditional water conservation methods</li>
                     <li>Irrigation efficiency improvements</li>
                     <li>Groundwater recharge structures</li>
                 </ul>
+                <div class="arrow">→</div>
             </div>
-            <div class="program-icon yellow">→</div>
-        </div>
-
-        <!-- Program 8 -->
-        <div class="program-card">
-            <div class="program-content">
-                <h2>Enrich soil health</h2>
+            
+            <div class="program-card">
+                <h3>Enrich soil health</h3>
                 <p>Healthy soil is the foundation of sustainable sericulture. We teach organic soil management, composting, and natural fertilization that increases yields while restoring soil fertility for future generations.</p>
-                <ul class="program-details">
+                <ul>
                     <li>Organic composting techniques</li>
                     <li>Natural pest management</li>
                     <li>Crop rotation and diversification</li>
                     <li>Soil testing and monitoring</li>
                 </ul>
+                <div class="arrow">→</div>
             </div>
-            <div class="program-icon cyan">→</div>
-        </div>
-
-        <!-- Program 9 -->
-        <div class="program-card">
-            <div class="program-content">
-                <h2>Act on climate change</h2>
+            
+            <div class="program-card">
+                <h3>Act on climate change</h3>
                 <p>Climate change is the biggest threat to North East India's silk communities. We build adaptive capacity through climate-smart agriculture, disaster preparedness, and indigenous weather forecasting knowledge.</p>
-                <ul class="program-details">
+                <ul>
                     <li>Climate-resilient farming practices</li>
                     <li>Indigenous weather forecasting systems</li>
                     <li>Disaster risk reduction</li>
                     <li>Carbon sequestration through agroforestry</li>
                 </ul>
+                <div class="arrow">→</div>
             </div>
-            <div class="program-icon green">→</div>
-        </div>
-
-    </div>
-</section>
-
-<!-- IMPACT STATS -->
-<section class="impact-section">
-    <div class="section-container">
-        <h2>Our impact in numbers</h2>
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-number">200+</div>
-                <p>Families transformed</p>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">40%</div>
-                <p>Average income increase</p>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">500</div>
-                <p>Hectares regenerated</p>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">3</div>
-                <p>Silk varieties preserved</p>
-            </div>
+            
         </div>
     </div>
 </section>
 
-<!-- HOW IT WORKS TOGETHER -->
-<section class="integration-section">
-    <div class="section-container">
-        <h2>How our programs work together</h2>
-        <p class="integration-intro">Each program area is interconnected. When we build ecosystems, we create the foundation for sustainable silk production. When we empower women, we strengthen entire communities. When we connect farmers to markets, we make environmental protection economically viable. This is the integral approach in action.</p>
+<!-- Impact Stats -->
+<section class="content-section">
+    <div class="container">
+        <div class="section-intro">
+            <h2>Our impact in numbers</h2>
+        </div>
         
-        <div class="integration-example">
+        <div class="impact-stats">
+            <div class="stat-item">
+                <div class="number">200+</div>
+                <div class="label">Families transformed</div>
+            </div>
+            <div class="stat-item">
+                <div class="number">40%</div>
+                <div class="label">Average income increase</div>
+            </div>
+            <div class="stat-item">
+                <div class="number">500</div>
+                <div class="label">Hectares regenerated</div>
+            </div>
+            <div class="stat-item">
+                <div class="number">3</div>
+                <div class="label">Silk varieties preserved</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How programs work together -->
+<section class="content-section alt-bg">
+    <div class="container">
+        <div class="section-intro">
+            <h2>How our programs work together</h2>
+            <p>Each program area is interconnected. When we build ecosystems, we create the foundation for sustainable silk production. When we empower women, we strengthen entire communities. When we connect farmers to markets, we make environmental protection economically viable. This is the integral approach in action.</p>
+        </div>
+        
+        <div class="day-section">
             <h3>Example: A Day in Bina Devi's Life</h3>
+            
             <div class="day-timeline">
-                <div class="timeline-item">
-                    <div class="timeline-icon">🌅</div>
-                    <div class="timeline-content">
-                        <strong>Morning:</strong> Bina checks her mulberry plantation, using <em>climate-smart techniques</em> she learned from our training. The <em>rainwater harvesting system</em> provides irrigation.
-                    </div>
+                <div class="day-item">
+                    <div class="icon">🌅</div>
+                    <div class="time">Morning</div>
+                    <p>Bina checks her mulberry plantation, using <em>climate-smart techniques</em> she learned from our training. The <em>rainwater harvesting system</em> provides irrigation.</p>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-icon">☀️</div>
-                    <div class="timeline-content">
-                        <strong>Midday:</strong> She attends her <em>women's cooperative</em> meeting where members discuss <em>market prices</em> and plan their next silk collection shipment.
-                    </div>
+                
+                <div class="day-item">
+                    <div class="icon">☀️</div>
+                    <div class="time">Midday</div>
+                    <p>She attends her <em>women's cooperative</em> meeting where members discuss <em>market prices</em> and plan their next silk collection shipment.</p>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-icon">🌆</div>
-                    <div class="timeline-content">
-                        <strong>Afternoon:</strong> Bina weaves silk using traditional patterns, knowing her work will reach <em>premium markets</em> that pay fair prices through our network.
-                    </div>
+                
+                <div class="day-item">
+                    <div class="icon">🌆</div>
+                    <div class="time">Afternoon</div>
+                    <p>Bina weaves silk using traditional patterns, knowing her work will reach <em>premium markets</em> that pay fair prices through our network.</p>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-icon">🌙</div>
-                    <div class="timeline-content">
-                        <strong>Evening:</strong> At the <em>community meeting</em>, villagers plan a new <em>biodiversity corridor</em> to protect native species while supporting sericulture.
-                    </div>
+                
+                <div class="day-item">
+                    <div class="icon">🌙</div>
+                    <div class="time">Evening</div>
+                    <p>At the <em>community meeting</em>, villagers plan a new <em>biodiversity corridor</em> to protect native species while supporting sericulture.</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- CTA SECTION -->
+<!-- CTA Section -->
 <section class="cta-section">
-    <div class="cta-container">
+    <div class="container">
         <h2>Support our work</h2>
         <p>Your contribution funds programs that create lasting change across all dimensions of rural life.</p>
         <div class="cta-buttons">
-            <a href="/donate" class="cta-primary">Make a donation</a>
-            <a href="/partnerships" class="cta-secondary">Partner with us</a>
+            <a href="/donate" class="cta-btn primary">Make a donation</a>
+            <a href="/partnerships" class="cta-btn secondary">Partner with us</a>
         </div>
     </div>
 </section>
 
-<!-- WHERE NEXT -->
-<section class="where-next">
-    <div class="section-container">
-        <h2>Where next?</h2>
-        <div class="next-grid">
-            <a href="/integral-model" class="next-card">
+<!-- Where next -->
+<section class="content-section">
+    <div class="container">
+        <div class="section-intro">
+            <h2>Where next?</h2>
+        </div>
+        
+        <div class="where-next-grid">
+            <a href="/integral-model" class="where-next-card">
                 <h3>The Integral Model</h3>
                 <p>Learn about the philosophy and approach that guides our work</p>
-                <span class="arrow">→</span>
+                <span class="link">→</span>
             </a>
-            <a href="/stories" class="next-card">
+            
+            <a href="/stories" class="where-next-card">
                 <h3>Stories from the field</h3>
                 <p>Meet the farmers and artisans creating change in their communities</p>
-                <span class="arrow">→</span>
+                <span class="link">→</span>
             </a>
-            <a href="/how-we-work" class="next-card">
+            
+            <a href="/how-we-work" class="where-next-card">
                 <h3>How we work</h3>
                 <p>Discover our methodology and partnership approach</p>
-                <span class="arrow">→</span>
+                <span class="link">→</span>
             </a>
         </div>
     </div>
 </section>
-
-<!-- FOOTER -->
-<footer class="site-footer">
-    <div class="footer-container">
-        <div class="footer-column">
-            <h3 class="footer-heading">Take action</h3>
-            <ul class="footer-links">
-                <li><a href="/donate">Give</a></li>
-                <li><a href="/fundraise">Fundraise</a></li>
-                <li><a href="/sponsor">Sponsor a project</a></li>
-                <li><a href="/partnerships">Become a brand partner</a></li>
-            </ul>
-        </div>
-        <div class="footer-column">
-            <h3 class="footer-heading">Get to know us</h3>
-            <ul class="footer-links">
-                <li><a href="/stories">Stories from the field</a></li>
-                <li><a href="/integral-model">The integral model</a></li>
-                <li><a href="/founder">Meet the founder</a></li>
-                <li><a href="/team">Meet the team</a></li>
-                <li><a href="/financials">See our financials</a></li>
-            </ul>
-        </div>
-        <div class="footer-column">
-            <h3 class="footer-heading">Connect</h3>
-            <ul class="footer-links">
-                <li><a href="/contact">Contact us</a></li>
-                <li><a href="/help">Help centre</a></li>
-                <li><a href="/shop">Shop our store</a></li>
-                <li><a href="/careers">Careers</a></li>
-                <li><a href="/reality-lab">Reality lab</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <div class="footer-social">
-            <a href="#" aria-label="Facebook">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-                </svg>
-            </a>
-            <a href="#" aria-label="Twitter">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
-                </svg>
-            </a>
-            <a href="#" aria-label="Instagram">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" fill="white"/>
-                    <circle cx="17.5" cy="6.5" r="1.5" fill="white"/>
-                </svg>
-            </a>
-            <a href="#" aria-label="LinkedIn">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/>
-                    <circle cx="4" cy="4" r="2"/>
-                </svg>
-            </a>
-            <a href="#" aria-label="YouTube">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                </svg>
-            </a>
-        </div>
-        <div class="footer-bottom-text">
-            <p class="footer-tagline"><strong>Build Tomorrow, Today.</strong></p>
-            <p class="footer-copyright">© 2025 Integral Foundation. All rights reserved.</p>
-            <p class="footer-mission">Preserving the nature & heritage of North East India through sustainable livelihoods.</p>
-        </div>
-    </div>
-</footer>
-
-<!-- STYLES -->
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    color: #2d5016;
-    background-color: #ffffff;
-    line-height: 1.6;
-}
-
-/* ========================================
-   HEADER
-   ======================================== */
-.header {
-    background-color: #ffffff;
-    padding: 16px 20px;
-    border-bottom: 1px solid #e5e7eb;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-.header-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.menu-toggle {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 8px;
-}
-
-.menu-toggle span {
-    width: 25px;
-    height: 3px;
-    background-color: #2d5016;
-    transition: 0.3s;
-}
-
-.logo a {
-    text-decoration: none;
-}
-
-.logo-text {
-    font-size: 18px;
-    color: #1e3a8a;
-}
-
-.logo-text strong {
-    font-weight: 700;
-}
-
-.give-button {
-    background-color: #fbbf24;
-    color: #2d5016;
-    padding: 12px 24px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 14px;
-    transition: transform 0.2s;
-}
-
-.give-button:hover {
-    transform: scale(1.05);
-}
-
-/* ========================================
-   HERO SECTION
-   ======================================== */
-.hero {
-    position: relative;
-    background: linear-gradient(135deg, rgba(45, 80, 22, 0.9) 0%, rgba(61, 107, 31, 0.9) 100%),
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%232d5016" width="1200" height="600"/></svg>');
-    background-size: cover;
-    background-position: center;
-    color: #ffffff;
-    padding: 100px 20px;
-    text-align: center;
-}
-
-.hero-content h1 {
-    font-size: 64px;
-    font-weight: 700;
-    margin-bottom: 24px;
-    color: #fbbf24;
-}
-
-.hero-subtitle {
-    font-size: 22px;
-    font-weight: 400;
-    max-width: 900px;
-    margin: 0 auto;
-    line-height: 1.7;
-}
-
-/* ========================================
-   INTRO SECTION
-   ======================================== */
-.intro-section {
-    padding: 80px 20px;
-    background-color: #ffffff;
-}
-
-.section-container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.intro-content {
-    max-width: 900px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.intro-content h2 {
-    font-size: 40px;
-    font-weight: 700;
-    margin-bottom: 24px;
-    color: #2d5016;
-}
-
-.intro-content p {
-    font-size: 20px;
-    line-height: 1.7;
-    color: #374151;
-}
-
-/* ========================================
-   PROGRAMS SECTION
-   ======================================== */
-.programs-section {
-    padding: 60px 20px 80px;
-    background-color: #f9f7f4;
-}
-
-.program-card {
-    max-width: 1000px;
-    margin: 0 auto 32px;
-    background-color: #ffffff;
-    border-left: 4px solid transparent;
-    display: flex;
-    align-items: center;
-    padding: 32px 40px;
-    transition: all 0.3s;
-}
-
-.program-card:hover {
-    transform: translateX(8px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.program-content {
-    flex: 1;
-}
-
-.program-content h2 {
-    font-size: 28px;
-    font-weight: 700;
-    margin-bottom: 16px;
-    color: #2d5016;
-}
-
-.program-content p {
-    font-size: 17px;
-    line-height: 1.7;
-    color: #374151;
-    margin-bottom: 20px;
-}
-
-.program-details {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-}
-
-.program-details li {
-    font-size: 15px;
-    color: #6b7280;
-    padding-left: 24px;
-    position: relative;
-}
-
-.program-details li:before {
-    content: "•";
-    position: absolute;
-    left: 8px;
-    color: #fbb040;
-    font-weight: 700;
-}
-
-.program-icon {
-    flex-shrink: 0;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 28px;
-    font-weight: 700;
-    margin-left: 32px;
-}
-
-.program-icon.green {
-    background-color: #10b981;
-    color: #ffffff;
-}
-
-.program-icon.yellow {
-    background-color: #fbbf24;
-    color: #2d5016;
-}
-
-.program-icon.cyan {
-    background-color: #06b6d4;
-    color: #ffffff;
-}
-
-/* ========================================
-   IMPACT STATS
-   ======================================== */
-.impact-section {
-    padding: 80px 20px;
-    background-color: #ffffff;
-}
-
-.impact-section h2 {
-    font-size: 40px;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 48px;
-    color: #2d5016;
-}
-
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 32px;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.stat-card {
-    text-align: center;
-    padding: 32px 24px;
-    background-color: #f9f7f4;
-    border-radius: 12px;
-}
-
-.stat-number {
-    font-size: 48px;
-    font-weight: 700;
-    color: #fbb040;
-    margin-bottom: 8px;
-}
-
-.stat-card p {
-    font-size: 16px;
-    color: #374151;
-}
-
-/* ========================================
-   INTEGRATION SECTION
-   ======================================== */
-.integration-section {
-    padding: 80px 20px;
-    background-color: #f9f7f4;
-}
-
-.integration-section h2 {
-    font-size: 40px;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 24px;
-    color: #2d5016;
-}
-
-.integration-intro {
-    max-width: 900px;
-    margin: 0 auto 48px;
-    text-align: center;
-    font-size: 18px;
-    line-height: 1.7;
-    color: #374151;
-}
-
-.integration-example {
-    max-width: 900px;
-    margin: 0 auto;
-    background-color: #ffffff;
-    padding: 40px;
-    border-radius: 12px;
-}
-
-.integration-example h3 {
-    font-size: 28px;
-    font-weight: 700;
-    margin-bottom: 32px;
-    color: #2d5016;
-    text-align: center;
-}
-
-.day-timeline {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
-.timeline-item {
-    display: flex;
-    gap: 20px;
-    align-items: start;
-}
-
-.timeline-icon {
-    flex-shrink: 0;
-    width: 50px;
-    height: 50px;
-    background-color: #fef3c7;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-}
-
-.timeline-content {
-    flex: 1;
-    font-size: 16px;
-    line-height: 1.7;
-    color: #374151;
-}
-
-.timeline-content strong {
-    color: #2d5016;
-}
-
-.timeline-content em {
-    color: #fbb040;
-    font-style: normal;
-    font-weight: 600;
-}
-
-/* ========================================
-   CTA SECTION
-   ======================================== */
-.cta-section {
-    padding: 80px 20px;
-    background: linear-gradient(135deg, #2d5016 0%, #3d6b1f 100%);
-    color: #ffffff;
-}
-
-.cta-container {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.cta-container h2 {
-    font-size: 40px;
-    font-weight: 700;
-    margin-bottom: 20px;
-}
-
-.cta-container p {
-    font-size: 20px;
-    line-height: 1.7;
-    margin-bottom: 32px;
-}
-
-.cta-buttons {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-}
-
-.cta-primary,
-.cta-secondary {
-    padding: 16px 32px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 16px;
-    transition: transform 0.2s;
-}
-
-.cta-primary {
-    background-color: #fbbf24;
-    color: #2d5016;
-}
-
-.cta-secondary {
-    background-color: transparent;
-    color: #ffffff;
-    border: 2px solid #ffffff;
-}
-
-.cta-primary:hover,
-.cta-secondary:hover {
-    transform: scale(1.05);
-}
-
-/* ========================================
-   EXPLORE MORE
-   ======================================== */
-.explore-more {
-    padding: 80px 20px;
-    background-color: #ffffff;
-}
-
-.explore-more h2 {
-    font-size: 40px;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 48px;
-    color: #2d5016;
-}
-
-.more-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.more-card {
-    background-color: #f9f7f4;
-    padding: 32px;
-    border-radius: 12px;
-    text-decoration: none;
-    transition: transform 0.3s;
-    position: relative;
-}
-
-.more-card:hover {
-    transform: translateY(-4px);
-}
-
-.more-card h3 {
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 12px;
-    color: #2d5016;
-}
-
-.more-card p {
-    font-size: 16px;
-    line-height: 1.6;
-    color: #374151;
-    margin-bottom: 16px;
-}
-
-.more-card .arrow {
-    font-size: 24px;
-    color: #fbb040;
-    font-weight: 700;
-}
-
-/* ========================================
-   FOOTER
-   ======================================== */
-.site-footer {
-    background-color: #f9f7f4;
-    color: #2d5016;
-    padding: 80px 20px 40px;
-}
-
-.footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 60px;
-    padding-bottom: 60px;
-    border-bottom: 1px solid rgba(45, 80, 22, 0.15);
-}
-
-.footer-column {
-    display: flex;
-    flex-direction: column;
-}
-
-.footer-heading {
-    font-size: 14px;
-    font-weight: 700;
-    color: #2d5016;
-    margin-bottom: 24px;
-}
-
-.footer-links {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.footer-links li a {
-    font-size: 16px;
-    color: #2d5016;
-    text-decoration: none;
-    transition: color 0.2s;
-}
-
-.footer-links li a:hover {
-    color: #fbb040;
-}
-
-.footer-bottom {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-top: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
-}
-
-.footer-social {
-    display: flex;
-    gap: 20px;
-}
-
-.footer-social a {
-    color: #2d5016;
-    transition: color 0.2s;
-}
-
-.footer-social a:hover {
-    color: #fbb040;
-}
-
-.footer-bottom-text {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.footer-tagline {
-    font-size: 16px;
-    margin: 0;
-}
-
-.footer-copyright {
-    font-size: 14px;
-    color: rgba(45, 80, 22, 0.6);
-    margin: 0;
-}
-
-.footer-mission {
-    font-size: 14px;
-    color: rgba(45, 80, 22, 0.6);
-    margin: 0;
-}
-
-/* ========================================
-   RESPONSIVE DESIGN
-   ======================================== */
-@media (max-width: 768px) {
-    .hero-content h1 {
-        font-size: 40px;
-    }
-
-    .hero-subtitle {
-        font-size: 18px;
-    }
-
-    .program-card {
-        flex-direction: column;
-        padding: 24px;
-    }
-
-    .program-icon {
-        margin-left: 0;
-        margin-top: 20px;
-    }
-
-    .program-details {
-        grid-template-columns: 1fr;
-    }
-
-    .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .next-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .cta-buttons {
-        flex-direction: column;
-    }
-
-    .footer-container {
-        grid-template-columns: 1fr;
-        gap: 32px;
-    }
-}
-</style>
-
-</body>
-</html>
+{{ end }}
