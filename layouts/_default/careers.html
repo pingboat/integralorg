@@ -1,0 +1,719 @@
+{{ define "styles" }}
+/* Careers Page Styles */
+.careers-hero {
+    padding: 120px 0 60px;
+    background: linear-gradient(135deg, var(--navy) 0%, #0f2940 100%);
+    color: white;
+    text-align: center;
+}
+
+.careers-hero h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.careers-hero p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    max-width: 650px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* Mission Section */
+.mission-section {
+    padding: 80px 0;
+    background: var(--cream);
+}
+
+.mission-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.mission-content h2 {
+    font-size: 2rem;
+    color: var(--navy);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.mission-content p {
+    font-size: 1.05rem;
+    color: var(--charcoal);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.mission-image {
+    height: 400px;
+    background: linear-gradient(135deg, #e8e4da 0%, #d4cfc2 100%);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray);
+    font-size: 1rem;
+}
+
+/* Values Section */
+.values-section {
+    padding: 80px 0;
+    background: var(--white);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-header h2 {
+    font-size: 2rem;
+    color: var(--navy);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.section-header p {
+    font-size: 1.1rem;
+    color: var(--gray);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.value-card {
+    background: var(--cream);
+    border-radius: 16px;
+    padding: 32px;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.value-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.value-icon {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+}
+
+.value-card h3 {
+    font-size: 1.15rem;
+    color: var(--navy);
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.value-card p {
+    font-size: 0.9rem;
+    color: var(--gray);
+    line-height: 1.6;
+}
+
+/* Benefits Section */
+.benefits-section {
+    padding: 80px 0;
+    background: var(--cream);
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.benefit-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 28px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+
+.benefit-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--yellow);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+
+.benefit-content h3 {
+    font-size: 1.05rem;
+    color: var(--navy);
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.benefit-content p {
+    font-size: 0.9rem;
+    color: var(--gray);
+    line-height: 1.5;
+}
+
+/* Open Positions */
+.positions-section {
+    padding: 80px 0;
+    background: var(--white);
+}
+
+.positions-list {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.position-card {
+    background: var(--cream);
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 20px;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+}
+
+.position-card:hover {
+    border-color: var(--forest);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.position-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.position-title h3 {
+    font-size: 1.3rem;
+    color: var(--navy);
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.position-meta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.meta-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: var(--gray);
+}
+
+.meta-tag svg {
+    width: 16px;
+    height: 16px;
+}
+
+.position-description {
+    color: var(--charcoal);
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.position-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.tag {
+    background: rgba(45, 80, 22, 0.1);
+    color: var(--forest);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.btn-apply {
+    display: inline-block;
+    background: var(--forest);
+    color: white;
+    padding: 12px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+}
+
+.btn-apply:hover {
+    background: var(--forest-dark);
+    transform: translateY(-2px);
+}
+
+/* No Positions */
+.no-positions {
+    text-align: center;
+    padding: 60px 40px;
+    background: var(--cream);
+    border-radius: 16px;
+}
+
+.no-positions-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.no-positions h3 {
+    font-size: 1.3rem;
+    color: var(--navy);
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.no-positions p {
+    color: var(--gray);
+    max-width: 500px;
+    margin: 0 auto 24px;
+    line-height: 1.7;
+}
+
+.btn-secondary {
+    display: inline-block;
+    background: transparent;
+    color: var(--forest);
+    padding: 12px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border: 2px solid var(--forest);
+    transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+    background: var(--forest);
+    color: white;
+}
+
+/* Life at Integral */
+.life-section {
+    padding: 80px 0;
+    background: var(--cream);
+}
+
+.life-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.life-image {
+    background: linear-gradient(135deg, #e8e4da 0%, #d4cfc2 100%);
+    border-radius: 12px;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray);
+    font-size: 0.8rem;
+}
+
+.life-image.large {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+/* CTA Section */
+.careers-cta {
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--forest) 0%, #1a4010 100%);
+    color: white;
+    text-align: center;
+}
+
+.careers-cta h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.careers-cta p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+.cta-email {
+    font-size: 1.2rem;
+    color: var(--yellow);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.cta-email:hover {
+    text-decoration: underline;
+}
+
+.cta-note {
+    margin-top: 24px;
+    font-size: 0.95rem;
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+    .careers-hero {
+        padding: 100px 0 50px;
+    }
+    
+    .careers-hero h1 {
+        font-size: 1.8rem;
+    }
+    
+    .mission-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .mission-image {
+        height: 300px;
+    }
+    
+    .mission-section,
+    .values-section,
+    .benefits-section,
+    .positions-section,
+    .life-section,
+    .careers-cta {
+        padding: 60px 0;
+    }
+    
+    .position-header {
+        flex-direction: column;
+    }
+    
+    .position-card {
+        padding: 24px;
+    }
+    
+    .life-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .life-image.large {
+        grid-column: span 2;
+        grid-row: span 1;
+    }
+}
+{{ end }}
+
+{{ define "main" }}
+<!-- Hero Section -->
+<section class="careers-hero">
+    <div class="container">
+        <h1>Join Our Team</h1>
+        <p>Build a career with purpose. Help us create sustainable livelihoods, preserve cultural heritage, and drive climate resilience in North East India.</p>
+    </div>
+</section>
+
+<!-- Mission Section -->
+<section class="mission-section">
+    <div class="container">
+        <div class="mission-grid">
+            <div class="mission-content">
+                <h2>Work That Matters</h2>
+                <p>At Integral Foundation, we're not just building an organization — we're building a movement. Our team works at the intersection of traditional craftsmanship, sustainable agriculture, and community development.</p>
+                <p>Every role here contributes directly to improving lives. Whether you're in the field with artisan families or supporting our mission from behind a screen, your work creates real, measurable impact.</p>
+                <p>We're looking for passionate, driven individuals who believe that economics and ecology can thrive together.</p>
+            </div>
+            <div class="mission-image">
+                [Image: Team in the field]
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Our Values -->
+<section class="values-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Our Values</h2>
+            <p>The principles that guide everything we do</p>
+        </div>
+        
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon">🌱</div>
+                <h3>Ecology is Economy</h3>
+                <p>We believe sustainable practices create the strongest livelihoods. Nature is our partner, not our resource.</p>
+            </div>
+            
+            <div class="value-card">
+                <div class="value-icon">🤝</div>
+                <h3>Community First</h3>
+                <p>We work with communities, not for them. Local knowledge and leadership drive our programs.</p>
+            </div>
+            
+            <div class="value-card">
+                <div class="value-icon">✨</div>
+                <h3>Dignity in Work</h3>
+                <p>Every person deserves meaningful, well-compensated work. We fight exploitation at every level.</p>
+            </div>
+            
+            <div class="value-card">
+                <div class="value-icon">📊</div>
+                <h3>Radical Transparency</h3>
+                <p>We share openly — our successes, our failures, and our finances. Trust is earned through honesty.</p>
+            </div>
+            
+            <div class="value-card">
+                <div class="value-icon">🔄</div>
+                <h3>Continuous Learning</h3>
+                <p>We experiment, iterate, and improve constantly. Failure is feedback, and curiosity is rewarded.</p>
+            </div>
+            
+            <div class="value-card">
+                <div class="value-icon">🎯</div>
+                <h3>Impact Over Optics</h3>
+                <p>We measure success by lives transformed, not by vanity metrics or media coverage.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Benefits -->
+<section class="benefits-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Why Work With Us</h2>
+            <p>What we offer our team members</p>
+        </div>
+        
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">💰</div>
+                <div class="benefit-content">
+                    <h3>Competitive Compensation</h3>
+                    <p>Fair salaries benchmarked to the development sector, with annual reviews.</p>
+                </div>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon">🏥</div>
+                <div class="benefit-content">
+                    <h3>Health Coverage</h3>
+                    <p>Comprehensive health insurance for you and your dependents.</p>
+                </div>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon">🏠</div>
+                <div class="benefit-content">
+                    <h3>Flexible Work</h3>
+                    <p>Hybrid options available. Work from home or our offices in Assam and beyond.</p>
+                </div>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon">📚</div>
+                <div class="benefit-content">
+                    <h3>Learning Budget</h3>
+                    <p>Annual allowance for courses, conferences, and professional development.</p>
+                </div>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon">🌴</div>
+                <div class="benefit-content">
+                    <h3>Generous Leave</h3>
+                    <p>Paid time off, sick leave, and parental leave policies that respect your life outside work.</p>
+                </div>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon">🚀</div>
+                <div class="benefit-content">
+                    <h3>Growth Opportunities</h3>
+                    <p>As we grow, so do the opportunities. We promote from within whenever possible.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Open Positions -->
+<section class="positions-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Open Positions</h2>
+            <p>Find your role in our mission</p>
+        </div>
+        
+        <div class="positions-list">
+            <!-- Position 1 -->
+            <div class="position-card">
+                <div class="position-header">
+                    <div class="position-title">
+                        <h3>Program Manager - Sericulture</h3>
+                        <div class="position-meta">
+                            <span class="meta-tag">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                Assam, India
+                            </span>
+                            <span class="meta-tag">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                </svg>
+                                Full-time
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <p class="position-description">Lead our sericulture programs across multiple villages. You'll work directly with artisan families, manage field teams, and drive measurable improvements in silk production and farmer incomes.</p>
+                <div class="position-tags">
+                    <span class="tag">Agriculture</span>
+                    <span class="tag">Community Development</span>
+                    <span class="tag">Leadership</span>
+                </div>
+                <a href="mailto:careers@gointegral.org?subject=Application:%20Program%20Manager%20-%20Sericulture" class="btn-apply">Apply Now</a>
+            </div>
+            
+            <!-- Position 2 -->
+            <div class="position-card">
+                <div class="position-header">
+                    <div class="position-title">
+                        <h3>Communications & Content Lead</h3>
+                        <div class="position-meta">
+                            <span class="meta-tag">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                Remote / Hybrid
+                            </span>
+                            <span class="meta-tag">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                </svg>
+                                Full-time
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <p class="position-description">Own our storytelling across all channels. You'll craft compelling narratives about our work, manage social media, create fundraising content, and help amplify the voices of the communities we serve.</p>
+                <div class="position-tags">
+                    <span class="tag">Content Strategy</span>
+                    <span class="tag">Social Media</span>
+                    <span class="tag">Storytelling</span>
+                </div>
+                <a href="mailto:careers@gointegral.org?subject=Application:%20Communications%20%26%20Content%20Lead" class="btn-apply">Apply Now</a>
+            </div>
+            
+            <!-- Position 3 -->
+            <div class="position-card">
+                <div class="position-header">
+                    <div class="position-title">
+                        <h3>Field Coordinator</h3>
+                        <div class="position-meta">
+                            <span class="meta-tag">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                Assam, India
+                            </span>
+                            <span class="meta-tag">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                </svg>
+                                Full-time
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <p class="position-description">Be our eyes and ears on the ground. You'll coordinate daily activities across villages, support artisan training sessions, collect data for impact measurement, and ensure our programs run smoothly.</p>
+                <div class="position-tags">
+                    <span class="tag">Field Work</span>
+                    <span class="tag">Data Collection</span>
+                    <span class="tag">Community Engagement</span>
+                </div>
+                <a href="mailto:careers@gointegral.org?subject=Application:%20Field%20Coordinator" class="btn-apply">Apply Now</a>
+            </div>
+            
+            <!-- No positions fallback (hidden by default, show when no positions)
+            <div class="no-positions">
+                <div class="no-positions-icon">🔍</div>
+                <h3>No Open Positions Right Now</h3>
+                <p>We don't have any open roles at the moment, but we're always interested in meeting talented people who share our mission.</p>
+                <a href="mailto:careers@gointegral.org" class="btn-secondary">Send Your Resume</a>
+            </div>
+            -->
+        </div>
+    </div>
+</section>
+
+<!-- Life at Integral -->
+<section class="life-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Life at Integral Foundation</h2>
+            <p>Glimpses of our team in action</p>
+        </div>
+        
+        <div class="life-grid">
+            <div class="life-image large">[Team photo 1]</div>
+            <div class="life-image">[Photo 2]</div>
+            <div class="life-image">[Photo 3]</div>
+            <div class="life-image">[Photo 4]</div>
+            <div class="life-image">[Photo 5]</div>
+            <div class="life-image large">[Team photo 6]</div>
+            <div class="life-image">[Photo 7]</div>
+            <div class="life-image">[Photo 8]</div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="careers-cta">
+    <div class="container">
+        <h2>Don't See the Right Role?</h2>
+        <p>We're always looking for exceptional people. If you're passionate about our mission, send us your resume anyway.</p>
+        <a href="mailto:careers@gointegral.org" class="cta-email">careers@gointegral.org</a>
+        <p class="cta-note">We review every application and will reach out if there's a fit.</p>
+    </div>
+</section>
+{{ end }}
