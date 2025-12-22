@@ -1,0 +1,556 @@
+{{ define "main" }}
+<style>
+/* Reality Lab Styles */
+.lab-hero {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: white;
+    padding: 120px 5% 100px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.lab-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
+}
+
+.lab-hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.lab-badge {
+    display: inline-block;
+    background: rgba(255,199,0,0.2);
+    color: var(--yellow);
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+}
+
+.lab-hero h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+}
+
+.lab-hero .subtitle {
+    font-size: 1.35rem;
+    opacity: 0.9;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* What is Reality Lab */
+.lab-intro {
+    padding: 80px 5%;
+    background: var(--cream);
+}
+
+.intro-container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.lab-intro h2 {
+    font-size: 2rem;
+    color: var(--navy-blue);
+    margin-bottom: 1.5rem;
+}
+
+.lab-intro p {
+    font-size: 1.15rem;
+    color: var(--charcoal);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+/* Current Projects */
+.lab-projects {
+    padding: 80px 5%;
+    background: white;
+}
+
+.lab-projects h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--navy-blue);
+    margin-bottom: 60px;
+}
+
+.projects-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    background: var(--cream);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+}
+
+.project-image {
+    height: 200px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--yellow);
+    font-size: 3rem;
+}
+
+.project-content {
+    padding: 30px;
+}
+
+.project-status {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+}
+
+.status-active {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.status-research {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.status-pilot {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.project-card h3 {
+    font-size: 1.35rem;
+    color: var(--navy-blue);
+    margin-bottom: 0.75rem;
+}
+
+.project-card p {
+    color: var(--charcoal);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.project-link {
+    color: var(--navy-blue);
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.project-link:hover {
+    color: var(--yellow);
+}
+
+/* Methodology Section */
+.lab-methodology {
+    padding: 80px 5%;
+    background: #1a1a2e;
+    color: white;
+}
+
+.lab-methodology h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 60px;
+}
+
+.methodology-grid {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    text-align: center;
+}
+
+.method-step {
+    position: relative;
+}
+
+.method-number {
+    width: 60px;
+    height: 60px;
+    background: var(--yellow);
+    color: #1a1a2e;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 auto 1rem;
+}
+
+.method-step h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.method-step p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    line-height: 1.5;
+}
+
+/* Partners Section */
+.lab-partners {
+    padding: 80px 5%;
+    background: var(--cream);
+}
+
+.lab-partners h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--navy-blue);
+    margin-bottom: 1rem;
+}
+
+.partners-intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 50px;
+    color: var(--charcoal);
+}
+
+.partners-grid {
+    max-width: 800px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 30px;
+}
+
+.partner-logo {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: 600;
+    color: var(--gray);
+}
+
+/* Get Involved */
+.lab-involved {
+    padding: 80px 5%;
+    background: white;
+}
+
+.involved-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.lab-involved h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--navy-blue);
+    margin-bottom: 60px;
+}
+
+.involved-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.involved-card {
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.involved-card:hover {
+    border-color: var(--navy-blue);
+    background: var(--cream);
+}
+
+.involved-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.involved-card h3 {
+    font-size: 1.25rem;
+    color: var(--navy-blue);
+    margin-bottom: 0.75rem;
+}
+
+.involved-card p {
+    color: var(--charcoal);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.involved-card .btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.btn-outline {
+    border: 2px solid var(--navy-blue);
+    color: var(--navy-blue);
+    background: transparent;
+}
+
+.btn-outline:hover {
+    background: var(--navy-blue);
+    color: white;
+}
+
+/* Newsletter */
+.lab-newsletter {
+    padding: 80px 5%;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: white;
+    text-align: center;
+}
+
+.lab-newsletter h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.lab-newsletter p {
+    opacity: 0.9;
+    max-width: 500px;
+    margin: 0 auto 2rem;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 12px;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+}
+
+.newsletter-form button {
+    background: var(--yellow);
+    color: #1a1a2e;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.newsletter-form button:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .lab-hero h1 { font-size: 2.25rem; }
+    .lab-hero .subtitle { font-size: 1.1rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .newsletter-form {
+        flex-direction: column;
+    }
+}
+</style>
+
+<section class="lab-hero">
+    <div class="lab-hero-content">
+        <span class="lab-badge">Innovation Hub</span>
+        <h1>Reality Lab</h1>
+        <p class="subtitle">Where traditional wisdom meets modern innovation. We experiment, prototype, and scale solutions for sustainable rural livelihoods.</p>
+    </div>
+</section>
+
+<section class="lab-intro">
+    <div class="intro-container">
+        <h2>What is Reality Lab?</h2>
+        <p>Reality Lab is Integral Foundation's R&D arm—a space where we test bold ideas, challenge assumptions, and develop solutions that can transform rural economies at scale.</p>
+        <p>We believe the answers to rural poverty aren't always found in traditional development approaches. By combining indigenous knowledge with technology, design thinking, and rigorous experimentation, we create models that work in the real world—not just on paper.</p>
+    </div>
+</section>
+
+<section class="lab-projects">
+    <h2>Current Projects</h2>
+    <div class="projects-grid">
+        <div class="project-card">
+            <div class="project-image">🧬</div>
+            <div class="project-content">
+                <span class="project-status status-active">Active</span>
+                <h3>Climate-Resilient Silk Varieties</h3>
+                <p>Developing silkworm breeds that can thrive in changing climate conditions while maintaining premium silk quality. Partnership with agricultural research institutes.</p>
+                <a href="#" class="project-link">Learn more →</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-image">📱</div>
+            <div class="project-content">
+                <span class="project-status status-pilot">Pilot</span>
+                <h3>Artisan Connect App</h3>
+                <p>Mobile platform connecting rural artisans directly with buyers, eliminating middlemen and ensuring fair prices. Currently piloting in 12 villages.</p>
+                <a href="#" class="project-link">Learn more →</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-image">🌿</div>
+            <div class="project-content">
+                <span class="project-status status-research">Research</span>
+                <h3>Zero-Waste Silk Processing</h3>
+                <p>Exploring methods to utilize every part of the silk production process, from cocoon to fabric, creating additional income streams from "waste" materials.</p>
+                <a href="#" class="project-link">Learn more →</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-image">🏠</div>
+            <div class="project-content">
+                <span class="project-status status-active">Active</span>
+                <h3>Model Village Initiative</h3>
+                <p>Creating demonstration villages that showcase integrated sustainable livelihoods—serving as learning centers for other communities.</p>
+                <a href="#" class="project-link">Learn more →</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-image">📊</div>
+            <div class="project-content">
+                <span class="project-status status-pilot">Pilot</span>
+                <h3>Impact Measurement Dashboard</h3>
+                <p>Real-time data collection and visualization system tracking farmer incomes, environmental indicators, and community wellbeing metrics.</p>
+                <a href="#" class="project-link">Learn more →</a>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-image">🎓</div>
+            <div class="project-content">
+                <span class="project-status status-research">Research</span>
+                <h3>Youth Apprenticeship Model</h3>
+                <p>Designing a modern apprenticeship program that makes traditional crafts attractive to young people while ensuring knowledge transfer.</p>
+                <a href="#" class="project-link">Learn more →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="lab-methodology">
+    <h2>How We Innovate</h2>
+    <div class="methodology-grid">
+        <div class="method-step">
+            <div class="method-number">1</div>
+            <h3>Listen</h3>
+            <p>Deep immersion with communities to understand real challenges, not assumed ones.</p>
+        </div>
+        <div class="method-step">
+            <div class="method-number">2</div>
+            <h3>Prototype</h3>
+            <p>Rapid, low-cost experiments to test ideas quickly in real conditions.</p>
+        </div>
+        <div class="method-step">
+            <div class="method-number">3</div>
+            <h3>Measure</h3>
+            <p>Rigorous data collection to understand what's actually working.</p>
+        </div>
+        <div class="method-step">
+            <div class="method-number">4</div>
+            <h3>Scale</h3>
+            <p>Proven models expanded systematically while maintaining quality.</p>
+        </div>
+    </div>
+</section>
+
+<section class="lab-partners">
+    <h2>Research Partners</h2>
+    <p class="partners-intro">We collaborate with leading institutions to bring rigorous research methodologies to our work.</p>
+    <div class="partners-grid">
+        <div class="partner-logo">[University Name]</div>
+        <div class="partner-logo">[Research Institute]</div>
+        <div class="partner-logo">[Tech Partner]</div>
+        <div class="partner-logo">[Design Firm]</div>
+    </div>
+</section>
+
+<section class="lab-involved">
+    <div class="involved-container">
+        <h2>Get Involved</h2>
+        <div class="involved-options">
+            <div class="involved-card">
+                <div class="involved-icon">🔬</div>
+                <h3>Research Fellowship</h3>
+                <p>Join us for 3-6 months to work on a specific project. Ideal for academics, graduate students, or professionals on sabbatical.</p>
+                <a href="/careers/" class="btn btn-outline">Apply Now</a>
+            </div>
+            <div class="involved-card">
+                <div class="involved-icon">💼</div>
+                <h3>Corporate Partnership</h3>
+                <p>Bring your company's expertise to help solve real challenges. CSR with measurable outcomes and employee engagement.</p>
+                <a href="/brand-partners/" class="btn btn-outline">Partner With Us</a>
+            </div>
+            <div class="involved-card">
+                <div class="involved-icon">💡</div>
+                <h3>Submit an Idea</h3>
+                <p>Have a solution we should test? We welcome ideas from anyone—farmers, technologists, designers, dreamers.</p>
+                <a href="/contact/" class="btn btn-outline">Share Your Idea</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="lab-newsletter">
+    <h2>Lab Dispatches</h2>
+    <p>Monthly updates on our experiments, learnings, and breakthroughs. No spam, just substance.</p>
+    <form class="newsletter-form">
+        <input type="email" placeholder="Enter your email">
+        <button type="submit">Subscribe</button>
+    </form>
+</section>
+{{ end }}
