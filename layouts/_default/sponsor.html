@@ -1,0 +1,717 @@
+{{ define "styles" }}
+/* Sponsor Page Styles */
+.sponsor-hero {
+    padding: 120px 0 60px;
+    background: linear-gradient(135deg, var(--navy) 0%, #0f2940 100%);
+    color: white;
+    text-align: center;
+}
+
+.sponsor-hero h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sponsor-hero p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* Intro Section */
+.sponsor-intro {
+    padding: 80px 0;
+    background: var(--cream);
+}
+
+.intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.intro-content h2 {
+    font-size: 2rem;
+    color: var(--navy);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.intro-content p {
+    font-size: 1.05rem;
+    color: var(--charcoal);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.intro-image {
+    height: 400px;
+    background: linear-gradient(135deg, #e8e4da 0%, #d4cfc2 100%);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray);
+    font-size: 1rem;
+}
+
+/* Sponsorship Tiers */
+.tiers-section {
+    padding: 80px 0;
+    background: var(--white);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-header h2 {
+    font-size: 2rem;
+    color: var(--navy);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.section-header p {
+    font-size: 1.1rem;
+    color: var(--gray);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.tiers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.tier-card {
+    background: var(--cream);
+    border-radius: 20px;
+    padding: 40px 32px;
+    position: relative;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.tier-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+}
+
+.tier-card.featured {
+    border-color: var(--yellow);
+    background: linear-gradient(180deg, #fffef5 0%, var(--cream) 100%);
+}
+
+.tier-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--yellow);
+    color: var(--charcoal);
+    padding: 6px 20px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.tier-name {
+    font-size: 1.5rem;
+    color: var(--navy);
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.tier-amount {
+    font-size: 2.5rem;
+    color: var(--forest);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.tier-amount span {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--gray);
+}
+
+.tier-description {
+    text-align: center;
+    color: var(--gray);
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #e8e4da;
+}
+
+.tier-features {
+    list-style: none;
+    margin-bottom: 32px;
+}
+
+.tier-features li {
+    padding: 10px 0;
+    padding-left: 28px;
+    position: relative;
+    color: var(--charcoal);
+    font-size: 0.95rem;
+}
+
+.tier-features li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--forest);
+    font-weight: 700;
+}
+
+.tier-btn {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background: var(--forest);
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 700;
+    transition: all 0.3s;
+}
+
+.tier-btn:hover {
+    background: var(--forest-dark);
+    transform: translateY(-2px);
+}
+
+.tier-card.featured .tier-btn {
+    background: var(--yellow);
+    color: var(--charcoal);
+}
+
+.tier-card.featured .tier-btn:hover {
+    background: var(--yellow-hover);
+}
+
+/* What You Fund */
+.fund-section {
+    padding: 80px 0;
+    background: var(--cream);
+}
+
+.fund-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.fund-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 32px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+}
+
+.fund-icon {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+}
+
+.fund-card h3 {
+    font-size: 1.15rem;
+    color: var(--navy);
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.fund-card p {
+    font-size: 0.9rem;
+    color: var(--gray);
+    line-height: 1.6;
+}
+
+/* Benefits Section */
+.benefits-section {
+    padding: 80px 0;
+    background: var(--white);
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.benefit-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.benefit-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--yellow);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.benefit-content h3 {
+    font-size: 1.1rem;
+    color: var(--navy);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.benefit-content p {
+    font-size: 0.95rem;
+    color: var(--gray);
+    line-height: 1.6;
+}
+
+/* Process Section */
+.process-section {
+    padding: 80px 0;
+    background: var(--cream);
+}
+
+.process-steps {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.process-step {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 40px;
+    align-items: flex-start;
+}
+
+.process-number {
+    width: 48px;
+    height: 48px;
+    background: var(--navy);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.process-content h3 {
+    font-size: 1.15rem;
+    color: var(--navy);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.process-content p {
+    color: var(--gray);
+    line-height: 1.7;
+}
+
+/* CTA Section */
+.sponsor-cta {
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--forest) 0%, #1a4010 100%);
+    color: white;
+    text-align: center;
+}
+
+.sponsor-cta h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.sponsor-cta p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    background: var(--yellow);
+    color: var(--charcoal);
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s;
+    display: inline-block;
+}
+
+.btn-primary:hover {
+    background: var(--yellow-hover);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    border: 2px solid white;
+    transition: all 0.3s;
+    display: inline-block;
+}
+
+.btn-secondary:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-2px);
+}
+
+/* Contact Info */
+.contact-info {
+    margin-top: 40px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.contact-info p {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+.contact-info a {
+    color: var(--yellow);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .sponsor-hero {
+        padding: 100px 0 50px;
+    }
+    
+    .sponsor-hero h1 {
+        font-size: 1.8rem;
+    }
+    
+    .intro-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .intro-image {
+        height: 300px;
+    }
+    
+    .sponsor-intro,
+    .tiers-section,
+    .fund-section,
+    .benefits-section,
+    .process-section,
+    .sponsor-cta {
+        padding: 60px 0;
+    }
+    
+    .tier-card {
+        padding: 32px 24px;
+    }
+    
+    .tier-amount {
+        font-size: 2rem;
+    }
+    
+    .process-step {
+        flex-direction: column;
+        gap: 16px;
+    }
+}
+{{ end }}
+
+{{ define "main" }}
+<!-- Hero Section -->
+<section class="sponsor-hero">
+    <div class="container">
+        <h1>Sponsor a Project</h1>
+        <p>Create transformational impact by funding entire programs. Your sponsorship directly enables sustainable livelihoods, preserves traditional crafts, and builds climate resilience for communities in North East India.</p>
+    </div>
+</section>
+
+<!-- Intro Section -->
+<section class="sponsor-intro">
+    <div class="container">
+        <div class="intro-grid">
+            <div class="intro-content">
+                <h2>Partner With Us for Lasting Change</h2>
+                <p>Project sponsorship goes beyond donations. As a sponsor, you become a true partner in our mission — with direct visibility into how your contribution transforms lives.</p>
+                <p>Whether you're an individual philanthropist, a family foundation, or a corporation seeking meaningful CSR impact, we'll work with you to align your giving with your values and goals.</p>
+                <p>Every sponsorship is fully transparent. You'll receive detailed reports, photo updates, and the opportunity to visit the communities you're supporting.</p>
+            </div>
+            <div class="intro-image">
+                [Image: Sponsor visiting artisan community]
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Sponsorship Tiers -->
+<section class="tiers-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Sponsorship Opportunities</h2>
+            <p>Choose a level that matches your vision for impact</p>
+        </div>
+        
+        <div class="tiers-grid">
+            <div class="tier-card">
+                <div class="tier-name">Village Champion</div>
+                <div class="tier-amount">₹10L <span>/ year</span></div>
+                <div class="tier-description">Support a single village's transformation journey</div>
+                <ul class="tier-features">
+                    <li>Train 25 artisan families in sustainable practices</li>
+                    <li>Establish community rainwater harvesting</li>
+                    <li>Quarterly impact reports with photos</li>
+                    <li>Named recognition in annual report</li>
+                    <li>Virtual meet with beneficiary families</li>
+                </ul>
+                <a href="mailto:sponsor@gointegral.org?subject=Village%20Champion%20Sponsorship" class="tier-btn">Become a Champion</a>
+            </div>
+            
+            <div class="tier-card featured">
+                <div class="tier-badge">Most Popular</div>
+                <div class="tier-name">Program Partner</div>
+                <div class="tier-amount">₹25L <span>/ year</span></div>
+                <div class="tier-description">Fund a complete program across multiple villages</div>
+                <ul class="tier-features">
+                    <li>Everything in Village Champion</li>
+                    <li>Support 75+ families across 3 villages</li>
+                    <li>Fund women's cooperative formation</li>
+                    <li>Monthly progress updates</li>
+                    <li>Site visit with team (travel supported)</li>
+                    <li>Co-branded impact storytelling</li>
+                </ul>
+                <a href="mailto:sponsor@gointegral.org?subject=Program%20Partner%20Sponsorship" class="tier-btn">Become a Partner</a>
+            </div>
+            
+            <div class="tier-card">
+                <div class="tier-name">Transformation Leader</div>
+                <div class="tier-amount">₹50L+ <span>/ year</span></div>
+                <div class="tier-description">Lead region-wide sustainable development</div>
+                <ul class="tier-features">
+                    <li>Everything in Program Partner</li>
+                    <li>Transform 150+ families across a region</li>
+                    <li>Establish market linkages for artisans</li>
+                    <li>Board-level engagement opportunities</li>
+                    <li>Custom program design with our team</li>
+                    <li>Documentary-style impact video</li>
+                </ul>
+                <a href="mailto:sponsor@gointegral.org?subject=Transformation%20Leader%20Sponsorship" class="tier-btn">Lead Transformation</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- What You Fund -->
+<section class="fund-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>What Your Sponsorship Funds</h2>
+            <p>Every rupee is allocated to create measurable, lasting impact</p>
+        </div>
+        
+        <div class="fund-grid">
+            <div class="fund-card">
+                <div class="fund-icon">🌱</div>
+                <h3>Sustainable Agriculture</h3>
+                <p>Organic mulberry cultivation, climate-smart sericulture, and soil regeneration programs</p>
+            </div>
+            
+            <div class="fund-card">
+                <div class="fund-icon">🧵</div>
+                <h3>Artisan Training</h3>
+                <p>Skills development, traditional pattern preservation, and quality improvement workshops</p>
+            </div>
+            
+            <div class="fund-card">
+                <div class="fund-icon">💧</div>
+                <h3>Water Infrastructure</h3>
+                <p>Rainwater harvesting systems, irrigation improvements, and watershed management</p>
+            </div>
+            
+            <div class="fund-card">
+                <div class="fund-icon">👩‍👩‍👧‍👦</div>
+                <h3>Women's Empowerment</h3>
+                <p>Self-help group formation, leadership training, and access to credit programs</p>
+            </div>
+            
+            <div class="fund-card">
+                <div class="fund-icon">🏪</div>
+                <h3>Market Access</h3>
+                <p>Fair-trade connections, direct sales platforms, and premium brand partnerships</p>
+            </div>
+            
+            <div class="fund-card">
+                <div class="fund-icon">🌍</div>
+                <h3>Climate Resilience</h3>
+                <p>Disaster preparedness, crop diversification, and indigenous knowledge preservation</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Benefits Section -->
+<section class="benefits-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Sponsor Benefits</h2>
+            <p>What you receive as a project sponsor</p>
+        </div>
+        
+        <div class="benefits-grid">
+            <div class="benefit-item">
+                <div class="benefit-icon">📊</div>
+                <div class="benefit-content">
+                    <h3>Complete Transparency</h3>
+                    <p>Detailed financial reports showing exactly how your funds are used, with full accountability.</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="benefit-icon">📸</div>
+                <div class="benefit-content">
+                    <h3>Regular Updates</h3>
+                    <p>Photo and video updates from the field, showing real progress and real people.</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="benefit-icon">✈️</div>
+                <div class="benefit-content">
+                    <h3>Site Visits</h3>
+                    <p>Opportunity to visit the communities you support and meet the families firsthand.</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="benefit-icon">📜</div>
+                <div class="benefit-content">
+                    <h3>Tax Benefits</h3>
+                    <p>All sponsorships are eligible for tax deduction under Section 80G of the Income Tax Act.</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="benefit-icon">🏆</div>
+                <div class="benefit-content">
+                    <h3>Recognition</h3>
+                    <p>Named acknowledgment in our annual report, website, and impact communications.</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="benefit-icon">🤝</div>
+                <div class="benefit-content">
+                    <h3>Partnership</h3>
+                    <p>Direct relationship with our leadership team and input on program priorities.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Process Section -->
+<section class="process-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>How Sponsorship Works</h2>
+            <p>A simple process to start your impact journey</p>
+        </div>
+        
+        <div class="process-steps">
+            <div class="process-step">
+                <div class="process-number">1</div>
+                <div class="process-content">
+                    <h3>Initial Conversation</h3>
+                    <p>We'll discuss your interests, values, and goals. Whether you care most about women's empowerment, climate action, or craft preservation, we'll find the right fit.</p>
+                </div>
+            </div>
+            
+            <div class="process-step">
+                <div class="process-number">2</div>
+                <div class="process-content">
+                    <h3>Custom Proposal</h3>
+                    <p>Our team will create a detailed proposal outlining the specific project, expected outcomes, timeline, and budget breakdown for your review.</p>
+                </div>
+            </div>
+            
+            <div class="process-step">
+                <div class="process-number">3</div>
+                <div class="process-content">
+                    <h3>Agreement & Launch</h3>
+                    <p>Once you approve, we formalize the partnership and begin implementation. You'll receive your first update within 30 days.</p>
+                </div>
+            </div>
+            
+            <div class="process-step">
+                <div class="process-number">4</div>
+                <div class="process-content">
+                    <h3>Ongoing Partnership</h3>
+                    <p>Throughout the sponsorship, you'll receive regular updates, have access to our team, and can visit the project whenever you'd like.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="sponsor-cta">
+    <div class="container">
+        <h2>Ready to Create Lasting Impact?</h2>
+        <p>Let's discuss how your sponsorship can transform communities while aligning with your philanthropic vision.</p>
+        <div class="cta-buttons">
+            <a href="mailto:sponsor@gointegral.org?subject=Project%20Sponsorship%20Inquiry" class="btn-primary">Start the Conversation</a>
+            <a href="/contact/" class="btn-secondary">Schedule a Call</a>
+        </div>
+        
+        <div class="contact-info">
+            <p>Or reach out directly: <a href="mailto:sponsor@gointegral.org">sponsor@gointegral.org</a> | <a href="tel:+91XXXXXXXXXX">+91 XXXX-XXX-XXX</a></p>
+        </div>
+    </div>
+</section>
+{{ end }}
