@@ -1,0 +1,357 @@
+{{ define "main" }}
+<style>
+/* Meet the Founder Styles */
+.founder-hero {
+    background: linear-gradient(135deg, var(--navy-blue) 0%, #1a3a5c 100%);
+    color: white;
+    padding: 100px 5% 80px;
+    text-align: center;
+}
+
+.founder-hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.founder-hero .subtitle {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.founder-profile {
+    padding: 80px 5%;
+    background: var(--cream);
+}
+
+.profile-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.founder-image-container {
+    position: relative;
+}
+
+.founder-image {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+}
+
+.founder-image-placeholder {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: linear-gradient(135deg, var(--navy-blue) 0%, #1a3a5c 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.founder-bio h2 {
+    font-size: 2rem;
+    color: var(--navy-blue);
+    margin-bottom: 0.5rem;
+}
+
+.founder-title {
+    font-size: 1.1rem;
+    color: var(--gray);
+    margin-bottom: 2rem;
+}
+
+.founder-bio p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--charcoal);
+    margin-bottom: 1.5rem;
+}
+
+.founder-quote {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    border-left: 4px solid var(--yellow);
+    margin: 40px 0;
+}
+
+.founder-quote blockquote {
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--navy-blue);
+    margin: 0;
+    line-height: 1.6;
+}
+
+.founder-quote cite {
+    display: block;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    font-style: normal;
+    color: var(--gray);
+}
+
+/* Journey Timeline */
+.founder-journey {
+    padding: 80px 5%;
+    background: white;
+}
+
+.founder-journey h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--navy-blue);
+    margin-bottom: 60px;
+}
+
+.journey-timeline {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.journey-timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border);
+}
+
+.journey-item {
+    padding-left: 60px;
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.journey-item::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 5px;
+    width: 18px;
+    height: 18px;
+    background: var(--yellow);
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 0 0 2px var(--yellow);
+}
+
+.journey-year {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--yellow);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+.journey-item h3 {
+    font-size: 1.25rem;
+    color: var(--navy-blue);
+    margin-bottom: 0.5rem;
+}
+
+.journey-item p {
+    color: var(--charcoal);
+    line-height: 1.6;
+}
+
+/* Vision Section */
+.founder-vision {
+    padding: 80px 5%;
+    background: var(--cream);
+}
+
+.vision-container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.founder-vision h2 {
+    font-size: 2rem;
+    color: var(--navy-blue);
+    margin-bottom: 2rem;
+}
+
+.founder-vision p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--charcoal);
+    margin-bottom: 1.5rem;
+}
+
+/* Connect Section */
+.founder-connect {
+    padding: 60px 5%;
+    background: var(--navy-blue);
+    text-align: center;
+    color: white;
+}
+
+.founder-connect h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+}
+
+.founder-connect p {
+    opacity: 0.9;
+    margin-bottom: 2rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.social-link {
+    width: 50px;
+    height: 50px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background: var(--yellow);
+    color: var(--navy-blue);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .founder-hero h1 { font-size: 2rem; }
+    .profile-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .founder-image-placeholder {
+        max-width: 280px;
+        margin: 0 auto;
+    }
+    .founder-quote { padding: 24px; }
+    .founder-quote blockquote { font-size: 1.1rem; }
+}
+</style>
+
+<section class="founder-hero">
+    <h1>Meet the Founder</h1>
+    <p class="subtitle">The vision and journey behind Integral Foundation's mission to transform rural livelihoods in North East India</p>
+</section>
+
+<section class="founder-profile">
+    <div class="profile-container">
+        <div class="founder-image-container">
+            <!-- Replace with actual image -->
+            <div class="founder-image-placeholder">
+                Founder Photo
+            </div>
+        </div>
+        
+        <div class="founder-bio">
+            <h2>[Founder Name]</h2>
+            <p class="founder-title">Founder & Executive Director</p>
+            
+            <p>Born and raised in North East India, [Founder Name] witnessed firsthand the challenges facing rural communities—declining traditional crafts, limited economic opportunities, and the migration of youth to urban centers.</p>
+            
+            <p>After completing studies in [field] from [university], [he/she/they] returned to the region with a mission: to prove that sustainable livelihoods could be created by honoring traditional knowledge while embracing modern approaches.</p>
+            
+            <p>In [year], Integral Foundation was born from a simple but powerful idea—that silk farming, deeply rooted in the cultural heritage of North East India, could become a pathway out of poverty while protecting the environment.</p>
+            
+            <div class="founder-quote">
+                <blockquote>
+                    "We don't just create jobs—we restore dignity. When an artisan can support their family through the craft their ancestors practiced, we're not just building livelihoods. We're preserving a legacy."
+                </blockquote>
+                <cite>— [Founder Name]</cite>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="founder-journey">
+    <h2>The Journey</h2>
+    <div class="journey-timeline">
+        <div class="journey-item">
+            <span class="journey-year">Early Years</span>
+            <h3>Growing Up in North East India</h3>
+            <p>Raised in a community where silk weaving was part of daily life, [Founder Name] developed a deep appreciation for traditional craftsmanship and the challenges facing rural artisans.</p>
+        </div>
+        
+        <div class="journey-item">
+            <span class="journey-year">[Year]</span>
+            <h3>Education & Early Career</h3>
+            <p>Studied [field] and gained experience in [relevant sector], always with the intention of returning to serve the community.</p>
+        </div>
+        
+        <div class="journey-item">
+            <span class="journey-year">[Year]</span>
+            <h3>The Turning Point</h3>
+            <p>A visit home revealed the stark reality: traditional silk farming was dying, and with it, centuries of knowledge and cultural identity. The seed of Integral Foundation was planted.</p>
+        </div>
+        
+        <div class="journey-item">
+            <span class="journey-year">[Year]</span>
+            <h3>Founding Integral Foundation</h3>
+            <p>Started with just [number] families in [village], proving that the integral farming model could work. Today, we serve thousands across multiple states.</p>
+        </div>
+        
+        <div class="journey-item">
+            <span class="journey-year">Today</span>
+            <h3>Scaling the Vision</h3>
+            <p>Leading a team of [number]+ dedicated professionals, expanding to new regions, and continuing to innovate for greater impact.</p>
+        </div>
+    </div>
+</section>
+
+<section class="founder-vision">
+    <div class="vision-container">
+        <h2>A Vision for the Future</h2>
+        <p>"My dream is simple: a North East India where no one has to leave their village to find a dignified livelihood. Where traditional knowledge is valued and profitable. Where every artisan family can thrive."</p>
+        <p>"We've proven the model works. Now it's time to scale—to reach every village, every family that wants to be part of this transformation. With your support, we will."</p>
+    </div>
+</section>
+
+<section class="founder-connect">
+    <h2>Connect with [Founder Name]</h2>
+    <p>Follow the journey and join the conversation</p>
+    <div class="social-links">
+        <a href="#" class="social-link" aria-label="LinkedIn">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect x="2" y="9" width="4" height="12"/>
+                <circle cx="4" cy="4" r="2"/>
+            </svg>
+        </a>
+        <a href="#" class="social-link" aria-label="Twitter">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+            </svg>
+        </a>
+        <a href="#" class="social-link" aria-label="Instagram">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+        </a>
+    </div>
+</section>
+{{ end }}
