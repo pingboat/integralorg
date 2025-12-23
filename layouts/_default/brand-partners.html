@@ -1,52 +1,403 @@
 {{ define "main" }}
 <style>
-.bp-hero { background: linear-gradient(135deg, var(--forest) 0%, #1a3a2f 100%); color: white; padding: 6rem 2rem; text-align: center; }
-.bp-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 1.5rem; }
-.bp-hero .subtitle { font-size: 1.1rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; }
-.bp-hero p { font-size: 1.25rem; max-width: 750px; margin: 0 auto; opacity: 0.9; line-height: 1.8; }
-.value-prop { background: white; padding: 5rem 2rem; }
-.value-container { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-.value-content h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--forest); margin-bottom: 1.5rem; }
-.value-content p { font-size: 1.1rem; line-height: 1.8; color: var(--charcoal); margin-bottom: 1.5rem; }
-.value-image { border-radius: 16px; aspect-ratio: 4/3; background: linear-gradient(135deg, #2d5a47, #1a3a2f); display: flex; align-items: center; justify-content: center; color: white; }
-.partnership-types { background: var(--cream); padding: 5rem 2rem; }
-.partnership-types .container { max-width: 1200px; margin: 0 auto; }
-.section-header { text-align: center; margin-bottom: 4rem; }
-.section-header h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--forest); margin-bottom: 1rem; }
-.section-header p { font-size: 1.1rem; color: #666; max-width: 700px; margin: 0 auto; }
-.types-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-.type-card { background: white; border-radius: 16px; padding: 2.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); position: relative; overflow: hidden; transition: all 0.3s ease; }
-.type-card:hover { transform: translateY(-8px); box-shadow: 0 12px 40px rgba(0,0,0,0.15); }
-.type-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--gold); }
-.type-icon { width: 60px; height: 60px; background: var(--cream); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.75rem; margin-bottom: 1.5rem; }
-.type-card h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--forest); margin-bottom: 1rem; }
-.type-card > p { font-size: 0.95rem; color: #666; line-height: 1.7; margin-bottom: 1.5rem; }
-.type-features { list-style: none; padding: 0; }
-.type-features li { padding: 0.5rem 0; font-size: 0.9rem; color: var(--charcoal); display: flex; gap: 0.75rem; }
-.type-features li::before { content: "✓"; color: var(--forest); font-weight: 700; }
-.benefits { background: white; padding: 5rem 2rem; }
-.benefits .container { max-width: 1100px; margin: 0 auto; }
-.benefits-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 3rem; }
-.benefit-item { display: flex; gap: 1.5rem; padding: 2rem; background: var(--cream); border-radius: 12px; }
-.benefit-icon { width: 50px; height: 50px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; }
-.benefit-content h3 { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: var(--forest); margin-bottom: 0.5rem; }
-.benefit-content p { font-size: 0.95rem; color: #666; line-height: 1.6; }
-.process { background: var(--cream); padding: 5rem 2rem; }
-.process .container { max-width: 1000px; margin: 0 auto; }
-.process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: 3rem; }
-.process-step { text-align: center; position: relative; }
-.process-step:not(:last-child)::after { content: '→'; position: absolute; right: -1.25rem; top: 30px; font-size: 1.5rem; color: var(--gold); }
-.step-number { width: 60px; height: 60px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.5rem; color: var(--charcoal); margin: 0 auto 1.5rem; }
-.process-step h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--forest); margin-bottom: 0.5rem; }
-.process-step p { font-size: 0.9rem; color: #666; }
-.bp-cta { background: linear-gradient(135deg, var(--gold) 0%, #d4a853 100%); padding: 5rem 2rem; text-align: center; }
-.bp-cta h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--charcoal); margin-bottom: 1rem; }
-.bp-cta p { font-size: 1.1rem; color: var(--charcoal); max-width: 600px; margin: 0 auto 2rem; }
-.cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-.btn-dark { background: var(--charcoal); color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; }
-.btn-outline-dark { background: transparent; color: var(--charcoal); padding: 1rem 2rem; border: 2px solid var(--charcoal); border-radius: 8px; text-decoration: none; font-weight: 600; }
-@media (max-width: 968px) { .value-container, .types-grid, .benefits-grid { grid-template-columns: 1fr; } .process-steps { grid-template-columns: repeat(2, 1fr); } .process-step:not(:last-child)::after { display: none; } }
-@media (max-width: 640px) { .process-steps { grid-template-columns: 1fr; } }
+/* Brand Partners Page Styles */
+
+.bp-hero {
+    background: var(--cream, #faf8f3);
+    padding: 120px 2rem 80px;
+    text-align: center;
+}
+
+.bp-hero h1 {
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    font-weight: 700;
+    color: var(--forest, #2d5016);
+    margin-bottom: 1.5rem;
+}
+
+.bp-hero .subtitle {
+    font-size: 1rem;
+    color: var(--saffron, #f5a623);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.bp-hero p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+    color: var(--charcoal, #2d2d2d);
+    line-height: 1.7;
+}
+
+/* Value Proposition Section */
+.value-prop {
+    background: white;
+    padding: 80px 2rem;
+}
+
+.value-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.value-content h2 {
+    font-size: 2rem;
+    color: var(--forest, #2d5016);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.value-content p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--charcoal, #2d2d2d);
+    margin-bottom: 1.5rem;
+}
+
+.value-image {
+    border-radius: 16px;
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, #e8e4da 0%, #d4cfc2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray, #6b7280);
+    font-size: 1rem;
+}
+
+/* Partnership Types Section */
+.partnership-types {
+    background: var(--cream, #faf8f3);
+    padding: 80px 2rem;
+}
+
+.partnership-types .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-header h2 {
+    font-size: 2rem;
+    color: var(--forest, #2d5016);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.section-header p {
+    font-size: 1.1rem;
+    color: var(--charcoal, #2d2d2d);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.types-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.type-card {
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.type-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+}
+
+.type-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--saffron, #f5a623);
+}
+
+.type-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--cream, #faf8f3);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.type-card h3 {
+    font-size: 1.35rem;
+    color: var(--forest, #2d5016);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.type-card > p {
+    font-size: 0.95rem;
+    color: var(--gray, #6b7280);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.type-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.type-features li {
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+    color: var(--charcoal, #2d2d2d);
+    display: flex;
+    gap: 0.75rem;
+}
+
+.type-features li::before {
+    content: "✓";
+    color: var(--forest, #2d5016);
+    font-weight: 700;
+}
+
+/* Benefits Section */
+.benefits {
+    background: white;
+    padding: 80px 2rem;
+}
+
+.benefits .container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 50px;
+}
+
+.benefit-item {
+    display: flex;
+    gap: 1.5rem;
+    padding: 28px;
+    background: var(--cream, #faf8f3);
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.benefit-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.benefit-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--saffron, #f5a623);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.benefit-content h3 {
+    font-size: 1.15rem;
+    color: var(--forest, #2d5016);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.benefit-content p {
+    font-size: 0.95rem;
+    color: var(--gray, #6b7280);
+    line-height: 1.6;
+}
+
+/* Process Section */
+.process {
+    background: var(--cream, #faf8f3);
+    padding: 80px 2rem;
+}
+
+.process .container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.process-step {
+    text-align: center;
+    position: relative;
+}
+
+.process-step:not(:last-child)::after {
+    content: '→';
+    position: absolute;
+    right: -20px;
+    top: 30px;
+    font-size: 1.5rem;
+    color: var(--saffron, #f5a623);
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    background: var(--saffron, #f5a623);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--forest, #2d5016);
+    margin: 0 auto 1.5rem;
+}
+
+.process-step h3 {
+    font-size: 1.1rem;
+    color: var(--forest, #2d5016);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.process-step p {
+    font-size: 0.9rem;
+    color: var(--gray, #6b7280);
+}
+
+/* CTA Section */
+.bp-cta {
+    background: var(--forest, #2d5016);
+    padding: 80px 2rem;
+    text-align: center;
+    color: white;
+}
+
+.bp-cta h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.bp-cta p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    background: var(--yellow, #FFC700);
+    color: var(--charcoal, #2d2d2d);
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: var(--yellow-hover, #E6B300);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    border: 2px solid white;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .value-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .types-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .process-steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .process-step:not(:last-child)::after {
+        display: none;
+    }
+}
+
+@media (max-width: 640px) {
+    .bp-hero {
+        padding: 100px 1.5rem 60px;
+    }
+    
+    .process-steps {
+        grid-template-columns: 1fr;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+    }
+}
 </style>
 
 <section class="bp-hero">
@@ -76,7 +427,7 @@
         </div>
         <div class="types-grid">
             <div class="type-card">
-                <div class="type-icon">🎯</div>
+                <div class="type-icon"></div>
                 <h3>Cause Marketing</h3>
                 <p>Connect your products or campaigns to our mission with donation-linked promotions.</p>
                 <ul class="type-features">
@@ -87,7 +438,7 @@
                 </ul>
             </div>
             <div class="type-card">
-                <div class="type-icon">📸</div>
+                <div class="type-icon"></div>
                 <h3>Content & Storytelling</h3>
                 <p>Access authentic stories and visuals from artisan communities for your marketing.</p>
                 <ul class="type-features">
@@ -98,7 +449,7 @@
                 </ul>
             </div>
             <div class="type-card">
-                <div class="type-icon">👥</div>
+                <div class="type-icon"></div>
                 <h3>Employee Engagement</h3>
                 <p>Meaningful experiences that boost morale and connect your team to purpose.</p>
                 <ul class="type-features">
@@ -120,20 +471,32 @@
         </div>
         <div class="benefits-grid">
             <div class="benefit-item">
-                <div class="benefit-icon">📊</div>
-                <div class="benefit-content"><h3>Impact Metrics</h3><p>Clear, verified data on artisans reached, income improved, and communities supported.</p></div>
+                <div class="benefit-icon"></div>
+                <div class="benefit-content">
+                    <h3>Impact Metrics</h3>
+                    <p>Clear, verified data on artisans reached, income improved, and communities supported.</p>
+                </div>
             </div>
             <div class="benefit-item">
-                <div class="benefit-icon">🎬</div>
-                <div class="benefit-content"><h3>Authentic Content</h3><p>Professional photos, videos, and stories you can use across your marketing channels.</p></div>
+                <div class="benefit-icon"></div>
+                <div class="benefit-content">
+                    <h3>Authentic Content</h3>
+                    <p>Professional photos, videos, and stories you can use across your marketing channels.</p>
+                </div>
             </div>
             <div class="benefit-item">
-                <div class="benefit-icon">📣</div>
-                <div class="benefit-content"><h3>Co-Marketing</h3><p>Promotion across our channels, website features, and press release support.</p></div>
+                <div class="benefit-icon"></div>
+                <div class="benefit-content">
+                    <h3>Co-Marketing</h3>
+                    <p>Promotion across our channels, website features, and press release support.</p>
+                </div>
             </div>
             <div class="benefit-item">
-                <div class="benefit-icon">🏆</div>
-                <div class="benefit-content"><h3>Recognition</h3><p>Partner badge, annual report mention, and CSR documentation support.</p></div>
+                <div class="benefit-icon"></div>
+                <div class="benefit-content">
+                    <h3>Recognition</h3>
+                    <p>Partner badge, annual report mention, and CSR documentation support.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -146,10 +509,26 @@
             <p>From conversation to campaign in four simple steps.</p>
         </div>
         <div class="process-steps">
-            <div class="process-step"><div class="step-number">1</div><h3>Discovery Call</h3><p>We learn about your brand and goals</p></div>
-            <div class="process-step"><div class="step-number">2</div><h3>Custom Proposal</h3><p>We design a partnership for you</p></div>
-            <div class="process-step"><div class="step-number">3</div><h3>Collaboration</h3><p>Execute campaigns together</p></div>
-            <div class="process-step"><div class="step-number">4</div><h3>Impact Report</h3><p>Receive metrics and content</p></div>
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <h3>Discovery Call</h3>
+                <p>We learn about your brand and goals</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <h3>Custom Proposal</h3>
+                <p>We design a partnership for you</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <h3>Collaboration</h3>
+                <p>Execute campaigns together</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">4</div>
+                <h3>Impact Report</h3>
+                <p>Receive metrics and content</p>
+            </div>
         </div>
     </div>
 </section>
@@ -159,8 +538,8 @@
         <h2>Let's Create Something Meaningful</h2>
         <p>Ready to explore how a brand partnership could work for you? Let's start a conversation.</p>
         <div class="cta-buttons">
-            <a href="mailto:partnerships@gointegral.org?subject=Brand%20Partnership%20Inquiry" class="btn-dark">Start the Conversation</a>
-            <a href="/contact/" class="btn-outline-dark">Schedule a Call</a>
+            <a href="mailto:partnerships@gointegral.org?subject=Brand%20Partnership%20Inquiry" class="btn-primary">Start the Conversation</a>
+            <a href="/contact/" class="btn-secondary">Schedule a Call</a>
         </div>
     </div>
 </section>
