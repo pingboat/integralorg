@@ -1,0 +1,698 @@
+{{ define "styles" }}
+/* Integral Model Page Styles */
+.page-hero {
+    padding: 100px 0 60px;
+    text-align: center;
+    background: var(--cream);
+}
+
+.page-hero h1 {
+    font-size: 3rem;
+    color: var(--navy);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.page-hero .subtitle {
+    font-size: 1.25rem;
+    color: var(--gray);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+.content-section {
+    padding: 80px 0;
+}
+
+.content-section.alt-bg {
+    background: var(--white);
+}
+
+.section-intro {
+    max-width: 800px;
+    margin: 0 auto 60px;
+    text-align: center;
+}
+
+.section-intro h2 {
+    font-size: 2rem;
+    color: var(--navy);
+    margin-bottom: 1.5rem;
+}
+
+.section-intro p {
+    font-size: 1.1rem;
+    color: var(--charcoal);
+    line-height: 1.8;
+}
+
+/* Philosophy Cards */
+.philosophy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+}
+
+.philosophy-card {
+    background: var(--white);
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+
+.philosophy-card .icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.philosophy-card h3 {
+    font-size: 1.2rem;
+    color: var(--navy);
+    margin-bottom: 12px;
+}
+
+.philosophy-card p {
+    color: var(--gray);
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+/* Four Pillars */
+.pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+}
+
+.pillar-card {
+    background: var(--white);
+    padding: 40px 32px;
+    border-radius: 20px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+}
+
+.pillar-card .icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.pillar-card h3 {
+    font-size: 1.3rem;
+    color: var(--navy);
+    margin-bottom: 16px;
+}
+
+.pillar-card .description {
+    color: var(--gray);
+    margin-bottom: 20px;
+    line-height: 1.7;
+}
+
+.pillar-card ul {
+    list-style: none;
+    margin-bottom: 24px;
+}
+
+.pillar-card ul li {
+    padding: 8px 0;
+    padding-left: 20px;
+    position: relative;
+    color: var(--charcoal);
+    font-size: 0.95rem;
+}
+
+.pillar-card ul li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--forest);
+}
+
+.pillar-card .impact {
+    background: rgba(45, 80, 22, 0.08);
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    color: var(--forest);
+    font-weight: 500;
+}
+
+/* Process Steps */
+.process-steps {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.process-step {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 40px;
+    align-items: flex-start;
+}
+
+.step-number {
+    width: 48px;
+    height: 48px;
+    background: var(--yellow);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--charcoal);
+    flex-shrink: 0;
+}
+
+.step-content h3 {
+    font-size: 1.2rem;
+    color: var(--navy);
+    margin-bottom: 8px;
+}
+
+.step-content p {
+    color: var(--gray);
+    line-height: 1.7;
+}
+
+/* Comparison Table */
+.comparison-section {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 40px;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.comparison-box {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+}
+
+.comparison-box h3 {
+    font-size: 1.2rem;
+    color: var(--navy);
+    margin-bottom: 24px;
+}
+
+.comparison-box ul {
+    list-style: none;
+}
+
+.comparison-box ul li {
+    padding: 12px 0;
+    padding-left: 24px;
+    position: relative;
+    color: var(--charcoal);
+    border-bottom: 1px solid var(--light-gray);
+}
+
+.comparison-box ul li:last-child {
+    border-bottom: none;
+}
+
+.comparison-box.traditional ul li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--gray);
+}
+
+.comparison-box.integral ul li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--forest);
+}
+
+.comparison-arrow {
+    font-size: 2rem;
+    color: var(--yellow);
+}
+
+/* Case Study */
+.case-study {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 48px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.case-study h3 {
+    font-size: 1.5rem;
+    color: var(--navy);
+    margin-bottom: 8px;
+}
+
+.case-study .location {
+    color: var(--gray);
+    margin-bottom: 24px;
+}
+
+.case-study .description {
+    color: var(--charcoal);
+    line-height: 1.8;
+    margin-bottom: 32px;
+}
+
+.case-study-stats {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat .number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--forest);
+}
+
+.stat .label {
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+.integral-difference {
+    background: rgba(45, 80, 22, 0.05);
+    padding: 24px;
+    border-radius: 16px;
+    border-left: 4px solid var(--forest);
+}
+
+.integral-difference strong {
+    color: var(--forest);
+}
+
+/* Principles Grid */
+.principles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.principle-card {
+    background: var(--white);
+    padding: 28px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+
+.principle-card h3 {
+    font-size: 1.1rem;
+    color: var(--navy);
+    margin-bottom: 12px;
+}
+
+.principle-card p {
+    color: var(--gray);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+/* CTA Section */
+.cta-section {
+    background: linear-gradient(135deg, var(--forest) 0%, #1a4010 100%);
+    padding: 80px 0;
+    text-align: center;
+    color: white;
+}
+
+.cta-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.cta-section p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cta-btn {
+    padding: 16px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s;
+}
+
+.cta-btn.primary {
+    background: var(--yellow);
+    color: var(--charcoal);
+}
+
+.cta-btn.secondary {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+.cta-btn:hover {
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .page-hero h1 {
+        font-size: 2rem;
+    }
+    
+    .comparison-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .comparison-arrow {
+        transform: rotate(90deg);
+        text-align: center;
+    }
+    
+    .case-study {
+        padding: 32px 24px;
+    }
+    
+    .case-study-stats {
+        justify-content: center;
+    }
+}
+{{ end }}
+
+{{ define "main" }}
+<!-- Hero Section -->
+<section class="page-hero">
+    <div class="container">
+        <h1>The Integral Model</h1>
+        <p class="subtitle">A holistic approach to sustainable development, rooted in Sri Aurobindo's Integral Yoga philosophy</p>
+    </div>
+</section>
+
+<!-- Beyond Traditional Development -->
+<section class="content-section">
+    <div class="container">
+        <div class="section-intro">
+            <h2>Beyond traditional development</h2>
+            <p>Most development programs address symptoms—poverty, unemployment, environmental degradation—in isolation. The Integral Model recognizes that these challenges are interconnected and require holistic solutions.</p>
+            <p style="margin-top: 1rem;">By integrating Sri Aurobindo's philosophy of consciousness evolution with practical interventions in agriculture, craft preservation, and climate adaptation, we create transformation that touches every dimension of life: physical, vital, mental, and spiritual.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Rooted in Sri Aurobindo's Integral Yoga -->
+<section class="content-section alt-bg">
+    <div class="container">
+        <div class="section-intro">
+            <h2>Rooted in Sri Aurobindo's Integral Yoga</h2>
+            <p>Sri Aurobindo's Integral Yoga seeks the transformation of human consciousness and the harmonious development of all aspects of being. We apply this wisdom to rural development.</p>
+        </div>
+        
+        <div class="philosophy-grid">
+            <div class="philosophy-card">
+                <div class="icon">🧘</div>
+                <h3>Inner & Outer Transformation</h3>
+                <p>Development must address both material conditions and inner consciousness. Sustainable change requires shifts in awareness, values, and relationship to nature.</p>
+            </div>
+            
+            <div class="philosophy-card">
+                <div class="icon">🌀</div>
+                <h3>Evolution & Progress</h3>
+                <p>Communities evolve through stages. We meet people where they are and support their natural progression toward more integrated, conscious ways of living.</p>
+            </div>
+            
+            <div class="philosophy-card">
+                <div class="icon">🔗</div>
+                <h3>Unity in Diversity</h3>
+                <p>Every element—ecological, economic, social, spiritual—is interconnected. Solutions must honor this wholeness while respecting cultural uniqueness.</p>
+            </div>
+            
+            <div class="philosophy-card">
+                <div class="icon">⚡</div>
+                <h3>Divine in Nature</h3>
+                <p>Nature is not a resource to exploit but a manifestation of consciousness. This reverence guides our approach to agriculture and environment.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Four Pillars of Practice -->
+<section class="content-section">
+    <div class="container">
+        <div class="section-intro">
+            <h2>Four Pillars of Practice</h2>
+            <p>Our model translates philosophy into action through four interconnected pillars, each addressing a dimension of sustainable livelihoods.</p>
+        </div>
+        
+        <div class="pillars-grid">
+            <div class="pillar-card">
+                <div class="icon">🌱</div>
+                <h3>Sustainable Agriculture</h3>
+                <p class="description">Climate-resilient sericulture that works with nature's rhythms, not against them.</p>
+                <ul>
+                    <li>Organic mulberry cultivation techniques</li>
+                    <li>Indigenous silkworm rearing methods</li>
+                    <li>Soil regeneration and biodiversity protection</li>
+                    <li>Water conservation systems</li>
+                    <li>Adaptation strategies for climate variability</li>
+                </ul>
+                <div class="impact"><strong>Impact:</strong> 40% average increase in silk yield while restoring ecosystem health</div>
+            </div>
+            
+            <div class="pillar-card">
+                <div class="icon">🧵</div>
+                <h3>Craft Preservation</h3>
+                <p class="description">Reviving traditional silk weaving as a dignified livelihood and cultural heritage.</p>
+                <ul>
+                    <li>Master artisan mentorship programs</li>
+                    <li>Documentation of traditional patterns</li>
+                    <li>Fair-trade market connections</li>
+                    <li>Skills training for next generation</li>
+                    <li>Design innovation rooted in tradition</li>
+                </ul>
+                <div class="impact"><strong>Impact:</strong> Preserving Muga, Eri, and Pat silk traditions across 150+ artisan families</div>
+            </div>
+            
+            <div class="pillar-card">
+                <div class="icon">🌍</div>
+                <h3>Climate Resilience</h3>
+                <p class="description">Building adaptive capacity to thrive amid climate uncertainty.</p>
+                <ul>
+                    <li>Climate-smart agriculture training</li>
+                    <li>Indigenous weather forecasting knowledge</li>
+                    <li>Disaster preparedness systems</li>
+                    <li>Crop diversification strategies</li>
+                    <li>Community-based early warning networks</li>
+                </ul>
+                <div class="impact"><strong>Impact:</strong> Communities maintain 80% productivity despite extreme weather events</div>
+            </div>
+            
+            <div class="pillar-card">
+                <div class="icon">🤝</div>
+                <h3>Community Development</h3>
+                <p class="description">Empowering indigenous communities with resources, education, and self-determination.</p>
+                <ul>
+                    <li>Women's self-help groups formation</li>
+                    <li>Financial literacy and savings programs</li>
+                    <li>Youth leadership development</li>
+                    <li>Traditional knowledge systems integration</li>
+                    <li>Community-led decision making</li>
+                </ul>
+                <div class="impact"><strong>Impact:</strong> 65% of participant families achieve financial independence within 3 years</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How the model works -->
+<section class="content-section alt-bg">
+    <div class="container">
+        <div class="section-intro">
+            <h2>How the model works</h2>
+        </div>
+        
+        <div class="process-steps">
+            <div class="process-step">
+                <div class="step-number">01</div>
+                <div class="step-content">
+                    <h3>Community Immersion</h3>
+                    <p>We begin by living and working alongside communities, understanding their aspirations, challenges, and indigenous knowledge systems. This builds trust and ensures our interventions are culturally appropriate.</p>
+                </div>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">02</div>
+                <div class="step-content">
+                    <h3>Holistic Assessment</h3>
+                    <p>We map all dimensions of community life—ecological, economic, social, cultural, and spiritual. This reveals hidden connections and leverage points for transformation.</p>
+                </div>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">03</div>
+                <div class="step-content">
+                    <h3>Co-Creation</h3>
+                    <p>Communities design their own pathways forward. We provide frameworks, resources, and technical support, but solutions emerge from local wisdom and agency.</p>
+                </div>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">04</div>
+                <div class="step-content">
+                    <h3>Integrated Implementation</h3>
+                    <p>All four pillars work simultaneously. A farmer receiving agriculture training also connects to craft markets, builds climate resilience, and participates in community governance.</p>
+                </div>
+            </div>
+            
+            <div class="process-step">
+                <div class="step-number">05</div>
+                <div class="step-content">
+                    <h3>Continuous Evolution</h3>
+                    <p>We learn, adapt, and refine. Communities become centers of innovation, sharing knowledge with neighboring villages and inspiring regional transformation.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- What makes the Integral Model different -->
+<section class="content-section">
+    <div class="container">
+        <div class="section-intro">
+            <h2>What makes the Integral Model different</h2>
+        </div>
+        
+        <div class="comparison-section">
+            <div class="comparison-box traditional">
+                <h3>Traditional Development</h3>
+                <ul>
+                    <li>Single-issue focus (poverty OR environment)</li>
+                    <li>External experts design solutions</li>
+                    <li>Technology transfer without cultural context</li>
+                    <li>Short-term projects with exit strategies</li>
+                    <li>Economic metrics as primary success measure</li>
+                    <li>Communities as beneficiaries</li>
+                </ul>
+            </div>
+            
+            <div class="comparison-arrow">→</div>
+            
+            <div class="comparison-box integral">
+                <h3>Integral Approach</h3>
+                <ul>
+                    <li>Addresses interconnected systems holistically</li>
+                    <li>Communities lead, we support</li>
+                    <li>Honors indigenous knowledge + modern science</li>
+                    <li>Long-term partnership for sustained transformation</li>
+                    <li>Wellbeing across all dimensions of life</li>
+                    <li>Communities as co-creators and knowledge holders</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- The model in action - Majuli Case Study -->
+<section class="content-section alt-bg">
+    <div class="container">
+        <div class="section-intro">
+            <h2>The model in action</h2>
+        </div>
+        
+        <div class="case-study">
+            <h3>Majuli Island: A Living Laboratory</h3>
+            <p class="location">📍 Assam, North East India</p>
+            <p class="description">On Majuli, the world's largest river island and home to unique Mising tribal culture, climate change threatens both land and livelihoods. Erosion claims 8-10 km annually, while unpredictable rainfall disrupts traditional silk farming.</p>
+            
+            <div class="case-study-stats">
+                <div class="stat">
+                    <div class="number">25</div>
+                    <div class="label">Families transformed</div>
+                </div>
+                <div class="stat">
+                    <div class="number">50%</div>
+                    <div class="label">Income increase</div>
+                </div>
+                <div class="stat">
+                    <div class="number">3</div>
+                    <div class="label">Endangered silk varieties preserved</div>
+                </div>
+            </div>
+            
+            <div class="integral-difference">
+                <strong>The Integral Difference:</strong> Rather than simply teaching climate-smart agriculture, we worked with elders to document weather prediction systems passed down for generations. Youth learned both traditional and scientific methods. Women formed cooperatives that now supply premium silk to global markets. The community became a regional training center, teaching other villages their integrated approach.
+            </div>
+            
+            <p style="margin-top: 24px;"><a href="/stories" style="color: var(--forest); font-weight: 600;">Read full story →</a></p>
+        </div>
+    </div>
+</section>
+
+<!-- Our guiding principles -->
+<section class="content-section">
+    <div class="container">
+        <div class="section-intro">
+            <h2>Our guiding principles</h2>
+        </div>
+        
+        <div class="principles-grid">
+            <div class="principle-card">
+                <h3>🌿 Nature as Teacher</h3>
+                <p>We observe how ecosystems thrive through diversity, interdependence, and cycles. Our programs mirror nature's wisdom.</p>
+            </div>
+            
+            <div class="principle-card">
+                <h3>🎓 Everyone is a Teacher & Learner</h3>
+                <p>Farmers, artisans, and elders hold deep knowledge. We create spaces for mutual learning across all participants.</p>
+            </div>
+            
+            <div class="principle-card">
+                <h3>⏳ Think in Generations</h3>
+                <p>Transformation takes time. We commit to multi-generational partnerships, not short-term projects.</p>
+            </div>
+            
+            <div class="principle-card">
+                <h3>💪 Build from Strengths</h3>
+                <p>Every community has assets—cultural traditions, ecological knowledge, social networks. We amplify what works.</p>
+            </div>
+            
+            <div class="principle-card">
+                <h3>🔄 Adaptation Over Perfection</h3>
+                <p>We experiment, learn from failures, and continuously refine. Context matters more than blueprints.</p>
+            </div>
+            
+            <div class="principle-card">
+                <h3>✨ Inner Change Drives Outer Change</h3>
+                <p>Sustainable development requires shifts in consciousness—moving from extraction to stewardship, competition to collaboration.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container">
+        <h2>Support the Integral Model</h2>
+        <p>Your contribution funds holistic transformation that honors tradition, restores nature, and builds dignified livelihoods across generations.</p>
+        <div class="cta-buttons">
+            <a href="/donate" class="cta-btn primary">Give Today</a>
+            <a href="/partnerships" class="cta-btn secondary">Become a Partner</a>
+        </div>
+    </div>
+</section>
+{{ end }}

@@ -1,0 +1,905 @@
+{{ define "styles" }}
+/* Volunteer Page Styles */
+.volunteer-hero {
+    padding: 120px 0 60px;
+    background: linear-gradient(135deg, var(--saffron) 0%, #e07b1a 100%);
+    color: white;
+    text-align: center;
+}
+
+.volunteer-hero h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.volunteer-hero p {
+    font-size: 1.2rem;
+    opacity: 0.95;
+    max-width: 650px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* Intro Section */
+.volunteer-intro {
+    padding: 80px 0;
+    background: var(--cream);
+}
+
+.intro-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.intro-content h2 {
+    font-size: 2rem;
+    color: var(--navy);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.intro-content p {
+    font-size: 1.1rem;
+    color: var(--charcoal);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+/* Volunteer Types */
+.volunteer-types {
+    padding: 80px 0;
+    background: var(--white);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-header h2 {
+    font-size: 2rem;
+    color: var(--navy);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.section-header p {
+    font-size: 1.1rem;
+    color: var(--gray);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.types-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.type-card {
+    background: var(--cream);
+    border-radius: 20px;
+    padding: 40px 32px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.type-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+    border-color: var(--saffron);
+}
+
+.type-icon {
+    width: 70px;
+    height: 70px;
+    background: var(--saffron);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin-bottom: 24px;
+}
+
+.type-card h3 {
+    font-size: 1.4rem;
+    color: var(--navy);
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.type-card p {
+    font-size: 1rem;
+    color: var(--gray);
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.type-details {
+    list-style: none;
+    margin-bottom: 24px;
+}
+
+.type-details li {
+    padding: 8px 0;
+    padding-left: 24px;
+    position: relative;
+    color: var(--charcoal);
+    font-size: 0.95rem;
+}
+
+.type-details li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--saffron);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.type-badge {
+    display: inline-block;
+    background: rgba(245, 166, 35, 0.15);
+    color: var(--saffron);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Skills Section */
+.skills-section {
+    padding: 80px 0;
+    background: var(--cream);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.skill-item {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    transition: all 0.3s;
+}
+
+.skill-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.skill-icon {
+    font-size: 2rem;
+    margin-bottom: 12px;
+}
+
+.skill-item h3 {
+    font-size: 1rem;
+    color: var(--navy);
+    font-weight: 600;
+}
+
+/* Why Volunteer */
+.why-volunteer {
+    padding: 80px 0;
+    background: var(--white);
+}
+
+.reasons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.reason-card {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.reason-number {
+    width: 48px;
+    height: 48px;
+    background: var(--yellow);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--charcoal);
+    flex-shrink: 0;
+}
+
+.reason-content h3 {
+    font-size: 1.1rem;
+    color: var(--navy);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.reason-content p {
+    font-size: 0.95rem;
+    color: var(--gray);
+    line-height: 1.6;
+}
+
+/* Testimonial */
+.testimonial-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--forest) 0%, #1a4010 100%);
+    color: white;
+}
+
+.testimonial-card {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.testimonial-quote {
+    font-size: 1.4rem;
+    line-height: 1.8;
+    font-style: italic;
+    margin-bottom: 24px;
+    opacity: 0.95;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.author-avatar {
+    width: 60px;
+    height: 60px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.author-info h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.author-info p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Application Section */
+.application-section {
+    padding: 80px 0;
+    background: var(--cream);
+}
+
+.application-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.application-form {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--charcoal);
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--saffron);
+    box-shadow: 0 0 0 3px rgba(245, 166, 35, 0.1);
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--cream);
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.checkbox-item:hover {
+    background: #e8e4da;
+}
+
+.checkbox-item input {
+    width: auto;
+    accent-color: var(--saffron);
+}
+
+.checkbox-item span {
+    font-size: 0.9rem;
+    color: var(--charcoal);
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 16px;
+    background: var(--saffron);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.btn-submit:hover {
+    background: #e07b1a;
+    transform: translateY(-2px);
+}
+
+/* FAQ Section */
+.faq-section {
+    padding: 80px 0;
+    background: var(--white);
+}
+
+.faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: var(--cream);
+    border-radius: 12px;
+    margin-bottom: 16px;
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    padding: 20px 24px;
+    background: var(--cream);
+    border: none;
+    text-align: left;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.faq-question:hover {
+    background: #e8e4da;
+}
+
+.faq-icon {
+    font-size: 1.5rem;
+    color: var(--gray);
+    transition: transform 0.3s;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 300px;
+}
+
+.faq-answer-content {
+    padding: 0 24px 20px;
+    color: var(--gray);
+    line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+    .volunteer-hero {
+        padding: 100px 0 50px;
+    }
+    
+    .volunteer-hero h1 {
+        font-size: 1.8rem;
+    }
+    
+    .volunteer-intro,
+    .volunteer-types,
+    .skills-section,
+    .why-volunteer,
+    .testimonial-section,
+    .application-section,
+    .faq-section {
+        padding: 60px 0;
+    }
+    
+    .types-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .type-card {
+        padding: 32px 24px;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .application-form {
+        padding: 24px;
+    }
+    
+    .testimonial-quote {
+        font-size: 1.2rem;
+    }
+}
+{{ end }}
+
+{{ define "main" }}
+<!-- Hero Section -->
+<section class="volunteer-hero">
+    <div class="container">
+        <h1>Become a Volunteer</h1>
+        <p>Join our community of changemakers. Whether you can spare a few hours or a few months, your skills and passion can help transform lives in North East India.</p>
+    </div>
+</section>
+
+<!-- Intro Section -->
+<section class="volunteer-intro">
+    <div class="container">
+        <div class="intro-content">
+            <h2>Your Time Can Create Real Impact</h2>
+            <p>At Integral Foundation, volunteers are the heartbeat of our mission. From skilled professionals sharing expertise remotely to passionate individuals working alongside our team on the ground — every contribution matters.</p>
+            <p>We believe in meaningful volunteering that benefits both the communities we serve and the volunteers themselves. You'll gain unique experiences, build lasting connections, and see firsthand how sustainable development transforms lives.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Volunteer Types -->
+<section class="volunteer-types">
+    <div class="container">
+        <div class="section-header">
+            <h2>Ways to Volunteer</h2>
+            <p>Find the opportunity that fits your skills and availability</p>
+        </div>
+        
+        <div class="types-grid">
+            <div class="type-card">
+                <div class="type-icon">💻</div>
+                <h3>Remote / Skills-Based</h3>
+                <p>Contribute your professional expertise from anywhere in the world.</p>
+                <ul class="type-details">
+                    <li>Digital marketing & social media</li>
+                    <li>Graphic design & branding</li>
+                    <li>Web development</li>
+                    <li>Content writing & translation</li>
+                    <li>Research & data analysis</li>
+                </ul>
+                <span class="type-badge">Flexible hours</span>
+            </div>
+            
+            <div class="type-card">
+                <div class="type-icon">🌿</div>
+                <h3>On-Ground (Short-term)</h3>
+                <p>Immerse yourself in our work with a 2-4 week field experience.</p>
+                <ul class="type-details">
+                    <li>Community engagement activities</li>
+                    <li>Documentation & photography</li>
+                    <li>Workshop facilitation</li>
+                    <li>Impact assessment support</li>
+                    <li>Artisan training assistance</li>
+                </ul>
+                <span class="type-badge">2-4 weeks</span>
+            </div>
+            
+            <div class="type-card">
+                <div class="type-icon">🎓</div>
+                <h3>Fellowship Program</h3>
+                <p>A deeper commitment for those ready to drive significant impact.</p>
+                <ul class="type-details">
+                    <li>Lead specific projects or initiatives</li>
+                    <li>Mentorship from our leadership team</li>
+                    <li>Stipend provided</li>
+                    <li>Housing support in Assam</li>
+                    <li>Certificate upon completion</li>
+                </ul>
+                <span class="type-badge">3-6 months</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills We Need -->
+<section class="skills-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Skills We're Looking For</h2>
+            <p>All backgrounds are welcome — here are some areas where we especially need help</p>
+        </div>
+        
+        <div class="skills-grid">
+            <div class="skill-item">
+                <div class="skill-icon">📱</div>
+                <h3>Social Media</h3>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">🎨</div>
+                <h3>Design</h3>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">📝</div>
+                <h3>Writing</h3>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">📊</div>
+                <h3>Data Analysis</h3>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">📷</div>
+                <h3>Photography</h3>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">🎬</div>
+                <h3>Video Editing</h3>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">🌐</div>
+                <h3>Translation</h3>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">💼</div>
+                <h3>Fundraising</h3>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">📈</div>
+                <h3>Marketing</h3>
+            </div>
+            <div class="skill-item">
+                <div class="skill-icon">🤝</div>
+                <h3>Community Work</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Volunteer -->
+<section class="why-volunteer">
+    <div class="container">
+        <div class="section-header">
+            <h2>Why Volunteer With Us</h2>
+            <p>What you'll gain from the experience</p>
+        </div>
+        
+        <div class="reasons-grid">
+            <div class="reason-card">
+                <div class="reason-number">1</div>
+                <div class="reason-content">
+                    <h3>Meaningful Impact</h3>
+                    <p>See the direct results of your work. Our volunteers contribute to real, measurable change in people's lives.</p>
+                </div>
+            </div>
+            
+            <div class="reason-card">
+                <div class="reason-number">2</div>
+                <div class="reason-content">
+                    <h3>Unique Experiences</h3>
+                    <p>Learn about traditional silk crafts, sustainable agriculture, and indigenous cultures of North East India.</p>
+                </div>
+            </div>
+            
+            <div class="reason-card">
+                <div class="reason-number">3</div>
+                <div class="reason-content">
+                    <h3>Professional Growth</h3>
+                    <p>Develop new skills, build your portfolio, and gain experience in the development sector.</p>
+                </div>
+            </div>
+            
+            <div class="reason-card">
+                <div class="reason-number">4</div>
+                <div class="reason-content">
+                    <h3>Community Connection</h3>
+                    <p>Join a network of passionate changemakers and build relationships that last beyond your volunteering term.</p>
+                </div>
+            </div>
+            
+            <div class="reason-card">
+                <div class="reason-number">5</div>
+                <div class="reason-content">
+                    <h3>Flexibility</h3>
+                    <p>We work with your schedule. Whether you have 5 hours a week or 40, we'll find the right fit.</p>
+                </div>
+            </div>
+            
+            <div class="reason-card">
+                <div class="reason-number">6</div>
+                <div class="reason-content">
+                    <h3>Recognition</h3>
+                    <p>Receive certificates, references, and acknowledgment for your contributions to our mission.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonial -->
+<section class="testimonial-section">
+    <div class="container">
+        <div class="testimonial-card">
+            <p class="testimonial-quote">"Volunteering with Integral Foundation was one of the most enriching experiences of my life. I came to help with social media, but left with a deep understanding of sustainable development and friendships that I'll cherish forever."</p>
+            <div class="testimonial-author">
+                <div class="author-avatar">👩</div>
+                <div class="author-info">
+                    <h4>Priya Sharma</h4>
+                    <p>Remote Volunteer, 2024</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Application Form -->
+<section class="application-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Apply to Volunteer</h2>
+            <p>Tell us about yourself and how you'd like to contribute</p>
+        </div>
+        
+        <div class="application-content">
+            <form class="application-form" action="https://formspree.io/f/your-form-id" method="POST">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Your Location *</label>
+                        <input type="text" id="location" name="location" placeholder="City, Country" required>
+                    </div>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label for="type">Type of Volunteering *</label>
+                    <select id="type" name="volunteer_type" required>
+                        <option value="">Select an option</option>
+                        <option value="remote">Remote / Skills-Based</option>
+                        <option value="short-term">On-Ground (Short-term)</option>
+                        <option value="fellowship">Fellowship Program</option>
+                        <option value="unsure">Not sure yet</option>
+                    </select>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label>Skills you can offer (select all that apply)</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="skills" value="social-media">
+                            <span>Social Media</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="skills" value="design">
+                            <span>Design</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="skills" value="writing">
+                            <span>Writing</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="skills" value="photography">
+                            <span>Photography</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="skills" value="video">
+                            <span>Video</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="skills" value="fundraising">
+                            <span>Fundraising</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" name="skills" value="other">
+                            <span>Other</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label for="availability">Availability (hours per week) *</label>
+                    <select id="availability" name="availability" required>
+                        <option value="">Select your availability</option>
+                        <option value="1-5">1-5 hours/week</option>
+                        <option value="5-10">5-10 hours/week</option>
+                        <option value="10-20">10-20 hours/week</option>
+                        <option value="20+">20+ hours/week</option>
+                        <option value="fulltime">Full-time (fellowship)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label for="motivation">Why do you want to volunteer with us? *</label>
+                    <textarea id="motivation" name="motivation" placeholder="Tell us what draws you to our mission..." required></textarea>
+                </div>
+                
+                <button type="submit" class="btn-submit">Submit Application</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="faq-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Frequently Asked Questions</h2>
+        </div>
+        
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Do I need prior experience in development work?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Not at all! We welcome volunteers from all backgrounds. What matters most is your enthusiasm, commitment, and willingness to learn. We'll provide all the orientation and support you need.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>What are the costs involved for on-ground volunteering?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Volunteers are responsible for their travel to Assam. We provide basic accommodation and meals during your stay. Fellowship volunteers receive a monthly stipend in addition to accommodation.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>How much time commitment is expected?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        It depends on the type of volunteering. Remote volunteers typically commit 5-10 hours per week. On-ground volunteers stay for 2-4 weeks. Fellowship is a 3-6 month full-time commitment.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Can I volunteer as part of a group or corporate team?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Yes! We welcome corporate volunteer groups and can design custom engagement programs. Contact us at volunteer@gointegral.org to discuss group volunteering opportunities.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Will I receive a certificate?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Yes, all volunteers who complete their commitment receive a certificate of appreciation. We're also happy to provide reference letters and LinkedIn recommendations.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+// FAQ Accordion
+document.querySelectorAll('.faq-question').forEach(button => {
+    button.addEventListener('click', () => {
+        const item = button.parentElement;
+        const isActive = item.classList.contains('active');
+        
+        // Close all items
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        
+        // Open clicked item if it wasn't active
+        if (!isActive) {
+            item.classList.add('active');
+        }
+    });
+});
+</script>
+{{ end }}

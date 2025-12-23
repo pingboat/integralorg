@@ -1,0 +1,585 @@
+{{ define "styles" }}
+/* Fundraise Page Styles */
+.fundraise-hero {
+    padding: 120px 0 60px;
+    background: linear-gradient(135deg, var(--forest) 0%, #1a4010 100%);
+    color: white;
+    text-align: center;
+}
+
+.fundraise-hero h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.fundraise-hero p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* Intro Section */
+.fundraise-intro {
+    padding: 80px 0;
+    background: var(--cream);
+}
+
+.intro-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.intro-content h2 {
+    font-size: 2rem;
+    color: var(--navy);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.intro-content p {
+    font-size: 1.1rem;
+    color: var(--charcoal);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+/* How It Works */
+.how-it-works {
+    padding: 80px 0;
+    background: var(--white);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-header h2 {
+    font-size: 2rem;
+    color: var(--navy);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.section-header p {
+    font-size: 1.1rem;
+    color: var(--gray);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.step-card {
+    text-align: center;
+    padding: 40px 30px;
+    background: var(--cream);
+    border-radius: 16px;
+    position: relative;
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    background: var(--yellow);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin: 0 auto 20px;
+}
+
+.step-card h3 {
+    font-size: 1.25rem;
+    color: var(--navy);
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.step-card p {
+    font-size: 0.95rem;
+    color: var(--gray);
+    line-height: 1.6;
+}
+
+/* Fundraise Ideas */
+.fundraise-ideas {
+    padding: 80px 0;
+    background: var(--cream);
+}
+
+.ideas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.idea-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    transition: all 0.3s ease;
+}
+
+.idea-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+}
+
+.idea-icon {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+}
+
+.idea-card h3 {
+    font-size: 1.2rem;
+    color: var(--navy);
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.idea-card p {
+    font-size: 0.95rem;
+    color: var(--gray);
+    line-height: 1.6;
+}
+
+/* Impact Stats */
+.impact-section {
+    padding: 80px 0;
+    background: var(--white);
+}
+
+.impact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.impact-stat {
+    text-align: center;
+}
+
+.impact-number {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--forest);
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.impact-label {
+    font-size: 1rem;
+    color: var(--gray);
+}
+
+/* CTA Section */
+.fundraise-cta {
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--forest) 0%, #1a4010 100%);
+    color: white;
+    text-align: center;
+}
+
+.fundraise-cta h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.fundraise-cta p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    background: var(--yellow);
+    color: var(--charcoal);
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s;
+    display: inline-block;
+}
+
+.btn-primary:hover {
+    background: var(--yellow-hover);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    border: 2px solid white;
+    transition: all 0.3s;
+    display: inline-block;
+}
+
+.btn-secondary:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-2px);
+}
+
+/* FAQ Section */
+.faq-section {
+    padding: 80px 0;
+    background: var(--cream);
+}
+
+.faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: var(--white);
+    border-radius: 12px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+}
+
+.faq-question {
+    width: 100%;
+    padding: 20px 24px;
+    background: var(--white);
+    border: none;
+    text-align: left;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--charcoal);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.faq-question:hover {
+    background: #fafafa;
+}
+
+.faq-icon {
+    font-size: 1.5rem;
+    color: var(--gray);
+    transition: transform 0.3s;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 300px;
+}
+
+.faq-answer-content {
+    padding: 0 24px 20px;
+    color: var(--gray);
+    line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+    .fundraise-hero {
+        padding: 100px 0 50px;
+    }
+    
+    .fundraise-hero h1 {
+        font-size: 1.8rem;
+    }
+    
+    .fundraise-intro,
+    .how-it-works,
+    .fundraise-ideas,
+    .impact-section,
+    .fundraise-cta,
+    .faq-section {
+        padding: 60px 0;
+    }
+    
+    .steps-grid {
+        gap: 24px;
+    }
+    
+    .step-card {
+        padding: 30px 24px;
+    }
+    
+    .impact-number {
+        font-size: 2.5rem;
+    }
+}
+{{ end }}
+
+{{ define "main" }}
+<!-- Hero Section -->
+<section class="fundraise-hero">
+    <div class="container">
+        <h1>Fundraise for Integral Foundation</h1>
+        <p>Rally your community, celebrate a milestone, or honor someone special — all while creating dignified livelihoods for artisan families in North East India.</p>
+    </div>
+</section>
+
+<!-- Intro Section -->
+<section class="fundraise-intro">
+    <div class="container">
+        <div class="intro-content">
+            <h2>Your Campaign Can Change Lives</h2>
+            <p>When you fundraise for Integral Foundation, you're not just raising money — you're building a movement. Every rupee you raise helps preserve traditional silk crafts, empower women artisans, and build climate-resilient communities.</p>
+            <p>Whether it's your birthday, a wedding, a marathon, or just because you care — your personal fundraiser can make a real difference.</p>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works -->
+<section class="how-it-works">
+    <div class="container">
+        <div class="section-header">
+            <h2>How It Works</h2>
+            <p>Starting your fundraiser is simple and takes just a few minutes</p>
+        </div>
+        
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h3>Create Your Page</h3>
+                <p>Set up your personalized fundraising page with your story, goal, and photos. Make it yours!</p>
+            </div>
+            
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h3>Share Your Story</h3>
+                <p>Spread the word via email, social media, and messaging apps. Personal asks work best!</p>
+            </div>
+            
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h3>Watch Impact Grow</h3>
+                <p>Track donations in real-time and see how your efforts translate into real change on the ground.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Fundraise Ideas -->
+<section class="fundraise-ideas">
+    <div class="container">
+        <div class="section-header">
+            <h2>Fundraising Ideas</h2>
+            <p>Get inspired by these popular ways to raise funds</p>
+        </div>
+        
+        <div class="ideas-grid">
+            <div class="idea-card">
+                <div class="idea-icon">🎂</div>
+                <h3>Birthday Fundraiser</h3>
+                <p>Ask friends and family to donate instead of gifts. Celebrate your special day by giving back.</p>
+            </div>
+            
+            <div class="idea-card">
+                <div class="idea-icon">💒</div>
+                <h3>Wedding or Anniversary</h3>
+                <p>Honor your love by supporting artisan families. Request donations in lieu of gifts.</p>
+            </div>
+            
+            <div class="idea-card">
+                <div class="idea-icon">🏃</div>
+                <h3>Athletic Challenge</h3>
+                <p>Run a marathon, cycle a century, or take on a fitness challenge — and raise funds along the way.</p>
+            </div>
+            
+            <div class="idea-card">
+                <div class="idea-icon">🎓</div>
+                <h3>In Memory or Honor</h3>
+                <p>Create a tribute fundraiser to celebrate someone's legacy or honor a special person in your life.</p>
+            </div>
+            
+            <div class="idea-card">
+                <div class="idea-icon">🏢</div>
+                <h3>Workplace Campaign</h3>
+                <p>Rally your colleagues for a team fundraiser. Many employers offer matching gifts too!</p>
+            </div>
+            
+            <div class="idea-card">
+                <div class="idea-icon">🎉</div>
+                <h3>Host an Event</h3>
+                <p>Organize a dinner, concert, auction, or gathering — and donate the proceeds to Integral Foundation.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Impact Stats -->
+<section class="impact-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>The Impact of Fundraisers</h2>
+            <p>See what our community of fundraisers has accomplished</p>
+        </div>
+        
+        <div class="impact-grid">
+            <div class="impact-stat">
+                <div class="impact-number">₹25L+</div>
+                <div class="impact-label">Raised by fundraisers</div>
+            </div>
+            
+            <div class="impact-stat">
+                <div class="impact-number">150+</div>
+                <div class="impact-label">Campaigns created</div>
+            </div>
+            
+            <div class="impact-stat">
+                <div class="impact-number">500+</div>
+                <div class="impact-label">Families supported</div>
+            </div>
+            
+            <div class="impact-stat">
+                <div class="impact-number">85%</div>
+                <div class="impact-label">Goes to programs</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="fundraise-cta">
+    <div class="container">
+        <h2>Ready to Start Your Fundraiser?</h2>
+        <p>It only takes a few minutes to create your page. We'll be with you every step of the way.</p>
+        <div class="cta-buttons">
+            <a href="mailto:fundraise@gointegral.org?subject=Start%20a%20Fundraiser" class="btn-primary">Start Your Fundraiser</a>
+            <a href="/contact/" class="btn-secondary">Contact Us First</a>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="faq-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Frequently Asked Questions</h2>
+        </div>
+        
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Is there a minimum fundraising goal?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        No minimum required! Whether you raise ₹5,000 or ₹5,00,000, every rupee makes a difference. Set a goal that feels right for you and your network.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>How do donors receive tax benefits?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        All donations to Integral Foundation are eligible for tax benefits under Section 80G of the Income Tax Act. Donors automatically receive a receipt via email after their donation.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>What support do I get as a fundraiser?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        We provide you with a dedicated fundraising page, marketing materials, social media templates, and a personal point of contact to help you succeed. You'll also receive regular updates on how funds are being used.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>How long can my fundraiser run?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        You decide! Most fundraisers run for 2-4 weeks, but you can keep yours active for as long as you'd like. Shorter campaigns often create more urgency and momentum.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>Can I fundraise from outside India?</span>
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        Yes! We accept international donations. Contact us to set up a fundraiser that works for donors in your country.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+// FAQ Accordion
+document.querySelectorAll('.faq-question').forEach(button => {
+    button.addEventListener('click', () => {
+        const item = button.parentElement;
+        const isActive = item.classList.contains('active');
+        
+        // Close all items
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        
+        // Open clicked item if it wasn't active
+        if (!isActive) {
+            item.classList.add('active');
+        }
+    });
+});
+</script>
+{{ end }}

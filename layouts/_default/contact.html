@@ -1,0 +1,150 @@
+{{ define "styles" }}
+/* Contact Page Styles */
+.contact-hero {
+    padding: 120px 0 60px;
+    text-align: center;
+    background: var(--cream);
+}
+
+.contact-hero h1 {
+    font-size: 2.5rem;
+    color: var(--charcoal);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.contact-hero p {
+    font-size: 1.1rem;
+    color: var(--gray);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-section {
+    padding: 60px 0 100px;
+    background: var(--white);
+}
+
+.contact-form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.contact-form h2 {
+    font-size: 1.5rem;
+    color: var(--charcoal);
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--charcoal);
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    background: var(--white);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--forest);
+    box-shadow: 0 0 0 3px rgba(45, 80, 22, 0.1);
+}
+
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 1rem;
+    background: var(--forest);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.btn-submit:hover {
+    background: var(--forest-dark);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .contact-hero {
+        padding: 100px 0 40px;
+    }
+    
+    .contact-hero h1 {
+        font-size: 2rem;
+    }
+    
+    .contact-section {
+        padding: 40px 0 60px;
+    }
+}
+{{ end }}
+
+{{ define "main" }}
+<!-- Hero Section -->
+<section class="contact-hero">
+    <div class="container">
+        <h1>Get in Touch</h1>
+        <p>Let's work together to create dignified rural livelihoods in North East India</p>
+    </div>
+</section>
+
+<!-- Contact Form Section -->
+<section class="contact-section">
+    <div class="contact-form-container">
+        <form class="contact-form" action="https://formspree.io/f/your-form-id" method="POST">
+            <h2>Send us a message</h2>
+            
+            <div class="form-group">
+                <label for="name">Name *</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="subject">Subject *</label>
+                <input type="text" id="subject" name="subject" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Message *</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            
+            <button type="submit" class="btn-submit">Send Message</button>
+        </form>
+    </div>
+</section>
+{{ end }}

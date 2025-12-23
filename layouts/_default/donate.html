@@ -1,524 +1,499 @@
-{{ define "main" }}
-<!-- Razorpay Script -->
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+{{ define "styles" }}
+/* Donate Page Styles - EXACT from homepage */
+.donate-page-section {
+    background: #faf8f3;
+    padding: 120px 0 80px;
+}
 
-<style>
-    /* Reset any existing styles */
-    .donate-page * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+/* Donate Section - Ultra Compact & Elegant - EXACT from homepage */
+.donate-container-main {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.donate-intro-text {
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.75rem;
+    color: #374151;
+    font-weight: 400;
+}
+
+.donation-card-main {
+    background: white;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e5e7eb;
+}
+
+.toggle-buttons-main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.toggle-btn-main {
+    padding: 0.875rem;
+    border: none;
+    background: white;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #6b7280;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.toggle-btn-main:first-child {
+    border-right: 1px solid #e5e7eb;
+}
+
+.toggle-btn-main.active {
+    background: #FFC700;
+    color: #1f2937;
+}
+
+.card-content-main {
+    padding: 1.75rem 1.75rem;
+}
+
+.section-title-main {
+    font-size: 1.125rem;
+    font-weight: 400;
+    margin-bottom: 1.25rem;
+    text-align: center;
+    color: #1f2937;
+}
+
+.amount-grid-main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.625rem;
+    margin-bottom: 0.625rem;
+}
+
+.amount-btn-main {
+    padding: 1rem 0.625rem;
+    border: 1px solid #d1d5db;
+    background: #f9fafb;
+    border-radius: 4px;
+    font-size: 1.375rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: #374151;
+    text-align: center;
+}
+
+.amount-btn-main:hover {
+    background: #ffffff;
+    border-color: #9ca3af;
+}
+
+.amount-btn-main.selected {
+    background: #FFC700;
+    border-color: #FFC700;
+    color: #1f2937;
+    font-weight: 500;
+}
+
+.amount-label-main {
+    font-size: 0.6875rem;
+    color: #9ca3af;
+    font-weight: 400;
+    display: block;
+    margin-top: 0.125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+}
+
+.other-amount-row-main {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.625rem;
+    margin-bottom: 1.25rem;
+}
+
+.other-amount-main {
+    padding: 1rem 0.625rem;
+    border: 1px solid #d1d5db;
+    background: #f9fafb;
+    border-radius: 4px;
+    font-size: 0.9375rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: #9ca3af;
+    text-align: center;
+}
+
+.other-amount-main:hover {
+    background: #ffffff;
+    border-color: #9ca3af;
+}
+
+.other-amount-main.selected {
+    background: #FFC700;
+    border-color: #FFC700;
+    color: #1f2937;
+    font-weight: 500;
+}
+
+.donor-form-main {
+    display: none;
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px dashed #d1d5db;
+}
+
+.donor-form-main.active {
+    display: block;
+}
+
+.form-group-main {
+    margin-bottom: 0.875rem;
+}
+
+.form-label-main {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.375rem;
+    color: #374151;
+    font-size: 0.8125rem;
+}
+
+.form-input-main {
+    width: 100%;
+    padding: 0.625rem;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    transition: all 0.2s;
+}
+
+.form-input-main:focus {
+    outline: none;
+    border-color: #6b7280;
+}
+
+.submit-btn-main {
+    width: 100%;
+    padding: 0.875rem;
+    background: #FFC700;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: #1f2937;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.submit-btn-main:hover {
+    background: #E6B300;
+}
+
+.submit-btn-main:disabled {
+    background: #e5e7eb;
+    cursor: not-allowed;
+}
+
+.impact-text-main {
+    text-align: center;
+    padding: 1.25rem 1rem;
+    border-top: 1px dashed #d1d5db;
+    margin-top: 1.25rem;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: #4b5563;
+}
+
+.impact-amount-main {
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.impact-highlight-main {
+    font-weight: 700;
+    color: #2d5016;
+}
+
+.security-notice-main {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #9ca3af;
+    margin-top: 1.25rem;
+    line-height: 1.5;
+}
+
+.security-notice-main svg {
+    width: 12px;
+    height: 12px;
+    vertical-align: middle;
+    margin-right: 4px;
+}
+
+.security-notice-main a {
+    color: #9ca3af;
+    text-decoration: underline;
+}
+
+.transparency-banner-main {
+    background: #fef3e2;
+    border: 2px solid #f59e0b;
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 1.75rem;
+}
+
+.circle-badge-main {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: white;
+    border: 5px solid #2d5016;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.circle-number-main {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2d5016;
+    line-height: 1;
+}
+
+.circle-percent-main {
+    font-size: 1.25rem;
+    color: #2d5016;
+    line-height: 1;
+}
+
+.transparency-text-main {
+    flex: 1;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: #4b5563;
+}
+
+.transparency-text-main strong {
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.loading-main {
+    display: none;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.loading-main.active {
+    display: block;
+}
+
+.spinner-main {
+    border: 3px solid #e5e7eb;
+    border-top: 3px solid #FFC700;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    animation: spin-main 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin-main {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Modal Styles */
+.modal-overlay-main {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-overlay-main.active {
+    display: flex;
+}
+
+.modal-content-main {
+    background: white;
+    padding: 1.75rem;
+    border-radius: 6px;
+    max-width: 320px;
+    width: 90%;
+}
+
+.modal-title-main {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #1f2937;
+}
+
+.custom-input-main {
+    width: 100%;
+    padding: 0.875rem;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    font-size: 1.375rem;
+    font-weight: 600;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.custom-input-main:focus {
+    outline: none;
+    border-color: #6b7280;
+}
+
+.modal-buttons-main {
+    display: flex;
+    gap: 0.625rem;
+}
+
+.modal-btn-main {
+    flex: 1;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+}
+
+.modal-btn-cancel-main {
+    background: #f3f4f6;
+    color: #374151;
+}
+
+.modal-btn-confirm-main {
+    background: #FFC700;
+    color: #1f2937;
+}
+
+@media (max-width: 768px) {
+    .donate-page-section {
+        padding: 100px 0 60px;
     }
-    
-    :root {
-        --forest: #2d5016;
-        --yellow: #FFC700;
-        --cream: #f5f1e8;
-        --white: #ffffff;
-        --charcoal: #2d2d2d;
-        --gray: #8b8b8b;
-        --light-gray: #e8e4da;
-        --border: #d4d0c4;
-        --orange: #ff9933;
-    }
-    
-    .donate-page {
-        background: var(--cream) !important;
-        padding: 4rem 0;
-        min-height: 60vh;
-    }
-    
-    .donate-container {
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 0 5%;
-    }
-    
-    .intro-text {
-        text-align: center;
-        font-size: 1.5rem;
-        line-height: 1.7;
-        margin-bottom: 3rem;
-        color: var(--charcoal);
-        font-weight: 400;
-    }
-    
-    .donation-card {
-        background: white;
-        border-radius: 16px;
-        overflow: hidden;
-        margin-bottom: 2rem;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    }
-    
-    .toggle-buttons {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
-    
-    .toggle-btn {
-        padding: 1.5rem;
-        border: none;
-        background: white;
-        font-size: 1.1rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s;
-        color: var(--charcoal);
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        border-radius: 16px 16px 0 0;
-    }
-    
-    .toggle-btn.active {
-        background: var(--yellow);
-        color: var(--charcoal);
-    }
-    
-    .card-content {
-        padding: 3rem 4rem;
-    }
-    
-    .section-title {
-        font-size: 2rem;
-        font-weight: 400;
-        margin-bottom: 2.5rem;
-        text-align: center;
-        color: var(--charcoal);
-    }
-    
-    .amount-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-        margin-bottom: 1.5rem;
-    }
-    
-    .amount-btn {
-        padding: 2rem 1.5rem;
-        border: 2px solid var(--light-gray);
-        background: var(--cream);
-        border-radius: 16px;
-        font-size: 2rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s;
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        color: var(--charcoal);
-        text-align: center;
-    }
-    
-    .amount-btn:hover {
-        background: var(--white);
-        border-color: var(--gray);
-    }
-    
-    .amount-btn.selected {
-        background: var(--yellow);
-        border-color: var(--yellow);
-        color: var(--charcoal);
-    }
-    
-    .amount-label {
-        font-size: 1rem;
-        color: var(--gray);
-        font-weight: 400;
-        display: block;
-        margin-top: 0.25rem;
-    }
-    
-    .other-amount-row {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-        margin-bottom: 2rem;
-    }
-    
-    .other-amount {
-        padding: 2rem 1.5rem;
-        border: 2px solid var(--light-gray);
-        background: var(--cream);
-        border-radius: 16px;
-        font-size: 1.5rem;
-        font-weight: 400;
-        cursor: pointer;
-        transition: all 0.3s;
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        color: var(--gray);
-        text-align: center;
-    }
-    
-    .other-amount:hover {
-        background: var(--white);
-        border-color: var(--gray);
-    }
-    
-    .other-amount.selected {
-        background: var(--yellow);
-        border-color: var(--yellow);
-        color: var(--charcoal);
-        font-weight: 600;
-    }
-    
-    .modal-overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 1000;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    .modal-overlay.active {
-        display: flex;
-    }
-    
-    .modal-content {
-        background: white;
-        padding: 2.5rem;
-        border-radius: 16px;
-        max-width: 400px;
-        width: 90%;
-    }
-    
-    .modal-title {
-        font-size: 1.5rem;
-        font-weight: 600;
-        margin-bottom: 1.5rem;
-        color: var(--charcoal);
-    }
-    
-    .custom-input {
-        width: 100%;
-        padding: 1.25rem;
-        border: 2px solid var(--light-gray);
-        border-radius: 12px;
-        font-size: 1.75rem;
-        font-weight: 600;
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        margin-bottom: 1.5rem;
-        text-align: center;
-    }
-    
-    .custom-input:focus {
-        outline: none;
-        border-color: var(--gray);
-    }
-    
-    .modal-buttons {
-        display: flex;
-        gap: 1rem;
-    }
-    
-    .modal-btn {
-        flex: 1;
-        padding: 1rem;
-        border: none;
-        border-radius: 12px;
-        font-size: 1rem;
-        font-weight: 600;
-        cursor: pointer;
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        transition: all 0.3s;
-    }
-    
-    .modal-btn-cancel {
-        background: var(--cream);
-        color: var(--charcoal);
-    }
-    
-    .modal-btn-confirm {
-        background: var(--yellow);
-        color: var(--charcoal);
-    }
-    
-    .donor-form {
-        display: none;
-        margin-top: 2rem;
-        padding-top: 2rem;
-        border-top: 2px dashed var(--light-gray);
-    }
-    
-    .donor-form.active {
-        display: block;
-    }
-    
-    .form-group {
-        margin-bottom: 1.25rem;
-    }
-    
-    .form-label {
-        display: block;
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-        color: var(--charcoal);
-        font-size: 0.95rem;
-    }
-    
-    .form-input {
-        width: 100%;
-        padding: 1rem;
-        border: 2px solid var(--light-gray);
-        border-radius: 12px;
-        font-size: 1rem;
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        transition: all 0.3s;
-    }
-    
-    .form-input:focus {
-        outline: none;
-        border-color: var(--gray);
-    }
-    
-    .submit-btn {
-        width: 100%;
-        padding: 1.5rem;
-        background: var(--yellow);
-        border: none;
-        border-radius: 16px;
-        font-size: 1.25rem;
-        font-weight: 700;
-        cursor: pointer;
-        transition: all 0.3s;
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        color: var(--charcoal);
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-    
-    .submit-btn:hover {
-        background: #E6B300;
-    }
-    
-    .submit-btn:disabled {
-        background: var(--light-gray);
-        cursor: not-allowed;
-    }
-    
-    .impact-text {
-        text-align: center;
-        padding: 2.5rem 2rem;
-        border-top: 2px dashed var(--light-gray);
-        margin-top: 2rem;
-        font-size: 1.25rem;
-        line-height: 1.7;
-        color: var(--charcoal);
-    }
-    
-    .impact-amount {
-        font-weight: 700;
-        color: var(--charcoal);
-    }
-    
-    .impact-highlight {
-        font-weight: 700;
-        color: var(--forest);
-    }
-    
-    .security-notice {
-        text-align: center;
-        font-size: 1rem;
-        color: var(--gray);
-        margin-top: 2rem;
-        line-height: 1.7;
-    }
-    
-    .security-notice svg {
-        width: 16px;
-        height: 16px;
-        vertical-align: middle;
-        margin-right: 6px;
-    }
-    
-    .security-notice a {
-        color: var(--gray);
-        text-decoration: underline;
-    }
-    
-    .transparency-banner {
-        background: #fff5e6;
-        border: 3px solid var(--orange);
-        border-radius: 16px;
-        padding: 3rem;
-        display: flex;
-        align-items: center;
-        gap: 3rem;
-        margin-top: 3rem;
-    }
-    
-    .circle-badge {
-        width: 140px;
-        height: 140px;
-        border-radius: 50%;
-        background: white;
-        border: 8px solid var(--forest);
-        display: flex;
+    .donate-container-main { max-width: 100%; }
+    .donate-intro-text { font-size: 0.9375rem; margin-bottom: 1.5rem; }
+    .card-content-main { padding: 1.5rem 1.25rem; }
+    .section-title-main { font-size: 1rem; margin-bottom: 1rem; }
+    .amount-grid-main { grid-template-columns: repeat(2, 1fr); }
+    .amount-btn-main { padding: 0.875rem 0.5rem; font-size: 1.25rem; }
+    .other-amount-row-main { grid-template-columns: 1fr; }
+    .transparency-banner-main {
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-    }
-    
-    .circle-number {
-        font-size: 3.5rem;
-        font-weight: 700;
-        color: var(--forest);
-        line-height: 1;
-    }
-    
-    .circle-percent {
-        font-size: 2rem;
-        color: var(--forest);
-        line-height: 1;
-    }
-    
-    .transparency-text {
-        flex: 1;
-        font-size: 1.25rem;
-        line-height: 1.7;
-        color: var(--charcoal);
-    }
-    
-    .transparency-text strong {
-        font-weight: 700;
-        color: var(--forest);
-    }
-    
-    .loading {
-        display: none;
         text-align: center;
-        padding: 1rem;
-        margin-top: 1rem;
+        padding: 1.25rem;
+        gap: 1.25rem;
     }
-    
-    .loading.active {
-        display: block;
-    }
-    
-    .spinner {
-        border: 3px solid var(--light-gray);
-        border-top: 3px solid var(--yellow);
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        animation: spin 1s linear infinite;
-        margin: 0 auto;
-    }
-    
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
-    
-    @media (max-width: 768px) {
-        .intro-text {
-            font-size: 1.2rem;
-        }
-        
-        .card-content {
-            padding: 2rem 1.5rem;
-        }
-        
-        .section-title {
-            font-size: 1.5rem;
-        }
-        
-        .amount-grid {
-            grid-template-columns: 1fr;
-        }
-        
-        .amount-btn {
-            padding: 1.5rem;
-            font-size: 1.75rem;
-        }
-        
-        .transparency-banner {
-            flex-direction: column;
-            text-align: center;
-            padding: 2rem;
-        }
-        
-        .circle-badge {
-            width: 120px;
-            height: 120px;
-        }
-        
-        .circle-number {
-            font-size: 3rem;
-        }
-    }
-</style>
+    .circle-badge-main { width: 70px; height: 70px; border-width: 4px; }
+    .circle-number-main { font-size: 1.75rem; }
+    .circle-percent-main { font-size: 1.125rem; }
+    .transparency-text-main { font-size: 0.8125rem; }
+}
+{{ end }}
 
-<div class="donate-page">
-    <div class="donate-container">
-        <p class="intro-text">
-            Our work to end poverty, unemployment and climate change in North East India needs your support. You can help preserve traditional silk crafts, create dignified livelihoods, and build climate resilience — especially for artisan families and indigenous communities.
+{{ define "main" }}
+<section class="donate-page-section">
+    <div class="donate-container-main">
+        <p class="donate-intro-text">
+            Our work to end poverty, and address unemployment and the impact of climate change in North East India needs your support. You can help preserve traditional silk crafts, create dignified livelihoods, and build climate resilience — especially for artisan families and indigenous communities.
         </p>
         
-        <div class="donation-card">
-            <div class="toggle-buttons">
-                <button class="toggle-btn" id="onceBtn">GIVE ONCE</button>
-                <button class="toggle-btn active" id="monthlyBtn">MONTHLY</button>
+        <div class="donation-card-main">
+            <div class="toggle-buttons-main">
+                <button class="toggle-btn-main" id="onceBtnMain">GIVE ONCE</button>
+                <button class="toggle-btn-main active" id="monthlyBtnMain">MONTHLY</button>
             </div>
             
-            <div class="card-content">
-                <h2 class="section-title" id="sectionTitle">Choose an amount to give per month</h2>
+            <div class="card-content-main">
+                <h2 class="section-title-main" id="sectionTitleMain">Choose an amount to give per month</h2>
                 
-                <div class="amount-grid">
-                    <button class="amount-btn" data-amount="500">
-                        ₹500 <span class="amount-label">INR/mo</span>
+                <div class="amount-grid-main">
+                    <button class="amount-btn-main" data-amount="500">
+                        ₹500 <span class="amount-label-main">INR/mo</span>
                     </button>
-                    <button class="amount-btn" data-amount="1000">
-                        ₹1,000 <span class="amount-label">INR/mo</span>
+                    <button class="amount-btn-main" data-amount="1500">
+                        ₹1,500 <span class="amount-label-main">INR/mo</span>
                     </button>
-                    <button class="amount-btn selected" data-amount="2500">
-                        ₹2,500 <span class="amount-label">INR/mo</span>
-                    </button>
-                    <button class="amount-btn" data-amount="5000">
-                        ₹5,000 <span class="amount-label">INR/mo</span>
+                    <button class="amount-btn-main selected" data-amount="3000">
+                        ₹3,000 <span class="amount-label-main">INR/mo</span>
                     </button>
                 </div>
                 
-                <div class="other-amount-row">
-                    <div class="other-amount" id="otherAmountBtn">Other amount</div>
+                <div class="other-amount-row-main">
+                    <button class="amount-btn-main" data-amount="5000">
+                        ₹5,000 <span class="amount-label-main">INR/mo</span>
+                    </button>
+                    <div class="other-amount-main" id="otherAmountBtnMain">Other amount</div>
                 </div>
                 
-                <div class="donor-form" id="donorForm">
-                    <div class="form-group">
-                        <label class="form-label" for="donorName">Full Name *</label>
-                        <input type="text" id="donorName" class="form-input" placeholder="Enter your name" required>
+                <div class="donor-form-main" id="donorFormMain">
+                    <div class="form-group-main">
+                        <label class="form-label-main" for="donorNameMain">Full Name *</label>
+                        <input type="text" id="donorNameMain" class="form-input-main" placeholder="Enter your name" required>
                     </div>
                     
-                    <div class="form-group">
-                        <label class="form-label" for="donorEmail">Email Address *</label>
-                        <input type="email" id="donorEmail" class="form-input" placeholder="your@email.com" required>
+                    <div class="form-group-main">
+                        <label class="form-label-main" for="donorEmailMain">Email Address *</label>
+                        <input type="email" id="donorEmailMain" class="form-input-main" placeholder="your@email.com" required>
                     </div>
                     
-                    <div class="form-group">
-                        <label class="form-label" for="donorPhone">Phone Number *</label>
-                        <input type="tel" id="donorPhone" class="form-input" placeholder="+91 98765 43210" required>
+                    <div class="form-group-main">
+                        <label class="form-label-main" for="donorPhoneMain">Phone Number *</label>
+                        <input type="tel" id="donorPhoneMain" class="form-input-main" placeholder="+91 98765 43210" required>
                     </div>
                 </div>
                 
-                <button class="submit-btn" id="submitBtn">JOIN TODAY</button>
+                <button class="submit-btn-main" id="submitBtnMain">JOIN TODAY</button>
                 
-                <div class="loading" id="loading">
-                    <div class="spinner"></div>
+                <div class="loading-main" id="loadingMain">
+                    <div class="spinner-main"></div>
                     <p>Processing...</p>
                 </div>
                 
-                <div class="impact-text" id="impactText">
-                    Your <span class="impact-amount">₹2,500</span> monthly donation can support <span class="impact-highlight">one artisan family</span> with rainwater harvesting every month. <span class="impact-highlight">85%</span> of funds go directly to programs.
+                <div class="impact-text-main" id="impactTextMain">
+                    Your <span class="impact-amount-main">₹3,000</span> monthly donation can support <span class="impact-highlight-main">one artisan or farmer</span> with sustainability & climate resilience training every month. <span class="impact-highlight-main">85%</span> of funds go directly to programs.
                 </div>
             </div>
         </div>
         
-        <p class="security-notice">
+        <p class="security-notice-main">
             <svg viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
             </svg>
@@ -526,146 +501,155 @@
             <a href="#">Privacy Policy</a> and <a href="#">Terms of Service</a> apply.
         </p>
         
-        <div class="transparency-banner">
-            <div class="circle-badge">
-                <span class="circle-number">85</span>
-                <span class="circle-percent">%</span>
+        <div class="transparency-banner-main">
+            <div class="circle-badge-main">
+                <span class="circle-number-main">85</span>
+                <span class="circle-percent-main">%</span>
             </div>
-            <div class="transparency-text">
+            <div class="transparency-text-main">
                 Thanks to generous private donors who fund our operational expenses, <strong>85% of your donation</strong> directly funds Integral Farming programs, artisan support, and climate resilience projects.
             </div>
         </div>
     </div>
-</div>
+</section>
 
-<div class="modal-overlay" id="customModal">
-    <div class="modal-content">
-        <h3 class="modal-title">Enter Custom Amount</h3>
-        <input type="text" id="customInput" class="custom-input" placeholder="₹" pattern="[0-9]*">
-        <div class="modal-buttons">
-            <button class="modal-btn modal-btn-cancel" id="cancelBtn">Cancel</button>
-            <button class="modal-btn modal-btn-confirm" id="confirmBtn">Confirm</button>
+<!-- Custom Amount Modal -->
+<div class="modal-overlay-main" id="customModalMain">
+    <div class="modal-content-main">
+        <h3 class="modal-title-main">Enter Custom Amount</h3>
+        <input type="text" id="customInputMain" class="custom-input-main" placeholder="₹" pattern="[0-9]*">
+        <div class="modal-buttons-main">
+            <button class="modal-btn-main modal-btn-cancel-main" id="cancelBtnMain">Cancel</button>
+            <button class="modal-btn-main modal-btn-confirm-main" id="confirmBtnMain">Confirm</button>
         </div>
     </div>
 </div>
 
 <script>
-    const RAZORPAY_KEY = 'rzp_test_YOUR_KEY_HERE';
+(function() {
+    // Razorpay Configuration
+    const RAZORPAY_KEY_MAIN = 'rzp_test_YOUR_KEY_HERE';
     
-    let isMonthly = true;
-    let selectedAmount = 2500;
-    let showingForm = false;
+    // Donation State
+    let isMonthlyMain = true;
+    let selectedAmountMain = 3000;
+    let showingFormMain = false;
     
-    const onceBtn = document.getElementById('onceBtn');
-    const monthlyBtn = document.getElementById('monthlyBtn');
-    const sectionTitle = document.getElementById('sectionTitle');
-    const amountBtns = document.querySelectorAll('.amount-btn');
-    const otherAmountBtn = document.getElementById('otherAmountBtn');
-    const customModal = document.getElementById('customModal');
-    const customInput = document.getElementById('customInput');
-    const cancelBtn = document.getElementById('cancelBtn');
-    const confirmBtn = document.getElementById('confirmBtn');
-    const impactText = document.getElementById('impactText');
-    const submitBtn = document.getElementById('submitBtn');
-    const donorForm = document.getElementById('donorForm');
-    const loading = document.getElementById('loading');
+    // DOM Elements
+    const onceBtnMain = document.getElementById('onceBtnMain');
+    const monthlyBtnMain = document.getElementById('monthlyBtnMain');
+    const sectionTitleMain = document.getElementById('sectionTitleMain');
+    const amountBtnsMain = document.querySelectorAll('.amount-btn-main');
+    const otherAmountBtnMain = document.getElementById('otherAmountBtnMain');
+    const customModalMain = document.getElementById('customModalMain');
+    const customInputMain = document.getElementById('customInputMain');
+    const cancelBtnMain = document.getElementById('cancelBtnMain');
+    const confirmBtnMain = document.getElementById('confirmBtnMain');
+    const impactTextMain = document.getElementById('impactTextMain');
+    const submitBtnMain = document.getElementById('submitBtnMain');
+    const donorFormMain = document.getElementById('donorFormMain');
+    const loadingMain = document.getElementById('loadingMain');
     
-    onceBtn.addEventListener('click', () => {
-        isMonthly = false;
-        onceBtn.classList.add('active');
-        monthlyBtn.classList.remove('active');
-        sectionTitle.textContent = 'Choose an amount to give';
-        updateLabels();
-        updateImpact();
+    // Toggle frequency
+    onceBtnMain.addEventListener('click', () => {
+        isMonthlyMain = false;
+        onceBtnMain.classList.add('active');
+        monthlyBtnMain.classList.remove('active');
+        sectionTitleMain.textContent = 'Choose an amount to give';
+        updateLabelsMain();
+        updateImpactMain();
     });
     
-    monthlyBtn.addEventListener('click', () => {
-        isMonthly = true;
-        monthlyBtn.classList.add('active');
-        onceBtn.classList.remove('active');
-        sectionTitle.textContent = 'Choose an amount to give per month';
-        updateLabels();
-        updateImpact();
+    monthlyBtnMain.addEventListener('click', () => {
+        isMonthlyMain = true;
+        monthlyBtnMain.classList.add('active');
+        onceBtnMain.classList.remove('active');
+        sectionTitleMain.textContent = 'Choose an amount to give per month';
+        updateLabelsMain();
+        updateImpactMain();
     });
     
-    amountBtns.forEach(btn => {
+    // Amount selection
+    amountBtnsMain.forEach(btn => {
         btn.addEventListener('click', () => {
-            amountBtns.forEach(b => b.classList.remove('selected'));
-            otherAmountBtn.classList.remove('selected');
+            amountBtnsMain.forEach(b => b.classList.remove('selected'));
+            otherAmountBtnMain.classList.remove('selected');
             btn.classList.add('selected');
-            selectedAmount = parseInt(btn.dataset.amount);
-            updateImpact();
+            selectedAmountMain = parseInt(btn.dataset.amount);
+            updateImpactMain();
         });
     });
     
-    otherAmountBtn.addEventListener('click', () => {
-        customModal.classList.add('active');
-        customInput.value = '';
-        customInput.focus();
+    // Other amount
+    otherAmountBtnMain.addEventListener('click', () => {
+        customModalMain.classList.add('active');
+        customInputMain.value = '';
+        customInputMain.focus();
     });
     
-    cancelBtn.addEventListener('click', () => {
-        customModal.classList.remove('active');
+    cancelBtnMain.addEventListener('click', () => {
+        customModalMain.classList.remove('active');
     });
     
-    confirmBtn.addEventListener('click', () => {
-        const value = customInput.value.replace(/\D/g, '');
+    confirmBtnMain.addEventListener('click', () => {
+        const value = customInputMain.value.replace(/\D/g, '');
         if (value && parseInt(value) >= 100) {
-            selectedAmount = parseInt(value);
-            amountBtns.forEach(b => b.classList.remove('selected'));
-            otherAmountBtn.classList.add('selected');
-            otherAmountBtn.innerHTML = `₹${selectedAmount.toLocaleString('en-IN')}`;
-            customModal.classList.remove('active');
-            updateImpact();
+            selectedAmountMain = parseInt(value);
+            amountBtnsMain.forEach(b => b.classList.remove('selected'));
+            otherAmountBtnMain.classList.add('selected');
+            otherAmountBtnMain.innerHTML = '₹' + selectedAmountMain.toLocaleString('en-IN');
+            customModalMain.classList.remove('active');
+            updateImpactMain();
         } else {
             alert('Please enter an amount of at least ₹100');
         }
     });
     
-    customModal.addEventListener('click', (e) => {
-        if (e.target === customModal) customModal.classList.remove('active');
+    customModalMain.addEventListener('click', (e) => {
+        if (e.target === customModalMain) customModalMain.classList.remove('active');
     });
     
-    customInput.addEventListener('input', (e) => {
+    customInputMain.addEventListener('input', (e) => {
         e.target.value = e.target.value.replace(/\D/g, '');
     });
     
-    function updateLabels() {
-        document.querySelectorAll('.amount-label').forEach(label => {
-            label.textContent = isMonthly ? 'INR/mo' : 'INR';
+    function updateLabelsMain() {
+        document.querySelectorAll('.amount-label-main').forEach(label => {
+            label.textContent = isMonthlyMain ? 'INR/mo' : 'INR';
         });
     }
     
-    function updateImpact() {
+    function updateImpactMain() {
         const impacts = {
-            500: 'can provide organic farming inputs for <span class="impact-highlight">one family</span>',
-            1000: 'can support <span class="impact-highlight">skills training</span> for artisans',
-            2500: 'can support <span class="impact-highlight">one artisan family</span> with rainwater harvesting',
-            5000: 'can fund <span class="impact-highlight">women\'s training programs</span>'
+            500: 'can provide organic farming inputs for <span class="impact-highlight-main">one family</span>',
+            1500: 'can support <span class="impact-highlight-main">skills training</span> for artisans',
+            3000: 'can support <span class="impact-highlight-main">one artisan or farmer</span> with sustainability & climate resilience training',
+            5000: 'can fund <span class="impact-highlight-main">women\'s training programs</span>'
         };
         
-        const impact = impacts[selectedAmount] || 'will directly support our programs in North East India';
-        const frequency = isMonthly ? 'monthly donation' : 'donation';
-        const period = isMonthly ? 'every month' : '';
+        const impact = impacts[selectedAmountMain] || 'will directly support our programs in North East India';
+        const frequency = isMonthlyMain ? 'monthly donation' : 'donation';
+        const period = isMonthlyMain ? 'every month' : '';
         
-        impactText.innerHTML = `Your <span class="impact-amount">₹${selectedAmount.toLocaleString('en-IN')}</span> ${frequency} ${impact} ${period}. <span class="impact-highlight">85%</span> of funds go directly to programs.`;
+        impactTextMain.innerHTML = 'Your <span class="impact-amount-main">₹' + selectedAmountMain.toLocaleString('en-IN') + '</span> ' + frequency + ' ' + impact + ' ' + period + '. <span class="impact-highlight-main">85%</span> of funds go directly to programs.';
     }
     
-    submitBtn.addEventListener('click', async () => {
-        if (!showingForm) {
-            donorForm.classList.add('active');
-            showingForm = true;
-            submitBtn.textContent = 'COMPLETE DONATION';
-            donorForm.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    // Submit
+    submitBtnMain.addEventListener('click', async () => {
+        if (!showingFormMain) {
+            donorFormMain.classList.add('active');
+            showingFormMain = true;
+            submitBtnMain.textContent = 'COMPLETE DONATION';
+            donorFormMain.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         } else {
-            await processDonation();
+            await processDonationMain();
         }
     });
     
-    async function processDonation() {
-        const name = document.getElementById('donorName').value.trim();
-        const email = document.getElementById('donorEmail').value.trim();
-        const phone = document.getElementById('donorPhone').value.trim();
+    async function processDonationMain() {
+        const name = document.getElementById('donorNameMain').value.trim();
+        const email = document.getElementById('donorEmailMain').value.trim();
+        const phone = document.getElementById('donorPhoneMain').value.trim();
         
         if (!name || !email || !phone) {
             alert('Please fill in all required fields');
@@ -677,36 +661,37 @@
             return;
         }
         
-        submitBtn.disabled = true;
-        loading.classList.add('active');
+        submitBtnMain.disabled = true;
+        loadingMain.classList.add('active');
         
         const options = {
-            key: RAZORPAY_KEY,
-            amount: selectedAmount * 100,
+            key: RAZORPAY_KEY_MAIN,
+            amount: selectedAmountMain * 100,
             currency: 'INR',
             name: 'Integral Foundation',
-            description: `${isMonthly ? 'Monthly' : 'One-time'} Donation`,
+            description: (isMonthlyMain ? 'Monthly' : 'One-time') + ' Donation',
             prefill: { name, email, contact: phone },
-            notes: { frequency: isMonthly ? 'monthly' : 'one-time' },
+            notes: { frequency: isMonthlyMain ? 'monthly' : 'one-time' },
             theme: { color: '#FFC700' },
             handler: function(response) {
                 localStorage.setItem('lastDonation', JSON.stringify({
-                    name, email, phone, amount: selectedAmount,
-                    frequency: isMonthly ? 'monthly' : 'one-time',
+                    name, email, phone, amount: selectedAmountMain,
+                    frequency: isMonthlyMain ? 'monthly' : 'one-time',
                     paymentId: response.razorpay_payment_id,
                     timestamp: new Date().toISOString()
                 }));
-                window.location.href = `/thank-you?amount=${selectedAmount}&frequency=${isMonthly ? 'monthly' : 'one-time'}`;
+                window.location.href = '/thank-you/?amount=' + selectedAmountMain + '&frequency=' + (isMonthlyMain ? 'monthly' : 'one-time');
             },
             modal: {
                 ondismiss: function() {
-                    submitBtn.disabled = false;
-                    loading.classList.remove('active');
+                    submitBtnMain.disabled = false;
+                    loadingMain.classList.remove('active');
                 }
             }
         };
         
         new Razorpay(options).open();
     }
+})();
 </script>
 {{ end }}

@@ -1,0 +1,203 @@
+{{ define "main" }}
+<style>
+.ip-hero { background: linear-gradient(135deg, var(--forest) 0%, #1a3a2f 100%); color: white; padding: 6rem 2rem; text-align: center; }
+.ip-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 1.5rem; }
+.ip-hero .subtitle { font-size: 1.1rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; }
+.ip-hero p { font-size: 1.25rem; max-width: 750px; margin: 0 auto; opacity: 0.9; line-height: 1.8; }
+.difference { background: white; padding: 5rem 2rem; }
+.difference .container { max-width: 1100px; margin: 0 auto; }
+.difference-content { text-align: center; max-width: 800px; margin: 0 auto 4rem; }
+.difference-content h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--forest); margin-bottom: 1.5rem; }
+.difference-content p { font-size: 1.1rem; line-height: 1.8; color: var(--charcoal); }
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+.compare-card { padding: 2.5rem; border-radius: 16px; }
+.compare-card.brand { background: #f5f5f5; }
+.compare-card.impact { background: var(--forest); color: white; }
+.compare-card h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 0.5rem; }
+.compare-card.impact h3 { color: var(--gold); }
+.compare-card .card-subtitle { font-size: 0.9rem; opacity: 0.7; margin-bottom: 1.5rem; }
+.compare-list { list-style: none; padding: 0; }
+.compare-list li { padding: 0.75rem 0; font-size: 0.95rem; display: flex; gap: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.compare-card.brand .compare-list li { border-color: #ddd; }
+.compare-list li:last-child { border: none; }
+.compare-list li::before { content: "•"; flex-shrink: 0; }
+.compare-card.impact .compare-list li::before { color: var(--gold); }
+.partnership-model { background: var(--cream); padding: 5rem 2rem; }
+.partnership-model .container { max-width: 1200px; margin: 0 auto; }
+.section-header { text-align: center; margin-bottom: 4rem; }
+.section-header h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--forest); margin-bottom: 1rem; }
+.section-header p { font-size: 1.1rem; color: #666; max-width: 700px; margin: 0 auto; }
+.model-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.model-card { background: white; border-radius: 16px; padding: 2.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: all 0.3s ease; }
+.model-card:hover { transform: translateY(-8px); box-shadow: 0 12px 40px rgba(0,0,0,0.15); }
+.model-icon { width: 70px; height: 70px; background: var(--forest); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin-bottom: 1.5rem; }
+.model-card h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--forest); margin-bottom: 1rem; }
+.model-card > p { font-size: 0.95rem; color: #666; line-height: 1.7; margin-bottom: 1.5rem; }
+.model-features { list-style: none; padding: 0; }
+.model-features li { padding: 0.5rem 0; font-size: 0.9rem; color: var(--charcoal); display: flex; gap: 0.75rem; }
+.model-features li::before { content: "→"; color: var(--forest); font-weight: 700; }
+.commitment { background: white; padding: 5rem 2rem; }
+.commitment .container { max-width: 1000px; margin: 0 auto; }
+.commitment-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: 3rem; text-align: center; }
+.commitment-item { padding: 2rem; background: var(--cream); border-radius: 12px; }
+.commitment-value { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--forest); font-weight: 700; margin-bottom: 0.5rem; }
+.commitment-label { font-size: 0.9rem; color: #666; }
+.engagement { background: var(--forest); color: white; padding: 5rem 2rem; }
+.engagement .container { max-width: 1100px; margin: 0 auto; }
+.engagement h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; text-align: center; margin-bottom: 3rem; }
+.engagement-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+.engagement-card { background: rgba(255,255,255,0.1); border-radius: 12px; padding: 2rem; border: 1px solid rgba(255,255,255,0.1); }
+.engagement-card h3 { font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--gold); margin-bottom: 1rem; }
+.engagement-card p { font-size: 0.95rem; line-height: 1.7; opacity: 0.9; }
+.current-partners { background: var(--cream); padding: 5rem 2rem; }
+.current-partners .container { max-width: 1000px; margin: 0 auto; text-align: center; }
+.current-partners h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--forest); margin-bottom: 1rem; }
+.current-partners > .container > p { font-size: 1.1rem; color: #666; margin-bottom: 3rem; }
+.partners-logos { display: flex; justify-content: center; flex-wrap: wrap; gap: 3rem; opacity: 0.7; }
+.partner-logo { width: 140px; height: 70px; background: white; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: #888; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+.ip-cta { background: linear-gradient(135deg, var(--gold) 0%, #d4a853 100%); padding: 5rem 2rem; text-align: center; }
+.ip-cta h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--charcoal); margin-bottom: 1rem; }
+.ip-cta p { font-size: 1.1rem; color: var(--charcoal); max-width: 600px; margin: 0 auto 2rem; }
+.cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.btn-dark { background: var(--charcoal); color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; }
+.btn-outline-dark { background: transparent; color: var(--charcoal); padding: 1rem 2rem; border: 2px solid var(--charcoal); border-radius: 8px; text-decoration: none; font-weight: 600; }
+@media (max-width: 968px) { .compare-grid, .model-grid, .engagement-grid { grid-template-columns: 1fr; } .commitment-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .commitment-grid { grid-template-columns: 1fr 1fr; } }
+</style>
+
+<section class="ip-hero">
+    <div class="container">
+        <div class="subtitle">Impact Partnerships</div>
+        <h1>Deep Collaboration for Lasting Change</h1>
+        <p>Join us as a strategic partner in creating measurable, sustainable transformation. Impact partnerships go beyond funding—they're about shared vision, resources, and expertise working together for long-term systemic change.</p>
+    </div>
+</section>
+
+<section class="difference">
+    <div class="container">
+        <div class="difference-content">
+            <h2>What Makes Impact Partners Different?</h2>
+            <p>While brand partners focus on visibility and short-term campaigns, impact partners commit to being true collaborators in our mission—contributing expertise, resources, and strategic thinking over multiple years.</p>
+        </div>
+        <div class="compare-grid">
+            <div class="compare-card brand">
+                <h3>Brand Partners</h3>
+                <div class="card-subtitle">Marketing & Visibility Focus</div>
+                <ul class="compare-list">
+                    <li>Campaign-based engagement</li>
+                    <li>1-12 month commitments</li>
+                    <li>Content and storytelling rights</li>
+                    <li>Co-marketing opportunities</li>
+                    <li>Employee engagement programs</li>
+                </ul>
+            </div>
+            <div class="compare-card impact">
+                <h3>Impact Partners</h3>
+                <div class="card-subtitle">Strategic Transformation Focus</div>
+                <ul class="compare-list">
+                    <li>Multi-year strategic commitments</li>
+                    <li>Shared planning and governance</li>
+                    <li>Technical expertise sharing</li>
+                    <li>Co-investment in infrastructure</li>
+                    <li>Joint research and innovation</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="partnership-model">
+    <div class="container">
+        <div class="section-header">
+            <h2>Partnership Models</h2>
+            <p>Strategic collaboration structures designed for measurable, scalable impact.</p>
+        </div>
+        <div class="model-grid">
+            <div class="model-card">
+                <div class="model-icon">🏗️</div>
+                <h3>Program Co-Development</h3>
+                <p>Co-design and co-fund new initiatives that address specific challenges in our work.</p>
+                <ul class="model-features">
+                    <li>Joint needs assessment</li>
+                    <li>Shared program design</li>
+                    <li>Matched funding models</li>
+                    <li>Joint M&E frameworks</li>
+                </ul>
+            </div>
+            <div class="model-card">
+                <div class="model-icon">🔬</div>
+                <h3>Technical Partnerships</h3>
+                <p>Contribute specialized expertise to strengthen our programs and scale impact.</p>
+                <ul class="model-features">
+                    <li>Skills-based secondments</li>
+                    <li>Technology transfer</li>
+                    <li>Research collaboration</li>
+                    <li>Systems development</li>
+                </ul>
+            </div>
+            <div class="model-card">
+                <div class="model-icon">🌐</div>
+                <h3>Ecosystem Building</h3>
+                <p>Work together to strengthen the broader ecosystem for rural livelihoods.</p>
+                <ul class="model-features">
+                    <li>Policy advocacy</li>
+                    <li>Market system development</li>
+                    <li>Knowledge platform creation</li>
+                    <li>Coalition building</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="commitment">
+    <div class="container">
+        <div class="section-header">
+            <h2>What We Ask Of Impact Partners</h2>
+            <p>True partnership requires meaningful commitment from both sides.</p>
+        </div>
+        <div class="commitment-grid">
+            <div class="commitment-item"><div class="commitment-value">3+</div><div class="commitment-label">Year Commitment</div></div>
+            <div class="commitment-item"><div class="commitment-value">₹25L+</div><div class="commitment-label">Annual Investment</div></div>
+            <div class="commitment-item"><div class="commitment-value">Quarterly</div><div class="commitment-label">Strategic Reviews</div></div>
+            <div class="commitment-item"><div class="commitment-value">Active</div><div class="commitment-label">Board/Advisory Role</div></div>
+        </div>
+    </div>
+</section>
+
+<section class="engagement">
+    <div class="container">
+        <h2>How We Work Together</h2>
+        <div class="engagement-grid">
+            <div class="engagement-card"><h3>🤝 Joint Governance</h3><p>Impact partners have a seat at the table—participating in strategic planning, program reviews, and key decisions that shape our work.</p></div>
+            <div class="engagement-card"><h3>📈 Shared Metrics</h3><p>We develop joint theories of change and measurement frameworks, ensuring alignment on what success looks like.</p></div>
+            <div class="engagement-card"><h3>🔄 Adaptive Learning</h3><p>Regular learning sessions where we share insights, adapt strategies, and build collective knowledge.</p></div>
+            <div class="engagement-card"><h3>📢 Thought Leadership</h3><p>Co-author research, speak at conferences, and publish findings together to advance the field.</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="current-partners">
+    <div class="container">
+        <h2>Our Impact Partners</h2>
+        <p>Organizations committed to long-term systemic change alongside us.</p>
+        <div class="partners-logos">
+            <div class="partner-logo">Partner 1</div>
+            <div class="partner-logo">Partner 2</div>
+            <div class="partner-logo">Partner 3</div>
+            <div class="partner-logo">Partner 4</div>
+        </div>
+    </div>
+</section>
+
+<section class="ip-cta">
+    <div class="container">
+        <h2>Become an Impact Partner</h2>
+        <p>Ready to commit to deep, transformational partnership? We'd love to explore how we can create lasting change together.</p>
+        <div class="cta-buttons">
+            <a href="mailto:partnerships@gointegral.org?subject=Impact%20Partnership%20Inquiry" class="btn-dark">Start the Conversation</a>
+            <a href="/contact/" class="btn-outline-dark">Request a Meeting</a>
+        </div>
+    </div>
+</section>
+{{ end }}
