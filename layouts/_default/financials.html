@@ -1,190 +1,89 @@
 {{ define "main" }}
 <style>
-.fin-hero { background: linear-gradient(135deg, var(--navy-blue) 0%, #1a3a5c 100%); color: white; padding: 100px 5% 80px; text-align: center; }
-.fin-hero h1 { font-size: 3rem; font-weight: 700; margin-bottom: 1rem; }
-.fin-hero .subtitle { font-size: 1.25rem; opacity: 0.9; max-width: 650px; margin: 0 auto; }
-
-.fin-summary { padding: 80px 5%; background: var(--cream); }
-.fin-summary h2 { text-align: center; font-size: 2rem; color: var(--navy-blue); margin-bottom: 50px; }
-.summary-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; text-align: center; }
-.summary-card { background: white; padding: 40px 24px; border-radius: 12px; }
-.summary-value { font-size: 2.5rem; font-weight: 700; color: var(--navy-blue); margin-bottom: 0.5rem; }
-.summary-label { color: var(--gray); font-size: 0.95rem; }
-
-.fin-breakdown { padding: 80px 5%; background: white; }
-.fin-breakdown h2 { text-align: center; font-size: 2rem; color: var(--navy-blue); margin-bottom: 50px; }
-.breakdown-container { max-width: 800px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
-.breakdown-chart { display: flex; flex-direction: column; gap: 20px; }
-.chart-item { display: flex; align-items: center; gap: 16px; }
-.chart-bar { height: 30px; border-radius: 15px; }
-.bar-programs { background: var(--navy-blue); width: 85%; }
-.bar-admin { background: var(--yellow); width: 10%; }
-.bar-fundraising { background: #94a3b8; width: 5%; }
-.chart-label { font-size: 0.9rem; color: var(--charcoal); min-width: 120px; }
-.chart-percent { font-weight: 700; color: var(--navy-blue); }
-.breakdown-text h3 { font-size: 1.5rem; color: var(--navy-blue); margin-bottom: 1rem; }
-.breakdown-text p { color: var(--charcoal); line-height: 1.7; margin-bottom: 1rem; }
-
-.fin-reports { padding: 80px 5%; background: var(--cream); }
-.fin-reports h2 { text-align: center; font-size: 2rem; color: var(--navy-blue); margin-bottom: 50px; }
-.reports-grid { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
-.report-card { background: white; padding: 30px; border-radius: 12px; display: flex; align-items: center; gap: 20px; text-decoration: none; color: var(--charcoal); transition: all 0.3s ease; }
-.report-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-.report-icon { width: 50px; height: 50px; background: var(--cream); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
-.report-info h4 { font-size: 1rem; color: var(--navy-blue); margin-bottom: 0.25rem; }
-.report-info span { font-size: 0.85rem; color: var(--gray); }
-
-.fin-governance { padding: 80px 5%; background: white; }
-.fin-governance h2 { text-align: center; font-size: 2rem; color: var(--navy-blue); margin-bottom: 50px; }
-.governance-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; }
-.governance-item { text-align: center; padding: 30px 20px; }
-.governance-item .icon { font-size: 2.5rem; margin-bottom: 1rem; }
-.governance-item h4 { font-size: 1.1rem; color: var(--navy-blue); margin-bottom: 0.5rem; }
-.governance-item p { color: var(--charcoal); font-size: 0.9rem; line-height: 1.5; }
-
-.fin-ratings { padding: 60px 5%; background: var(--cream); }
-.fin-ratings h2 { text-align: center; font-size: 1.5rem; color: var(--navy-blue); margin-bottom: 40px; }
-.ratings-grid { max-width: 700px; margin: 0 auto; display: flex; justify-content: center; gap: 50px; flex-wrap: wrap; }
-.rating-item { text-align: center; }
-.rating-logo { font-size: 1rem; color: var(--gray); margin-bottom: 0.5rem; }
-.rating-value { font-size: 1.25rem; font-weight: 700; color: var(--navy-blue); }
-
-.fin-cta { padding: 80px 5%; background: var(--navy-blue); text-align: center; color: white; }
-.fin-cta h2 { font-size: 2rem; margin-bottom: 1rem; }
-.fin-cta p { opacity: 0.9; max-width: 500px; margin: 0 auto 2rem; }
-.btn-outline-white { display: inline-block; border: 2px solid white; color: white; padding: 14px 36px; border-radius: 30px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; }
-.btn-outline-white:hover { background: white; color: var(--navy-blue); }
-
-@media (max-width: 768px) {
-    .fin-hero h1 { font-size: 2rem; }
-    .breakdown-container { grid-template-columns: 1fr; gap: 40px; }
-    .summary-value { font-size: 2rem; }
-}
+.fin-hero { background: var(--cream, #faf8f3); padding: 120px 5% 80px; text-align: center; }
+.fin-hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; color: var(--forest, #1a5f3f); margin-bottom: 1rem; }
+.fin-hero .subtitle { font-size: 1.2rem; color: var(--charcoal, #2d2d2d); max-width: 700px; margin: 0 auto; line-height: 1.7; }
+.fin-summary { padding: 80px 5%; background: var(--white, #ffffff); }
+.fin-summary h2 { text-align: center; font-size: 2rem; color: var(--forest, #1a5f3f); margin-bottom: 60px; font-weight: 700; }
+.summary-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
+.summary-card { background: var(--cream, #faf8f3); padding: 2rem; border-radius: 12px; text-align: center; }
+.summary-value { font-size: 2.5rem; font-weight: 700; color: var(--forest, #1a5f3f); margin-bottom: 0.5rem; }
+.summary-label { font-size: 1rem; color: var(--charcoal, #2d2d2d); }
+.fin-breakdown { padding: 80px 5%; background: var(--cream, #faf8f3); }
+.fin-breakdown h2 { text-align: center; font-size: 2rem; color: var(--forest, #1a5f3f); margin-bottom: 1rem; font-weight: 700; }
+.breakdown-intro { text-align: center; font-size: 1.1rem; color: var(--charcoal, #2d2d2d); max-width: 700px; margin: 0 auto 60px; line-height: 1.7; }
+.breakdown-container { max-width: 800px; margin: 0 auto; }
+.breakdown-item { display: flex; align-items: center; margin-bottom: 1.5rem; }
+.breakdown-bar { flex: 1; height: 40px; background: var(--white, #ffffff); border-radius: 8px; overflow: hidden; margin-right: 1rem; }
+.breakdown-fill { height: 100%; display: flex; align-items: center; padding-left: 1rem; color: var(--white, #ffffff); font-weight: 600; font-size: 0.9rem; }
+.breakdown-fill.programs { background: var(--forest, #1a5f3f); width: 70%; }
+.breakdown-fill.admin { background: var(--saffron, #ff9933); width: 15%; }
+.breakdown-fill.fundraising { background: var(--navy, #1e3a5f); width: 15%; }
+.breakdown-label { min-width: 120px; font-size: 0.95rem; color: var(--charcoal, #2d2d2d); font-weight: 600; }
+.fin-reports { padding: 80px 5%; background: var(--white, #ffffff); }
+.fin-reports h2 { text-align: center; font-size: 2rem; color: var(--forest, #1a5f3f); margin-bottom: 60px; font-weight: 700; }
+.reports-grid { max-width: 800px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+.report-card { background: var(--cream, #faf8f3); padding: 1.5rem; border-radius: 12px; display: flex; align-items: center; gap: 1rem; text-decoration: none; transition: all 0.3s ease; }
+.report-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+.report-icon { width: 50px; height: 50px; background: var(--forest, #1a5f3f); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+.report-icon svg { width: 24px; height: 24px; color: var(--white, #ffffff); }
+.report-info h3 { font-size: 1rem; color: var(--forest, #1a5f3f); margin-bottom: 0.25rem; font-weight: 700; }
+.report-info p { font-size: 0.85rem; color: var(--gray, #6b7280); margin: 0; }
+.fin-governance { padding: 80px 5%; background: var(--cream, #faf8f3); }
+.fin-governance h2 { text-align: center; font-size: 2rem; color: var(--forest, #1a5f3f); margin-bottom: 60px; font-weight: 700; }
+.governance-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+.governance-item { background: var(--white, #ffffff); padding: 2rem; border-radius: 12px; text-align: center; }
+.governance-icon { width: 60px; height: 60px; background: var(--saffron, #ff9933); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; }
+.governance-icon svg { width: 28px; height: 28px; color: var(--white, #ffffff); }
+.governance-item h3 { font-size: 1.1rem; color: var(--forest, #1a5f3f); margin-bottom: 0.75rem; font-weight: 700; }
+.governance-item p { font-size: 0.95rem; color: var(--charcoal, #2d2d2d); line-height: 1.6; }
+.fin-ratings { padding: 80px 5%; background: var(--white, #ffffff); text-align: center; }
+.fin-ratings h2 { font-size: 2rem; color: var(--forest, #1a5f3f); margin-bottom: 60px; font-weight: 700; }
+.ratings-grid { max-width: 800px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+.rating-item { padding: 2rem; }
+.rating-logo { font-size: 1.1rem; color: var(--charcoal, #2d2d2d); font-weight: 600; margin-bottom: 0.5rem; }
+.rating-value { font-size: 1.5rem; color: var(--forest, #1a5f3f); font-weight: 700; }
+.fin-cta { padding: 80px 5%; background: var(--forest, #1a5f3f); text-align: center; }
+.fin-cta h2 { font-size: 2rem; color: var(--white, #ffffff); margin-bottom: 1rem; font-weight: 700; }
+.fin-cta p { font-size: 1.1rem; color: rgba(255,255,255,0.9); max-width: 600px; margin: 0 auto 2rem; line-height: 1.7; }
+.btn-yellow { display: inline-block; background: var(--yellow, #FFC700); color: var(--charcoal, #2d2d2d); padding: 1rem 2.5rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: all 0.3s ease; }
+.btn-yellow:hover { background: var(--yellow-hover, #E6B300); transform: translateY(-2px); }
+@media (max-width: 768px) { .fin-hero h1 { font-size: 2rem; } .ratings-grid { grid-template-columns: 1fr; } }
 </style>
 
-<section class="fin-hero">
-    <h1>Our Financials</h1>
-    <p class="subtitle">Complete transparency in how we use every rupee. Your trust is our most valuable asset.</p>
-</section>
+<section class="fin-hero"><div class="container"><h1>Our Financials</h1><p class="subtitle">Complete transparency in how we use every rupee. Your trust is our foundation.</p></div></section>
 
-<section class="fin-summary">
-    <h2>FY 2023-24 At a Glance</h2>
-    <div class="summary-grid">
-        <div class="summary-card">
-            <div class="summary-value">₹2.4Cr</div>
-            <div class="summary-label">Total Revenue</div>
-        </div>
-        <div class="summary-card">
-            <div class="summary-value">85%</div>
-            <div class="summary-label">To Programs</div>
-        </div>
-        <div class="summary-card">
-            <div class="summary-value">12,000+</div>
-            <div class="summary-label">Lives Impacted</div>
-        </div>
-        <div class="summary-card">
-            <div class="summary-value">₹18,000</div>
-            <div class="summary-label">Avg. Income Increase/Family</div>
-        </div>
-    </div>
-</section>
+<section class="fin-summary"><h2>FY 2023-24 at a Glance</h2><div class="summary-grid">
+<div class="summary-card"><div class="summary-value">₹2.4Cr</div><div class="summary-label">Total Income</div></div>
+<div class="summary-card"><div class="summary-value">70%</div><div class="summary-label">To Programs</div></div>
+<div class="summary-card"><div class="summary-value">5,000+</div><div class="summary-label">Lives Impacted</div></div>
+<div class="summary-card"><div class="summary-value">15%</div><div class="summary-label">Admin Costs</div></div>
+</div></section>
 
-<section class="fin-breakdown">
-    <h2>Where Your Money Goes</h2>
-    <div class="breakdown-container">
-        <div class="breakdown-chart">
-            <div class="chart-item">
-                <span class="chart-label">Programs</span>
-                <div class="chart-bar bar-programs"></div>
-                <span class="chart-percent">85%</span>
-            </div>
-            <div class="chart-item">
-                <span class="chart-label">Administration</span>
-                <div class="chart-bar bar-admin"></div>
-                <span class="chart-percent">10%</span>
-            </div>
-            <div class="chart-item">
-                <span class="chart-label">Fundraising</span>
-                <div class="chart-bar bar-fundraising"></div>
-                <span class="chart-percent">5%</span>
-            </div>
-        </div>
-        <div class="breakdown-text">
-            <h3>85% Direct Impact</h3>
-            <p>For every ₹100 you donate, ₹85 goes directly to our programs—farmer training, silkworm distribution, equipment, and community support.</p>
-            <p>The remaining ₹15 covers essential operations: staff, technology, audits, and compliance that ensure your donation creates maximum, accountable impact.</p>
-        </div>
-    </div>
-</section>
+<section class="fin-breakdown"><h2>How We Use Your Donations</h2><p class="breakdown-intro">We believe in maximum impact with minimum overhead. Here's how every rupee is allocated.</p><div class="breakdown-container">
+<div class="breakdown-item"><div class="breakdown-bar"><div class="breakdown-fill programs">70%</div></div><div class="breakdown-label">Programs</div></div>
+<div class="breakdown-item"><div class="breakdown-bar"><div class="breakdown-fill admin">15%</div></div><div class="breakdown-label">Administration</div></div>
+<div class="breakdown-item"><div class="breakdown-bar"><div class="breakdown-fill fundraising">15%</div></div><div class="breakdown-label">Fundraising</div></div>
+</div></section>
 
-<section class="fin-reports">
-    <h2>Download Reports</h2>
-    <div class="reports-grid">
-        <a href="#" class="report-card">
-            <div class="report-icon">📊</div>
-            <div class="report-info"><h4>Annual Report 2023-24</h4><span>PDF • 4.2 MB</span></div>
-        </a>
-        <a href="#" class="report-card">
-            <div class="report-icon">📋</div>
-            <div class="report-info"><h4>Audited Financials 2023-24</h4><span>PDF • 1.8 MB</span></div>
-        </a>
-        <a href="#" class="report-card">
-            <div class="report-icon">📈</div>
-            <div class="report-info"><h4>Impact Report 2023-24</h4><span>PDF • 3.5 MB</span></div>
-        </a>
-        <a href="#" class="report-card">
-            <div class="report-icon">📄</div>
-            <div class="report-info"><h4>80G Certificate</h4><span>PDF • 0.5 MB</span></div>
-        </a>
-        <a href="#" class="report-card">
-            <div class="report-icon">📑</div>
-            <div class="report-info"><h4>12A Registration</h4><span>PDF • 0.3 MB</span></div>
-        </a>
-        <a href="#" class="report-card">
-            <div class="report-icon">📝</div>
-            <div class="report-info"><h4>FCRA Certificate</h4><span>PDF • 0.4 MB</span></div>
-        </a>
-    </div>
-</section>
+<section class="fin-reports"><h2>Download Reports</h2><div class="reports-grid">
+<a href="#" class="report-card"><div class="report-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="report-info"><h3>Annual Report 2023-24</h3><p>PDF, 4.2 MB</p></div></a>
+<a href="#" class="report-card"><div class="report-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="report-info"><h3>Audited Financials 2023-24</h3><p>PDF, 1.8 MB</p></div></a>
+<a href="#" class="report-card"><div class="report-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="report-info"><h3>Impact Report 2023-24</h3><p>PDF, 3.1 MB</p></div></a>
+<a href="#" class="report-card"><div class="report-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="report-info"><h3>Registration Documents</h3><p>PDF, 0.5 MB</p></div></a>
+</div></section>
 
-<section class="fin-governance">
-    <h2>Governance & Accountability</h2>
-    <div class="governance-grid">
-        <div class="governance-item">
-            <div class="icon">👥</div>
-            <h4>Independent Board</h4>
-            <p>Our board includes independent directors with no financial interest in the organization.</p>
-        </div>
-        <div class="governance-item">
-            <div class="icon">🔍</div>
-            <h4>External Audits</h4>
-            <p>Annual audits by registered CA firms ensure financial accuracy and compliance.</p>
-        </div>
-        <div class="governance-item">
-            <div class="icon">📝</div>
-            <h4>Conflict of Interest</h4>
-            <p>Strict policies prevent any personal benefit from organizational decisions.</p>
-        </div>
-        <div class="governance-item">
-            <div class="icon">🔒</div>
-            <h4>Data Protection</h4>
-            <p>Donor information is protected and never shared with third parties.</p>
-        </div>
-    </div>
-</section>
+<section class="fin-governance"><h2>Governance & Compliance</h2><div class="governance-grid">
+<div class="governance-item"><div class="governance-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3>Independent Board</h3><p>Our board includes independent directors with no financial interest in the organization.</p></div>
+<div class="governance-item"><div class="governance-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div><h3>External Audits</h3><p>Annual audits by registered CA firms ensure financial accuracy and compliance.</p></div>
+<div class="governance-item"><div class="governance-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><h3>Conflict of Interest Policy</h3><p>Strict policies prevent any personal benefit from organizational decisions.</p></div>
+</div></section>
 
-<section class="fin-ratings">
-    <h2>Third-Party Ratings & Certifications</h2>
-    <div class="ratings-grid">
-        <div class="rating-item"><div class="rating-logo">GuideStar India</div><div class="rating-value">Platinum</div></div>
-        <div class="rating-item"><div class="rating-logo">Credibility Alliance</div><div class="rating-value">Certified</div></div>
-        <div class="rating-item"><div class="rating-logo">Give India</div><div class="rating-value">Verified</div></div>
-    </div>
-</section>
+<section class="fin-ratings"><h2>Third-Party Ratings</h2><div class="ratings-grid">
+<div class="rating-item"><div class="rating-logo">GuideStar India</div><div class="rating-value">Platinum</div></div>
+<div class="rating-item"><div class="rating-logo">Credibility Alliance</div><div class="rating-value">Certified</div></div>
+<div class="rating-item"><div class="rating-logo">Give India</div><div class="rating-value">Verified</div></div>
+</div></section>
 
-<section class="fin-cta">
-    <h2>Questions About Our Finances?</h2>
-    <p>We're happy to provide additional information or answer any questions about how we use donations.</p>
-    <a href="mailto:finance@gointegral.org" class="btn-outline-white">Contact Finance Team</a>
-</section>
+<section class="fin-cta"><h2>Questions About Our Finances?</h2><p>We're happy to provide additional information or answer any questions about how we use donations.</p><a href="mailto:finance@gointegral.org" class="btn-yellow">Contact Our Finance Team</a></section>
 {{ end }}
