@@ -1,21 +1,22 @@
 {{ define "styles" }}
 /* What We Do Page Styles */
+
 .page-hero {
-    padding: 100px 0 60px;
+    padding: 120px 0 80px;
     text-align: center;
-    background: var(--cream);
+    background: var(--cream, #faf8f3);
 }
 
 .page-hero h1 {
-    font-size: 3rem;
-    color: var(--navy);
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    color: var(--forest, #2d5016);
     margin-bottom: 1.5rem;
     font-weight: 700;
 }
 
 .page-hero .subtitle {
-    font-size: 1.15rem;
-    color: var(--gray);
+    font-size: 1.2rem;
+    color: var(--charcoal, #2d2d2d);
     max-width: 800px;
     margin: 0 auto;
     line-height: 1.7;
@@ -26,7 +27,7 @@
 }
 
 .content-section.alt-bg {
-    background: var(--white);
+    background: var(--white, #ffffff);
 }
 
 .section-intro {
@@ -37,13 +38,14 @@
 
 .section-intro h2 {
     font-size: 2rem;
-    color: var(--navy);
+    color: var(--forest, #2d5016);
     margin-bottom: 1rem;
+    font-weight: 700;
 }
 
 .section-intro p {
     font-size: 1.1rem;
-    color: var(--charcoal);
+    color: var(--charcoal, #2d2d2d);
     line-height: 1.8;
 }
 
@@ -55,7 +57,7 @@
 }
 
 .program-card {
-    background: var(--white);
+    background: var(--cream, #faf8f3);
     padding: 36px;
     border-radius: 20px;
     box-shadow: 0 4px 24px rgba(0,0,0,0.06);
@@ -71,15 +73,13 @@
 
 .program-card h3 {
     font-size: 1.3rem;
-    color: var(--navy);
+    color: var(--forest, #2d5016);
     margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
+    font-weight: 700;
 }
 
 .program-card p {
-    color: var(--gray);
+    color: var(--gray, #6b7280);
     line-height: 1.7;
     margin-bottom: 20px;
 }
@@ -93,7 +93,7 @@
     padding: 8px 0;
     padding-left: 20px;
     position: relative;
-    color: var(--charcoal);
+    color: var(--charcoal, #2d2d2d);
     font-size: 0.95rem;
 }
 
@@ -101,7 +101,8 @@
     content: "•";
     position: absolute;
     left: 0;
-    color: var(--forest);
+    color: var(--forest, #2d5016);
+    font-weight: 700;
 }
 
 .program-card .arrow {
@@ -110,13 +111,14 @@
     right: 24px;
     width: 40px;
     height: 40px;
-    background: var(--yellow);
+    background: var(--saffron, #f5a623);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--charcoal);
+    color: var(--forest, #2d5016);
     font-size: 1.2rem;
+    font-weight: 700;
     transition: all 0.3s;
 }
 
@@ -140,19 +142,19 @@
 .stat-item .number {
     font-size: 3.5rem;
     font-weight: 700;
-    color: var(--forest);
+    color: var(--forest, #2d5016);
     line-height: 1;
 }
 
 .stat-item .label {
-    color: var(--gray);
+    color: var(--gray, #6b7280);
     font-size: 1rem;
     margin-top: 8px;
 }
 
 /* Day in Life Section */
 .day-section {
-    background: var(--white);
+    background: var(--cream, #faf8f3);
     border-radius: 24px;
     padding: 48px;
     box-shadow: 0 4px 24px rgba(0,0,0,0.06);
@@ -162,9 +164,10 @@
 
 .day-section h3 {
     font-size: 1.5rem;
-    color: var(--navy);
+    color: var(--forest, #2d5016);
     margin-bottom: 32px;
     text-align: center;
+    font-weight: 700;
 }
 
 .day-timeline {
@@ -176,36 +179,39 @@
 .day-item {
     text-align: center;
     padding: 24px;
-    background: var(--cream);
+    background: white;
     border-radius: 16px;
 }
 
-.day-item .icon {
-    font-size: 2rem;
-    margin-bottom: 12px;
+.day-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--saffron, #f5a623);
+    border-radius: 50%;
+    margin: 0 auto 16px;
 }
 
 .day-item .time {
-    font-weight: 600;
-    color: var(--navy);
+    font-weight: 700;
+    color: var(--forest, #2d5016);
     margin-bottom: 8px;
 }
 
 .day-item p {
-    color: var(--gray);
+    color: var(--gray, #6b7280);
     font-size: 0.9rem;
     line-height: 1.6;
 }
 
 .day-item em {
-    color: var(--forest);
+    color: var(--forest, #2d5016);
     font-style: normal;
     font-weight: 500;
 }
 
 /* CTA Section */
 .cta-section {
-    background: linear-gradient(135deg, var(--forest) 0%, #1a4010 100%);
+    background: var(--forest, #2d5016);
     padding: 80px 0;
     text-align: center;
     color: white;
@@ -213,7 +219,8 @@
 
 .cta-section h2 {
     font-size: 2rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
 }
 
 .cta-section p {
@@ -231,7 +238,7 @@
 }
 
 .cta-btn {
-    padding: 16px 32px;
+    padding: 1rem 2.5rem;
     border-radius: 8px;
     text-decoration: none;
     font-weight: 700;
@@ -239,8 +246,13 @@
 }
 
 .cta-btn.primary {
-    background: var(--yellow);
-    color: var(--charcoal);
+    background: var(--yellow, #FFC700);
+    color: var(--charcoal, #2d2d2d);
+}
+
+.cta-btn.primary:hover {
+    background: var(--yellow-hover, #E6B300);
+    transform: translateY(-2px);
 }
 
 .cta-btn.secondary {
@@ -249,7 +261,8 @@
     color: white;
 }
 
-.cta-btn:hover {
+.cta-btn.secondary:hover {
+    background: rgba(255,255,255,0.1);
     transform: translateY(-2px);
 }
 
@@ -262,7 +275,7 @@
 }
 
 .where-next-card {
-    background: var(--white);
+    background: var(--cream, #faf8f3);
     padding: 32px;
     border-radius: 16px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.06);
@@ -278,25 +291,36 @@
 
 .where-next-card h3 {
     font-size: 1.2rem;
-    color: var(--navy);
+    color: var(--forest, #2d5016);
     margin-bottom: 12px;
+    font-weight: 700;
 }
 
 .where-next-card p {
-    color: var(--gray);
+    color: var(--gray, #6b7280);
     font-size: 0.95rem;
     line-height: 1.6;
     margin-bottom: 16px;
 }
 
 .where-next-card .link {
-    color: var(--forest);
-    font-weight: 600;
+    color: var(--saffron, #f5a623);
+    font-weight: 700;
+    font-size: 1.25rem;
 }
 
+/* Responsive */
 @media (max-width: 768px) {
+    .page-hero {
+        padding: 100px 0 60px;
+    }
+    
     .page-hero h1 {
         font-size: 2rem;
+    }
+    
+    .content-section {
+        padding: 60px 0;
     }
     
     .programs-grid {
@@ -313,6 +337,17 @@
     
     .day-section {
         padding: 32px 24px;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cta-btn {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
     }
 }
 {{ end }}
@@ -494,25 +529,25 @@
             
             <div class="day-timeline">
                 <div class="day-item">
-                    <div class="icon">🌅</div>
+                    <div class="day-icon"></div>
                     <div class="time">Morning</div>
                     <p>Bina checks her mulberry plantation, using <em>climate-smart techniques</em> she learned from our training. The <em>rainwater harvesting system</em> provides irrigation.</p>
                 </div>
                 
                 <div class="day-item">
-                    <div class="icon">☀️</div>
+                    <div class="day-icon"></div>
                     <div class="time">Midday</div>
                     <p>She attends her <em>women's cooperative</em> meeting where members discuss <em>market prices</em> and plan their next silk collection shipment.</p>
                 </div>
                 
                 <div class="day-item">
-                    <div class="icon">🌆</div>
+                    <div class="day-icon"></div>
                     <div class="time">Afternoon</div>
                     <p>Bina weaves silk using traditional patterns, knowing her work will reach <em>premium markets</em> that pay fair prices through our network.</p>
                 </div>
                 
                 <div class="day-item">
-                    <div class="icon">🌙</div>
+                    <div class="day-icon"></div>
                     <div class="time">Evening</div>
                     <p>At the <em>community meeting</em>, villagers plan a new <em>biodiversity corridor</em> to protect native species while supporting sericulture.</p>
                 </div>
@@ -527,8 +562,8 @@
         <h2>Support our work</h2>
         <p>Your contribution funds programs that create lasting change across all dimensions of rural life.</p>
         <div class="cta-buttons">
-            <a href="/donate" class="cta-btn primary">Make a donation</a>
-            <a href="/partnerships" class="cta-btn secondary">Partner with us</a>
+            <a href="/donate/" class="cta-btn primary">Make a donation</a>
+            <a href="/brand-partners/" class="cta-btn secondary">Partner with us</a>
         </div>
     </div>
 </section>
@@ -541,19 +576,19 @@
         </div>
         
         <div class="where-next-grid">
-            <a href="/integral-model" class="where-next-card">
+            <a href="/integral-model/" class="where-next-card">
                 <h3>The Integral Model</h3>
                 <p>Learn about the philosophy and approach that guides our work</p>
                 <span class="link">→</span>
             </a>
             
-            <a href="/stories" class="where-next-card">
+            <a href="/stories/" class="where-next-card">
                 <h3>Stories from the field</h3>
                 <p>Meet the farmers and artisans creating change in their communities</p>
                 <span class="link">→</span>
             </a>
             
-            <a href="/how-we-work" class="where-next-card">
+            <a href="/how-we-work/" class="where-next-card">
                 <h3>How we work</h3>
                 <p>Discover our methodology and partnership approach</p>
                 <span class="link">→</span>
