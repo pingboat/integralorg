@@ -1,68 +1,478 @@
 {{ define "main" }}
 <style>
-.ip-hero { background: linear-gradient(135deg, var(--forest) 0%, #1a3a2f 100%); color: white; padding: 6rem 2rem; text-align: center; }
-.ip-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 1.5rem; }
-.ip-hero .subtitle { font-size: 1.1rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; }
-.ip-hero p { font-size: 1.25rem; max-width: 750px; margin: 0 auto; opacity: 0.9; line-height: 1.8; }
-.difference { background: white; padding: 5rem 2rem; }
-.difference .container { max-width: 1100px; margin: 0 auto; }
-.difference-content { text-align: center; max-width: 800px; margin: 0 auto 4rem; }
-.difference-content h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--forest); margin-bottom: 1.5rem; }
-.difference-content p { font-size: 1.1rem; line-height: 1.8; color: var(--charcoal); }
-.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
-.compare-card { padding: 2.5rem; border-radius: 16px; }
-.compare-card.brand { background: #f5f5f5; }
-.compare-card.impact { background: var(--forest); color: white; }
-.compare-card h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 0.5rem; }
-.compare-card.impact h3 { color: var(--gold); }
-.compare-card .card-subtitle { font-size: 0.9rem; opacity: 0.7; margin-bottom: 1.5rem; }
-.compare-list { list-style: none; padding: 0; }
-.compare-list li { padding: 0.75rem 0; font-size: 0.95rem; display: flex; gap: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
-.compare-card.brand .compare-list li { border-color: #ddd; }
-.compare-list li:last-child { border: none; }
-.compare-list li::before { content: "•"; flex-shrink: 0; }
-.compare-card.impact .compare-list li::before { color: var(--gold); }
-.partnership-model { background: var(--cream); padding: 5rem 2rem; }
-.partnership-model .container { max-width: 1200px; margin: 0 auto; }
-.section-header { text-align: center; margin-bottom: 4rem; }
-.section-header h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--forest); margin-bottom: 1rem; }
-.section-header p { font-size: 1.1rem; color: #666; max-width: 700px; margin: 0 auto; }
-.model-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-.model-card { background: white; border-radius: 16px; padding: 2.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: all 0.3s ease; }
-.model-card:hover { transform: translateY(-8px); box-shadow: 0 12px 40px rgba(0,0,0,0.15); }
-.model-icon { width: 70px; height: 70px; background: var(--forest); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin-bottom: 1.5rem; }
-.model-card h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--forest); margin-bottom: 1rem; }
-.model-card > p { font-size: 0.95rem; color: #666; line-height: 1.7; margin-bottom: 1.5rem; }
-.model-features { list-style: none; padding: 0; }
-.model-features li { padding: 0.5rem 0; font-size: 0.9rem; color: var(--charcoal); display: flex; gap: 0.75rem; }
-.model-features li::before { content: "→"; color: var(--forest); font-weight: 700; }
-.commitment { background: white; padding: 5rem 2rem; }
-.commitment .container { max-width: 1000px; margin: 0 auto; }
-.commitment-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: 3rem; text-align: center; }
-.commitment-item { padding: 2rem; background: var(--cream); border-radius: 12px; }
-.commitment-value { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--forest); font-weight: 700; margin-bottom: 0.5rem; }
-.commitment-label { font-size: 0.9rem; color: #666; }
-.engagement { background: var(--forest); color: white; padding: 5rem 2rem; }
-.engagement .container { max-width: 1100px; margin: 0 auto; }
-.engagement h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; text-align: center; margin-bottom: 3rem; }
-.engagement-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
-.engagement-card { background: rgba(255,255,255,0.1); border-radius: 12px; padding: 2rem; border: 1px solid rgba(255,255,255,0.1); }
-.engagement-card h3 { font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--gold); margin-bottom: 1rem; }
-.engagement-card p { font-size: 0.95rem; line-height: 1.7; opacity: 0.9; }
-.current-partners { background: var(--cream); padding: 5rem 2rem; }
-.current-partners .container { max-width: 1000px; margin: 0 auto; text-align: center; }
-.current-partners h2 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--forest); margin-bottom: 1rem; }
-.current-partners > .container > p { font-size: 1.1rem; color: #666; margin-bottom: 3rem; }
-.partners-logos { display: flex; justify-content: center; flex-wrap: wrap; gap: 3rem; opacity: 0.7; }
-.partner-logo { width: 140px; height: 70px; background: white; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: #888; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-.ip-cta { background: linear-gradient(135deg, var(--gold) 0%, #d4a853 100%); padding: 5rem 2rem; text-align: center; }
-.ip-cta h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--charcoal); margin-bottom: 1rem; }
-.ip-cta p { font-size: 1.1rem; color: var(--charcoal); max-width: 600px; margin: 0 auto 2rem; }
-.cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-.btn-dark { background: var(--charcoal); color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; }
-.btn-outline-dark { background: transparent; color: var(--charcoal); padding: 1rem 2rem; border: 2px solid var(--charcoal); border-radius: 8px; text-decoration: none; font-weight: 600; }
-@media (max-width: 968px) { .compare-grid, .model-grid, .engagement-grid { grid-template-columns: 1fr; } .commitment-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 640px) { .commitment-grid { grid-template-columns: 1fr 1fr; } }
+/* Impact Partners Page Styles */
+
+.ip-hero {
+    background: var(--cream, #faf8f3);
+    padding: 120px 2rem 80px;
+    text-align: center;
+}
+
+.ip-hero h1 {
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    font-weight: 700;
+    color: var(--forest, #2d5016);
+    margin-bottom: 1.5rem;
+}
+
+.ip-hero .subtitle {
+    font-size: 1rem;
+    color: var(--saffron, #f5a623);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.ip-hero p {
+    font-size: 1.2rem;
+    max-width: 750px;
+    margin: 0 auto;
+    color: var(--charcoal, #2d2d2d);
+    line-height: 1.7;
+}
+
+/* Difference Section */
+.difference {
+    background: white;
+    padding: 80px 2rem;
+}
+
+.difference .container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.difference-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 60px;
+}
+
+.difference-content h2 {
+    font-size: 2rem;
+    color: var(--forest, #2d5016);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.difference-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--charcoal, #2d2d2d);
+}
+
+.compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.compare-card {
+    padding: 2.5rem;
+    border-radius: 16px;
+}
+
+.compare-card.brand {
+    background: var(--cream, #faf8f3);
+}
+
+.compare-card.impact {
+    background: var(--forest, #2d5016);
+    color: white;
+}
+
+.compare-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.compare-card.brand h3 {
+    color: var(--forest, #2d5016);
+}
+
+.compare-card.impact h3 {
+    color: var(--saffron, #f5a623);
+}
+
+.compare-card .card-subtitle {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin-bottom: 1.5rem;
+}
+
+.compare-list {
+    list-style: none;
+    padding: 0;
+}
+
+.compare-list li {
+    padding: 0.75rem 0;
+    font-size: 0.95rem;
+    display: flex;
+    gap: 0.75rem;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.compare-card.impact .compare-list li {
+    border-color: rgba(255,255,255,0.15);
+}
+
+.compare-list li:last-child {
+    border: none;
+}
+
+.compare-list li::before {
+    content: "•";
+    flex-shrink: 0;
+    font-weight: 700;
+}
+
+.compare-card.brand .compare-list li::before {
+    color: var(--forest, #2d5016);
+}
+
+.compare-card.impact .compare-list li::before {
+    color: var(--saffron, #f5a623);
+}
+
+/* Partnership Model Section */
+.partnership-model {
+    background: var(--cream, #faf8f3);
+    padding: 80px 2rem;
+}
+
+.partnership-model .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-header h2 {
+    font-size: 2rem;
+    color: var(--forest, #2d5016);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.section-header p {
+    font-size: 1.1rem;
+    color: var(--charcoal, #2d2d2d);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.model-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.model-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    transition: all 0.3s ease;
+}
+
+.model-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+}
+
+.model-icon {
+    width: 70px;
+    height: 70px;
+    background: var(--saffron, #f5a623);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--forest, #2d5016);
+}
+
+.model-card h3 {
+    font-size: 1.35rem;
+    color: var(--forest, #2d5016);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.model-card > p {
+    font-size: 0.95rem;
+    color: var(--gray, #6b7280);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.model-features {
+    list-style: none;
+    padding: 0;
+}
+
+.model-features li {
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+    color: var(--charcoal, #2d2d2d);
+    display: flex;
+    gap: 0.75rem;
+}
+
+.model-features li::before {
+    content: "→";
+    color: var(--forest, #2d5016);
+    font-weight: 700;
+}
+
+/* Commitment Section */
+.commitment {
+    background: white;
+    padding: 80px 2rem;
+}
+
+.commitment .container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.commitment-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.commitment-item {
+    padding: 2rem;
+    background: var(--cream, #faf8f3);
+    border-radius: 12px;
+}
+
+.commitment-value {
+    font-size: 2.5rem;
+    color: var(--forest, #2d5016);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.commitment-label {
+    font-size: 0.9rem;
+    color: var(--gray, #6b7280);
+}
+
+/* Engagement Section */
+.engagement {
+    background: var(--forest, #2d5016);
+    color: white;
+    padding: 80px 2rem;
+}
+
+.engagement .container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.engagement h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 50px;
+    font-weight: 700;
+}
+
+.engagement-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.engagement-card {
+    background: rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: background 0.3s ease;
+}
+
+.engagement-card:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+.engagement-card h3 {
+    font-size: 1.25rem;
+    color: var(--saffron, #f5a623);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.engagement-card p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    opacity: 0.9;
+}
+
+/* Current Partners Section */
+.current-partners {
+    background: var(--cream, #faf8f3);
+    padding: 80px 2rem;
+}
+
+.current-partners .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.current-partners h2 {
+    font-size: 2rem;
+    color: var(--forest, #2d5016);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.current-partners > .container > p {
+    font-size: 1.1rem;
+    color: var(--charcoal, #2d2d2d);
+    margin-bottom: 50px;
+}
+
+.partners-logos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.partner-logo {
+    width: 140px;
+    height: 70px;
+    background: white;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    color: var(--gray, #6b7280);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* CTA Section */
+.ip-cta {
+    background: var(--forest, #2d5016);
+    padding: 80px 2rem;
+    text-align: center;
+    color: white;
+}
+
+.ip-cta h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.ip-cta p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    background: var(--yellow, #FFC700);
+    color: var(--charcoal, #2d2d2d);
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: var(--yellow-hover, #E6B300);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    border: 2px solid white;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .compare-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .model-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .engagement-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .commitment-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .ip-hero {
+        padding: 100px 1.5rem 60px;
+    }
+    
+    .difference,
+    .partnership-model,
+    .commitment,
+    .engagement,
+    .current-partners,
+    .ip-cta {
+        padding: 60px 1.5rem;
+    }
+    
+    .commitment-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+    }
+}
 </style>
 
 <section class="ip-hero">
@@ -114,7 +524,7 @@
         </div>
         <div class="model-grid">
             <div class="model-card">
-                <div class="model-icon">🏗️</div>
+                <div class="model-icon">1</div>
                 <h3>Program Co-Development</h3>
                 <p>Co-design and co-fund new initiatives that address specific challenges in our work.</p>
                 <ul class="model-features">
@@ -125,7 +535,7 @@
                 </ul>
             </div>
             <div class="model-card">
-                <div class="model-icon">🔬</div>
+                <div class="model-icon">2</div>
                 <h3>Technical Partnerships</h3>
                 <p>Contribute specialized expertise to strengthen our programs and scale impact.</p>
                 <ul class="model-features">
@@ -136,7 +546,7 @@
                 </ul>
             </div>
             <div class="model-card">
-                <div class="model-icon">🌐</div>
+                <div class="model-icon">3</div>
                 <h3>Ecosystem Building</h3>
                 <p>Work together to strengthen the broader ecosystem for rural livelihoods.</p>
                 <ul class="model-features">
@@ -157,10 +567,22 @@
             <p>True partnership requires meaningful commitment from both sides.</p>
         </div>
         <div class="commitment-grid">
-            <div class="commitment-item"><div class="commitment-value">3+</div><div class="commitment-label">Year Commitment</div></div>
-            <div class="commitment-item"><div class="commitment-value">₹25L+</div><div class="commitment-label">Annual Investment</div></div>
-            <div class="commitment-item"><div class="commitment-value">Quarterly</div><div class="commitment-label">Strategic Reviews</div></div>
-            <div class="commitment-item"><div class="commitment-value">Active</div><div class="commitment-label">Board/Advisory Role</div></div>
+            <div class="commitment-item">
+                <div class="commitment-value">3+</div>
+                <div class="commitment-label">Year Commitment</div>
+            </div>
+            <div class="commitment-item">
+                <div class="commitment-value">₹25L+</div>
+                <div class="commitment-label">Annual Investment</div>
+            </div>
+            <div class="commitment-item">
+                <div class="commitment-value">Quarterly</div>
+                <div class="commitment-label">Strategic Reviews</div>
+            </div>
+            <div class="commitment-item">
+                <div class="commitment-value">Active</div>
+                <div class="commitment-label">Board/Advisory Role</div>
+            </div>
         </div>
     </div>
 </section>
@@ -169,10 +591,22 @@
     <div class="container">
         <h2>How We Work Together</h2>
         <div class="engagement-grid">
-            <div class="engagement-card"><h3>🤝 Joint Governance</h3><p>Impact partners have a seat at the table—participating in strategic planning, program reviews, and key decisions that shape our work.</p></div>
-            <div class="engagement-card"><h3>📈 Shared Metrics</h3><p>We develop joint theories of change and measurement frameworks, ensuring alignment on what success looks like.</p></div>
-            <div class="engagement-card"><h3>🔄 Adaptive Learning</h3><p>Regular learning sessions where we share insights, adapt strategies, and build collective knowledge.</p></div>
-            <div class="engagement-card"><h3>📢 Thought Leadership</h3><p>Co-author research, speak at conferences, and publish findings together to advance the field.</p></div>
+            <div class="engagement-card">
+                <h3>Joint Governance</h3>
+                <p>Impact partners have a seat at the table—participating in strategic planning, program reviews, and key decisions that shape our work.</p>
+            </div>
+            <div class="engagement-card">
+                <h3>Shared Metrics</h3>
+                <p>We develop joint theories of change and measurement frameworks, ensuring alignment on what success looks like.</p>
+            </div>
+            <div class="engagement-card">
+                <h3>Adaptive Learning</h3>
+                <p>Regular learning sessions where we share insights, adapt strategies, and build collective knowledge.</p>
+            </div>
+            <div class="engagement-card">
+                <h3>Thought Leadership</h3>
+                <p>Co-author research, speak at conferences, and publish findings together to advance the field.</p>
+            </div>
         </div>
     </div>
 </section>
@@ -195,8 +629,8 @@
         <h2>Become an Impact Partner</h2>
         <p>Ready to commit to deep, transformational partnership? We'd love to explore how we can create lasting change together.</p>
         <div class="cta-buttons">
-            <a href="mailto:partnerships@gointegral.org?subject=Impact%20Partnership%20Inquiry" class="btn-dark">Start the Conversation</a>
-            <a href="/contact/" class="btn-outline-dark">Request a Meeting</a>
+            <a href="mailto:partnerships@gointegral.org?subject=Impact%20Partnership%20Inquiry" class="btn-primary">Start the Conversation</a>
+            <a href="/contact/" class="btn-secondary">Request a Meeting</a>
         </div>
     </div>
 </section>
