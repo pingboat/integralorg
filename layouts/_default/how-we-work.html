@@ -1,50 +1,392 @@
 {{ define "main" }}
 <style>
-.hww-hero { background: linear-gradient(135deg, var(--forest) 0%, #1a3a2f 100%); color: white; padding: 6rem 2rem; text-align: center; }
-.hww-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 1.5rem; }
-.hww-hero p { font-size: 1.25rem; max-width: 750px; margin: 0 auto; opacity: 0.9; line-height: 1.8; }
-.philosophy { background: white; padding: 5rem 2rem; }
-.philosophy-container { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-.philosophy-content h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--forest); margin-bottom: 1.5rem; }
-.philosophy-content p { font-size: 1.1rem; line-height: 1.8; color: var(--charcoal); margin-bottom: 1.5rem; }
-.philosophy-highlight { background: var(--cream); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--gold); font-style: italic; color: var(--forest); }
-.philosophy-image { border-radius: 16px; aspect-ratio: 4/3; background: linear-gradient(135deg, #2d5a47, #1a3a2f); display: flex; align-items: center; justify-content: center; color: white; }
-.integral-model { background: var(--cream); padding: 5rem 2rem; }
-.integral-model .container { max-width: 1200px; margin: 0 auto; }
-.section-header { text-align: center; margin-bottom: 4rem; }
-.section-header h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--forest); margin-bottom: 1rem; }
-.section-header p { font-size: 1.1rem; color: #666; max-width: 700px; margin: 0 auto; }
-.model-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-.model-pillar { background: white; border-radius: 16px; padding: 2.5rem; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: all 0.3s ease; }
-.model-pillar:hover { transform: translateY(-8px); box-shadow: 0 12px 40px rgba(0,0,0,0.15); }
-.pillar-icon { width: 80px; height: 80px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2rem; }
-.model-pillar h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--forest); margin-bottom: 1rem; }
-.model-pillar p { font-size: 0.95rem; color: #666; line-height: 1.7; margin-bottom: 1.5rem; }
-.pillar-features { list-style: none; padding: 0; text-align: left; }
-.pillar-features li { padding: 0.5rem 0; font-size: 0.9rem; color: var(--charcoal); display: flex; gap: 0.75rem; }
-.pillar-features li::before { content: "✓"; color: var(--forest); font-weight: 700; }
-.process-section { background: white; padding: 5rem 2rem; }
-.process-section .container { max-width: 900px; margin: 0 auto; }
-.process-timeline { position: relative; padding-left: 3rem; }
-.process-timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(to bottom, var(--gold), var(--forest)); border-radius: 2px; }
-.process-step { position: relative; margin-bottom: 3rem; padding-left: 2rem; }
-.step-number { position: absolute; left: -3rem; top: 0; width: 40px; height: 40px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--charcoal); border: 4px solid white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-.process-step h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--forest); margin-bottom: 0.75rem; }
-.process-step p { font-size: 1rem; color: #666; line-height: 1.7; }
-.principles { background: var(--forest); color: white; padding: 5rem 2rem; }
-.principles .container { max-width: 1100px; margin: 0 auto; }
-.principles h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; text-align: center; margin-bottom: 3rem; }
-.principles-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
-.principle-card { background: rgba(255,255,255,0.1); border-radius: 12px; padding: 2rem; border: 1px solid rgba(255,255,255,0.1); }
-.principle-card h3 { font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--gold); margin-bottom: 1rem; }
-.principle-card p { font-size: 0.95rem; line-height: 1.7; opacity: 0.9; }
-.hww-cta { background: linear-gradient(135deg, var(--gold) 0%, #d4a853 100%); padding: 5rem 2rem; text-align: center; }
-.hww-cta h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--charcoal); margin-bottom: 1rem; }
-.hww-cta p { font-size: 1.1rem; color: var(--charcoal); max-width: 600px; margin: 0 auto 2rem; }
-.cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-.btn-dark { background: var(--charcoal); color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; }
-.btn-outline-dark { background: transparent; color: var(--charcoal); padding: 1rem 2rem; border: 2px solid var(--charcoal); border-radius: 8px; text-decoration: none; font-weight: 600; }
-@media (max-width: 968px) { .philosophy-container, .model-grid, .principles-grid { grid-template-columns: 1fr; } }
+/* How We Work Page Styles */
+
+.hww-hero {
+    background: var(--cream, #faf8f3);
+    padding: 120px 2rem 80px;
+    text-align: center;
+}
+
+.hww-hero h1 {
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    font-weight: 700;
+    color: var(--forest, #2d5016);
+    margin-bottom: 1.5rem;
+}
+
+.hww-hero p {
+    font-size: 1.2rem;
+    max-width: 750px;
+    margin: 0 auto;
+    color: var(--charcoal, #2d2d2d);
+    line-height: 1.7;
+}
+
+/* Philosophy Section */
+.philosophy {
+    background: white;
+    padding: 80px 2rem;
+}
+
+.philosophy-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.philosophy-content h2 {
+    font-size: 2rem;
+    color: var(--forest, #2d5016);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.philosophy-content p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--charcoal, #2d2d2d);
+    margin-bottom: 1.5rem;
+}
+
+.philosophy-highlight {
+    background: var(--cream, #faf8f3);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-left: 4px solid var(--saffron, #f5a623);
+    font-style: italic;
+    color: var(--forest, #2d5016);
+}
+
+.philosophy-image {
+    border-radius: 16px;
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, #e8e4da 0%, #d4cfc2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray, #6b7280);
+}
+
+/* Integral Model Section */
+.integral-model {
+    background: var(--cream, #faf8f3);
+    padding: 80px 2rem;
+}
+
+.integral-model .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-header h2 {
+    font-size: 2rem;
+    color: var(--forest, #2d5016);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.section-header p {
+    font-size: 1.1rem;
+    color: var(--charcoal, #2d2d2d);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.model-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.model-pillar {
+    background: white;
+    border-radius: 16px;
+    padding: 2.5rem;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    transition: all 0.3s ease;
+}
+
+.model-pillar:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+}
+
+.pillar-icon {
+    width: 70px;
+    height: 70px;
+    background: var(--saffron, #f5a623);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--forest, #2d5016);
+}
+
+.model-pillar h3 {
+    font-size: 1.35rem;
+    color: var(--forest, #2d5016);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.model-pillar p {
+    font-size: 0.95rem;
+    color: var(--gray, #6b7280);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.pillar-features {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+.pillar-features li {
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+    color: var(--charcoal, #2d2d2d);
+    display: flex;
+    gap: 0.75rem;
+}
+
+.pillar-features li::before {
+    content: "✓";
+    color: var(--forest, #2d5016);
+    font-weight: 700;
+}
+
+/* Process Section */
+.process-section {
+    background: white;
+    padding: 80px 2rem;
+}
+
+.process-section .container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.process-timeline {
+    position: relative;
+    padding-left: 3rem;
+}
+
+.process-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(to bottom, var(--saffron, #f5a623), var(--forest, #2d5016));
+    border-radius: 2px;
+}
+
+.process-step {
+    position: relative;
+    margin-bottom: 3rem;
+    padding-left: 2rem;
+}
+
+.step-marker {
+    position: absolute;
+    left: -3rem;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    background: var(--saffron, #f5a623);
+    border-radius: 50%;
+    border: 4px solid white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.process-step h3 {
+    font-size: 1.35rem;
+    color: var(--forest, #2d5016);
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+}
+
+.process-step p {
+    font-size: 1rem;
+    color: var(--gray, #6b7280);
+    line-height: 1.7;
+}
+
+/* Principles Section */
+.principles {
+    background: var(--forest, #2d5016);
+    color: white;
+    padding: 80px 2rem;
+}
+
+.principles .container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.principles h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 50px;
+    font-weight: 700;
+}
+
+.principles-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.principle-card {
+    background: rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: background 0.3s ease;
+}
+
+.principle-card:hover {
+    background: rgba(255,255,255,0.15);
+}
+
+.principle-card h3 {
+    font-size: 1.25rem;
+    color: var(--saffron, #f5a623);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.principle-card p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    opacity: 0.9;
+}
+
+/* CTA Section */
+.hww-cta {
+    background: var(--forest, #2d5016);
+    padding: 80px 2rem;
+    text-align: center;
+    color: white;
+}
+
+.hww-cta h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.hww-cta p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    background: var(--yellow, #FFC700);
+    color: var(--charcoal, #2d2d2d);
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: var(--yellow-hover, #E6B300);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    border: 2px solid white;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .philosophy-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .model-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .principles-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .hww-hero {
+        padding: 100px 1.5rem 60px;
+    }
+    
+    .philosophy,
+    .integral-model,
+    .process-section,
+    .principles,
+    .hww-cta {
+        padding: 60px 1.5rem;
+    }
+    
+    .process-timeline {
+        padding-left: 2.5rem;
+    }
+    
+    .step-marker {
+        left: -2.5rem;
+        width: 36px;
+        height: 36px;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+    }
+}
 </style>
 
 <section class="hww-hero">
@@ -74,7 +416,7 @@
         </div>
         <div class="model-grid">
             <div class="model-pillar">
-                <div class="pillar-icon">🌱</div>
+                <div class="pillar-icon">1</div>
                 <h3>Integral Farming</h3>
                 <p>Combining sericulture with organic farming for resilient, diversified income.</p>
                 <ul class="pillar-features">
@@ -84,7 +426,7 @@
                 </ul>
             </div>
             <div class="model-pillar">
-                <div class="pillar-icon">🧵</div>
+                <div class="pillar-icon">2</div>
                 <h3>Artisan Excellence</h3>
                 <p>Preserving traditional craftsmanship with quality standards and market access.</p>
                 <ul class="pillar-features">
@@ -94,7 +436,7 @@
                 </ul>
             </div>
             <div class="model-pillar">
-                <div class="pillar-icon">👥</div>
+                <div class="pillar-icon">3</div>
                 <h3>Community Enterprise</h3>
                 <p>Building collective capacity through cooperatives and leadership development.</p>
                 <ul class="pillar-features">
@@ -114,11 +456,31 @@
             <p>From first contact to lasting impact.</p>
         </div>
         <div class="process-timeline">
-            <div class="process-step"><div class="step-number">1</div><h3>Community Engagement</h3><p>We begin by listening—understanding unique challenges, strengths, and aspirations through participatory assessments.</p></div>
-            <div class="process-step"><div class="step-number">2</div><h3>Capacity Building</h3><p>Hands-on training in sericulture, weaving, organic farming, and business skills like record-keeping.</p></div>
-            <div class="process-step"><div class="step-number">3</div><h3>Infrastructure Support</h3><p>Providing tools, improved looms, reeling equipment, and shared facility centers.</p></div>
-            <div class="process-step"><div class="step-number">4</div><h3>Market Access</h3><p>Connecting artisans directly to ethical brands and markets, ensuring fair prices.</p></div>
-            <div class="process-step"><div class="step-number">5</div><h3>Sustainability & Handoff</h3><p>Building community institutions—cooperatives and local leaders—who continue independently.</p></div>
+            <div class="process-step">
+                <div class="step-marker"></div>
+                <h3>Community Engagement</h3>
+                <p>We begin by listening—understanding unique challenges, strengths, and aspirations through participatory assessments.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-marker"></div>
+                <h3>Capacity Building</h3>
+                <p>Hands-on training in sericulture, weaving, organic farming, and business skills like record-keeping.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-marker"></div>
+                <h3>Infrastructure Support</h3>
+                <p>Providing tools, improved looms, reeling equipment, and shared facility centers.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-marker"></div>
+                <h3>Market Access</h3>
+                <p>Connecting artisans directly to ethical brands and markets, ensuring fair prices.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-marker"></div>
+                <h3>Sustainability & Handoff</h3>
+                <p>Building community institutions—cooperatives and local leaders—who continue independently.</p>
+            </div>
         </div>
     </div>
 </section>
@@ -127,10 +489,22 @@
     <div class="container">
         <h2>Our Guiding Principles</h2>
         <div class="principles-grid">
-            <div class="principle-card"><h3>🤝 Community Ownership</h3><p>Communities lead; we facilitate. Every initiative is designed by those it serves.</p></div>
-            <div class="principle-card"><h3>🌿 Environmental Stewardship</h3><p>We promote practices that heal the land while providing livelihoods.</p></div>
-            <div class="principle-card"><h3>♀️ Gender Equity</h3><p>Women are at the center of our work. We actively address barriers to participation.</p></div>
-            <div class="principle-card"><h3>📊 Data-Driven Impact</h3><p>We measure what matters. Rigorous evaluation helps us learn and demonstrate outcomes.</p></div>
+            <div class="principle-card">
+                <h3>Community Ownership</h3>
+                <p>Communities lead; we facilitate. Every initiative is designed by those it serves.</p>
+            </div>
+            <div class="principle-card">
+                <h3>Environmental Stewardship</h3>
+                <p>We promote practices that heal the land while providing livelihoods.</p>
+            </div>
+            <div class="principle-card">
+                <h3>Gender Equity</h3>
+                <p>Women are at the center of our work. We actively address barriers to participation.</p>
+            </div>
+            <div class="principle-card">
+                <h3>Data-Driven Impact</h3>
+                <p>We measure what matters. Rigorous evaluation helps us learn and demonstrate outcomes.</p>
+            </div>
         </div>
     </div>
 </section>
@@ -140,8 +514,8 @@
         <h2>Ready to Make an Impact?</h2>
         <p>Whether you're a brand or individual, we'd love to explore working together.</p>
         <div class="cta-buttons">
-            <a href="/brandpartners/" class="btn-dark">Partner With Us</a>
-            <a href="/donate/" class="btn-outline-dark">Support Our Work</a>
+            <a href="/brand-partners/" class="btn-primary">Partner With Us</a>
+            <a href="/donate/" class="btn-secondary">Support Our Work</a>
         </div>
     </div>
 </section>
