@@ -1,51 +1,393 @@
 {{ define "main" }}
 <style>
-.stories-hero { background: linear-gradient(135deg, var(--forest) 0%, #1a3a2f 100%); color: white; padding: 6rem 2rem; text-align: center; }
-.stories-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 1.5rem; }
-.stories-hero p { font-size: 1.25rem; max-width: 700px; margin: 0 auto; opacity: 0.9; line-height: 1.8; }
-.featured-story { background: white; padding: 5rem 2rem; }
-.featured-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-.featured-image { position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 4/3; background: var(--cream); }
-.featured-label { position: absolute; top: 1.5rem; left: 1.5rem; background: var(--gold); color: var(--charcoal); padding: 0.5rem 1rem; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; border-radius: 4px; }
-.featured-content h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--forest); margin-bottom: 1rem; line-height: 1.2; }
-.featured-meta { display: flex; gap: 1.5rem; margin-bottom: 1.5rem; font-size: 0.9rem; color: #666; }
-.featured-excerpt { font-size: 1.1rem; line-height: 1.8; color: var(--charcoal); margin-bottom: 2rem; }
-.featured-quote { background: var(--cream); padding: 1.5rem; border-left: 4px solid var(--gold); border-radius: 0 8px 8px 0; margin-bottom: 2rem; }
-.featured-quote p { font-style: italic; font-size: 1.1rem; color: var(--charcoal); margin-bottom: 0.5rem; }
-.featured-quote cite { font-size: 0.9rem; color: #666; font-style: normal; }
-.read-story-btn { display: inline-flex; align-items: center; gap: 0.75rem; background: var(--forest); color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; }
-.read-story-btn:hover { background: #1a3a2f; transform: translateX(4px); }
-.stories-grid-section { background: var(--cream); padding: 5rem 2rem; }
-.stories-grid-section .container { max-width: 1200px; margin: 0 auto; }
-.section-header { text-align: center; margin-bottom: 3rem; }
-.section-header h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--forest); margin-bottom: 1rem; }
-.section-header p { font-size: 1.1rem; color: #666; max-width: 600px; margin: 0 auto; }
-.stories-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-.story-card { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: all 0.3s ease; }
-.story-card:hover { transform: translateY(-8px); box-shadow: 0 12px 40px rgba(0,0,0,0.15); }
-.story-image { aspect-ratio: 16/10; background: var(--cream); position: relative; overflow: hidden; }
-.story-category { position: absolute; top: 1rem; left: 1rem; background: white; color: var(--forest); padding: 0.35rem 0.75rem; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; border-radius: 4px; }
-.story-content { padding: 1.5rem; }
-.story-content h3 { font-family: 'Playfair Display', serif; font-size: 1.35rem; color: var(--charcoal); margin-bottom: 0.75rem; line-height: 1.3; }
-.story-excerpt { font-size: 0.95rem; color: #666; line-height: 1.6; margin-bottom: 1rem; }
-.story-meta { display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid #eee; font-size: 0.85rem; color: #888; }
-.story-link { color: var(--forest); text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; }
-.impact-numbers { background: var(--forest); color: white; padding: 4rem 2rem; }
-.impact-numbers .container { max-width: 1000px; margin: 0 auto; }
-.impact-numbers h2 { font-family: 'Playfair Display', serif; font-size: 2rem; text-align: center; margin-bottom: 3rem; }
-.numbers-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center; }
-.number-value { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 700; color: var(--gold); margin-bottom: 0.5rem; }
-.number-label { font-size: 0.95rem; opacity: 0.9; }
-.stories-cta { background: linear-gradient(135deg, var(--gold) 0%, #d4a853 100%); padding: 5rem 2rem; text-align: center; }
-.stories-cta h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--charcoal); margin-bottom: 1rem; }
-.stories-cta p { font-size: 1.1rem; color: var(--charcoal); max-width: 600px; margin: 0 auto 2rem; }
-.cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-.btn-dark { background: var(--charcoal); color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; }
-.btn-dark:hover { background: #1a1a1a; transform: translateY(-2px); }
-.btn-outline-dark { background: transparent; color: var(--charcoal); padding: 1rem 2rem; border: 2px solid var(--charcoal); border-radius: 8px; text-decoration: none; font-weight: 600; }
-.btn-outline-dark:hover { background: var(--charcoal); color: white; }
-@media (max-width: 968px) { .featured-container { grid-template-columns: 1fr; gap: 2rem; } .stories-grid { grid-template-columns: repeat(2, 1fr); } .numbers-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 640px) { .stories-grid { grid-template-columns: 1fr; } .cta-buttons { flex-direction: column; align-items: center; } }
+/* Stories Page Styles */
+
+.stories-hero {
+    background: var(--cream, #faf8f3);
+    padding: 120px 2rem 80px;
+    text-align: center;
+}
+
+.stories-hero h1 {
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    font-weight: 700;
+    color: var(--forest, #2d5016);
+    margin-bottom: 1.5rem;
+}
+
+.stories-hero p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+    color: var(--charcoal, #2d2d2d);
+    line-height: 1.7;
+}
+
+/* Featured Story Section */
+.featured-story {
+    background: white;
+    padding: 80px 2rem;
+}
+
+.featured-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.featured-image {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, #e8e4da 0%, #d4cfc2 100%);
+}
+
+.featured-label {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    background: var(--saffron, #f5a623);
+    color: var(--charcoal, #2d2d2d);
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: 4px;
+}
+
+.featured-content h2 {
+    font-size: 2rem;
+    color: var(--forest, #2d5016);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.featured-meta {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--gray, #6b7280);
+}
+
+.featured-excerpt {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--charcoal, #2d2d2d);
+    margin-bottom: 2rem;
+}
+
+.featured-quote {
+    background: var(--cream, #faf8f3);
+    padding: 1.5rem;
+    border-left: 4px solid var(--saffron, #f5a623);
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 2rem;
+}
+
+.featured-quote p {
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--charcoal, #2d2d2d);
+    margin-bottom: 0.5rem;
+}
+
+.featured-quote cite {
+    font-size: 0.9rem;
+    color: var(--gray, #6b7280);
+    font-style: normal;
+}
+
+.read-story-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--forest, #2d5016);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.read-story-btn:hover {
+    background: #1a4010;
+    transform: translateX(4px);
+}
+
+/* Stories Grid Section */
+.stories-grid-section {
+    background: var(--cream, #faf8f3);
+    padding: 80px 2rem;
+}
+
+.stories-grid-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-header h2 {
+    font-size: 2rem;
+    color: var(--forest, #2d5016);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.section-header p {
+    font-size: 1.1rem;
+    color: var(--charcoal, #2d2d2d);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.stories-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.story-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    transition: all 0.3s ease;
+}
+
+.story-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+}
+
+.story-image {
+    aspect-ratio: 16/10;
+    background: linear-gradient(135deg, #e8e4da 0%, #d4cfc2 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.story-category {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: white;
+    color: var(--forest, #2d5016);
+    padding: 0.35rem 0.75rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 4px;
+}
+
+.story-content {
+    padding: 1.5rem;
+}
+
+.story-content h3 {
+    font-size: 1.25rem;
+    color: var(--forest, #2d5016);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+.story-excerpt {
+    font-size: 0.95rem;
+    color: var(--gray, #6b7280);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.story-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+    font-size: 0.85rem;
+    color: var(--gray, #6b7280);
+}
+
+.story-link {
+    color: var(--forest, #2d5016);
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.story-link:hover {
+    color: var(--saffron, #f5a623);
+}
+
+/* Impact Numbers Section */
+.impact-numbers {
+    background: var(--forest, #2d5016);
+    color: white;
+    padding: 80px 2rem;
+}
+
+.impact-numbers .container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.impact-numbers h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 50px;
+    font-weight: 700;
+}
+
+.numbers-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    text-align: center;
+}
+
+.number-value {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--saffron, #f5a623);
+    margin-bottom: 0.5rem;
+}
+
+.number-label {
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+/* CTA Section */
+.stories-cta {
+    background: var(--forest, #2d5016);
+    padding: 80px 2rem;
+    text-align: center;
+    color: white;
+}
+
+.stories-cta h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.stories-cta p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    background: var(--yellow, #FFC700);
+    color: var(--charcoal, #2d2d2d);
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: var(--yellow-hover, #E6B300);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    border: 2px solid white;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .featured-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .stories-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .numbers-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .stories-hero {
+        padding: 100px 1.5rem 60px;
+    }
+    
+    .featured-story,
+    .stories-grid-section,
+    .impact-numbers,
+    .stories-cta {
+        padding: 60px 1.5rem;
+    }
+    
+    .stories-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .numbers-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+    }
+    
+    .number-value {
+        font-size: 2.5rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+    }
+    
+    .featured-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
 </style>
 
 <section class="stories-hero">
@@ -59,13 +401,13 @@
     <div class="featured-container">
         <div class="featured-image">
             <span class="featured-label">Featured Story</span>
-            <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #2d5a47 0%, #1a3a2f 100%); display: flex; align-items: center; justify-content: center; color: white;">Featured Image</div>
+            <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #e8e4da 0%, #d4cfc2 100%); display: flex; align-items: center; justify-content: center; color: var(--gray);">Featured Image</div>
         </div>
         <div class="featured-content">
             <h2>From Struggle to Silk: Meena's Journey</h2>
             <div class="featured-meta">
-                <span>📍 Sualkuchi, Assam</span>
-                <span>🗓️ December 2024</span>
+                <span>Sualkuchi, Assam</span>
+                <span>December 2024</span>
             </div>
             <p class="featured-excerpt">When Meena Devi first learned the art of muga silk weaving from her grandmother, she never imagined it would become her path to financial independence. Today, she leads a cooperative of 15 women weavers.</p>
             <blockquote class="featured-quote">
@@ -85,27 +427,45 @@
         </div>
         <div class="stories-grid">
             <article class="story-card">
-                <div class="story-image"><span class="story-category">Artisan Spotlight</span><div style="width:100%;height:100%;background:linear-gradient(135deg,#4a7c6f,#2d5a47);"></div></div>
+                <div class="story-image">
+                    <span class="story-category">Artisan Spotlight</span>
+                    <div style="width:100%;height:100%;background:linear-gradient(135deg,#e8e4da,#d4cfc2);"></div>
+                </div>
                 <div class="story-content">
                     <h3>The Last Traditional Dyer of Majuli</h3>
                     <p class="story-excerpt">Bhupen preserves a 400-year-old dyeing technique using only natural forest ingredients.</p>
-                    <div class="story-meta"><span>Majuli, Assam</span><a href="#" class="story-link">Read More →</a></div>
+                    <div class="story-meta">
+                        <span>Majuli, Assam</span>
+                        <a href="#" class="story-link">Read More →</a>
+                    </div>
                 </div>
             </article>
             <article class="story-card">
-                <div class="story-image"><span class="story-category">Community Impact</span><div style="width:100%;height:100%;background:linear-gradient(135deg,#5a8a7a,#3a6a57);"></div></div>
+                <div class="story-image">
+                    <span class="story-category">Community Impact</span>
+                    <div style="width:100%;height:100%;background:linear-gradient(135deg,#e8e4da,#d4cfc2);"></div>
+                </div>
                 <div class="story-content">
                     <h3>A Village United by Silk</h3>
                     <p class="story-excerpt">How one training program transformed an entire village into a thriving silk hub.</p>
-                    <div class="story-meta"><span>Dibrugarh, Assam</span><a href="#" class="story-link">Read More →</a></div>
+                    <div class="story-meta">
+                        <span>Dibrugarh, Assam</span>
+                        <a href="#" class="story-link">Read More →</a>
+                    </div>
                 </div>
             </article>
             <article class="story-card">
-                <div class="story-image"><span class="story-category">Women Empowerment</span><div style="width:100%;height:100%;background:linear-gradient(135deg,#6a9a8a,#4a7a67);"></div></div>
+                <div class="story-image">
+                    <span class="story-category">Women Empowerment</span>
+                    <div style="width:100%;height:100%;background:linear-gradient(135deg,#e8e4da,#d4cfc2);"></div>
+                </div>
                 <div class="story-content">
                     <h3>First in Her Family to Own a Business</h3>
                     <p class="story-excerpt">Ranjita's journey from household weaver to entrepreneur with her own workshop.</p>
-                    <div class="story-meta"><span>Jorhat, Assam</span><a href="#" class="story-link">Read More →</a></div>
+                    <div class="story-meta">
+                        <span>Jorhat, Assam</span>
+                        <a href="#" class="story-link">Read More →</a>
+                    </div>
                 </div>
             </article>
         </div>
@@ -116,10 +476,22 @@
     <div class="container">
         <h2>The Impact Behind the Stories</h2>
         <div class="numbers-grid">
-            <div><div class="number-value">2,500+</div><div class="number-label">Artisans Trained</div></div>
-            <div><div class="number-value">45</div><div class="number-label">Villages Reached</div></div>
-            <div><div class="number-value">3x</div><div class="number-label">Income Increase</div></div>
-            <div><div class="number-value">85%</div><div class="number-label">Women Beneficiaries</div></div>
+            <div>
+                <div class="number-value">2,500+</div>
+                <div class="number-label">Artisans Trained</div>
+            </div>
+            <div>
+                <div class="number-value">45</div>
+                <div class="number-label">Villages Reached</div>
+            </div>
+            <div>
+                <div class="number-value">3x</div>
+                <div class="number-label">Income Increase</div>
+            </div>
+            <div>
+                <div class="number-value">85%</div>
+                <div class="number-label">Women Beneficiaries</div>
+            </div>
         </div>
     </div>
 </section>
@@ -129,8 +501,8 @@
         <h2>Be Part of the Next Story</h2>
         <p>Your support helps write more stories of transformation.</p>
         <div class="cta-buttons">
-            <a href="/donate/" class="btn-dark">Donate Now</a>
-            <a href="/volunteer/" class="btn-outline-dark">Volunteer With Us</a>
+            <a href="/donate/" class="btn-primary">Donate Now</a>
+            <a href="/volunteer/" class="btn-secondary">Volunteer With Us</a>
         </div>
     </div>
 </section>

@@ -1,21 +1,22 @@
 {{ define "styles" }}
 /* Integral Model Page Styles */
+
 .page-hero {
-    padding: 100px 0 60px;
+    padding: 120px 0 80px;
     text-align: center;
-    background: var(--cream);
+    background: var(--cream, #faf8f3);
 }
 
 .page-hero h1 {
-    font-size: 3rem;
-    color: var(--navy);
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    color: var(--forest, #2d5016);
     margin-bottom: 1.5rem;
     font-weight: 700;
 }
 
 .page-hero .subtitle {
-    font-size: 1.25rem;
-    color: var(--gray);
+    font-size: 1.2rem;
+    color: var(--charcoal, #2d2d2d);
     max-width: 700px;
     margin: 0 auto;
     line-height: 1.7;
@@ -26,7 +27,7 @@
 }
 
 .content-section.alt-bg {
-    background: var(--white);
+    background: var(--cream, #faf8f3);
 }
 
 .section-intro {
@@ -37,13 +38,14 @@
 
 .section-intro h2 {
     font-size: 2rem;
-    color: var(--navy);
+    color: var(--forest, #2d5016);
     margin-bottom: 1.5rem;
+    font-weight: 700;
 }
 
 .section-intro p {
     font-size: 1.1rem;
-    color: var(--charcoal);
+    color: var(--charcoal, #2d2d2d);
     line-height: 1.8;
 }
 
@@ -56,25 +58,27 @@
 }
 
 .philosophy-card {
-    background: var(--white);
+    background: var(--white, #ffffff);
     padding: 32px;
     border-radius: 16px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.philosophy-card .icon {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
+.philosophy-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
 }
 
 .philosophy-card h3 {
     font-size: 1.2rem;
-    color: var(--navy);
+    color: var(--forest, #2d5016);
     margin-bottom: 12px;
+    font-weight: 600;
 }
 
 .philosophy-card p {
-    color: var(--gray);
+    color: var(--gray, #6b7280);
     line-height: 1.7;
     font-size: 0.95rem;
 }
@@ -87,25 +91,41 @@
 }
 
 .pillar-card {
-    background: var(--white);
+    background: var(--cream, #faf8f3);
     padding: 40px 32px;
     border-radius: 20px;
     box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pillar-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
 }
 
 .pillar-card .icon {
-    font-size: 2.5rem;
+    width: 60px;
+    height: 60px;
+    background: var(--saffron, #f5a623);
+    border-radius: 50%;
     margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--forest, #2d5016);
 }
 
 .pillar-card h3 {
     font-size: 1.3rem;
-    color: var(--navy);
+    color: var(--forest, #2d5016);
     margin-bottom: 16px;
+    font-weight: 700;
 }
 
 .pillar-card .description {
-    color: var(--gray);
+    color: var(--gray, #6b7280);
     margin-bottom: 20px;
     line-height: 1.7;
 }
@@ -119,7 +139,7 @@
     padding: 8px 0;
     padding-left: 20px;
     position: relative;
-    color: var(--charcoal);
+    color: var(--charcoal, #2d2d2d);
     font-size: 0.95rem;
 }
 
@@ -127,7 +147,8 @@
     content: "•";
     position: absolute;
     left: 0;
-    color: var(--forest);
+    color: var(--forest, #2d5016);
+    font-weight: 700;
 }
 
 .pillar-card .impact {
@@ -135,7 +156,7 @@
     padding: 16px;
     border-radius: 12px;
     font-size: 0.9rem;
-    color: var(--forest);
+    color: var(--forest, #2d5016);
     font-weight: 500;
 }
 
@@ -155,25 +176,26 @@
 .step-number {
     width: 48px;
     height: 48px;
-    background: var(--yellow);
+    background: var(--saffron, #f5a623);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 700;
     font-size: 1.2rem;
-    color: var(--charcoal);
+    color: var(--forest, #2d5016);
     flex-shrink: 0;
 }
 
 .step-content h3 {
     font-size: 1.2rem;
-    color: var(--navy);
+    color: var(--forest, #2d5016);
     margin-bottom: 8px;
+    font-weight: 600;
 }
 
 .step-content p {
-    color: var(--gray);
+    color: var(--gray, #6b7280);
     line-height: 1.7;
 }
 
@@ -188,7 +210,7 @@
 }
 
 .comparison-box {
-    background: var(--white);
+    background: var(--cream, #faf8f3);
     padding: 40px;
     border-radius: 20px;
     box-shadow: 0 4px 24px rgba(0,0,0,0.06);
@@ -196,8 +218,9 @@
 
 .comparison-box h3 {
     font-size: 1.2rem;
-    color: var(--navy);
+    color: var(--forest, #2d5016);
     margin-bottom: 24px;
+    font-weight: 700;
 }
 
 .comparison-box ul {
@@ -208,8 +231,8 @@
     padding: 12px 0;
     padding-left: 24px;
     position: relative;
-    color: var(--charcoal);
-    border-bottom: 1px solid var(--light-gray);
+    color: var(--charcoal, #2d2d2d);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
 }
 
 .comparison-box ul li:last-child {
@@ -220,24 +243,25 @@
     content: "•";
     position: absolute;
     left: 0;
-    color: var(--gray);
+    color: var(--gray, #6b7280);
 }
 
 .comparison-box.integral ul li::before {
     content: "✓";
     position: absolute;
     left: 0;
-    color: var(--forest);
+    color: var(--forest, #2d5016);
+    font-weight: 700;
 }
 
 .comparison-arrow {
     font-size: 2rem;
-    color: var(--yellow);
+    color: var(--saffron, #f5a623);
 }
 
 /* Case Study */
 .case-study {
-    background: var(--white);
+    background: var(--white, #ffffff);
     border-radius: 24px;
     padding: 48px;
     box-shadow: 0 4px 24px rgba(0,0,0,0.06);
@@ -247,17 +271,18 @@
 
 .case-study h3 {
     font-size: 1.5rem;
-    color: var(--navy);
+    color: var(--forest, #2d5016);
     margin-bottom: 8px;
+    font-weight: 700;
 }
 
 .case-study .location {
-    color: var(--gray);
+    color: var(--gray, #6b7280);
     margin-bottom: 24px;
 }
 
 .case-study .description {
-    color: var(--charcoal);
+    color: var(--charcoal, #2d2d2d);
     line-height: 1.8;
     margin-bottom: 32px;
 }
@@ -276,11 +301,11 @@
 .stat .number {
     font-size: 2.5rem;
     font-weight: 700;
-    color: var(--forest);
+    color: var(--forest, #2d5016);
 }
 
 .stat .label {
-    color: var(--gray);
+    color: var(--gray, #6b7280);
     font-size: 0.9rem;
 }
 
@@ -288,11 +313,11 @@
     background: rgba(45, 80, 22, 0.05);
     padding: 24px;
     border-radius: 16px;
-    border-left: 4px solid var(--forest);
+    border-left: 4px solid var(--forest, #2d5016);
 }
 
 .integral-difference strong {
-    color: var(--forest);
+    color: var(--forest, #2d5016);
 }
 
 /* Principles Grid */
@@ -303,27 +328,34 @@
 }
 
 .principle-card {
-    background: var(--white);
+    background: var(--cream, #faf8f3);
     padding: 28px;
     border-radius: 16px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.principle-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
 }
 
 .principle-card h3 {
     font-size: 1.1rem;
-    color: var(--navy);
+    color: var(--forest, #2d5016);
     margin-bottom: 12px;
+    font-weight: 600;
 }
 
 .principle-card p {
-    color: var(--gray);
+    color: var(--gray, #6b7280);
     font-size: 0.95rem;
     line-height: 1.7;
 }
 
 /* CTA Section */
 .cta-section {
-    background: linear-gradient(135deg, var(--forest) 0%, #1a4010 100%);
+    background: var(--forest, #2d5016);
     padding: 80px 0;
     text-align: center;
     color: white;
@@ -331,7 +363,8 @@
 
 .cta-section h2 {
     font-size: 2rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
 }
 
 .cta-section p {
@@ -349,7 +382,7 @@
 }
 
 .cta-btn {
-    padding: 16px 32px;
+    padding: 1rem 2.5rem;
     border-radius: 8px;
     text-decoration: none;
     font-weight: 700;
@@ -357,8 +390,13 @@
 }
 
 .cta-btn.primary {
-    background: var(--yellow);
-    color: var(--charcoal);
+    background: var(--yellow, #FFC700);
+    color: var(--charcoal, #2d2d2d);
+}
+
+.cta-btn.primary:hover {
+    background: var(--yellow-hover, #E6B300);
+    transform: translateY(-2px);
 }
 
 .cta-btn.secondary {
@@ -367,13 +405,22 @@
     color: white;
 }
 
-.cta-btn:hover {
+.cta-btn.secondary:hover {
+    background: rgba(255,255,255,0.1);
     transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {
+    .page-hero {
+        padding: 100px 0 60px;
+    }
+    
     .page-hero h1 {
         font-size: 2rem;
+    }
+    
+    .content-section {
+        padding: 60px 0;
     }
     
     .comparison-section {
@@ -391,6 +438,22 @@
     
     .case-study-stats {
         justify-content: center;
+    }
+    
+    .process-step {
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cta-btn {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
     }
 }
 {{ end }}
@@ -425,25 +488,21 @@
         
         <div class="philosophy-grid">
             <div class="philosophy-card">
-                <div class="icon">🧘</div>
                 <h3>Inner & Outer Transformation</h3>
                 <p>Development must address both material conditions and inner consciousness. Sustainable change requires shifts in awareness, values, and relationship to nature.</p>
             </div>
             
             <div class="philosophy-card">
-                <div class="icon">🌀</div>
                 <h3>Evolution & Progress</h3>
                 <p>Communities evolve through stages. We meet people where they are and support their natural progression toward more integrated, conscious ways of living.</p>
             </div>
             
             <div class="philosophy-card">
-                <div class="icon">🔗</div>
                 <h3>Unity in Diversity</h3>
                 <p>Every element—ecological, economic, social, spiritual—is interconnected. Solutions must honor this wholeness while respecting cultural uniqueness.</p>
             </div>
             
             <div class="philosophy-card">
-                <div class="icon">⚡</div>
                 <h3>Divine in Nature</h3>
                 <p>Nature is not a resource to exploit but a manifestation of consciousness. This reverence guides our approach to agriculture and environment.</p>
             </div>
@@ -461,7 +520,7 @@
         
         <div class="pillars-grid">
             <div class="pillar-card">
-                <div class="icon">🌱</div>
+                <div class="icon">1</div>
                 <h3>Sustainable Agriculture</h3>
                 <p class="description">Climate-resilient sericulture that works with nature's rhythms, not against them.</p>
                 <ul>
@@ -475,7 +534,7 @@
             </div>
             
             <div class="pillar-card">
-                <div class="icon">🧵</div>
+                <div class="icon">2</div>
                 <h3>Craft Preservation</h3>
                 <p class="description">Reviving traditional silk weaving as a dignified livelihood and cultural heritage.</p>
                 <ul>
@@ -489,7 +548,7 @@
             </div>
             
             <div class="pillar-card">
-                <div class="icon">🌍</div>
+                <div class="icon">3</div>
                 <h3>Climate Resilience</h3>
                 <p class="description">Building adaptive capacity to thrive amid climate uncertainty.</p>
                 <ul>
@@ -503,7 +562,7 @@
             </div>
             
             <div class="pillar-card">
-                <div class="icon">🤝</div>
+                <div class="icon">4</div>
                 <h3>Community Development</h3>
                 <p class="description">Empowering indigenous communities with resources, education, and self-determination.</p>
                 <ul>
@@ -528,7 +587,7 @@
         
         <div class="process-steps">
             <div class="process-step">
-                <div class="step-number">01</div>
+                <div class="step-number"></div>
                 <div class="step-content">
                     <h3>Community Immersion</h3>
                     <p>We begin by living and working alongside communities, understanding their aspirations, challenges, and indigenous knowledge systems. This builds trust and ensures our interventions are culturally appropriate.</p>
@@ -536,7 +595,7 @@
             </div>
             
             <div class="process-step">
-                <div class="step-number">02</div>
+                <div class="step-number"></div>
                 <div class="step-content">
                     <h3>Holistic Assessment</h3>
                     <p>We map all dimensions of community life—ecological, economic, social, cultural, and spiritual. This reveals hidden connections and leverage points for transformation.</p>
@@ -544,7 +603,7 @@
             </div>
             
             <div class="process-step">
-                <div class="step-number">03</div>
+                <div class="step-number"></div>
                 <div class="step-content">
                     <h3>Co-Creation</h3>
                     <p>Communities design their own pathways forward. We provide frameworks, resources, and technical support, but solutions emerge from local wisdom and agency.</p>
@@ -552,7 +611,7 @@
             </div>
             
             <div class="process-step">
-                <div class="step-number">04</div>
+                <div class="step-number"></div>
                 <div class="step-content">
                     <h3>Integrated Implementation</h3>
                     <p>All four pillars work simultaneously. A farmer receiving agriculture training also connects to craft markets, builds climate resilience, and participates in community governance.</p>
@@ -560,7 +619,7 @@
             </div>
             
             <div class="process-step">
-                <div class="step-number">05</div>
+                <div class="step-number"></div>
                 <div class="step-content">
                     <h3>Continuous Evolution</h3>
                     <p>We learn, adapt, and refine. Communities become centers of innovation, sharing knowledge with neighboring villages and inspiring regional transformation.</p>
@@ -616,7 +675,7 @@
         
         <div class="case-study">
             <h3>Majuli Island: A Living Laboratory</h3>
-            <p class="location">📍 Assam, North East India</p>
+            <p class="location">Assam, North East India</p>
             <p class="description">On Majuli, the world's largest river island and home to unique Mising tribal culture, climate change threatens both land and livelihoods. Erosion claims 8-10 km annually, while unpredictable rainfall disrupts traditional silk farming.</p>
             
             <div class="case-study-stats">
@@ -638,7 +697,7 @@
                 <strong>The Integral Difference:</strong> Rather than simply teaching climate-smart agriculture, we worked with elders to document weather prediction systems passed down for generations. Youth learned both traditional and scientific methods. Women formed cooperatives that now supply premium silk to global markets. The community became a regional training center, teaching other villages their integrated approach.
             </div>
             
-            <p style="margin-top: 24px;"><a href="/stories" style="color: var(--forest); font-weight: 600;">Read full story →</a></p>
+            <p style="margin-top: 24px;"><a href="/stories/" style="color: var(--forest); font-weight: 600;">Read full story →</a></p>
         </div>
     </div>
 </section>
@@ -652,32 +711,32 @@
         
         <div class="principles-grid">
             <div class="principle-card">
-                <h3>🌿 Nature as Teacher</h3>
+                <h3>Nature as Teacher</h3>
                 <p>We observe how ecosystems thrive through diversity, interdependence, and cycles. Our programs mirror nature's wisdom.</p>
             </div>
             
             <div class="principle-card">
-                <h3>🎓 Everyone is a Teacher & Learner</h3>
+                <h3>Everyone is a Teacher & Learner</h3>
                 <p>Farmers, artisans, and elders hold deep knowledge. We create spaces for mutual learning across all participants.</p>
             </div>
             
             <div class="principle-card">
-                <h3>⏳ Think in Generations</h3>
+                <h3>Think in Generations</h3>
                 <p>Transformation takes time. We commit to multi-generational partnerships, not short-term projects.</p>
             </div>
             
             <div class="principle-card">
-                <h3>💪 Build from Strengths</h3>
+                <h3>Build from Strengths</h3>
                 <p>Every community has assets—cultural traditions, ecological knowledge, social networks. We amplify what works.</p>
             </div>
             
             <div class="principle-card">
-                <h3>🔄 Adaptation Over Perfection</h3>
+                <h3>Adaptation Over Perfection</h3>
                 <p>We experiment, learn from failures, and continuously refine. Context matters more than blueprints.</p>
             </div>
             
             <div class="principle-card">
-                <h3>✨ Inner Change Drives Outer Change</h3>
+                <h3>Inner Change Drives Outer Change</h3>
                 <p>Sustainable development requires shifts in consciousness—moving from extraction to stewardship, competition to collaboration.</p>
             </div>
         </div>
@@ -690,8 +749,8 @@
         <h2>Support the Integral Model</h2>
         <p>Your contribution funds holistic transformation that honors tradition, restores nature, and builds dignified livelihoods across generations.</p>
         <div class="cta-buttons">
-            <a href="/donate" class="cta-btn primary">Give Today</a>
-            <a href="/partnerships" class="cta-btn secondary">Become a Partner</a>
+            <a href="/donate/" class="cta-btn primary">Give Today</a>
+            <a href="/brand-partners/" class="cta-btn secondary">Become a Partner</a>
         </div>
     </div>
 </section>
