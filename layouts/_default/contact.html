@@ -1,28 +1,30 @@
 {{ define "styles" }}
 /* Contact Page Styles */
+
 .contact-hero {
-    padding: 120px 0 60px;
+    padding: 120px 0 80px;
     text-align: center;
-    background: var(--cream);
+    background: var(--cream, #faf8f3);
 }
 
 .contact-hero h1 {
-    font-size: 2.5rem;
-    color: var(--charcoal);
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    color: var(--forest, #2d5016);
     margin-bottom: 1rem;
     font-weight: 700;
 }
 
 .contact-hero p {
-    font-size: 1.1rem;
-    color: var(--gray);
+    font-size: 1.2rem;
+    color: var(--charcoal, #2d2d2d);
     max-width: 600px;
     margin: 0 auto;
+    line-height: 1.7;
 }
 
 .contact-section {
     padding: 60px 0 100px;
-    background: var(--white);
+    background: var(--white, #ffffff);
 }
 
 .contact-form-container {
@@ -33,9 +35,9 @@
 
 .contact-form h2 {
     font-size: 1.5rem;
-    color: var(--charcoal);
+    color: var(--forest, #2d5016);
     margin-bottom: 2rem;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .form-group {
@@ -46,7 +48,7 @@
     display: block;
     font-weight: 600;
     margin-bottom: 0.5rem;
-    color: var(--charcoal);
+    color: var(--charcoal, #2d2d2d);
     font-size: 0.95rem;
 }
 
@@ -59,13 +61,13 @@
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 1rem;
     transition: border-color 0.2s, box-shadow 0.2s;
-    background: var(--white);
+    background: var(--white, #ffffff);
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: var(--forest);
+    border-color: var(--forest, #2d5016);
     box-shadow: 0 0 0 3px rgba(45, 80, 22, 0.1);
 }
 
@@ -77,8 +79,8 @@
 .btn-submit {
     width: 100%;
     padding: 1rem;
-    background: var(--forest);
-    color: white;
+    background: var(--yellow, #FFC700);
+    color: var(--charcoal, #2d2d2d);
     border: none;
     border-radius: 8px;
     font-size: 1rem;
@@ -89,13 +91,13 @@
 }
 
 .btn-submit:hover {
-    background: var(--forest-dark);
+    background: var(--yellow-hover, #E6B300);
     transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {
     .contact-hero {
-        padding: 100px 0 40px;
+        padding: 100px 0 60px;
     }
     
     .contact-hero h1 {
