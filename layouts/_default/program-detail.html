@@ -1,0 +1,559 @@
+{{ define "styles" }}
+/* Program Detail Page Styles */
+
+.program-hero {
+    padding: 120px 0 80px;
+    text-align: center;
+    background: var(--cream, #faf8f3);
+}
+
+.program-hero h1 {
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    color: var(--forest, #2d5016);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.program-hero .subtitle {
+    font-size: 1.2rem;
+    color: var(--charcoal, #2d2d2d);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* Overview Section */
+.program-overview {
+    padding: 80px 0;
+    background: white;
+}
+
+.overview-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.overview-content h2 {
+    font-size: 2rem;
+    color: var(--forest, #2d5016);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.overview-content p {
+    font-size: 1.05rem;
+    color: var(--charcoal, #2d2d2d);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.overview-image {
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, #e8e4da 0%, #d4cfc2 100%);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray, #6b7280);
+    font-size: 1rem;
+}
+
+/* Approach Section */
+.program-approach {
+    padding: 80px 0;
+    background: var(--cream, #faf8f3);
+}
+
+.approach-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-header h2 {
+    font-size: 2rem;
+    color: var(--forest, #2d5016);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.section-header p {
+    font-size: 1.1rem;
+    color: var(--charcoal, #2d2d2d);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.approach-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.approach-step {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    background: white;
+    padding: 28px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+
+.step-number {
+    width: 50px;
+    height: 50px;
+    background: var(--saffron, #f5a623);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--forest, #2d5016);
+    flex-shrink: 0;
+}
+
+.step-content h3 {
+    font-size: 1.15rem;
+    color: var(--forest, #2d5016);
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.step-content p {
+    color: var(--gray, #6b7280);
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+/* Activities Section */
+.program-activities {
+    padding: 80px 0;
+    background: white;
+}
+
+.activities-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.activities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.activity-card {
+    background: var(--cream, #faf8f3);
+    padding: 28px;
+    border-radius: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.activity-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+}
+
+.activity-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--saffron, #f5a623);
+    border-radius: 50%;
+    margin-bottom: 16px;
+}
+
+.activity-card h3 {
+    font-size: 1.1rem;
+    color: var(--forest, #2d5016);
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.activity-card p {
+    color: var(--gray, #6b7280);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* Impact Section */
+.program-impact {
+    padding: 80px 0;
+    background: var(--forest, #2d5016);
+    color: white;
+}
+
+.impact-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.program-impact h2 {
+    font-size: 2rem;
+    margin-bottom: 50px;
+    font-weight: 700;
+}
+
+.impact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+}
+
+.impact-stat {
+    text-align: center;
+}
+
+.impact-number {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--saffron, #f5a623);
+    margin-bottom: 8px;
+}
+
+.impact-label {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+/* Story Section */
+.program-story {
+    padding: 80px 0;
+    background: var(--cream, #faf8f3);
+}
+
+.story-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.story-card {
+    background: white;
+    border-radius: 20px;
+    padding: 48px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+}
+
+.story-card h2 {
+    font-size: 1.75rem;
+    color: var(--forest, #2d5016);
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.story-location {
+    color: var(--gray, #6b7280);
+    margin-bottom: 24px;
+    font-size: 0.95rem;
+}
+
+.story-content {
+    color: var(--charcoal, #2d2d2d);
+    line-height: 1.8;
+    margin-bottom: 24px;
+}
+
+.story-quote {
+    background: var(--cream, #faf8f3);
+    padding: 24px;
+    border-radius: 12px;
+    border-left: 4px solid var(--saffron, #f5a623);
+    margin: 24px 0;
+}
+
+.story-quote blockquote {
+    font-style: italic;
+    color: var(--forest, #2d5016);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.story-quote cite {
+    display: block;
+    margin-top: 12px;
+    font-style: normal;
+    color: var(--gray, #6b7280);
+    font-size: 0.9rem;
+}
+
+.story-link {
+    color: var(--forest, #2d5016);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.story-link:hover {
+    color: var(--saffron, #f5a623);
+}
+
+/* CTA Section */
+.program-cta {
+    padding: 80px 0;
+    background: var(--forest, #2d5016);
+    text-align: center;
+    color: white;
+}
+
+.program-cta h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.program-cta p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    background: var(--yellow, #FFC700);
+    color: var(--charcoal, #2d2d2d);
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: var(--yellow-hover, #E6B300);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    border: 2px solid white;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .program-hero {
+        padding: 100px 0 60px;
+    }
+    
+    .program-hero h1 {
+        font-size: 2rem;
+    }
+    
+    .program-overview,
+    .program-approach,
+    .program-activities,
+    .program-impact,
+    .program-story,
+    .program-cta {
+        padding: 60px 0;
+    }
+    
+    .overview-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .approach-step {
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    .story-card {
+        padding: 32px 24px;
+    }
+    
+    .impact-number {
+        font-size: 2.5rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+    }
+}
+{{ end }}
+
+{{ define "main" }}
+<!-- Hero Section -->
+<section class="program-hero">
+    <div class="container">
+        <h1>{{ .Title }}</h1>
+        {{ with .Params.subtitle }}
+        <p class="subtitle">{{ . }}</p>
+        {{ end }}
+    </div>
+</section>
+
+<!-- Overview Section -->
+<section class="program-overview">
+    <div class="container">
+        <div class="overview-container">
+            <div class="overview-content">
+                <h2>{{ .Params.overview_title | default "Overview" }}</h2>
+                {{ with .Params.overview_text }}
+                {{ . | markdownify }}
+                {{ end }}
+            </div>
+            <div class="overview-image">
+                {{ with .Params.overview_image }}
+                <img src="{{ . }}" alt="{{ $.Title }}">
+                {{ else }}
+                [Program Image]
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Approach Section -->
+{{ if .Params.approach }}
+<section class="program-approach">
+    <div class="container">
+        <div class="approach-container">
+            <div class="section-header">
+                <h2>{{ .Params.approach_title | default "Our Approach" }}</h2>
+                {{ with .Params.approach_subtitle }}
+                <p>{{ . }}</p>
+                {{ end }}
+            </div>
+            
+            <div class="approach-steps">
+                {{ range $index, $step := .Params.approach }}
+                <div class="approach-step">
+                    <div class="step-number">{{ add $index 1 }}</div>
+                    <div class="step-content">
+                        <h3>{{ $step.title }}</h3>
+                        <p>{{ $step.description }}</p>
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}
+
+<!-- Activities Section -->
+{{ if .Params.activities }}
+<section class="program-activities">
+    <div class="container">
+        <div class="activities-container">
+            <div class="section-header">
+                <h2>{{ .Params.activities_title | default "Key Activities" }}</h2>
+                {{ with .Params.activities_subtitle }}
+                <p>{{ . }}</p>
+                {{ end }}
+            </div>
+            
+            <div class="activities-grid">
+                {{ range .Params.activities }}
+                <div class="activity-card">
+                    <div class="activity-icon"></div>
+                    <h3>{{ .title }}</h3>
+                    <p>{{ .description }}</p>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}
+
+<!-- Impact Section -->
+{{ if .Params.impact_stats }}
+<section class="program-impact">
+    <div class="container">
+        <div class="impact-container">
+            <h2>{{ .Params.impact_title | default "Our Impact" }}</h2>
+            
+            <div class="impact-grid">
+                {{ range .Params.impact_stats }}
+                <div class="impact-stat">
+                    <div class="impact-number">{{ .number }}</div>
+                    <div class="impact-label">{{ .label }}</div>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}
+
+<!-- Story Section -->
+{{ if .Params.story }}
+<section class="program-story">
+    <div class="container">
+        <div class="story-container">
+            <div class="section-header">
+                <h2>{{ .Params.story_section_title | default "From the Field" }}</h2>
+            </div>
+            
+            <div class="story-card">
+                <h2>{{ .Params.story.title }}</h2>
+                <p class="story-location">{{ .Params.story.location }}</p>
+                <div class="story-content">
+                    {{ .Params.story.content | markdownify }}
+                </div>
+                
+                {{ with .Params.story.quote }}
+                <div class="story-quote">
+                    <blockquote>"{{ .text }}"</blockquote>
+                    <cite>— {{ .author }}</cite>
+                </div>
+                {{ end }}
+                
+                {{ with .Params.story.link }}
+                <a href="{{ . }}" class="story-link">Read full story →</a>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}
+
+<!-- CTA Section -->
+<section class="program-cta">
+    <div class="container">
+        <h2>{{ .Params.cta_title | default "Support This Program" }}</h2>
+        <p>{{ .Params.cta_text | default "Your contribution helps us expand this work to more communities across North East India." }}</p>
+        <div class="cta-buttons">
+            <a href="/donate/" class="btn-primary">{{ .Params.cta_button_primary | default "Donate Now" }}</a>
+            <a href="/contact/" class="btn-secondary">{{ .Params.cta_button_secondary | default "Get Involved" }}</a>
+        </div>
+    </div>
+</section>
+{{ end }}
