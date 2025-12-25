@@ -4,7 +4,7 @@
    HOW WE WORK PAGE - BRAND CONSISTENT VERSION
    
    Brand System Applied:
-   - Font: Plus Jakarta Sans (NO Playfair Display)
+   - Font: Plus Jakarta Sans
    - Colors: Using Hugo CSS variables
    - Forest Green: var(--forest) for headings
    - Saffron: var(--saffron) for accents/step markers
@@ -140,25 +140,6 @@
     box-shadow: 0 8px 30px rgba(0,0,0,0.12);
 }
 
-.pillar-icon {
-    width: 60px;
-    height: 60px;
-    background: var(--cream, #faf8f3);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-}
-
-.pillar-icon svg {
-    width: 32px;
-    height: 32px;
-    stroke: var(--forest, {{ .Site.Params.colors.forest_green | default "#1a5f3f" }});
-    fill: none;
-    stroke-width: 1.5;
-}
-
 .model-pillar h3 {
     font-size: 1.35rem;
     font-weight: 700;
@@ -220,7 +201,7 @@
     align-items: center;
     justify-content: center;
     font-weight: 700;
-    color: var(--charcoal, #2d2d2d);
+    color: var(--forest, #1a5f3f);
     border: 4px solid white;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     font-size: 1.1rem;
@@ -282,28 +263,6 @@
     font-weight: 700;
     color: var(--saffron, {{ .Site.Params.colors.deep_saffron | default "#ff9933" }});
     margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-.principle-icon {
-    width: 32px;
-    height: 32px;
-    background: rgba(255,255,255,0.1);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-}
-
-.principle-icon svg {
-    width: 18px;
-    height: 18px;
-    stroke: var(--saffron, #ff9933);
-    fill: none;
-    stroke-width: 2;
 }
 
 .principle-card p {
@@ -491,32 +450,16 @@
         
         <div class="model-grid">
             <div class="model-pillar">
-                <div class="pillar-icon">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                    </svg>
-                </div>
                 <h3>Sustainable Agriculture</h3>
                 <p>Blending traditional farming wisdom with modern regenerative practices to restore soil health and increase productivity.</p>
             </div>
             
             <div class="model-pillar">
-                <div class="pillar-icon">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                    </svg>
-                </div>
                 <h3>Craft Preservation</h3>
                 <p>Reviving and protecting heritage silk weaving traditions while connecting artisans to fair-trade markets.</p>
             </div>
             
             <div class="model-pillar">
-                <div class="pillar-icon">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="12" cy="12" r="10"/>
-                        <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-                    </svg>
-                </div>
                 <h3>Climate Resilience</h3>
                 <p>Building community capacity to adapt to climate change through integrated land and water management.</p>
             </div>
@@ -573,80 +516,32 @@
         
         <div class="principles-grid">
             <div class="principle-card">
-                <h3>
-                    <span class="principle-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 2v20M2 12h20"/>
-                        </svg>
-                    </span>
-                    Nature as Teacher
-                </h3>
+                <h3>Nature as Teacher</h3>
                 <p>We look to natural ecosystems for guidance, designing interventions that work with nature rather than against it.</p>
             </div>
             
             <div class="principle-card">
-                <h3>
-                    <span class="principle-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                            <circle cx="9" cy="7" r="4"/>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
-                        </svg>
-                    </span>
-                    Everyone is Teacher & Learner
-                </h3>
+                <h3>Everyone is Teacher & Learner</h3>
                 <p>Knowledge flows in all directions. We learn as much from communities as they learn from us.</p>
             </div>
             
             <div class="principle-card">
-                <h3>
-                    <span class="principle-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="12" cy="12" r="10"/>
-                            <polyline points="12 6 12 12 16 14"/>
-                        </svg>
-                    </span>
-                    Think in Generations
-                </h3>
+                <h3>Think in Generations</h3>
                 <p>We commit to multi-generational partnerships, not short-term projects. Lasting change takes time.</p>
             </div>
             
             <div class="principle-card">
-                <h3>
-                    <span class="principle-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8zM6 1v3M10 1v3M14 1v3"/>
-                        </svg>
-                    </span>
-                    Build from Strengths
-                </h3>
+                <h3>Build from Strengths</h3>
                 <p>Every community has assets—cultural traditions, ecological knowledge, social networks. We amplify what works.</p>
             </div>
             
             <div class="principle-card">
-                <h3>
-                    <span class="principle-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <polyline points="23 4 23 10 17 10"/>
-                            <polyline points="1 20 1 14 7 14"/>
-                            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
-                        </svg>
-                    </span>
-                    Adaptation Over Perfection
-                </h3>
+                <h3>Adaptation Over Perfection</h3>
                 <p>We experiment, learn from failures, and continuously refine. Context matters more than blueprints.</p>
             </div>
             
             <div class="principle-card">
-                <h3>
-                    <span class="principle-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 3v18M3 12h18"/>
-                            <circle cx="12" cy="12" r="9"/>
-                        </svg>
-                    </span>
-                    Inner Drives Outer Change
-                </h3>
+                <h3>Inner Drives Outer Change</h3>
                 <p>Sustainable development requires shifts in consciousness—from extraction to stewardship, competition to collaboration.</p>
             </div>
         </div>
