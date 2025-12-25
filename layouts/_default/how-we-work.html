@@ -1,32 +1,47 @@
 {{ define "main" }}
 <style>
-/* How We Work Page Styles */
+/* =============================================
+   HOW WE WORK PAGE - BRAND CONSISTENT VERSION
+   
+   Brand System Applied:
+   - Font: Plus Jakarta Sans (NO Playfair Display)
+   - Colors: Using Hugo CSS variables
+   - Forest Green: var(--forest) for headings
+   - Saffron: var(--saffron) for accents/step markers
+   - Yellow: var(--yellow) for CTAs
+   - Cream: var(--cream) for backgrounds
+   - Charcoal: var(--charcoal) for body text
+   - Gray: var(--gray) for secondary text
+   ============================================= */
 
+/* Hero Section - Cream background with forest heading */
 .hww-hero {
     background: var(--cream, #faf8f3);
-    padding: 120px 2rem 80px;
+    padding: 6rem 2rem 4rem;
     text-align: center;
 }
 
 .hww-hero h1 {
-    font-size: clamp(2rem, 5vw, 2.75rem);
-    font-weight: 700;
-    color: var(--forest, #2d5016);
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 800;
+    color: var(--forest, {{ .Site.Params.colors.forest_green | default "#1a5f3f" }});
     margin-bottom: 1.5rem;
+    line-height: 1.2;
 }
 
 .hww-hero p {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
+    font-weight: 400;
     max-width: 750px;
     margin: 0 auto;
-    color: var(--charcoal, #2d2d2d);
+    color: var(--charcoal, {{ .Site.Params.colors.charcoal | default "#2d2d2d" }});
     line-height: 1.7;
 }
 
 /* Philosophy Section */
 .philosophy {
     background: white;
-    padding: 80px 2rem;
+    padding: 5rem 2rem;
 }
 
 .philosophy-container {
@@ -34,21 +49,21 @@
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    gap: 4rem;
     align-items: center;
 }
 
 .philosophy-content h2 {
-    font-size: 2rem;
-    color: var(--forest, #2d5016);
-    margin-bottom: 1.5rem;
+    font-size: 2.25rem;
     font-weight: 700;
+    color: var(--forest, {{ .Site.Params.colors.forest_green | default "#1a5f3f" }});
+    margin-bottom: 1.5rem;
 }
 
 .philosophy-content p {
-    font-size: 1.05rem;
-    line-height: 1.8;
-    color: var(--charcoal, #2d2d2d);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--charcoal, {{ .Site.Params.colors.charcoal | default "#2d2d2d" }});
     margin-bottom: 1.5rem;
 }
 
@@ -56,25 +71,29 @@
     background: var(--cream, #faf8f3);
     padding: 1.5rem;
     border-radius: 12px;
-    border-left: 4px solid var(--saffron, #f5a623);
+    border-left: 4px solid var(--saffron, {{ .Site.Params.colors.deep_saffron | default "#ff9933" }});
     font-style: italic;
-    color: var(--forest, #2d5016);
+    color: var(--forest, {{ .Site.Params.colors.forest_green | default "#1a5f3f" }});
+    font-size: 1.05rem;
+    line-height: 1.7;
 }
 
 .philosophy-image {
     border-radius: 16px;
     aspect-ratio: 4/3;
-    background: linear-gradient(135deg, #e8e4da 0%, #d4cfc2 100%);
+    background: linear-gradient(135deg, var(--forest, #1a5f3f) 0%, #0f3d28 100%);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--gray, #6b7280);
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 600;
 }
 
 /* Integral Model Section */
 .integral-model {
     background: var(--cream, #faf8f3);
-    padding: 80px 2rem;
+    padding: 5rem 2rem;
 }
 
 .integral-model .container {
@@ -84,95 +103,79 @@
 
 .section-header {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 4rem;
 }
 
 .section-header h2 {
-    font-size: 2rem;
-    color: var(--forest, #2d5016);
-    margin-bottom: 1rem;
+    font-size: 2.25rem;
     font-weight: 700;
+    color: var(--forest, {{ .Site.Params.colors.forest_green | default "#1a5f3f" }});
+    margin-bottom: 1rem;
 }
 
 .section-header p {
     font-size: 1.1rem;
-    color: var(--charcoal, #2d2d2d);
+    color: var(--gray, {{ .Site.Params.colors.gray | default "#6b7280" }});
     max-width: 700px;
     margin: 0 auto;
+    line-height: 1.7;
 }
 
 .model-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    gap: 2rem;
 }
 
 .model-pillar {
     background: white;
     border-radius: 16px;
     padding: 2.5rem;
-    text-align: center;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
     transition: all 0.3s ease;
 }
 
 .model-pillar:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
 }
 
 .pillar-icon {
-    width: 70px;
-    height: 70px;
-    background: var(--saffron, #f5a623);
-    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    background: var(--cream, #faf8f3);
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 1.5rem;
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: var(--forest, #2d5016);
+    margin-bottom: 1.5rem;
+}
+
+.pillar-icon svg {
+    width: 32px;
+    height: 32px;
+    stroke: var(--forest, {{ .Site.Params.colors.forest_green | default "#1a5f3f" }});
+    fill: none;
+    stroke-width: 1.5;
 }
 
 .model-pillar h3 {
     font-size: 1.35rem;
-    color: var(--forest, #2d5016);
-    margin-bottom: 1rem;
     font-weight: 700;
+    color: var(--forest, {{ .Site.Params.colors.forest_green | default "#1a5f3f" }});
+    margin-bottom: 1rem;
 }
 
 .model-pillar p {
-    font-size: 0.95rem;
-    color: var(--gray, #6b7280);
+    font-size: 1rem;
+    color: var(--gray, {{ .Site.Params.colors.gray | default "#6b7280" }});
     line-height: 1.7;
-    margin-bottom: 1.5rem;
-}
-
-.pillar-features {
-    list-style: none;
-    padding: 0;
-    text-align: left;
-}
-
-.pillar-features li {
-    padding: 0.5rem 0;
-    font-size: 0.9rem;
-    color: var(--charcoal, #2d2d2d);
-    display: flex;
-    gap: 0.75rem;
-}
-
-.pillar-features li::before {
-    content: "✓";
-    color: var(--forest, #2d5016);
-    font-weight: 700;
 }
 
 /* Process Section */
 .process-section {
     background: white;
-    padding: 80px 2rem;
+    padding: 5rem 2rem;
 }
 
 .process-section .container {
@@ -182,18 +185,17 @@
 
 .process-timeline {
     position: relative;
-    padding-left: 3rem;
+    padding-left: 4rem;
 }
 
 .process-timeline::before {
     content: '';
     position: absolute;
-    left: 0;
+    left: 20px;
     top: 0;
     bottom: 0;
-    width: 4px;
-    background: linear-gradient(to bottom, var(--saffron, #f5a623), var(--forest, #2d5016));
-    border-radius: 2px;
+    width: 2px;
+    background: var(--cream, #faf8f3);
 }
 
 .process-step {
@@ -202,36 +204,46 @@
     padding-left: 2rem;
 }
 
+.process-step:last-child {
+    margin-bottom: 0;
+}
+
 .step-marker {
     position: absolute;
-    left: -3rem;
+    left: -4rem;
     top: 0;
-    width: 40px;
-    height: 40px;
-    background: var(--saffron, #f5a623);
+    width: 44px;
+    height: 44px;
+    background: var(--saffron, {{ .Site.Params.colors.deep_saffron | default "#ff9933" }});
     border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: var(--charcoal, #2d2d2d);
     border: 4px solid white;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    font-size: 1.1rem;
 }
 
 .process-step h3 {
     font-size: 1.35rem;
-    color: var(--forest, #2d5016);
-    margin-bottom: 0.75rem;
     font-weight: 700;
+    color: var(--forest, {{ .Site.Params.colors.forest_green | default "#1a5f3f" }});
+    margin-bottom: 0.75rem;
 }
 
 .process-step p {
     font-size: 1rem;
-    color: var(--gray, #6b7280);
+    color: var(--gray, {{ .Site.Params.colors.gray | default "#6b7280" }});
     line-height: 1.7;
 }
 
 /* Principles Section */
 .principles {
-    background: var(--forest, #2d5016);
+    background: var(--forest, {{ .Site.Params.colors.forest_green | default "#1a5f3f" }});
     color: white;
-    padding: 80px 2rem;
+    padding: 5rem 2rem;
 }
 
 .principles .container {
@@ -240,35 +252,58 @@
 }
 
 .principles h2 {
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 50px;
+    font-size: 2.25rem;
     font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
 }
 
 .principles-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+    gap: 2rem;
 }
 
 .principle-card {
     background: rgba(255,255,255,0.1);
     border-radius: 12px;
     padding: 2rem;
-    border: 1px solid rgba(255,255,255,0.1);
-    transition: background 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: all 0.3s ease;
 }
 
 .principle-card:hover {
     background: rgba(255,255,255,0.15);
+    transform: translateY(-3px);
 }
 
 .principle-card h3 {
     font-size: 1.25rem;
-    color: var(--saffron, #f5a623);
-    margin-bottom: 1rem;
     font-weight: 700;
+    color: var(--saffron, {{ .Site.Params.colors.deep_saffron | default "#ff9933" }});
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.principle-icon {
+    width: 32px;
+    height: 32px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.principle-icon svg {
+    width: 18px;
+    height: 18px;
+    stroke: var(--saffron, #ff9933);
+    fill: none;
+    stroke-width: 2;
 }
 
 .principle-card p {
@@ -279,72 +314,83 @@
 
 /* CTA Section */
 .hww-cta {
-    background: var(--forest, #2d5016);
-    padding: 80px 2rem;
+    background: var(--cream, #faf8f3);
+    padding: 5rem 2rem;
     text-align: center;
-    color: white;
 }
 
 .hww-cta h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+    font-size: 2.25rem;
     font-weight: 700;
+    color: var(--forest, {{ .Site.Params.colors.forest_green | default "#1a5f3f" }});
+    margin-bottom: 1rem;
 }
 
 .hww-cta p {
     font-size: 1.1rem;
-    opacity: 0.9;
+    color: var(--charcoal, {{ .Site.Params.colors.charcoal | default "#2d2d2d" }});
     max-width: 600px;
     margin: 0 auto 2rem;
+    line-height: 1.7;
 }
 
 .cta-buttons {
     display: flex;
-    gap: 16px;
+    gap: 1rem;
     justify-content: center;
     flex-wrap: wrap;
 }
 
 .btn-primary {
-    background: var(--yellow, #FFC700);
+    background: var(--yellow, {{ .Site.Params.colors.yellow | default "#FFC700" }});
     color: var(--charcoal, #2d2d2d);
     padding: 1rem 2.5rem;
     border-radius: 8px;
     text-decoration: none;
     font-weight: 700;
     transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .btn-primary:hover {
-    background: var(--yellow-hover, #E6B300);
+    background: #E6B300;
     transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 199, 0, 0.4);
 }
 
 .btn-secondary {
     background: transparent;
-    color: white;
+    color: var(--forest, {{ .Site.Params.colors.forest_green | default "#1a5f3f" }});
     padding: 1rem 2.5rem;
     border-radius: 8px;
     text-decoration: none;
     font-weight: 700;
-    border: 2px solid white;
+    border: 2px solid var(--forest, {{ .Site.Params.colors.forest_green | default "#1a5f3f" }});
     transition: all 0.3s ease;
 }
 
 .btn-secondary:hover {
-    background: rgba(255,255,255,0.1);
+    background: var(--forest, {{ .Site.Params.colors.forest_green | default "#1a5f3f" }});
+    color: white;
     transform: translateY(-2px);
 }
 
-/* Responsive */
+/* Responsive Styles */
 @media (max-width: 968px) {
     .philosophy-container {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 2.5rem;
+    }
+    
+    .philosophy-image {
+        order: -1;
     }
     
     .model-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
     
     .principles-grid {
@@ -354,7 +400,15 @@
 
 @media (max-width: 640px) {
     .hww-hero {
-        padding: 100px 1.5rem 60px;
+        padding: 5rem 1.5rem 3rem;
+    }
+    
+    .hww-hero h1 {
+        font-size: 2rem;
+    }
+    
+    .hww-hero p {
+        font-size: 1.1rem;
     }
     
     .philosophy,
@@ -362,17 +416,29 @@
     .process-section,
     .principles,
     .hww-cta {
-        padding: 60px 1.5rem;
+        padding: 3.5rem 1.5rem;
+    }
+    
+    .section-header h2,
+    .philosophy-content h2,
+    .principles h2,
+    .hww-cta h2 {
+        font-size: 1.75rem;
     }
     
     .process-timeline {
-        padding-left: 2.5rem;
+        padding-left: 3rem;
+    }
+    
+    .process-timeline::before {
+        left: 16px;
     }
     
     .step-marker {
-        left: -2.5rem;
+        left: -3rem;
         width: 36px;
         height: 36px;
+        font-size: 0.95rem;
     }
     
     .cta-buttons {
@@ -385,138 +451,222 @@
         width: 100%;
         max-width: 280px;
         text-align: center;
+        justify-content: center;
     }
 }
 </style>
 
+<!-- Hero Section -->
 <section class="hww-hero">
     <div class="container">
         <h1>How We Work</h1>
-        <p>We believe lasting change comes from within communities. Our approach integrates traditional knowledge with modern techniques to create sustainable, dignified livelihoods.</p>
+        <p>We believe lasting change comes from within communities, not imposed from outside. Our approach integrates traditional knowledge with modern techniques to create sustainable, dignified livelihoods.</p>
     </div>
 </section>
 
+<!-- Philosophy Section -->
 <section class="philosophy">
     <div class="philosophy-container">
         <div class="philosophy-content">
             <h2>Our Philosophy</h2>
             <p>At Integral Foundation, we don't believe in handouts. We believe in hands—the hands of skilled artisans, dedicated farmers, and resilient communities who simply need the right support to thrive.</p>
             <p>Our work is rooted in deep respect for indigenous knowledge systems and cultural heritage. We partner with communities as equals, listening first and acting second.</p>
-            <div class="philosophy-highlight">"Development should enhance dignity, preserve heritage, and create pathways to prosperity that communities can sustain on their own."</div>
+            <div class="philosophy-highlight">
+                "Development should enhance dignity, preserve heritage, and create pathways to prosperity that communities can sustain on their own."
+            </div>
         </div>
-        <div class="philosophy-image">Community Image</div>
+        <div class="philosophy-image">
+            <span>Community Partnership</span>
+        </div>
     </div>
 </section>
 
+<!-- Integral Model Section -->
 <section class="integral-model">
     <div class="container">
         <div class="section-header">
             <h2>The Integral Model</h2>
-            <p>Our holistic approach addresses interconnected challenges through three reinforcing pillars.</p>
+            <p>Our holistic approach addresses multiple dimensions of sustainable development simultaneously, creating lasting, systemic change.</p>
         </div>
+        
         <div class="model-grid">
             <div class="model-pillar">
-                <div class="pillar-icon">1</div>
-                <h3>Integral Farming</h3>
-                <p>Combining sericulture with organic farming for resilient, diversified income.</p>
-                <ul class="pillar-features">
-                    <li>Host plant cultivation (Som, Soalu)</li>
-                    <li>Organic certification support</li>
-                    <li>Climate-resilient varieties</li>
-                </ul>
+                <div class="pillar-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <h3>Sustainable Agriculture</h3>
+                <p>Blending traditional farming wisdom with modern regenerative practices to restore soil health and increase productivity.</p>
             </div>
+            
             <div class="model-pillar">
-                <div class="pillar-icon">2</div>
-                <h3>Artisan Excellence</h3>
-                <p>Preserving traditional craftsmanship with quality standards and market access.</p>
-                <ul class="pillar-features">
-                    <li>Advanced weaving training</li>
-                    <li>Design innovation workshops</li>
-                    <li>Market linkages</li>
-                </ul>
+                <div class="pillar-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                    </svg>
+                </div>
+                <h3>Craft Preservation</h3>
+                <p>Reviving and protecting heritage silk weaving traditions while connecting artisans to fair-trade markets.</p>
             </div>
+            
             <div class="model-pillar">
-                <div class="pillar-icon">3</div>
-                <h3>Community Enterprise</h3>
-                <p>Building collective capacity through cooperatives and leadership development.</p>
-                <ul class="pillar-features">
-                    <li>Cooperative formation</li>
-                    <li>Financial literacy training</li>
-                    <li>Women's leadership programs</li>
-                </ul>
+                <div class="pillar-icon">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    </svg>
+                </div>
+                <h3>Climate Resilience</h3>
+                <p>Building community capacity to adapt to climate change through integrated land and water management.</p>
             </div>
         </div>
     </div>
 </section>
 
+<!-- Process Section -->
 <section class="process-section">
     <div class="container">
         <div class="section-header">
             <h2>Our Process</h2>
-            <p>From first contact to lasting impact.</p>
+            <p>Every engagement follows a carefully designed journey from understanding to lasting impact.</p>
         </div>
+        
         <div class="process-timeline">
             <div class="process-step">
-                <div class="step-marker"></div>
-                <h3>Community Engagement</h3>
-                <p>We begin by listening—understanding unique challenges, strengths, and aspirations through participatory assessments.</p>
+                <span class="step-marker">1</span>
+                <h3>Community Immersion</h3>
+                <p>We spend extended time living and working alongside communities, understanding their unique context, challenges, and aspirations before proposing any interventions.</p>
             </div>
+            
             <div class="process-step">
-                <div class="step-marker"></div>
+                <span class="step-marker">2</span>
+                <h3>Participatory Assessment</h3>
+                <p>Together with community members, we map existing resources, skills, and knowledge systems. We identify gaps and opportunities through collaborative analysis.</p>
+            </div>
+            
+            <div class="process-step">
+                <span class="step-marker">3</span>
+                <h3>Co-Design Solutions</h3>
+                <p>Solutions are designed with the community, not for them. We blend traditional wisdom with appropriate modern techniques to create contextually relevant interventions.</p>
+            </div>
+            
+            <div class="process-step">
+                <span class="step-marker">4</span>
                 <h3>Capacity Building</h3>
-                <p>Hands-on training in sericulture, weaving, organic farming, and business skills like record-keeping.</p>
+                <p>We invest heavily in training and skill development, ensuring communities can independently manage and sustain initiatives long after our direct involvement ends.</p>
             </div>
+            
             <div class="process-step">
-                <div class="step-marker"></div>
-                <h3>Infrastructure Support</h3>
-                <p>Providing tools, improved looms, reeling equipment, and shared facility centers.</p>
-            </div>
-            <div class="process-step">
-                <div class="step-marker"></div>
-                <h3>Market Access</h3>
-                <p>Connecting artisans directly to ethical brands and markets, ensuring fair prices.</p>
-            </div>
-            <div class="process-step">
-                <div class="step-marker"></div>
-                <h3>Sustainability & Handoff</h3>
-                <p>Building community institutions—cooperatives and local leaders—who continue independently.</p>
+                <span class="step-marker">5</span>
+                <h3>Market Linkages</h3>
+                <p>We connect producers with fair-trade markets, helping them access better prices while maintaining quality standards and preserving authentic craft traditions.</p>
             </div>
         </div>
     </div>
 </section>
 
+<!-- Principles Section -->
 <section class="principles">
     <div class="container">
-        <h2>Our Guiding Principles</h2>
+        <h2>Guiding Principles</h2>
+        
         <div class="principles-grid">
             <div class="principle-card">
-                <h3>Community Ownership</h3>
-                <p>Communities lead; we facilitate. Every initiative is designed by those it serves.</p>
+                <h3>
+                    <span class="principle-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2v20M2 12h20"/>
+                        </svg>
+                    </span>
+                    Nature as Teacher
+                </h3>
+                <p>We look to natural ecosystems for guidance, designing interventions that work with nature rather than against it.</p>
             </div>
+            
             <div class="principle-card">
-                <h3>Environmental Stewardship</h3>
-                <p>We promote practices that heal the land while providing livelihoods.</p>
+                <h3>
+                    <span class="principle-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </span>
+                    Everyone is Teacher & Learner
+                </h3>
+                <p>Knowledge flows in all directions. We learn as much from communities as they learn from us.</p>
             </div>
+            
             <div class="principle-card">
-                <h3>Gender Equity</h3>
-                <p>Women are at the center of our work. We actively address barriers to participation.</p>
+                <h3>
+                    <span class="principle-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </span>
+                    Think in Generations
+                </h3>
+                <p>We commit to multi-generational partnerships, not short-term projects. Lasting change takes time.</p>
             </div>
+            
             <div class="principle-card">
-                <h3>Data-Driven Impact</h3>
-                <p>We measure what matters. Rigorous evaluation helps us learn and demonstrate outcomes.</p>
+                <h3>
+                    <span class="principle-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8zM6 1v3M10 1v3M14 1v3"/>
+                        </svg>
+                    </span>
+                    Build from Strengths
+                </h3>
+                <p>Every community has assets—cultural traditions, ecological knowledge, social networks. We amplify what works.</p>
+            </div>
+            
+            <div class="principle-card">
+                <h3>
+                    <span class="principle-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <polyline points="23 4 23 10 17 10"/>
+                            <polyline points="1 20 1 14 7 14"/>
+                            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+                        </svg>
+                    </span>
+                    Adaptation Over Perfection
+                </h3>
+                <p>We experiment, learn from failures, and continuously refine. Context matters more than blueprints.</p>
+            </div>
+            
+            <div class="principle-card">
+                <h3>
+                    <span class="principle-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 3v18M3 12h18"/>
+                            <circle cx="12" cy="12" r="9"/>
+                        </svg>
+                    </span>
+                    Inner Drives Outer Change
+                </h3>
+                <p>Sustainable development requires shifts in consciousness—from extraction to stewardship, competition to collaboration.</p>
             </div>
         </div>
     </div>
 </section>
 
+<!-- CTA Section -->
 <section class="hww-cta">
     <div class="container">
-        <h2>Ready to Make an Impact?</h2>
-        <p>Whether you're a brand or individual, we'd love to explore working together.</p>
+        <h2>Partner With Us</h2>
+        <p>Join us in creating dignified, sustainable livelihoods that honor tradition while building toward a better future.</p>
         <div class="cta-buttons">
-            <a href="/brand-partners/" class="btn-primary">Partner With Us</a>
-            <a href="/donate/" class="btn-secondary">Support Our Work</a>
+            <a href="/donate" class="btn-primary">
+                Support Our Work
+            </a>
+            <a href="/volunteer" class="btn-secondary">
+                Become a Volunteer
+            </a>
         </div>
     </div>
 </section>
+
 {{ end }}
