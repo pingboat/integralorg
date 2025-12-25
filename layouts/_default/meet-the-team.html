@@ -1,37 +1,41 @@
 {{ define "main" }}
 <style>
-/* Meet the Team Styles */
+/* Meet the Team Styles - Brand Consistent */
+
+/* Hero Section */
 .team-hero {
-    background: linear-gradient(135deg, var(--navy-blue) 0%, #1a3a5c 100%);
-    color: white;
-    padding: 100px 5% 80px;
+    background: var(--cream, #faf8f3);
+    padding: 120px 5% 80px;
     text-align: center;
 }
 
 .team-hero h1 {
-    font-size: 3rem;
+    font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 700;
+    color: var(--forest, #1a5f3f);
     margin-bottom: 1rem;
 }
 
 .team-hero .subtitle {
-    font-size: 1.25rem;
-    opacity: 0.9;
-    max-width: 650px;
+    font-size: 1.2rem;
+    color: var(--charcoal, #2d2d2d);
+    max-width: 700px;
     margin: 0 auto;
+    line-height: 1.7;
 }
 
 /* Leadership Section */
 .team-leadership {
     padding: 80px 5%;
-    background: var(--cream);
+    background: var(--white, #ffffff);
 }
 
 .team-leadership h2 {
     text-align: center;
     font-size: 2rem;
-    color: var(--navy-blue);
+    color: var(--forest, #1a5f3f);
     margin-bottom: 60px;
+    font-weight: 700;
 }
 
 .leadership-grid {
@@ -43,147 +47,144 @@
 }
 
 .leader-card {
-    background: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.leader-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+    text-align: center;
 }
 
 .leader-image {
-    width: 100%;
-    aspect-ratio: 1;
-    background: linear-gradient(135deg, #e8e4da 0%, #d4d0c4 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--gray);
-    font-size: 1rem;
-}
-
-.leader-info {
-    padding: 24px;
-}
-
-.leader-info h3 {
-    font-size: 1.25rem;
-    color: var(--navy-blue);
-    margin-bottom: 0.25rem;
-}
-
-.leader-role {
-    font-size: 0.9rem;
-    color: var(--yellow);
-    font-weight: 600;
-    margin-bottom: 1rem;
-}
-
-.leader-bio {
-    font-size: 0.95rem;
-    color: var(--charcoal);
-    line-height: 1.6;
-    margin-bottom: 1rem;
-}
-
-.leader-social {
-    display: flex;
-    gap: 12px;
-}
-
-.leader-social a {
-    width: 36px;
-    height: 36px;
-    background: var(--cream);
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.leader-image-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--cream, #faf8f3) 0%, #e8e4da 100%);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--navy-blue);
-    transition: all 0.3s ease;
+    color: var(--gray, #6b7280);
+    font-size: 0.9rem;
+    font-weight: 600;
 }
 
-.leader-social a:hover {
-    background: var(--navy-blue);
-    color: white;
+.leader-card h3 {
+    font-size: 1.3rem;
+    color: var(--forest, #1a5f3f);
+    margin-bottom: 0.3rem;
+    font-weight: 700;
 }
 
-/* Full Team Section */
-.team-full {
+.leader-title {
+    font-size: 1rem;
+    color: var(--saffron, #ff9933);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.leader-card p {
+    font-size: 0.95rem;
+    color: var(--charcoal, #2d2d2d);
+    line-height: 1.6;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+/* Team Grid Section */
+.team-grid-section {
     padding: 80px 5%;
-    background: white;
+    background: var(--cream, #faf8f3);
 }
 
-.team-full h2 {
+.team-grid-section h2 {
     text-align: center;
     font-size: 2rem;
-    color: var(--navy-blue);
+    color: var(--forest, #1a5f3f);
     margin-bottom: 60px;
+    font-weight: 700;
 }
 
 .team-grid {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 30px;
 }
 
 .team-member {
+    background: var(--white, #ffffff);
+    border-radius: 12px;
+    padding: 2rem 1.5rem;
     text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
 }
 
-.team-member-image {
-    width: 150px;
-    height: 150px;
+.team-member:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+.member-image {
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #e8e4da 0%, #d4d0c4 100%);
-    margin: 0 auto 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--gray);
-    font-size: 0.85rem;
+    margin: 0 auto 1rem;
     overflow: hidden;
 }
 
-.team-member h4 {
-    font-size: 1rem;
-    color: var(--navy-blue);
-    margin-bottom: 0.25rem;
+.member-image-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--cream, #faf8f3) 0%, #e8e4da 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray, #6b7280);
+    font-size: 0.8rem;
 }
 
-.team-member-role {
-    font-size: 0.85rem;
-    color: var(--gray);
+.team-member h3 {
+    font-size: 1.1rem;
+    color: var(--forest, #1a5f3f);
+    margin-bottom: 0.3rem;
+    font-weight: 700;
 }
 
-/* Board Section */
-.team-board {
+.member-title {
+    font-size: 0.9rem;
+    color: var(--saffron, #ff9933);
+    font-weight: 600;
+}
+
+/* Culture Section */
+.team-culture {
     padding: 80px 5%;
-    background: var(--cream);
+    background: var(--white, #ffffff);
 }
 
-.team-board h2 {
+.team-culture h2 {
     text-align: center;
     font-size: 2rem;
-    color: var(--navy-blue);
+    color: var(--forest, #1a5f3f);
     margin-bottom: 1rem;
+    font-weight: 700;
 }
 
-.board-intro {
+.culture-intro {
     text-align: center;
+    font-size: 1.1rem;
+    color: var(--charcoal, #2d2d2d);
     max-width: 700px;
     margin: 0 auto 60px;
-    color: var(--charcoal);
-    font-size: 1.1rem;
+    line-height: 1.7;
 }
 
-.board-grid {
+.culture-grid {
     max-width: 1000px;
     margin: 0 auto;
     display: grid;
@@ -191,303 +192,228 @@
     gap: 30px;
 }
 
-.board-member {
-    background: white;
-    padding: 30px;
+.culture-item {
+    background: var(--cream, #faf8f3);
     border-radius: 12px;
+    padding: 2rem;
     text-align: center;
-}
-
-.board-member h4 {
-    font-size: 1.15rem;
-    color: var(--navy-blue);
-    margin-bottom: 0.25rem;
-}
-
-.board-member-title {
-    font-size: 0.9rem;
-    color: var(--yellow);
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-}
-
-.board-member-org {
-    font-size: 0.85rem;
-    color: var(--gray);
-}
-
-/* Culture Section */
-.team-culture {
-    padding: 80px 5%;
-    background: white;
-}
-
-.culture-container {
-    max-width: 1100px;
-    margin: 0 auto;
-}
-
-.team-culture h2 {
-    text-align: center;
-    font-size: 2rem;
-    color: var(--navy-blue);
-    margin-bottom: 60px;
-}
-
-.culture-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-}
-
-.culture-card {
-    text-align: center;
-    padding: 30px;
 }
 
 .culture-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    width: 60px;
+    height: 60px;
+    background: var(--saffron, #ff9933);
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.culture-card h3 {
-    font-size: 1.15rem;
-    color: var(--navy-blue);
+.culture-icon svg {
+    width: 28px;
+    height: 28px;
+    color: var(--white, #ffffff);
+}
+
+.culture-item h3 {
+    font-size: 1.2rem;
+    color: var(--forest, #1a5f3f);
     margin-bottom: 0.75rem;
+    font-weight: 700;
 }
 
-.culture-card p {
-    color: var(--charcoal);
-    line-height: 1.6;
+.culture-item p {
     font-size: 0.95rem;
+    color: var(--charcoal, #2d2d2d);
+    line-height: 1.6;
 }
 
-/* Join CTA */
-.team-cta {
+/* Join CTA Section */
+.join-cta {
     padding: 80px 5%;
-    background: var(--navy-blue);
+    background: var(--forest, #1a5f3f);
     text-align: center;
-    color: white;
 }
 
-.team-cta h2 {
+.join-cta h2 {
     font-size: 2rem;
+    color: var(--white, #ffffff);
     margin-bottom: 1rem;
+    font-weight: 700;
 }
 
-.team-cta p {
+.join-cta p {
     font-size: 1.1rem;
-    opacity: 0.9;
+    color: rgba(255,255,255,0.9);
     max-width: 600px;
     margin: 0 auto 2rem;
+    line-height: 1.7;
 }
 
-.team-cta .btn-yellow {
+.btn-yellow {
     display: inline-block;
-    background: var(--yellow);
-    color: var(--navy-blue);
-    padding: 16px 40px;
-    border-radius: 30px;
+    background: var(--yellow, #FFC700);
+    color: var(--charcoal, #2d2d2d);
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 1rem;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 199, 0, 0.3);
 }
 
-.team-cta .btn-yellow:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 30px rgba(255,199,0,0.4);
+.btn-yellow:hover {
+    background: var(--yellow-hover, #E6B300);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 199, 0, 0.4);
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-    .team-hero h1 { font-size: 2rem; }
-    .leadership-grid { grid-template-columns: 1fr; max-width: 400px; }
+    .team-hero h1 {
+        font-size: 2rem;
+    }
+    
+    .leadership-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .culture-grid {
+        grid-template-columns: 1fr;
+    }
 }
 </style>
 
+<!-- Hero Section -->
 <section class="team-hero">
-    <h1>Meet the Team</h1>
-    <p class="subtitle">Passionate individuals united by a common purpose: creating dignified livelihoods through sustainable agriculture</p>
+    <div class="container">
+        <h1>Meet the Team</h1>
+        <p class="subtitle">The passionate people behind Integral Foundation, working every day to create dignified rural livelihoods in North East India.</p>
+    </div>
 </section>
 
+<!-- Leadership Section -->
 <section class="team-leadership">
-    <h2>Leadership Team</h2>
+    <h2>Leadership</h2>
     <div class="leadership-grid">
         <div class="leader-card">
-            <div class="leader-image">Photo</div>
-            <div class="leader-info">
-                <h3>[Founder Name]</h3>
-                <p class="leader-role">Founder & Executive Director</p>
-                <p class="leader-bio">Visionary leader with 15+ years in sustainable development, driving the mission to transform rural livelihoods in North East India.</p>
-                <div class="leader-social">
-                    <a href="#" aria-label="LinkedIn">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                            <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
-                        </svg>
-                    </a>
-                </div>
+            <div class="leader-image">
+                <div class="leader-image-placeholder">Photo</div>
             </div>
+            <h3>[Founder Name]</h3>
+            <p class="leader-title">Founder & Executive Director</p>
+            <p>Visionary leader driving the mission to transform rural livelihoods through the Integral Model.</p>
         </div>
-
         <div class="leader-card">
-            <div class="leader-image">Photo</div>
-            <div class="leader-info">
-                <h3>[Name]</h3>
-                <p class="leader-role">Director of Programs</p>
-                <p class="leader-bio">Oversees all field operations and community partnerships, ensuring our programs create lasting impact in every village we serve.</p>
-                <div class="leader-social">
-                    <a href="#" aria-label="LinkedIn">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                            <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
-                        </svg>
-                    </a>
-                </div>
+            <div class="leader-image">
+                <div class="leader-image-placeholder">Photo</div>
             </div>
+            <h3>[Name]</h3>
+            <p class="leader-title">Director of Programs</p>
+            <p>Oversees all field operations and ensures our programs create lasting impact for artisan communities.</p>
         </div>
-
         <div class="leader-card">
-            <div class="leader-image">Photo</div>
-            <div class="leader-info">
-                <h3>[Name]</h3>
-                <p class="leader-role">Head of Partnerships</p>
-                <p class="leader-bio">Builds strategic relationships with corporates, foundations, and government bodies to expand our reach and impact.</p>
-                <div class="leader-social">
-                    <a href="#" aria-label="LinkedIn">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                            <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
-                        </svg>
-                    </a>
-                </div>
+            <div class="leader-image">
+                <div class="leader-image-placeholder">Photo</div>
             </div>
-        </div>
-
-        <div class="leader-card">
-            <div class="leader-image">Photo</div>
-            <div class="leader-info">
-                <h3>[Name]</h3>
-                <p class="leader-role">Finance & Operations</p>
-                <p class="leader-bio">Ensures financial transparency and operational excellence, managing resources efficiently to maximize community impact.</p>
-                <div class="leader-social">
-                    <a href="#" aria-label="LinkedIn">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                            <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
+            <h3>[Name]</h3>
+            <p class="leader-title">Director of Partnerships</p>
+            <p>Builds strategic relationships with brands, institutions, and impact investors.</p>
         </div>
     </div>
 </section>
 
-<section class="team-full">
+<!-- Team Grid Section -->
+<section class="team-grid-section">
     <h2>Our Team</h2>
     <div class="team-grid">
         <div class="team-member">
-            <div class="team-member-image">Photo</div>
-            <h4>[Name]</h4>
-            <p class="team-member-role">Program Manager, Assam</p>
+            <div class="member-image">
+                <div class="member-image-placeholder">Photo</div>
+            </div>
+            <h3>[Name]</h3>
+            <p class="member-title">Program Manager</p>
         </div>
         <div class="team-member">
-            <div class="team-member-image">Photo</div>
-            <h4>[Name]</h4>
-            <p class="team-member-role">Program Manager, Manipur</p>
+            <div class="member-image">
+                <div class="member-image-placeholder">Photo</div>
+            </div>
+            <h3>[Name]</h3>
+            <p class="member-title">Community Coordinator</p>
         </div>
         <div class="team-member">
-            <div class="team-member-image">Photo</div>
-            <h4>[Name]</h4>
-            <p class="team-member-role">Training Coordinator</p>
+            <div class="member-image">
+                <div class="member-image-placeholder">Photo</div>
+            </div>
+            <h3>[Name]</h3>
+            <p class="member-title">Finance & Operations</p>
         </div>
         <div class="team-member">
-            <div class="team-member-image">Photo</div>
-            <h4>[Name]</h4>
-            <p class="team-member-role">Community Liaison</p>
+            <div class="member-image">
+                <div class="member-image-placeholder">Photo</div>
+            </div>
+            <h3>[Name]</h3>
+            <p class="member-title">Communications Lead</p>
         </div>
         <div class="team-member">
-            <div class="team-member-image">Photo</div>
-            <h4>[Name]</h4>
-            <p class="team-member-role">M&E Specialist</p>
+            <div class="member-image">
+                <div class="member-image-placeholder">Photo</div>
+            </div>
+            <h3>[Name]</h3>
+            <p class="member-title">Field Officer</p>
         </div>
         <div class="team-member">
-            <div class="team-member-image">Photo</div>
-            <h4>[Name]</h4>
-            <p class="team-member-role">Communications</p>
-        </div>
-        <div class="team-member">
-            <div class="team-member-image">Photo</div>
-            <h4>[Name]</h4>
-            <p class="team-member-role">Field Coordinator</p>
-        </div>
-        <div class="team-member">
-            <div class="team-member-image">Photo</div>
-            <h4>[Name]</h4>
-            <p class="team-member-role">Accounts Manager</p>
+            <div class="member-image">
+                <div class="member-image-placeholder">Photo</div>
+            </div>
+            <h3>[Name]</h3>
+            <p class="member-title">Design & Product</p>
         </div>
     </div>
 </section>
 
-<section class="team-board">
-    <h2>Board of Directors</h2>
-    <p class="board-intro">Our independent board brings diverse expertise in nonprofit governance, sustainable development, finance, and community leadership.</p>
-    <div class="board-grid">
-        <div class="board-member">
-            <h4>[Name]</h4>
-            <p class="board-member-title">Board Chair</p>
-            <p class="board-member-org">Former CEO, [Organization]</p>
-        </div>
-        <div class="board-member">
-            <h4>[Name]</h4>
-            <p class="board-member-title">Board Member</p>
-            <p class="board-member-org">Professor, [University]</p>
-        </div>
-        <div class="board-member">
-            <h4>[Name]</h4>
-            <p class="board-member-title">Board Member</p>
-            <p class="board-member-org">Social Entrepreneur</p>
-        </div>
-        <div class="board-member">
-            <h4>[Name]</h4>
-            <p class="board-member-title">Board Member</p>
-            <p class="board-member-org">Community Leader, Assam</p>
-        </div>
-    </div>
-</section>
-
+<!-- Culture Section -->
 <section class="team-culture">
-    <div class="culture-container">
-        <h2>Our Culture</h2>
-        <div class="culture-grid">
-            <div class="culture-card">
-                <div class="culture-icon">🌱</div>
-                <h3>Community First</h3>
-                <p>Every decision we make centers on what's best for the communities we serve. Their success is our success.</p>
+    <h2>Our Culture</h2>
+    <p class="culture-intro">We're a small team with big ambitions. Here's what drives us every day.</p>
+    <div class="culture-grid">
+        <div class="culture-item">
+            <div class="culture-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                </svg>
             </div>
-            <div class="culture-card">
-                <div class="culture-icon">🤝</div>
-                <h3>Radical Transparency</h3>
-                <p>We share openly—with our team, donors, and communities. Trust is built through honesty.</p>
+            <h3>Community First</h3>
+            <p>Every decision starts with one question: "Does this serve our artisan communities?"</p>
+        </div>
+        <div class="culture-item">
+            <div class="culture-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
             </div>
-            <div class="culture-card">
-                <div class="culture-icon">💡</div>
-                <h3>Continuous Learning</h3>
-                <p>We embrace failure as a teacher, iterate constantly, and stay curious about better solutions.</p>
+            <h3>Learn & Adapt</h3>
+            <p>We embrace failure as learning. What works matters more than being right.</p>
+        </div>
+        <div class="culture-item">
+            <div class="culture-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                </svg>
             </div>
-            <div class="culture-card">
-                <div class="culture-icon">🎯</div>
-                <h3>Results Driven</h3>
-                <p>Good intentions aren't enough. We measure what matters and hold ourselves accountable to outcomes.</p>
-            </div>
+            <h3>Bias for Action</h3>
+            <p>Small team, big impact. We move fast, stay nimble, and get things done.</p>
         </div>
     </div>
 </section>
 
-<section class="team-cta">
+<!-- Join CTA Section -->
+<section class="join-cta">
     <h2>Join Our Team</h2>
-    <p>We're always looking for passionate people who want to make a difference. Explore current openings and become part of our mission.</p>
+    <p>We're always looking for passionate people who want to make a difference in rural India.</p>
     <a href="/careers/" class="btn-yellow">View Open Positions</a>
 </section>
 {{ end }}
