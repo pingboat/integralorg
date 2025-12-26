@@ -1,0 +1,549 @@
+{{ define "main" }}
+<style>
+/* Hero Section */
+.gifting-hero {
+    background: linear-gradient(135deg, #1a5f3f 0%, #0f3d28 100%);
+    padding: 140px 5% 100px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.gifting-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('/images/silk-texture.jpg') center/cover;
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.brand-name {
+    font-size: clamp(3.5rem, 10vw, 6rem);
+    font-weight: 800;
+    color: var(--yellow, #FFC700);
+    margin: 0;
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+.brand-connector {
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0.5rem 0;
+    font-style: italic;
+}
+
+.brand-parent {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    font-weight: 700;
+    color: var(--white, #ffffff);
+    margin: 0 0 2rem 0;
+    letter-spacing: 0.05em;
+}
+
+.hero-tagline {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+/* Introduction Section */
+.gifting-intro {
+    padding: 80px 5%;
+    background: var(--cream, #faf8f3);
+}
+
+.intro-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.intro-container h2 {
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    color: var(--forest, #1a5f3f);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.intro-container p {
+    font-size: 1.1rem;
+    color: var(--charcoal, #2d2d2d);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+/* Gift Categories Section */
+.categories-section {
+    padding: 80px 5%;
+    background: var(--cream, #faf8f3);
+}
+
+.categories-section h2 {
+    text-align: center;
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    color: var(--forest, #1a5f3f);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.categories-subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--charcoal, #2d2d2d);
+    max-width: 600px;
+    margin: 0 auto 3rem;
+}
+
+.categories-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.category-card {
+    background: var(--white, #ffffff);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+.category-image {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, var(--cream, #faf8f3) 0%, #e8e4da 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray, #6b7280);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.category-info {
+    padding: 1.5rem;
+}
+
+.category-info h3 {
+    font-size: 1.2rem;
+    color: var(--forest, #1a5f3f);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.category-info p {
+    font-size: 0.9rem;
+    color: var(--gray, #6b7280);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.category-price {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--saffron, #ff9933);
+}
+
+/* How It Works Section */
+.process-section {
+    padding: 80px 5%;
+    background: var(--white, #ffffff);
+}
+
+.process-section h2 {
+    text-align: center;
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    color: var(--forest, #1a5f3f);
+    margin-bottom: 3rem;
+    font-weight: 700;
+}
+
+.process-steps {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.process-steps::before {
+    content: '';
+    position: absolute;
+    top: 35px;
+    left: 15%;
+    right: 15%;
+    height: 2px;
+    background: var(--cream, #faf8f3);
+    z-index: 0;
+}
+
+.process-step {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    flex: 1;
+}
+
+.step-number {
+    width: 70px;
+    height: 70px;
+    background: var(--saffron, #ff9933);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--white, #ffffff);
+    border: 4px solid var(--white, #ffffff);
+    box-shadow: 0 4px 15px rgba(255, 153, 51, 0.3);
+}
+
+.process-step h3 {
+    font-size: 1.1rem;
+    color: var(--forest, #1a5f3f);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.process-step p {
+    font-size: 0.9rem;
+    color: var(--gray, #6b7280);
+    line-height: 1.5;
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+/* Customization Section */
+.custom-section {
+    padding: 80px 5%;
+    background: var(--cream, #faf8f3);
+}
+
+.custom-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.custom-content h2 {
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    color: var(--forest, #1a5f3f);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.custom-content p {
+    font-size: 1.05rem;
+    color: var(--charcoal, #2d2d2d);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.custom-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.custom-list li {
+    padding: 0.75rem 0;
+    padding-left: 2rem;
+    position: relative;
+    font-size: 1rem;
+    color: var(--charcoal, #2d2d2d);
+}
+
+.custom-list li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--forest, #1a5f3f);
+    font-weight: 700;
+}
+
+.custom-image {
+    height: 400px;
+    background: linear-gradient(135deg, var(--cream, #faf8f3) 0%, #e8e4da 100%);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray, #6b7280);
+    font-weight: 600;
+}
+
+/* CTA Section */
+.cta-section {
+    padding: 80px 5%;
+    background: var(--white, #ffffff);
+    text-align: center;
+}
+
+.cta-section h2 {
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    color: var(--forest, #1a5f3f);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.cta-section p {
+    font-size: 1.1rem;
+    color: var(--charcoal, #2d2d2d);
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    line-height: 1.7;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    display: inline-block;
+    background: var(--yellow, #FFC700);
+    color: var(--charcoal, #2d2d2d);
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 199, 0, 0.3);
+}
+
+.btn-primary:hover {
+    background: var(--yellow-hover, #E6B300);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 199, 0, 0.4);
+}
+
+.btn-secondary {
+    display: inline-block;
+    background: transparent;
+    color: var(--forest, #1a5f3f);
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: 2px solid var(--forest, #1a5f3f);
+}
+
+.btn-secondary:hover {
+    background: var(--forest, #1a5f3f);
+    color: var(--white, #ffffff);
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .why-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+    
+    .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .custom-container {
+        gap: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .gifting-hero {
+        padding: 120px 5% 80px;
+    }
+    
+    .brand-name {
+        font-size: 3rem;
+    }
+    
+    .brand-parent {
+        font-size: 1.5rem;
+    }
+    
+    .why-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .why-card {
+        padding: 1.5rem;
+    }
+    
+    .categories-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .process-steps {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .process-steps::before {
+        display: none;
+    }
+    
+    .custom-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .custom-image {
+        height: 300px;
+        order: -1;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+    }
+}
+</style>
+
+<!-- Hero Section -->
+<section class="gifting-hero">
+    <div class="hero-content">
+        <h1 class="brand-name">Gaongiri</h1>
+        <p class="brand-connector">by</p>
+        <p class="brand-parent">Integral</p>
+        <p class="hero-tagline">Where gifting translates to community-building</p>
+    </div>
+</section>
+
+<!-- Introduction -->
+<section class="gifting-intro">
+    <div class="intro-container">
+        <h2>Gifts That Tell a Story</h2>
+        <p>When you choose Gaongiri for corporate gifting, you're not just giving a product — you're sharing the story of artisan communities, sustainable practices, and meaningful impact.</p>
+        <p>Each gift connects your brand to the hands that crafted it, creating a ripple of positive change from North East India to your clients and employees.</p>
+    </div>
+</section>
+
+<!-- Gift Categories -->
+<section class="categories-section">
+    <h2>Curated Gift Collections</h2>
+    <p class="categories-subtitle">Choose from our ready collections or work with us to create custom hampers.</p>
+    <div class="categories-grid">
+        <div class="category-card">
+            <div class="category-image">Product Image</div>
+            <div class="category-info">
+                <h3>Essential Collection</h3>
+                <p>A thoughtful selection of forest honey, castor oil, and lac powder in elegant packaging.</p>
+                <span class="category-price">Starting ₹1,500 per gift</span>
+            </div>
+        </div>
+        <div class="category-card">
+            <div class="category-image">Product Image</div>
+            <div class="category-info">
+                <h3>Silk Elegance</h3>
+                <p>Premium silk scarves or stoles, handwoven by master artisans of Assam.</p>
+                <span class="category-price">Starting ₹2,500 per gift</span>
+            </div>
+        </div>
+        <div class="category-card">
+            <div class="category-image">Product Image</div>
+            <div class="category-info">
+                <h3>Heritage Hamper</h3>
+                <p>Our signature collection featuring silk, honey, and artisan products in a handcrafted box.</p>
+                <span class="category-price">Starting ₹5,000 per gift</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works -->
+<section class="process-section">
+    <h2>How It Works</h2>
+    <div class="process-steps">
+        <div class="process-step">
+            <div class="step-number">1</div>
+            <h3>Share Your Needs</h3>
+            <p>Tell us about your gifting requirements, quantity, and budget.</p>
+        </div>
+        <div class="process-step">
+            <div class="step-number">2</div>
+            <h3>Customize Together</h3>
+            <p>We'll curate the perfect selection with your branding preferences.</p>
+        </div>
+        <div class="process-step">
+            <div class="step-number">3</div>
+            <h3>Review & Approve</h3>
+            <p>Approve samples and packaging before we proceed.</p>
+        </div>
+        <div class="process-step">
+            <div class="step-number">4</div>
+            <h3>Delivered With Care</h3>
+            <p>We handle delivery to your office or directly to recipients.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Customization Options -->
+<section class="custom-section">
+    <div class="custom-container">
+        <div class="custom-content">
+            <h2>Make It Uniquely Yours</h2>
+            <p>Every corporate gift can be tailored to reflect your brand's values and aesthetic. Our team works closely with you to create a memorable gifting experience.</p>
+            <ul class="custom-list">
+                <li>Custom packaging with your brand colors</li>
+                <li>Personalized greeting cards and notes</li>
+                <li>Branded ribbon and gift tags</li>
+                <li>Company logo on select products</li>
+                <li>Curated product combinations</li>
+                <li>Bulk pricing for large orders</li>
+            </ul>
+        </div>
+        <div class="custom-image">Custom Packaging Image</div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <h2>Ready to Get Started?</h2>
+    <p>Let's create meaningful gifts that your clients and employees will treasure — and that support artisan communities across North East India.</p>
+    <div class="cta-buttons">
+        <a href="/contact/" class="btn-primary">Request a Quote</a>
+        <a href="/shop/" class="btn-secondary">Browse Products</a>
+    </div>
+</section>
+{{ end }}
