@@ -64,6 +64,8 @@
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    text-decoration: none;
+    display: block;
 }
 
 .program-card:hover {
@@ -87,6 +89,7 @@
 .program-card ul {
     list-style: none;
     margin-bottom: 0;
+    padding-bottom: 40px;
 }
 
 .program-card ul li {
@@ -116,7 +119,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--forest, #1a5f3f);
+    color: white;
     font-size: 1.2rem;
     font-weight: 700;
     transition: all 0.3s;
@@ -124,6 +127,7 @@
 
 .program-card:hover .arrow {
     transform: translateX(4px);
+    background: var(--forest, #1a5f3f);
 }
 
 /* Impact Stats */
@@ -376,7 +380,7 @@
     <div class="container">
         <div class="programs-grid">
             
-            <div class="program-card">
+            <a href="/programs/ecosystems/" class="program-card">
                 <h3>Create ecosystems</h3>
                 <p>We restore and protect the natural ecosystems that silkworm farming depends on. By regenerating mulberry forests, protecting water sources, and building biodiversity, we ensure sustainable livelihoods while healing the environment.</p>
                 <ul>
@@ -386,9 +390,9 @@
                     <li>Soil regeneration through organic practices</li>
                 </ul>
                 <div class="arrow">→</div>
-            </div>
+            </a>
             
-            <div class="program-card">
+            <a href="/programs/livelihoods/" class="program-card">
                 <h3>Generate dignified rural livelihoods</h3>
                 <p>We create economic opportunities that honor tradition and provide stable incomes. Artisan families earn fair wages through sustainable silk production and craft, breaking cycles of poverty while maintaining cultural identity.</p>
                 <ul>
@@ -398,9 +402,9 @@
                     <li>Financial literacy and savings programs</li>
                 </ul>
                 <div class="arrow">→</div>
-            </div>
+            </a>
             
-            <div class="program-card">
+            <a href="/programs/productivity/" class="program-card">
                 <h3>Boost productivity</h3>
                 <p>For silkworm rearers and artisans, increasing productivity means producing more silk on the same land, creating higher-quality textiles, and reducing waste — all while working with nature's rhythms, not against them.</p>
                 <ul>
@@ -410,9 +414,9 @@
                     <li>Traditional knowledge integration</li>
                 </ul>
                 <div class="arrow">→</div>
-            </div>
+            </a>
             
-            <div class="program-card">
+            <a href="/programs/market-linkages/" class="program-card">
                 <h3>Connect farmers to markets</h3>
                 <p>We bridge the gap between rural silk producers and premium markets that value their craft. Through fair-trade networks, design partnerships, and direct market access, farmers receive prices that reflect the true value of their work.</p>
                 <ul>
@@ -422,9 +426,9 @@
                     <li>Premium silk brand partnerships</li>
                 </ul>
                 <div class="arrow">→</div>
-            </div>
+            </a>
             
-            <div class="program-card">
+            <a href="/programs/women-empowerment/" class="program-card">
                 <h3>Empower women</h3>
                 <p>Women are the backbone of silk production in North East India. We support female farmers and artisans to develop leadership skills, access resources, and create independent income streams that strengthen entire families.</p>
                 <ul>
@@ -434,9 +438,9 @@
                     <li>Gender-responsive agricultural practices</li>
                 </ul>
                 <div class="arrow">→</div>
-            </div>
+            </a>
             
-            <div class="program-card">
+            <a href="/programs/community-building/" class="program-card">
                 <h3>Build local communities</h3>
                 <p>Strong communities are the foundation of lasting change. We support indigenous communities to preserve cultural traditions, make collective decisions, and build social infrastructure that serves everyone.</p>
                 <ul>
@@ -446,9 +450,9 @@
                     <li>Traditional knowledge systems preservation</li>
                 </ul>
                 <div class="arrow">→</div>
-            </div>
+            </a>
             
-            <div class="program-card">
+            <a href="/programs/rainwater-harvesting/" class="program-card">
                 <h3>Rainwater harvesting</h3>
                 <p>Water scarcity threatens silk farming during dry seasons. We install community rainwater harvesting systems that capture monsoon rains, ensuring year-round water access for mulberry cultivation and household needs.</p>
                 <ul>
@@ -458,9 +462,9 @@
                     <li>Groundwater recharge structures</li>
                 </ul>
                 <div class="arrow">→</div>
-            </div>
+            </a>
             
-            <div class="program-card">
+            <a href="/programs/soil-health/" class="program-card">
                 <h3>Enrich soil health</h3>
                 <p>Healthy soil is the foundation of sustainable sericulture. We teach organic soil management, composting, and natural fertilization that increases yields while restoring soil fertility for future generations.</p>
                 <ul>
@@ -470,9 +474,9 @@
                     <li>Soil testing and monitoring</li>
                 </ul>
                 <div class="arrow">→</div>
-            </div>
+            </a>
             
-            <div class="program-card">
+            <a href="/programs/climate-action/" class="program-card">
                 <h3>Act on climate change</h3>
                 <p>Climate change is the biggest threat to North East India's silk communities. We build adaptive capacity through climate-smart agriculture, disaster preparedness, and indigenous weather forecasting knowledge.</p>
                 <ul>
@@ -482,7 +486,7 @@
                     <li>Carbon sequestration through agroforestry</li>
                 </ul>
                 <div class="arrow">→</div>
-            </div>
+            </a>
             
         </div>
     </div>
