@@ -1,5 +1,5 @@
 ---
-title: "Empower Women"
+title: "Empowering Our Women"
 layout: "program-detail"
 subtitle: "Supporting female farmers and artisans to develop leadership skills, access resources, and create independent income"
 
