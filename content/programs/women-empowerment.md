@@ -4,6 +4,7 @@ layout: "program-detail"
 subtitle: "Supporting female farmers and artisans to develop leadership skills, access resources, and create independent income"
 
 overview_title: "Women at the Center"
+overview_image: "/images/artisan-training-program.jpg"
 overview_text: |
   Women are the backbone of silk production in North East India. They rear silkworms, harvest cocoons, spin thread, and weave the intricate textiles that carry centuries of cultural heritage. Yet they often lack control over the income their labor generates.
 
