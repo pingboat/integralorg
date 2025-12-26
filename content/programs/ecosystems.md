@@ -1,5 +1,6 @@
 ---
-title: "Create Ecosystems"
+title: "Ecology is Economy."
+overview_image: "/images/ecosystems-majuli.jpg"
 layout: "program-detail"
 subtitle: "Restoring and protecting the natural ecosystems that sustainable silk farming depends on"
 
