@@ -4,6 +4,7 @@ subtitle: "Water scarcity threatens silk farming during dry seasons. We install 
 layout: "program-detail"
 
 overview_title: "Harvesting Every Drop"
+overview_image: "/images/assam-irrigation-paddy.jpg"
 overview_text: |
   North East India receives abundant monsoon rainfall, yet water scarcity plagues communities during dry seasons. Climate change is making rainfall patterns increasingly unpredictable, threatening the water-intensive process of silk production.
 
